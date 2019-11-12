@@ -171,7 +171,7 @@
                             <li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
                                         <ul>                                
                                     		<li><a href="/hotel/resources/hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    		<li><a href="Location.html"><div>호텔위치</div></a></li>
+                                    		<li><a href="/hotel/resources/Location.html"><div>호텔위치</div></a></li>
                                     		<li><a href="list.do"><div>공지사항</div></a></li>
                                          </ul>                                                              
                             </li>

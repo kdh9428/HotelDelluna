@@ -15,7 +15,7 @@ public class IndexController {
 	
 	@RequestMapping("index.do")
 	public String index() {
-		logger.info("indexÆäÀÌÁö ½ÃÀÛ");
+		logger.info("indexí˜ì´ì§€ ì‹œì‘");
 		return "index";
 	}
 
