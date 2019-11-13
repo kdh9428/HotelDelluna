@@ -1,4 +1,4 @@
-package com.java.hotel;
+package com.java.hotel.controller;
 
 
 
