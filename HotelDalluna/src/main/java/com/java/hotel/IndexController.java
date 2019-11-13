@@ -15,7 +15,7 @@ public class IndexController {
 	
 	@RequestMapping("index.do")
 	public String index() {
-		logger.info("index페이지 시작");
+		
 		return "index";
 	}
 
