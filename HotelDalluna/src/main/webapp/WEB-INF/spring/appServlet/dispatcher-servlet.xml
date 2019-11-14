@@ -13,6 +13,7 @@
 
 	<mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
+    
     <mvc:resources mapping="/css/**" location="/resources/css/" /> 
 	<mvc:resources mapping="/html/**" location="/html/" /> 
 	<mvc:resources mapping="/js/**" location="/resources/js/" />

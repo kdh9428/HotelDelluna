@@ -20,7 +20,8 @@ import Reservation.ReservationDTO;
 @Controller
 public class ReservationConfirmController  {
 	private static final Logger logger = LoggerFactory.getLogger(ReservationConfirmController.class);
-
+	
+	
 	@Autowired
 	private SqlSession sqlSession;
 	

@@ -57,6 +57,8 @@ Desktop.ini
 # Eclipse
 ######################
   
+MANIFEST.MF
+.MF
 *.pydevproject
 .project
 .metadata
