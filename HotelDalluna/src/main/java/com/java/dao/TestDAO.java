@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.java.dto.TestDTO;
+import com.java.dto.ReservationDTO;
 
 
 public class TestDAO implements InterfaceDao {
@@ -20,12 +19,12 @@ public class TestDAO implements InterfaceDao {
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
-	
-	public TestDAO() {
-		
-	}
-
 	@Override
+	public ArrayList<ReservationDTO> reservation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/*
 	 * public List<TestDTO> listDao() {
 	 * 
@@ -37,11 +36,11 @@ public class TestDAO implements InterfaceDao {
 	 * System.out.println("listDao확인"); return list; }
 	 */
 
-	public ArrayList<TestDTO> listDao() {
+	/*public ArrayList<TestDTO> listDao() {
 		System.out.println("DAO확인!!!");
 		String query = "select * from board order by mId desc";
 		ArrayList<TestDTO> dtos = (ArrayList<TestDTO>) template.query(query,new BeanPropertyRowMapper<TestDTO>(TestDTO.class));
 		return dtos;
-	}
+	}*/
 
 }

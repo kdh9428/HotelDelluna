@@ -1,34 +1,24 @@
 package com.java.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import com.java.dto.TestDTO;
-
-
-public class ReservationDao  {
-
-	JdbcTemplate template;
-	/*
-	 * @Override public TestDTO Dao() { // TODO Auto-generated method stub return
-	 * null; }
-	 */
-		
+@Repository
+public class ReservationDao implements InterfaceDao {
+	
+	@Autowired
+	protected SqlSession sqlSession;
+	
 	@Override
-	public ArrayList<TestDTO> listDao() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public void setTemplate(JdbcTemplate template) {
+	public List reservation() throws Exception{
+		System.out.println("dao확인");
 		
-		this.template = template;
+		return sqlSession.selectList("reservation");
 	}
 	
-		@Autowired
-		public String insertArticle() {
-			
-			return "";
-		}
+
+	
 }

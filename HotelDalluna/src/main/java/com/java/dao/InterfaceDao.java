@@ -1,12 +1,10 @@
 package com.java.dao;
 
-import java.util.ArrayList;
-
-import com.java.dto.TestDTO;
+import java.util.List;
 
 public interface InterfaceDao {
 		
 	/* public List<TestDTO> listDao(); */
-	public ArrayList<TestDTO> listDao();
-	 
+	
+	public List reservation() throws Exception;
 }

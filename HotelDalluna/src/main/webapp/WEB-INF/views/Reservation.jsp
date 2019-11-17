@@ -14,18 +14,15 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <div>
-<form action="index1.do" method="get">
-	
-	customer_id : <input type="text" id="customer_id" ><br>
-	reservation_date_in: <input type="text" id="reservation_date_in" ><br>
-	reservation_date_out : <input type="text" id="reservation_date_out" ><br>
-	price : <input type="text" id="price" ><br>
-	reservation_number :<input type="text" id="reservation_number" ><br>
-	
-	<button type="hidden">입력하고 고고</button>
-</form>
 
-
+<c:forEach items="${reservation}" var="dto">
+	RESERVATION_NUMBER: ${dto.reservation_number}<br>
+	CUSTOMER_ID: ${dto.customer_id }<br>
+	RESERVATION_DATE_IN: ${dto.reservation_date_in }<br>
+	RESERVATION_DATE_OUT:${dto.reservation_date_out }<br>
+	price: ${dto.price }<br>
+	</c:forEach>
+	
 </div>
 </body>
 </html>

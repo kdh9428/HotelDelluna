@@ -4,10 +4,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.java.dao.InterfaceDao">
-	<select id="listDao" resultType="com.java.dto.TestDTO">
+	<!-- <select id="listDao" resultType="com.java.dto.TestDTO">
 	 select * from ` zip_code` where zip='1';
 	</select>
-	
+	 -->
+	<select id="reservation" resultType="com.java.dto.ReservationDTO">
+		SELECT * FROM RESERVATION
+	</select>
 	
 	<!-- <insert id="writeDao">
 		
