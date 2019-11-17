@@ -14,15 +14,15 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <div>
-<form action="index1.do" method="get">
+<form action="home1.do" method="post">
 	
-	customer_id : <input type="text" id="customer_id" ><br>
-	reservation_date_in: <input type="text" id="reservation_date_in" ><br>
-	reservation_date_out : <input type="text" id="reservation_date_out" ><br>
-	price : <input type="text" id="price" ><br>
-	reservation_number :<input type="text" id="reservation_number" ><br>
+	CUSTOMER_ID : <input type="text" name="customer_id" ><br>
+	reservation_date_in: <input type="text" name="reservation_date_in" ><br>
+	reservation_date_out : <input type="text" name="reservation_date_out" ><br>
+	price : <input type="text" name="price" ><br>
+	reservation_number :<input type="text" name="reservation_number" ><br>
+	<input type="submit" value="gogo">
 	
-	<button type="hidden">입력하고 고고</button>
 </form>
 
 

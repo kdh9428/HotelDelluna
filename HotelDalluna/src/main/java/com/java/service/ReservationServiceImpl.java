@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java.dao.InterfaceDao;
+import com.java.dto.ReservationDTO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -21,6 +22,15 @@ public class ReservationServiceImpl implements ReservationService {
 		List reservation = interfaceDao.reservation(); 
 		
 		return reservation;
+	}
+	
+	@Override
+	public void reservationClick(ReservationDTO reservationDto) {
+		// TODO Auto-generated method stub
+		
+		interfaceDao.reservationClick(reservationDto);
+		
+		
 	}
 
 }

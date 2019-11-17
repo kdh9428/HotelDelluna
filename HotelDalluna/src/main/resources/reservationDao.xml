@@ -12,6 +12,10 @@
 		SELECT * FROM RESERVATION
 	</select>
 	
+	<insert id="click">
+		insert into reservation(reservation_number, customer_id, reservation_date_in, reservation_date_out, price) values ( #{reservation_number}, #{customer_id}, #{reservation_date_in}, #{reservation_date_out}, #{price} )
+	</insert>
+	
 <!-- 	
 	<select id="" resultType="com.java.dto.TestDTO">
 		

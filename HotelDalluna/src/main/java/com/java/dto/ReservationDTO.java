@@ -66,7 +66,6 @@ public class ReservationDTO {
 	public void setConfirmation_payment(int confirmation_payment) {
 		this.confirmation_payment = confirmation_payment;
 	}
-	
-	
+
 	
 }
