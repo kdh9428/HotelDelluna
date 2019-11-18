@@ -16,6 +16,12 @@
 		insert into reservation(reservation_number, customer_id, reservation_date_in, reservation_date_out, price) values ( #{reservation_number}, #{customer_id}, #{reservation_date_in}, #{reservation_date_out}, #{price} )
 	</insert>
 	
+	<!-- 예약이 되어있나 체크 -->
+	<select id="reservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="java.lang.Integer">
+		SELECT  count(*) FROM reservation r JOIN reservation_number_people p ON r.RESERVATION_NUMBER = p.RESERVATION_NUMBER WHERE ROOM_TYPE IN(#{room_type}) AND (#{reservation_date_in} between reservation_date_in and reservation_date_out or #{reservation_date_out} BETWEEN reservation_date_in AND reservation_date_out)
+	</select>
+	
+	
 <!-- 	
 	<select id="" resultType="com.java.dto.TestDTO">
 		

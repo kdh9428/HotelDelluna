@@ -205,7 +205,7 @@
 									<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
 							<li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
-							<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 								<c:if test="${customer_id eq null }">
 								 <li><a href="hewon.jsp"><div>로그인</div></a>

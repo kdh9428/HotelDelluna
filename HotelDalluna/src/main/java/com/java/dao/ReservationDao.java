@@ -30,6 +30,18 @@ public class ReservationDao implements InterfaceDao {
 		
 	}
 	
+	
+	//예약 확인 체크
+	@Override
+	public int reservationCheck(ReservationDTO reservationDto) {
+		// TODO Auto-generated method stub
+		System.out.println("예약 확인" + reservationDto);
+		
+		int check = sqlSession.selectOne("reservationCheck", reservationDto);
+		System.out.println("check 확인 값 0이면 없음 1이면 있음"+check);
+		return check;
+	}
+	
 
 	
 }

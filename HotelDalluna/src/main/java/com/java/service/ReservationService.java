@@ -8,6 +8,10 @@ public interface ReservationService {
 	
 	public List reservation() throws Exception;
 	
-	public void reservationClick(ReservationDTO reservationDto);
+	public void reservationTest(ReservationDTO reservationDto);
+	
+	//예약 
+	public int reservationCheck(ReservationDTO reservationDto);
+	
 
 }

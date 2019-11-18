@@ -11,4 +11,7 @@ public interface InterfaceDao {
 	public List reservation() throws Exception;
 	
 	public void reservationClick(ReservationDTO reservationDto);
+	
+	//예약 
+	public int reservationCheck(ReservationDTO reservationDto);
 }

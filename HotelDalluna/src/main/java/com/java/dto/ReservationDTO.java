@@ -28,6 +28,7 @@ public class ReservationDTO {
 		return reservation_date_in;
 	}
 	public void setReservation_date_in(String reservation_date_in) {
+		System.out.println("reservation_date_in 확인");
 		this.reservation_date_in = reservation_date_in;
 	}
 	public String getReservation_date_out() {

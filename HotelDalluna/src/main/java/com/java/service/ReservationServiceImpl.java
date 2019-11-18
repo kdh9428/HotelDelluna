@@ -25,12 +25,31 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public void reservationClick(ReservationDTO reservationDto) {
+	public void reservationTest(ReservationDTO reservationDto) {
 		// TODO Auto-generated method stub
 		
 		interfaceDao.reservationClick(reservationDto);
+	}
+	
+	@Override
+	public int reservationCheck(ReservationDTO reservationDto) {
+		
+		String date = reservationDto.getReservation_date_in();
+		
+		//예약 되어있나 확인
+		int check ;
+		System.out.println("reservationCheck 확인 "+date);
+		check = interfaceDao.reservationCheck(reservationDto);
+		
+		if(check!=0) {
+			
+		}
 		
 		
+		System.out.println("check 확인"+ check);
+		
+		
+		return 0;
 	}
 
 }
