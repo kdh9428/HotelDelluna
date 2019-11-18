@@ -36,18 +36,19 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		String date = reservationDto.getReservation_date_in();
 		
-		//예약 되어있나 확인
+		////체크인, 체크아웃, 룸타입을 비교해서 테이블이 있으면 예약 되어 있다.
 		int check ;
 		System.out.println("reservationCheck 확인 "+date);
 		check = interfaceDao.reservationCheck(reservationDto);
-		
-		if(check!=0) {
+		System.out.println("Service에서 check 확인"+ check);
+		if(check==0) {
+			//룸 정보 테이블에서 룸 가격을 가져온다.
+			String roomprices = interfaceDao.roomprices(reservationDto);
+		}else {
+			
+			System.out.println("예약 되어있는 날짜");
 			
 		}
-		
-		
-		System.out.println("check 확인"+ check);
-		
 		
 		return 0;
 	}

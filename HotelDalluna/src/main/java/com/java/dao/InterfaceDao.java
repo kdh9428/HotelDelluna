@@ -12,6 +12,9 @@ public interface InterfaceDao {
 	
 	public void reservationClick(ReservationDTO reservationDto);
 	
-	//예약 
+	//예약 확인(체크인, 체크아웃, 룸 타입을 비교해서 테이블 확인
 	public int reservationCheck(ReservationDTO reservationDto);
+	
+	//룸 정보
+	public String roomprices(ReservationDTO reservationDto);
 }

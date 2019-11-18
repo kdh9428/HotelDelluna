@@ -35,11 +35,24 @@ public class ReservationDao implements InterfaceDao {
 	@Override
 	public int reservationCheck(ReservationDTO reservationDto) {
 		// TODO Auto-generated method stub
+		
 		System.out.println("예약 확인" + reservationDto);
 		
 		int check = sqlSession.selectOne("reservationCheck", reservationDto);
 		System.out.println("check 확인 값 0이면 없음 1이면 있음"+check);
 		return check;
+	}
+	
+	//룸 가격 
+	@Override
+	public String roomprices(ReservationDTO reservationDto) {
+		// TODO Auto-generated method stub
+		System.out.println("roomprices 확인");
+		String prices = sqlSession.selectOne("com.java.dao.InterfaceDao.roomprices",reservationDto);
+		
+		System.out.println("roomprices 가격 : "+prices);
+		
+		return prices;
 	}
 	
 
