@@ -1,7 +1,5 @@
 package com.java.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,30 +12,11 @@ public class ReservationDao implements InterfaceDao {
 	@Autowired
 	protected SqlSession sqlSession;
 	
-	@Override
-	public List reservation() throws Exception{
-		System.out.println("dao확인");
-		
-		return sqlSession.selectList("reservation");
-	}
-	
-	@Override
-	public void reservationClick(ReservationDTO reservationDto) {
-		System.out.println("click 확인");
-		String num = reservationDto.getReservation_number();
-		System.out.println("reservation_number" +num);
-		sqlSession.insert("click",reservationDto);
-		
-	}
-	
-	
 	//예약 확인 체크
 	@Override
 	public int reservationCheck(ReservationDTO reservationDto) {
-		// TODO Auto-generated method stub
 		
 		System.out.println("예약 확인" + reservationDto);
-		
 		int check = sqlSession.selectOne("reservationCheck", reservationDto);
 		System.out.println("check 확인 값 0이면 없음 1이면 있음"+check);
 		return check;
@@ -46,15 +25,29 @@ public class ReservationDao implements InterfaceDao {
 	//룸 가격 
 	@Override
 	public String roomprices(ReservationDTO reservationDto) {
-		// TODO Auto-generated method stub
 		System.out.println("roomprices 확인");
 		String prices = sqlSession.selectOne("com.java.dao.InterfaceDao.roomprices",reservationDto);
-		
 		System.out.println("roomprices 가격 : "+prices);
-		
 		return prices;
 	}
 	
-
+	//룸 인원 테이블 확인
+	@Override
+	public void reservationPeople(ReservationDTO reservationDto) {
+			
+		String aa = reservationDto.getReservation_number();
+		System.out.println("룸 인원 테이블 확인" + aa);
+		sqlSession.insert("com.java.dao.InterfaceDao.reservationPeople",reservationDto);
+		System.out.println();
+	}
 	
+	//예약 완료 처리
+	@Override
+	public void reservation(ReservationDTO reservationDto) {
+		System.out.println("예약 완료");
+		
+		int check1 = sqlSession.insert("reservation",reservationDto);
+		
+		/* System.out.println("예약 완료 check"+check1); */
+	}
 }

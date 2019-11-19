@@ -10,8 +10,14 @@ public class ReservationDTO {
 	private int child;//어린이
 	private int price;//가격
 	private int confirmation_payment;//예약 가격
+	int id;//insert, update시 return값 
 	
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getReservation_number() {
 		return reservation_number;
 	}
@@ -28,7 +34,6 @@ public class ReservationDTO {
 		return reservation_date_in;
 	}
 	public void setReservation_date_in(String reservation_date_in) {
-		System.out.println("reservation_date_in 확인");
 		this.reservation_date_in = reservation_date_in;
 	}
 	public String getReservation_date_out() {
@@ -67,6 +72,5 @@ public class ReservationDTO {
 	public void setConfirmation_payment(int confirmation_payment) {
 		this.confirmation_payment = confirmation_payment;
 	}
-
 	
 }

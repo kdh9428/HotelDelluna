@@ -1,8 +1,6 @@
 package com.java.hotel.controller;
 
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +31,8 @@ public class ReservationController  {
 	
 	@RequestMapping(value="ReservationCheck.do",method = RequestMethod.POST)
 	public String reservationCheck(ReservationDTO reservationDto, Model model) throws Exception{
-		String data =reservationDto.getReservation_date_in();
-		System.out.println("reservationCheck 컨트롤러 시작"+data);
+		System.out.println("reservationCheck 컨트롤러 시작");
 		model.addAttribute("reservation", reservation.reservationCheck(reservationDto));
-		
 		return "Reservation";
 	}
 	

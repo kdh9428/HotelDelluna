@@ -316,6 +316,8 @@
 												</select>
 												</div>
 												
+												<input type="text" name="customer_id" value="임시 id"> 
+												
 												</div>
 												<!-- <input type="text" name="reservation_number" value="reservation_number"> -->
 												<%-- <input type="hidden" name="customer_id" value="${customer_id}"> --%>
