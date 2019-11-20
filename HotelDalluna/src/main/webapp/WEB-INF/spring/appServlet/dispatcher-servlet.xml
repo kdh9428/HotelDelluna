@@ -29,8 +29,6 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<!-- <bean id="indexController" class="com.java.hotel.controller.IndexController" /> -->
 	<!-- <bean id="homeController" class="com.java.hotel.controller.HomeController" /> -->
-	
-	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
