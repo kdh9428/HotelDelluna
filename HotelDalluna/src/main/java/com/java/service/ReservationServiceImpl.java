@@ -1,8 +1,8 @@
 package com.java.service;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -35,7 +35,6 @@ public class ReservationServiceImpl implements ReservationService {
 			String roomprices = interfaceDao.roomprices(reservationDto);
 
 			try {
-
 				// 예약날짜가 몇일인지 계산한다.
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date beginDate = formatter.parse(reservationDto.getReservation_date_in());
@@ -47,6 +46,12 @@ public class ReservationServiceImpl implements ReservationService {
 				int price = Integer.parseInt(roomprices) * (int) diffDays;
 				System.out.println("날짜 차이 * 룸가격 =>" + diffDays + "*" + roomprices + "=" + price);
 				reservationDto.setPrice(price);
+				
+				//전체 가격 포멧 설정
+				DecimalFormat df = new DecimalFormat("##,###원");
+				String priceproduct = (String)df.format(price);
+				reservationDto.setPriceproduct(priceproduct);
+
 
 				// 예약번호 생성
 				int start = (int) (Math.random() * 27); //
@@ -79,6 +84,15 @@ public class ReservationServiceImpl implements ReservationService {
 			reCheck = -1;
 		}
 		return reservationDto;
+	}
+	
+	
+	//예약 취소하기
+	@Override
+	public void reservationCancell(String reservation_number) {
+		System.out.println("예약 취소 Service");
+		interfaceDao.reservationCancell(reservation_number);
+		
 	}
 
 }

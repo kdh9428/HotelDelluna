@@ -1,8 +1,6 @@
 package com.java.hotel.controller;
 
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
@@ -53,6 +51,12 @@ public class ReservationController  {
 		 */
 		
 		return "ReservationConfirm";
+	}
+	
+	@RequestMapping("ReservationCancell.do")
+	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
+		reservation.reservationCancell(reservation_number);
+		return"Reservation";
 	}
 	
 	@RequestMapping("index.do")

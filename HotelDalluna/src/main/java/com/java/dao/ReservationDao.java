@@ -48,4 +48,11 @@ public class ReservationDao implements InterfaceDao {
 		System.out.println("예약 완료");
 		/* System.out.println("예약 완료 check"+check1); */
 	}
+	
+	//예약 취소
+	@Override
+	public void reservationCancell(String reservation_number) {
+		sqlSession.delete("reservationCancell", reservation_number);
+			
+	}
 }

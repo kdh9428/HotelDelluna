@@ -75,7 +75,6 @@
                         <a href="index.do" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
                         <a href="index.do" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>                   
                     </div><!-- #logo end -->
-
                                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
@@ -123,7 +122,7 @@
                             <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>               
                             
                       	  <c:if test="${customer_id eq null}">   
-                            <li><a href="hewon.jsp"><div>로그인</div></a>
+                            <li><a href="login.do"><div>로그인</div></a>
                                 <ul>
                                 	<li><a href="hewon.jsp"><div>로그인</div></a></li>
                                 	<li><a href="searchIdpass.jsp"><div>아이디/비밀번호 찾기</div></a></li>
@@ -176,7 +175,7 @@
 
                     <!-- Contact Form
                     ============================================= -->
-                    <form method="post">
+                    <form>
 					<input type="hidden" name="reservation_number" id="reservation_number" value="${dto.reservation_number}">
 					<div class="row">
 						<div class="col-md-6">
@@ -186,10 +185,14 @@
 
 						<div class="col-md-6">
 							<label for="template-contactform-name">룸 이름</label><br>
-							<div class="well well-sm">${dto.room_type }</div>
+							<c:choose>
+								<c:when test="${dto.room_type eq 1}"><div class="well well-sm">디럭스 더블</div></c:when>
+								<c:when test="${dto.room_type eq 2}"><div class="well well-sm">디럭스 트윈</div></c:when>
+								<c:when test="${dto.room_type eq 3}"><div class="well well-sm">패밀리 스위트</div></c:when>
+								<c:when test="${dto.room_type eq 4}"><div class="well well-sm">그랜드 스위트</div></c:when>
+							</c:choose>
 						</div>
 					</div>
-					
 					<div class="row">
 						<div class="col-md-6">
 							<label for="template-contactform-name">아이디</label><br>
@@ -216,7 +219,7 @@
 					
 					<div class="col_full">
 							<label for="template-contactform-name">가격</label><br>
-							<div class="well well-sm">${dto.price}</div>
+							<div class="well well-sm">${dto.priceproduct}</div>
 					</div>
 					
 					<div class="col_full">
@@ -225,15 +228,11 @@
 					</div>
 	
                         <div class="clearfix" style=" text-align:center;" >
-
                                 <button type="button" onclick="popup();" value="${dto.reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
                                 <span >결제하기</span> <i class="icon-angle-right"></i></button>
-                                <button type="submit" formaction="ReservationCancellation.do" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
+                                <button type="button" onClick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                         </form>
-                        
-                        
-
                     <script type="text/javascript">
                         $("#template-contactform").validate({
                             submitHandler: function(form) {
@@ -257,7 +256,15 @@
 				            var name = "popup test";
 				            var option = "width = 790px, height = 610px, top = 100, left = 200, location = no";
 				            window.open(url, name, option);
-				           
+				        }
+				        
+				        function check(){
+				        	if(confirm("예약을 취소 하시겠습니까?")==true){
+				        		document.location.href="ReservationCancell.do?reservation_number=${dto.reservation_number}"
+				        		document.form.submit();
+				        	}else{
+				        		return false;
+				        	}
 				        }
 				    </script>
 
@@ -321,17 +328,14 @@
 
                         <div class="widget clearfix">
 
-  <h3>(주)호텔 델루나 <span>02-1544-1111</span></h3>
+  						<h3>(주)호텔 델루나 <span>02-1544-1111</span></h3>
                           
 
                             <div class="line" style="margin: 30px 0;"></div>
 
                             <div class="col_half">
                                 <div class="widget subscribe-widget clearfix">
-                               
-                               
-                                     
-                                    </form>
+                                
                                     <script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
                                             submitHandler: function(form) {
@@ -424,9 +428,7 @@
             <!-- Copyrights
             ============================================= -->
           <div id="copyrights">
-
                 <div class="container clearfix">
-
                     <div class="col_half">
                         <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
                         <img src="resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
@@ -457,15 +459,10 @@
                                 <i class="icon-pinterest"></i>
                                 <i class="icon-pinterest"></i>
                             </a>
-
-                          
                         </div>
                     </div>
-
                 </div>
-
             </div><!-- #copyrights end -->
-
         </footer><!-- #footer end -->
 
     </div><!-- #wrapper end -->

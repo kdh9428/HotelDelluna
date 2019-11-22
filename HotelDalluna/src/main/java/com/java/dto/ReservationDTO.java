@@ -10,13 +10,13 @@ public class ReservationDTO {
 	private int child;//어린이
 	private int price;//가격
 	private int confirmation_payment;//예약 가격
-	int id;//insert, update시 return값 
+	private String priceproduct;//방 전체 날짜 가격
 	
-	public int getId() {
-		return id;
+	public String getPriceproduct() {
+		return priceproduct;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPriceproduct(String priceproduct) {
+		this.priceproduct = priceproduct;
 	}
 	public String getReservation_number() {
 		return reservation_number;

@@ -189,7 +189,7 @@
                                    	<c:if test="${customer_id eq null}">
                             <li><a href="hewon.jsp"><div>로그인</div></a>
                                 <ul>
-                                	<li><a href="hewon.jsp"><div>로그인</div></a></li>
+                                	<li><a href="login.do"><div>로그인</div></a></li>
                                 	<li><a href="searchIdpass.jsp"><div>아이디/비밀번호 찾기</div></a></li>
                                 	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
                                 </ul>   
