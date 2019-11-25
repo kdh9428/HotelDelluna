@@ -23,12 +23,17 @@ public class ReservationServiceImpl implements ReservationService {
 	public ReservationDTO reservationCheck(ReservationDTO reservationDto) {
 
 		int reCheck = 1;
-
+		//체크 아웃을 선택했는지 확인
+		if(reservationDto.getReservation_date_out() == "" || reservationDto.getReservation_date_out().equals(null) ){
+			reservationDto.setReservation_date_out(reservationDto.getReservation_date_in());
+			System.out.println("Checkout null 확인"+reservationDto.getReservation_date_out());
+		}
+		
 		// 체크인, 체크아웃, 룸타입을 비교해서 테이블이 있으면 예약 되어 있다.
 		int check;
 		check = interfaceDao.reservationCheck(reservationDto);
 		System.out.println("Service에서 check 확인" + check);
-
+		
 		// 비교 예약 0이면 예약 가능
 		if (check == 0) {
 			// 룸 정보 테이블에서 룸 가격을 가져온다.
@@ -51,7 +56,6 @@ public class ReservationServiceImpl implements ReservationService {
 				DecimalFormat df = new DecimalFormat("##,###원");
 				String priceproduct = (String)df.format(price);
 				reservationDto.setPriceproduct(priceproduct);
-
 
 				// 예약번호 생성
 				int start = (int) (Math.random() * 27); //
@@ -85,7 +89,6 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		return reservationDto;
 	}
-	
 	
 	//예약 취소하기
 	@Override
