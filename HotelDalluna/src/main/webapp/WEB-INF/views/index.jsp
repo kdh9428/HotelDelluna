@@ -222,7 +222,7 @@
 								</sec:authorize>
 								<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><a href="memLogout.do"><div>로그아웃</div></a></li>
+									<li><a href="logout.do"><div>로그아웃</div></a></li>
 							</sec:authorize>
 						</ul>
 					</nav><!-- #primary-menu end -->

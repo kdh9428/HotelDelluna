@@ -22,6 +22,7 @@ public class ReservationController  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 	
+	
 	@Autowired
 	private ReservationService reservation;
 	
@@ -35,9 +36,6 @@ public class ReservationController  {
 	@RequestMapping(value="ReservationCheck.do",method = RequestMethod.POST)
 	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		System.out.println("reservationCheck 컨트롤러 시작");
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		reservationDto.setCustomer_id(auth.getName());
 		 reservation.reservationCheck(reservationDto);
 		 
 		/*
@@ -55,6 +53,14 @@ public class ReservationController  {
 		 * md.addObject("reservation_number",reservationDto.getReservation_number());
 		 * md.addObject("reservation_data_in","aslkdjf");
 		 */
+		
+		return "ReservationConfirm";
+	}
+	
+	@RequestMapping("ReservationConfirm.do")
+	public String reservationConfirm(Model model) {
+		
+		
 		
 		return "ReservationConfirm";
 	}

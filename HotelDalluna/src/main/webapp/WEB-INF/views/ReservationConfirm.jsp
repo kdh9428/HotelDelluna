@@ -4,7 +4,6 @@
 	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-
 <!DOCTYPE html>
 <html dir="ltr" lang="UTF-8">
 <head>
@@ -124,19 +123,20 @@
                             <li><a href="Reseravtion.do"><div>예약하기</div></a></li>     
                             <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>               
                             
-                      	  <c:if test="${customer_id eq null}">   
-                            <li><a href="login.do"><div>로그인</div></a>
-                                <ul>
-                                	<li><a href="hewon.jsp"><div>로그인</div></a></li>
-                                	<li><a href="searchIdpass.jsp"><div>아이디/비밀번호 찾기</div></a></li>
-                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
-                                </ul>       
-                            </li>
-                                    </c:if>        
-                            	<c:if test="${customer_id ne null}">
-                                    <li><a href="memLogout.do"><div>로그아웃</div></a>
-                                    </li>
-                                    </c:if>
+                      	<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<sec:authorize access="isAnonymous()">
+								 <li><a href="login.do"><div>로그인</div></a>
+									<ul>
+	                                	<li><a href="login.do"><div>로그인</div></a></li>
+	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
+                              	 	 </ul>   
+                              	 </li>
+								</sec:authorize>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="logout.do"><div>로그아웃</div></a></li>
+							</sec:authorize>
                         </ul>
                     </nav><!-- #primary-menu end -->
                 </div>

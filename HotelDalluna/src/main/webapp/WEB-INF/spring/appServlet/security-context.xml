@@ -14,15 +14,6 @@
 	<context:component-scan base-package="com.java.dao"/>
 	<context:component-scan base-package="com.java.service"/>
 
-
-		<!-- - invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지 입니다.
-		- max-sessions="1" : 최대 허용 가능 중복 세션 수 입니다.
-		- expired-url="/login" :  중복 로그인이 일어났을 경우 이동 할 페이지 입니다.
-		 -->
-<!-- 	    <security:session-management invalid-session-url="/login">
-        <concurrency-control max-sessions="1" expired-url="/login"/>
-   		 </security:session-management> -->
-
 	<http use-expressions="true">
 		<!-- 사용자 지정 로그인폼 페이지 요청주소 및 로그인 성공시, 실패시 요청 주소 지정 -->
 		<form-login login-page="/login.do" default-target-url="/index.do"
@@ -30,17 +21,24 @@
 					password-parameter="password"
 			authentication-failure-url="/login.do" />
 	
-<!-- 					login-processing-url="/login" -->
+			<!-- login-processing-url="/login" -->
 
 		<!-- 로그아웃 요청주소 지정 -->
-		<logout logout-success-url="/index.do" />
-
-	<logout logout-url="/logout" success-handler-ref="logoutSuccessHandler" invalidate-session="true" />
+	<logout logout-url="/logout.do" invalidate-session="true" logout-success-url="/index.do" />
 
 		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
 		<intercept-url pattern="/ReservationConfirm.do" access="isAuthenticated()" />
 		<intercept-url pattern="/Reservation.do" access="isAuthenticated()" />
+		
+		<!-- invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지 입니다.
+			 max-sessions="1" : 최대 허용 가능 중복 세션 수 입니다.
+			 expired-url="/login" :  중복 로그인이 일어났을 경우 이동 할 페이지 입니다.
+		 -->
+		  <session-management invalid-session-url="/login">
+     	   <concurrency-control max-sessions="1" expired-url="/login"/>
+   		 </session-management>
 	</http>
+	
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
 		</authentication-provider>

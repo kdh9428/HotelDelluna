@@ -7,6 +7,8 @@ import java.util.Locale;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.java.dao.InterfaceDao;
@@ -17,11 +19,20 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
 	protected InterfaceDao interfaceDao;
-
+	
+	
+		
 	// 예약하기
 	@Override
 	public ReservationDTO reservationCheck(ReservationDTO reservationDto) {
-
+		
+		
+		//Security id Session 생성
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//로그인 id
+		reservationDto.setCustomer_id(auth.getName());
+		System.out.println("Session 확인 ====="+reservationDto.getCustomer_id());
+		
 		int reCheck = 1;
 		//체크 아웃을 선택했는지 확인
 		if(reservationDto.getReservation_date_out() == "" || reservationDto.getReservation_date_out().equals(null) ){
@@ -68,7 +79,7 @@ public class ReservationServiceImpl implements ReservationService {
 				// subString(시작값, 끝값)까지 문자열 자른다.
 				System.out.println("예약번호 확인 : " + mTime);
 				reservationDto.setReservation_number(mTime);
-
+				
 				// 룸 인원 테이블에 룸 예약번호, 룸 타입, 인원수 넣어준다.
 				interfaceDao.reservationPeople(reservationDto);
 
