@@ -4,6 +4,8 @@ package com.java.hotel.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,7 +35,11 @@ public class ReservationController  {
 	@RequestMapping(value="ReservationCheck.do",method = RequestMethod.POST)
 	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		System.out.println("reservationCheck 컨트롤러 시작");
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		reservationDto.setCustomer_id(auth.getName());
 		 reservation.reservationCheck(reservationDto);
+		 
 		/*
 		 * model.addAttribute("reservation_number",
 		 * reservationDto.getReservation_number());
@@ -52,6 +58,8 @@ public class ReservationController  {
 		
 		return "ReservationConfirm";
 	}
+	
+	
 	
 	@RequestMapping("ReservationCancell.do")
 	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
@@ -83,5 +91,7 @@ public class ReservationController  {
 		 
 		 return "home";
 	 }
+	
+	
 
 }

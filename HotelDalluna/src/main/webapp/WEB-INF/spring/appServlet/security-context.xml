@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<!--확장자를 이용해 패턴을 걸때는 /**/*.해당 확장자 -->
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/images/*" security="none" />
+	
+	<context:component-scan base-package="com.java.dao"/>
+	<context:component-scan base-package="com.java.service"/>
+
+
+		<!-- - invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지 입니다.
+		- max-sessions="1" : 최대 허용 가능 중복 세션 수 입니다.
+		- expired-url="/login" :  중복 로그인이 일어났을 경우 이동 할 페이지 입니다.
+		 -->
+<!-- 	    <security:session-management invalid-session-url="/login">
+        <concurrency-control max-sessions="1" expired-url="/login"/>
+   		 </security:session-management> -->
+
+	<http use-expressions="true">
+		<!-- 사용자 지정 로그인폼 페이지 요청주소 및 로그인 성공시, 실패시 요청 주소 지정 -->
+		<form-login login-page="/login.do" default-target-url="/index.do"
+					username-parameter="customer_id"
+					password-parameter="password"
+			authentication-failure-url="/login.do" />
+	
+<!-- 					login-processing-url="/login" -->
+
+		<!-- 로그아웃 요청주소 지정 -->
+		<logout logout-success-url="/index.do" />
+
+	<logout logout-url="/logout" success-handler-ref="logoutSuccessHandler" invalidate-session="true" />
+
+		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
+		<intercept-url pattern="/ReservationConfirm.do" access="isAuthenticated()" />
+		<intercept-url pattern="/Reservation.do" access="isAuthenticated()" />
+	</http>
+	<authentication-manager>
+		<authentication-provider user-service-ref="userService">
+		</authentication-provider>
+	</authentication-manager>
+	<beans:bean id="userService" class="com.java.service.memberDetailsSevice"/>
+
+</beans:beans>

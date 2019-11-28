@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+
 <!DOCTYPE html>
 <head>
 
@@ -171,7 +174,6 @@
 					<!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
-
 						<ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
@@ -207,7 +209,9 @@
 							<li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
 							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
-								<c:if test="${customer_id eq null }">
+							
+							<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<sec:authorize access="isAnonymous()">
 								 <li><a href="login.do"><div>로그인</div></a>
 									<ul>
 	                                	<li><a href="login.do"><div>로그인</div></a></li>
@@ -215,11 +219,11 @@
 	                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
                               	 	 </ul>   
                               	 </li>
-								</c:if>
-							<c:if test="${customer_id ne null }">
-									<li><ul><a href="memLogout.do"><div>로그아웃</div></a></ul></li>
-							</c:if>
-							
+								</sec:authorize>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="memLogout.do"><div>로그아웃</div></a></li>
+							</sec:authorize>
 						</ul>
 					</nav><!-- #primary-menu end -->
 				</div>
@@ -426,6 +430,7 @@
                                 <h3 data-animate="fadeInDown">DINING</h3>
                                 <span data-animate="fadeInUp">Panorama ( All day Dining )</span>
                             </div>
+                            
                             <p>국내 최초 270˚파노라마 뷰를 조망할 수 있는<br> 자연 속 레스토랑 올 데이 다이닝 ‘파노라마 (Panorama)’에서는
 							<p>엄선된 재료로 정성스럽게 만들어진 조식 뷔페 부터 다채로운 디너까지 다양한 메뉴의 올 데이 다이닝을 사랑하는 사람들과 함께 즐기실 수 있습니다.</p>
                             <a href="dining-1.html" class="btn btn-primary" role="button">자세히 보기</a>

@@ -44,24 +44,20 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title"
 					style="background-image: url(resources/images/bg-01.jpg);">
-					<!-- 					<span class="login100-form-title-1">호텔델루나</span> -->
 					<span class="login100-form-title-1">Hotel Delluna</span>
 				</div>
 				<c:choose>
 					<c:when test="${login eq null}">
-						<form class="login100-form validate-form" action="memLogin.do"
-							method="post">
+						<form class="login100-form validate-form" action="j_spring_security_check" method="post">
 							<div class="wrap-input100 validate-input m-b-26"
 								data-validate="ID를 입력해주세요">
 
-								<span class="label-input100">아이디</span> <input class="input100"
-									type="text" name="customer_id" placeholder="Enter username">
+								<span class="label-input100">아이디</span> <input class="input100" type="text" name="customer_id" placeholder="Enter username">
 								<span class="focus-input100"></span>
 							</div>
 							<div class="wrap-input100 validate-input m-b-18"
 								data-validate="비밀번호를 입력해주세요">
-								<span class="label-input100">비밀번호</span> <input class="input100"
-									type="password" name="PASSWORD" placeholder="Enter password">
+								<span class="label-input100">비밀번호</span> <input class="input100" type="password" name="password" placeholder="Enter password">
 								<span class="focus-input100"></span>
 							</div>
 							<div class="flex-sb-m w-full p-b-30">
@@ -76,20 +72,18 @@
 							</div>
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn" value="로그인">로그인</button>
-								<button class="login100-form-btn" type="button" value="회원가입"
-								onclick="location.href='agreePage.jsp'">회원가입</button>
-									<!-- 	onclick="location.href='MemberAddForm2.jsp'">회원가입</button> -->
+								<button class="login100-form-btn" type="button" value="회원가입" onclick="location.href='agreePage.jsp'">회원가입</button>
 							</div>
 						</form>
-						<c:if test="${pwnot ne null}"> <!-- != -->
+						<c:if test="${pwnot ne null}"> 
 							<script>alert('${pwnot}')</script>
 							<c:remove var="pwnot"/>
 						</c:if>
 					</c:when>
 					<c:otherwise>
-						<p>${sessionScope.customer_id}님환영합니다!</p>
+						<p>${pageContext.request.userPrincipal.name}님 환영합니다!</p>
 						<p>
-							<a href="memLogout.do">로그아웃</a>
+							<a href="/logout">로그아웃</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

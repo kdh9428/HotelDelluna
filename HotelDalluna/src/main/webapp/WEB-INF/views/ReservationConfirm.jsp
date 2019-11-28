@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
+
 <!DOCTYPE html>
 <html dir="ltr" lang="UTF-8">
 <head>
@@ -196,7 +199,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label for="template-contactform-name">아이디</label><br>
-							<div class="well well-sm">${param.customer_id }</div>
+							<sec:authorize access="isAuthenticated()">
+		                    <sec:authentication property="principal.username" var="customer_id" />
+		                   <div class="well well-sm">${dto.customer_id }</div>
+		                </sec:authorize></td>
+							
 						</div>
 
 						<div class="col-md-6">

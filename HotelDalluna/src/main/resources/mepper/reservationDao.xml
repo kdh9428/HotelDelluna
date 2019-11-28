@@ -36,8 +36,6 @@
 			(#{reservation_number},#{customer_id},#{reservation_date_in},#{reservation_date_out},#{price})
 	</insert>
 	
-	
-	
 	<!-- 예약 취소 -->
 	<delete id="reservationCancell" >
 	 		delete from 
@@ -45,5 +43,7 @@
 	 		where 
 	 			reservation_number=#{reservation_number}
 	</delete>
+	
+	
 
 </mapper>

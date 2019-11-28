@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <!-- 로그인 확인 -->
+    <mapper namespace="com.java.dao.MemberAuthDao">
+    	<select id="getUserById" resultType="com.java.dto.memberDetails">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                customer
+            WHERE
+                customer_id=#{CUSTOMER_ID}
+        ]]>
+    </select>
+    </mapper>

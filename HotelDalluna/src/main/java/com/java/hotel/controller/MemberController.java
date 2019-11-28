@@ -15,9 +15,7 @@ public class MemberController {
 	
 	@RequestMapping("login.do")
 	public String logincheck(Model model) {
-		
-			logger.info("로그인 성공");
-			
+			logger.info("로그인 페이지 이동");
 		
 		return"login";
 	}
