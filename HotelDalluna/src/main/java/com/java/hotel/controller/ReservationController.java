@@ -1,17 +1,20 @@
 package com.java.hotel.controller;
 
 
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
@@ -21,7 +24,6 @@ import com.java.service.ReservationService;
 public class ReservationController  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
-	
 	
 	@Autowired
 	private ReservationService reservation;
@@ -57,15 +59,29 @@ public class ReservationController  {
 		return "ReservationConfirm";
 	}
 	
+	//예약 완료 확인
 	@RequestMapping("ReservationConfirm.do")
-	public String reservationConfirm(Model model) {
+	public String reservationConfirm(ReservationDTO reservationDto, Model model) {
+		 
+		reservation.reservationConfirm();
+		 List<ReservationDTO> dto1 = reservation.reservationConfirm(); 
 		
-		
-		
+		 for(ReservationDTO vo:dto1) {
+			 String listresult = vo.getReservation_number();
+			 System.out.println("데이터 확인중.."+listresult+", "+ vo.getPriceproduct());
+		 }
+		 
+		 DecimalFormat df = new DecimalFormat("##,###원");
+		 String priceproduct = (String)df.format(dto1.get(0).getPrice());
+		 model.addAttribute("dto",dto1.get(0));
+		 model.addAttribute("dto.priceproduct",priceproduct);
+		 System.out.println(priceproduct);
+		 /*
+		 * ModelAndView mav = new ModelAndView();
+		 * mav.addObject("dto",reservationDto); mav.setViewName("ReservationConfirm");
+		 */
 		return "ReservationConfirm";
 	}
-	
-	
 	
 	@RequestMapping("ReservationCancell.do")
 	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
@@ -94,10 +110,7 @@ public class ReservationController  {
 		/* System.out.println("getparameter : "+customer); */
 		 System.out.println("home 실행!"+reservationDto);
 		 reservation.reservationCheck(reservationDto);
-		 
 		 return "home";
 	 }
-	
-	
 
 }

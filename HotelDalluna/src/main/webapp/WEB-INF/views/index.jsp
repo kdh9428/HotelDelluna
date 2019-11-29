@@ -222,8 +222,9 @@
 								</sec:authorize>
 								<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><a href="logout.do"><div>로그아웃</div></a></li>
+									<li><a href="logout.do" > <div>로그아웃</div></a></li>
 							</sec:authorize>
+							<%-- <c:url value="logout" /> --%>
 						</ul>
 					</nav><!-- #primary-menu end -->
 				</div>

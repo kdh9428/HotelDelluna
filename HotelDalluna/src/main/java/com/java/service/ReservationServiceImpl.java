@@ -2,10 +2,14 @@ package com.java.service;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,19 +17,19 @@ import org.springframework.stereotype.Service;
 
 import com.java.dao.InterfaceDao;
 import com.java.dto.ReservationDTO;
+import com.java.hotel.controller.ReservationController;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
+	private static final Logger logger = LoggerFactory.getLogger(ReservationServiceImpl.class);
+	
 	@Autowired
 	protected InterfaceDao interfaceDao;
 	
-	
-		
 	// 예약하기
 	@Override
 	public ReservationDTO reservationCheck(ReservationDTO reservationDto) {
-		
 		
 		//Security id Session 생성
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -63,10 +67,11 @@ public class ReservationServiceImpl implements ReservationService {
 				System.out.println("날짜 차이 * 룸가격 =>" + diffDays + "*" + roomprices + "=" + price);
 				reservationDto.setPrice(price);
 				
-				//전체 가격 포멧 설정
-				DecimalFormat df = new DecimalFormat("##,###원");
-				String priceproduct = (String)df.format(price);
-				reservationDto.setPriceproduct(priceproduct);
+				/*
+				 * //전체 가격 포멧 설정 DecimalFormat df = new DecimalFormat("##,###원"); String
+				 * priceproduct = (String)df.format(price);
+				 * reservationDto.setPriceproduct(priceproduct);
+				 */
 
 				// 예약번호 생성
 				int start = (int) (Math.random() * 27); //
@@ -107,6 +112,20 @@ public class ReservationServiceImpl implements ReservationService {
 		System.out.println("예약 취소 Service");
 		interfaceDao.reservationCancell(reservation_number);
 		
+	}
+	
+	//예약 완료 확인
+	@Override
+	public List<ReservationDTO> reservationConfirm() {
+		ReservationDTO reservationDto =new ReservationDTO();
+		
+		//로그인 id Security에서 받아오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String customer_id= auth.getName();
+		logger.debug("예약 완료 아이디" + customer_id);
+		reservationDto.setCustomer_id(auth.getName());
+		
+		return interfaceDao.reservationConfirm(customer_id);
 	}
 
 }

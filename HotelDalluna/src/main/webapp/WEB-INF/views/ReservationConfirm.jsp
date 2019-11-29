@@ -95,14 +95,12 @@
                                         <ul>
                                             <li><a href="deluxe-1.html"><div>디럭스 더블</div></a></li>
                                             <li><a href="deluxe-2.html"><div>디럭스 트윈</div></a></li>
-                                            
                                         </ul>
                                     </li>
                                     <li><a href="suite-1.html"><div>스위트</div></a>
                                         <ul>
                                             <li><a href="suite-1.html"><div>패밀리 스위트</div></a></li>
                                             <li><a href="suite-2.html"><div>그랜드 스위트</div></a></li>
-                     
                                         </ul>
                                     </li>                                                                                                                                       
                                 </ul>
@@ -215,18 +213,18 @@
 					<div class="row">
 						<div class="col-md-6">
 							<label for="template-contactform-name">성인</label><br>
-							<div class="well well-sm">${dto.adult}</div>
+							<div class="well well-sm">${dto.adult} 명</div>
 						</div>
 
 						<div class="col-md-6">
 							<label for="template-contactform-name">어린이</label><br>
-							<div class="well well-sm">${dto.child}</div>
+							<div class="well well-sm">${dto.child} 명</div>
 						</div>
 					</div>
 					
 					<div class="col_full">
 							<label for="template-contactform-name">가격</label><br>
-							<div class="well well-sm">${dto.priceproduct}</div>
+							<div class="well well-sm"><fmt:formatNumber value="${dto.price }" pattern="#,###" />원</div>
 					</div>
 					
 					<div class="col_full">

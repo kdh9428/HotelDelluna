@@ -1,6 +1,10 @@
 package com.java.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,10 +13,12 @@ import com.java.dto.ReservationDTO;
 @Repository
 public class ReservationDao implements InterfaceDao {
 	
+	private static final Logger logger = LoggerFactory.getLogger(ReservationDao.class);
+	
 	@Autowired
 	protected SqlSession sqlSession;
 	
-	//예약 확인 체크
+	//예약 가능 확인 체크
 	@Override
 	public int reservationCheck(ReservationDTO reservationDto) {
 		
@@ -54,5 +60,14 @@ public class ReservationDao implements InterfaceDao {
 	public void reservationCancell(String reservation_number) {
 		sqlSession.delete("reservationCancell", reservation_number);
 			
+	}
+	
+	//예약 완료 후 확인
+	@Override
+	public List<ReservationDTO> reservationConfirm(String customer_id) {
+		System.out.println("예약 완료 아이디"+customer_id);
+		logger.debug("예약 완료 아이디" + customer_id);
+		/* List<ReservationDTO> rs = */
+		return sqlSession.selectList("com.java.dao.InterfaceDao.reservationConfirm", customer_id);
 	}
 }

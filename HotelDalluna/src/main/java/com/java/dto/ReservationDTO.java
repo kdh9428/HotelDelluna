@@ -1,7 +1,7 @@
 package com.java.dto;
 
 public class ReservationDTO {
-	private String reservation_number;//룸예약번호
+	private String reservation_number;//룸예약번호 
 	private String customer_id;//아이디
 	private String reservation_date_in;//체크인
 	private String reservation_date_out;//체크아웃
@@ -12,12 +12,6 @@ public class ReservationDTO {
 	private int confirmation_payment;//예약 가격
 	private String priceproduct;//방 전체 날짜 가격
 	
-	public String getPriceproduct() {
-		return priceproduct;
-	}
-	public void setPriceproduct(String priceproduct) {
-		this.priceproduct = priceproduct;
-	}
 	public String getReservation_number() {
 		return reservation_number;
 	}
@@ -72,5 +66,13 @@ public class ReservationDTO {
 	public void setConfirmation_payment(int confirmation_payment) {
 		this.confirmation_payment = confirmation_payment;
 	}
+	public String getPriceproduct() {
+		return priceproduct;
+	}
+	public void setPriceproduct(String priceproduct) {
+		this.priceproduct = priceproduct;
+	}
+	
+	
 	
 }

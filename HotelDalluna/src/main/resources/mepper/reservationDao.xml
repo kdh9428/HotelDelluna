@@ -44,6 +44,20 @@
 	 			reservation_number=#{reservation_number}
 	</delete>
 	
+	<!-- 예약 완료 후 확인 -->
 	
+	<select id="reservationConfirm" parameterType="string" resultType="com.java.dto.ReservationDTO">
+	<![CDATA[
+		select 
+			r.CUSTOMER_ID,r.RESERVATION_DATE_IN,r.RESERVATION_DATE_OUT,r.price,p.RESERVATION_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
+		from 
+			reservation r join reservation_number_people p 
+		ON 
+			r.reservation_number = p.reservation_number 
+		where 
+			customer_id=#{customer_id}
+			]]>  
+	</select>
+	 
 
 </mapper>

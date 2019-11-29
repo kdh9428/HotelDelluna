@@ -208,7 +208,6 @@
 		</header>
 		<!-- #header end -->
 
-
 		<!-- Page Title
         ============================================= -->
 		<section id="page-title" class="page-title-parallax"
