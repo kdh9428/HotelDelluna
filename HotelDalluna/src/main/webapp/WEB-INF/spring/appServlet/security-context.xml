@@ -41,6 +41,7 @@
 	
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
+			<!-- <password-encoder ref="bcryptPasswordEncoder"/> -->
 		</authentication-provider>
 	</authentication-manager>
 	<beans:bean id="userService" class="com.java.service.memberDetailsSevice"/>
