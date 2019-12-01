@@ -8,6 +8,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,10 @@ import com.java.service.ReservationService;
 public class ReservationController  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
+	
+	//암호화 test
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private ReservationService reservation;
@@ -92,8 +97,14 @@ public class ReservationController  {
 	@RequestMapping("index.do")
 	public String index() throws Exception  {
 		/* ReservationService reservationService = new ReservationServiceImpl(); */
+		String asd = "123";
+		
+		String sss = passwordEncoder.encode(asd);
+		
 		System.out.println("index 시작");
 		 
+		
+		
 		return "index";
 	}
 	

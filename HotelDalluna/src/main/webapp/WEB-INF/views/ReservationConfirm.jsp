@@ -224,7 +224,7 @@
 					
 					<div class="col_full">
 							<label for="template-contactform-name">가격</label><br>
-							<div class="well well-sm"><fmt:formatNumber value="${dto.price }" pattern="#,###" />원</div>
+							<div class="well well-sm"><fmt:formatNumber value="${dto.price }" pattern="#,###원" /></div>
 					</div>
 					
 					<div class="col_full">
