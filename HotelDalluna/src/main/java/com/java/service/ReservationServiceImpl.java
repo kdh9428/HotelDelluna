@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.java.dao.InterfaceDao;
 import com.java.dto.ReservationDTO;
@@ -28,6 +29,7 @@ public class ReservationServiceImpl implements ReservationService {
 	protected InterfaceDao interfaceDao;
 	
 	// 예약하기
+	@Transactional
 	@Override
 	public ReservationDTO reservationCheck(ReservationDTO reservationDto) {
 		
@@ -124,7 +126,6 @@ public class ReservationServiceImpl implements ReservationService {
 		String customer_id= auth.getName();
 		logger.debug("예약 완료 아이디" + customer_id);
 		reservationDto.setCustomer_id(auth.getName());
-		
 		return interfaceDao.reservationConfirm(customer_id);
 	}
 

@@ -21,6 +21,7 @@
 		select room_prices from room_information where room_type = #{room_type}
 	</select>
 	
+	<!-- 룸 인원 테이블  -->
 	<insert id="reservationPeople" parameterType="com.java.dto.ReservationDTO" >
 		insert into reservation_number_people 
 			(reservation_number,room_type, adult,child) 

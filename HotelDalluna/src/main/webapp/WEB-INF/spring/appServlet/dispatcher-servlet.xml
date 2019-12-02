@@ -4,11 +4,14 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 
 	<mvc:annotation-driven/>
@@ -17,14 +20,26 @@
 	<context:component-scan base-package="com.java"/>
 	<security:global-method-security secured-annotations="enabled" />
     
-    <mvc:resources mapping="/css/**" location="/resources/css/"/> 
+    <mvc:resources mapping="/css/**" location="/webapp/resources/css/"/> 
 	<mvc:resources mapping="/html/**" location="/html/"/> 
-	<mvc:resources mapping="/js/**" location="/resources/js/" />
-	<mvc:resources mapping="/img/**" location="/resources/img/" />
+	<mvc:resources mapping="/js/**" location="/webapp/resources/js/" />
+	<mvc:resources mapping="/img/**" location="/webapp/resources/img/" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- 트랜잭션 설정 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+
+
 </beans>

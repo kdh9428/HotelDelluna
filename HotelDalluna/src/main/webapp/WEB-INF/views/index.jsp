@@ -196,7 +196,7 @@
 
 										</ul></li>
 								</ul></li>
-							<li><a href="html/dining-1.html"><div>다이닝</div></a>
+							<li><a href="dining-1.html"><div>다이닝</div></a>
 								<ul>
 									<li><a href="html/dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
