@@ -17,9 +17,10 @@
 	<http use-expressions="true">
 		<!-- 사용자 지정 로그인폼 페이지 요청주소 및 로그인 성공시, 실패시 요청 주소 지정 -->
 		<form-login login-page="/login.do" default-target-url="/index.do"
+					login-processing-url="/loginSuccess"
 					username-parameter="customer_id"
 					password-parameter="password"
-			authentication-failure-url="/login.do" />
+			authentication-failure-url="/login.do?error=true" />
 	
 			<!-- login-processing-url="/login" -->
 

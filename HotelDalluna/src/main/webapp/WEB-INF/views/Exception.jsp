@@ -1,23 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html dir="ltr" lang="utf-8">
+<html dir="ltr" lang="en-US">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
     <!-- Stylesheets
     ============================================= -->
-	<link rel="icon" type="image/png" sizes="16x16" href="../resources/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../resources/images/favicon/favicon-32x32.png">    
+	   <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" href="../resources/css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -25,8 +27,8 @@
 <!--  -->
     <!-- External JavaScripts
     ============================================= -->
-	<script type="text/javascript" src="../resources/js/jquery.js"></script>
-	<script type="text/javascript" src="../resources/js/plugins.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/plugins.js"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -60,86 +62,91 @@
 
 					<!-- Logo============================================= -->
 					<div id="logo">
-						<a href="/hotel/index.do" class="standard-logo"
+						<a href="index.do" class="standard-logo"
 							data-dark-logo="images/logo/logo-dark.png"><img
-							src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 						<a href="index.do" class="retina-logo"
 							data-dark-logo="images/logo/logo-dark-large.png"><img
-							src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
 
-					<!-- Primary Navigation
+						<!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
+						<ul class="">
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+								<ul>
+									<li><a href="html/hotel-About-Us.html"><div>호텔소개</div></a></li>
+									<li><a href="html/Location.html"><div>호텔위치</div></a></li>
+									<li><a href="list.do"><div>공지사항</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>객실</div></a>
+								<ul>
+									<li><a href="deluxe-1.html"><div>디럭스</div></a>
+										<ul>
+											<li><a href="html/deluxe-1.html"><div>디럭스 더블</div></a></li>
+											<li><a href="html/deluxe-2.html"><div>디럭스 트윈</div></a></li>
 
-                        <ul class="">
-                            <li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
-                                        <ul>                                
-                                    		<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    		<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                    		<li><a href="list.do"><div>공지사항</div></a></li>
-                                         </ul>                                                              
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>객실</div></a>
-                                <ul>
-                                    <li><a href="deluxe-1.html"><div>디럭스</div></a>
-                                        <ul>
-                                            <li><a href="deluxe-1.html"><div>디럭스 더블</div></a></li>
-                                            <li><a href="deluxe-2.html"><div>디럭스 트윈</div></a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li><a href="suite-1.html"><div>스위트</div></a>
-                                        <ul>
-                                            <li><a href="suite-1.html"><div>패밀리 스위트</div></a></li>
-                                            <li><a href="suite-2.html"><div>그랜드 스위트</div></a></li>
-                     
-                                        </ul>
-                                    </li>                                                                                                                                       
-                                </ul>
-                            </li>
-                            <li><a href="dining-1.html"><div>다이닝</div></a>
-                                <ul>
-                                    <li><a href="dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>부대시설</div></a>
-                                <ul>
-                                	<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
-                                	<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
-                            		<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
-                            <li><a href="Reseravtion.do"><div>예약하기</div></a></li>     
-                            <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>                             
-                            <li><a href="hewon.jsp"><div>로그인</div></a>
-                                <ul>
-                                	<li><a href="hewon.jsp"><div>로그인</div></a></li>
-                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
-                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
-                                </ul>                            
-                            </li>
-                        </ul>
-                    </nav><!-- #primary-menu end -->
+										</ul></li>
+									<li><a href="html/suite-1.html"><div>스위트</div></a>
+										<ul>
+											<li><a href="html/suite-1.html"><div>패밀리 스위트</div></a></li>
+											<li><a href="html/suite-2.html"><div>그랜드 스위트</div></a></li>
+
+										</ul></li>
+								</ul></li>
+							<li><a href="dining-1.html"><div>다이닝</div></a>
+								<ul>
+									<li><a href="html/dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
+								<ul>
+									<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
+								</ul></li>
+							<li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							
+							<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<sec:authorize access="isAnonymous()">
+								 <li><a href="login.do"><div>로그인</div></a>
+									<ul>
+	                                	<li><a href="login.do"><div>로그인</div></a></li>
+	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
+                              	 	 </ul>   
+                              	 </li>
+								</sec:authorize>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="logout.do" > <div>로그아웃</div></a></li>
+							</sec:authorize>
+							<%-- <c:url value="logout" /> --%>
+						</ul>
+					</nav><!-- #primary-menu end -->
 				</div>
 			</div>
 
 		</header><!-- #header end -->    
   
+  
+  
         
         <!-- Page Title
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('../resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
+        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
 
             <div class="container clearfix">
-                <h1>호텔 델루나 소개</h1>
+                <h1>호텔 델루나</h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">홈</a></li>
-                    <li class="active">호텔 델루나 소개</li>
                 </ol>
             </div>
+
+
 
       	</section><!-- #page-title end -->
 
@@ -154,70 +161,27 @@
                     <!-- Post Content
                     ============================================= -->
                     <div >
-						
                         <!-- Posts
                         ============================================= -->
                         <div id="posts">
 
                             <div class="entry clearfix">
-                             
-                                <div class="entry-title">
-                                    <h2><a href="blog-single.html">호텔 델루나</a></h2>
-                                </div>
-                                
-                                <div class="entry-content">
-                          
-                                    <p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.
-                                    <br>남아프리카의 리조트 호텔 ‘The Palace of the Lost City’를 모델로 설계되어 천혜의 제주 자연과 어우러진 이국적인 분위기를 느낄 수 있습니다.
-                                    <br>8개의 레스토랑 및 라운지, 7개의 연회장을 구비해 대규모 국제행사와 세미나에 최적일 뿐만 아니라 4계절 온수풀, 헬로키티 캐릭터 룸 등 다양한 시설을 갖춰 가족과 연인들에게 사랑 받는 호텔입니다.</p>
-                                    
-                                   <!--  <a href="blog-single.html" class="more-link">Read More</a> -->
-                                </div>
-                                <div class="row">
-                                <div class="col-md-6">
-                                    <a href="deluxe-1.html">
-                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
-                                    	<B>객실</B><br>
-                                     	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
-										- 여유로운 면적의 최고급 객실<br>
-										- 세련미와 편안함이 어우러진 격조 높은 인테리어<br>
-										- 최상의 평온함을 위한 Super-premium Bedding System (Simmons사 공동 개발)<br>
-                              	  </div>
-                              
-                                <div class="col-md-6">
-                                	<a href="dining-1.html">
-                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
-                                    <B>다이닝</B><br>
-                                     	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
-										- 세계 각국의 다양한 요리를 즐길 수 있는 야외 뷔페<br>				
-                               		 </div>
-                                 </div>
-                                 
-                                 <p>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                	<a href="menu-item.jsp">
-                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/meetings&banquets.jpg" alt="Standard Post with Image"></a>
-                                    <B>미팅&웨딩</B><br>
-                                     	<strong>호텔 델루나는 대규모 국제 행사와 세미나, 컨퍼런스, 가족연회, 음악회, 각종 공연 등이 가능한 실내 외 연회장을 갖추고 있습니다.</strong><br>
-										- 중문관광단지에서 가장 큰 규모의 연회장인 크리스탈 볼룸<br>
-										- 야외 리셉션 장소 구비<br>
-										- 첨단시설이 구비된 현대적인 비즈니스 회의실<br>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                	<a href="menu-item.jsp">
-                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/facilities.jpg" alt="Standard Post with Image"></a>
-                                    <B>부대시설</B><br>
-                                     	<strong>호텔 델루나는 제주의 자연과 더불어 최상의 휴식을 즐길 수 있는 다양한 공간과 아이들을 위한 특별한 즐거움이 마련되어 있습니다.</strong><br>
-										- 로맨틱하고 환상적인 분위기의 사계절 럭셔리 야외 스파 & 가든 해온(he:on)<br>
-										- 가족단위 여행객을 위한 어린이 멀티 체험 놀이공간, 키즈월드<br>
-                               	  </div>
-                                </div>
-                         </div>
-                	</div>
-				</div>
-            </div>
+
+								<div class="entry-title" style="text-align: center">
+									<h3>고객님 이용에 불편을 드려 죄송합니다.</h3>
+									<h5>요청하신 페이지를 찾을 수가 없습니다.</h5>
+									<h5>찾으시는 페이지가 삭제되었거나 이름이 변경된 경우 일시적으로 사용할 수 없습니다.</h5>
+								</div>
+								<!-- entry clearfix -->
+								<div style="text-align: center">
+									<a href="index.do"><button type="button"
+											class="btn btn-primary btn-lg active">호텔 델루나 메인으로
+											이동</button></a>
+							</div>
+						</div>
+					</div>
+           	 </div>
+			</div>
 		</div>
         </section><!-- #content end -->
 
@@ -244,7 +208,7 @@
                                 <div class="widget subscribe-widget clearfix">
                                     <h5>Email : hoteldelluna@hoteldelluna.co.kr
                                     <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-                                    <form id="widget-subscribe-form" role="form" method="post" class="nobottommargin">
+                                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
   								
                                     </form>
                                     <script type="text/javascript">
@@ -337,8 +301,8 @@
                 <div class="container clearfix">
 
                     <div class="col_half">
-                        <img src="../resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
-                        <img src="../resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
+                        <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
+                        <img src="resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
                         Copyright &copy; 2019 Hotel Delluna. All Rights Reserved.
                     </div>
 
@@ -403,7 +367,7 @@
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="../resources/js/functions.js"></script>
+    <script type="text/javascript" src="resources/js/functions.js"></script>
 
 </body>
 </html>

@@ -123,5 +123,13 @@ public class ReservationController  {
 		 reservation.reservationCheck(reservationDto);
 		 return "home";
 	 }
+	
+	@RequestMapping("hotel-About-Us.do")
+	public String hotel() {
+		logger.debug("hotel-About-Us");
+		
+		
+		return "hotel-About-Us";
+	}
 
 }

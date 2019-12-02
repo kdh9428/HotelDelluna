@@ -47,13 +47,21 @@
 					style="background-image: url(resources/images/bg-01.jpg);">
 					<span class="login100-form-title-1">Hotel Delluna</span>
 				</div>
-				<c:choose>
-					<c:when test="${login eq null}">
-						<form class="login100-form validate-form" action="j_spring_security_check" method="post">
-							<div class="wrap-input100 validate-input m-b-26"
-								data-validate="ID를 입력해주세요">
+					<sec:authorize access="isAnonymous()">
+						<form class="login100-form validate-form" action="loginSuccess" method="post">
+						
+						<c:if test="${param.error == 'true'}">
+							<script type="text/javascript">
+								alert("아이디 또는 비밀번호를 확인해 주세요")
+								window.onload = function(){
+									document.getElementById("customer_id").focus()
+								}
+							</script>
+						</c:if>
 
-								<span class="label-input100">아이디</span> <input class="input100" type="text" name="customer_id" placeholder="Enter username">
+							<div class="wrap-input100 validate-input m-b-26" data-validate="ID를 입력해주세요">
+
+								<span class="label-input100">아이디</span> <input class="input100" type="text" id="customer_id" name="customer_id" placeholder="Enter username">
 								<span class="focus-input100"></span>
 							</div>
 							<div class="wrap-input100 validate-input m-b-18"
@@ -80,13 +88,13 @@
 							<script>alert('${pwnot}')</script>
 							<c:remove var="pwnot"/>
 						</c:if>
-					</c:when>
-					<c:otherwise>
+						</sec:authorize>
+					 <sec:authorize access="isAuthenticated()">
 						<p>${pageContext.request.userPrincipal.name}님 환영합니다!</p>
 						<p>
 							<a href="/logout">로그아웃</a>
-					</c:otherwise>
-				</c:choose>
+							</p>
+						</sec:authorize>
 			</div>
 		</div>
 	</div>
