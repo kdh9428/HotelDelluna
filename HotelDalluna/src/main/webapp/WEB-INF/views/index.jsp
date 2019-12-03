@@ -7,8 +7,8 @@
 
 <!DOCTYPE html>
 <head>
-
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
     <!-- Stylesheets
@@ -187,7 +187,6 @@
 										<ul>
 											<li><a href="html/deluxe-1.html"><div>디럭스 더블</div></a></li>
 											<li><a href="html/deluxe-2.html"><div>디럭스 트윈</div></a></li>
-
 										</ul></li>
 									<li><a href="html/suite-1.html"><div>스위트</div></a>
 										<ul>

@@ -22,5 +22,4 @@ public class memberDetailsSevice implements UserDetailsService{
 		}
 		return user;
 	}
-
 }

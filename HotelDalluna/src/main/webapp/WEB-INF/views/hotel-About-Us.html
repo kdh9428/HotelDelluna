@@ -1,29 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html dir="ltr" lang="utf-8">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
-	<meta name="viewport" content="initial-scale=1.0">
+
     <!-- Stylesheets
     ============================================= -->
 	<link rel="icon" type="image/png" sizes="16x16" href="../resources/images/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../resources/images/favicon/favicon-32x32.png">    
-	
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../resources/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="../resources/css/style.css" type="text/css" />
     <link rel="stylesheet" href="../resources/css/dark.css" type="text/css" />
     <link rel="stylesheet" href="../resources/css/font-icons.css" type="text/css" />
     <link rel="stylesheet" href="../resources/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="../resources/css/magnific-popup.css" type="text/css" />
-
     <link rel="stylesheet" href="../resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
-    
     <!-- External JavaScripts
     ============================================= -->
 	<script type="text/javascript" src="../resources/js/jquery.js"></script>
@@ -31,89 +29,46 @@
 
     <!-- Document Title
     ============================================= -->
-	<title>호텔 델루나 위치</title>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Pgbl1JjLRBLlmueNAGO5pfMsZzmFJ7U&callback=initMap" 
-	async defer></script> <!--  -->
-	<script>
-		function initialize() { //맵을 초기화 해주기위한 함수 
-	
-			var Y_point = 33.248645;
-			var X_point = 126.410565;	
-			var zoomLevel = 18; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
-
-			var markerTitle	= "호텔 델루나"; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
-			var markerMaxWidth	= 600; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-			
-			// 말풍선 내용
-			var contentString	= '<div>' +
-			'<h2>호텔 델루나</h2>'+
-			'<p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 <br>500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.<br />' +
-			'<a href="index.html" target="_blank">http://www.HotalDelluna.co.kr</a>'
-			'</div>';
-		
-			var myLatlng = new google.maps.LatLng(Y_point, X_point);
-			var mapOptions = {
-								zoom: zoomLevel,
-								center: myLatlng,
-								mapTypeId: google.maps.MapTypeId.ROADMAP
-								
-								/* 37.304800, 127.079497 */
-								/*  mapTypeId 속성은 화면에 표시될 맵 타입을 정의합니다. 아래 나오는 맵 타입을 지원합니다:
-										  - Roadmap(normal, default 2D map)
-										  - Satellite(photographic map)
-										  - Hybrid(photographic map + roads and city names)
-										  - Terrain(map with mountains, rivers, etc.)
-								*/
-			}
-			var map = new google.maps.Map(document.getElementById('google-map'), mapOptions); //새로운  맵 생성
-
-			var marker = new google.maps.Marker({ //빨간색 마카는 어디에 둘건지 설정 
-													position: myLatlng, // 어떤 위치에 있는가 
-													map: map, // 맵에  이 마커가 어떤 지도안에 있는가 
-													title: markerTitle //호텔 델루나
-			});
-
-			var infowindow = new google.maps.InfoWindow( //말풍선
-														{
-															content: contentString,
-															maxWidth: markerMaxWidth
-														}
-			);
-
-			google.maps.event.addListener(marker, 'click', function() {
-				
-				infowindow.open(map, marker);
-			});
-		}
-	</script>
-
- 
+	<title> Hotel Delluna </title>
+	<!-- google-font  
+	====================================================
+	 -->
+	 <style>
+	@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
+	</style>
 </head>
 
-<body class="stretched" onload="initialize()">
+<!--  -->
+<body class="stretched">
 
-    <!-- Document Wrapper
+	<!-- Document Wrapper
     ============================================= -->
-    <div id="wrapper" class="clearfix">
+	<div id="wrapper" class="clearfix">
 
-        <!-- Header
+		<!-- Header
         ============================================= -->
-        <header id="header" class="full-header">
+		<header id="header" class="full-header">
 
-            <div id="header-wrap">
+			<div id="header-wrap">
 
-                <div class="container clearfix">
+				<div class="container clearfix">
 
-                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+					<div id="primary-menu-trigger">
+						<i class="icon-reorder"></i>
+					</div>
 
-                    <!-- Logo
-                    ============================================= -->
-                    <div id="logo">
-                        <a href="/index.do" class="standard-logo" data-dark-logo="../resources/images/logo/logo-dark.png"><img src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
-                        <a href="/index.do" class="retina-logo" data-dark-logo="../resources/images/logo/logo-dark-large.png"><img src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>                   
-                    </div><!-- #logo end -->
+					<!-- Logo============================================= -->
+					<div id="logo">
+						<a href="/hotel/index.do" class="standard-logo"
+							data-dark-logo="images/logo/logo-dark.png"><img
+							src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+						<a href="index.do" class="retina-logo"
+							data-dark-logo="images/logo/logo-dark-large.png"><img
+							src="../resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+					</div>
+					<!-- #logo end -->
 
-                    <!-- Primary Navigation
+					<!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
@@ -167,131 +122,103 @@
                             </li>
                         </ul>
                     </nav><!-- #primary-menu end -->
-                </div>
-          </div>
+				</div>
+			</div>
 
-        </header><!-- #header end -->
-	
+		</header><!-- #header end -->    
+  
+        
         <!-- Page Title
         ============================================= -->
         <section id="page-title" class="page-title-parallax" style="background-image: url('../resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
 
-            <div class="container clearfix" style="border-width:3px;">
-                <h1>호텔 델루나 위치</h1>
-                
+            <div class="container clearfix">
+                <h1>호텔 델루나 소개</h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">홈</a></li>
-                    <li><a href="hotel-About-Us.html">호텔소개</a></li>
-                    <li class="active">호텔 델루나 위치</li>
+                    <li class="active">호텔 델루나 소개</li>
                 </ol>
             </div>
 
-   	  </section><!-- #page-title end -->
-   	  <p>
-   	  
-   	  <div class="container clearfix">
-		<div id="google-map" class="gmap">
-            
-           <!--  <div id="google-map"></div> -->
-           </div>
-            <p>
-		<hr>
-		  
-		  <div class="container-fluid" style="background-color:#eeeeee; border:2px solid #E6E6E6">
-		  
-		   		<div class="col-md-12">
-			   		<div class="col-md-6" >
-			   		<p>
-			   			<h3 class="text-center">호텔 델루나</h3>
-			   		</div>
-			   			<div class="col-md-6">
-				   			<h6 style="margin-top:20px">제주특별자치도 서귀포시 중문관광로 72번길 35 호텔 델루나</h6>
-				   			<div style="font-size:13pt;">
-					   			<strong>TEL</strong>+82-64-731-1000
-					   			<strong>FAX</strong>+82-64-738-7305
-				   			</div>
-			   			</div>
-			   </div>
-		   </div>
-		   <p>
-		   
-		   <!-- 아코디온(Accordion) -->
-		  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          	자동차로 오시는 길
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-       	<p> 택시 이용 시</p>
-	
-		공항청사 맞은편에 가장 가까이에 마련된 택시 대기장소에서 이용하시면 됩니다.<br>
-		 중형이 대부분이나 일반택시와 요금이 같습니다.<br>
-		단 공항에서 호텔까지의 요금이 정해져 있으므로 미리 확인하고 출발하는 것이 좋습니다.<br><br>
-		
-		<p>렌터카 이용 시</p>
-		
-		렌터카를 이용하는 경우 공항에서 인수할 수 있도록 미리 확인하는 것이 좋습니다.<br>
-		공항 도착출구를 나오면 바로 렌터카 데스크와 제주관광협회에서 운영하는 관광안내 데스크를 만날 수 있습니다.<br>
-		* 문의 : 제주관광협회 공항안내데스크 064-742-8866<br>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          	공항 리무진 버스
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-       	<p> 공항 리무진 Info.</p>
-			<p>
-			- 탑승장소: 국내선 5번 게이트로 나와서 오른쪽 공항리무진버스(삼영교통 600번) 승차장<br>
-			- 소요시간: 약 50분<br>
-			- 이용요금: 공항↔호텔 델루나 성인 : 4,500원(편도) / 중,고등 : 3,600원(편도) / 초등 : 2,300원(편도)<br>
-			- 문의: 삼영교통 공항영업소(Tel 064-713-7000)<p>
-			
-			<p>제주국제공항→호텔 델루나</p>
-			
-			<p>- 운행시간: 06:20~22:00<br>
-			- 운행간격: 매 15~18분 간격</p>
-			
-			<p>호텔 델루나 → 제주국제공항</p>
-			
-			<p>- 운행시간: 06:40~22:20<br>
-			- 운행간격: 매회 약 20분 간격</p>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          	셔틀 버스
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-       	<p>호텔까지 편안한 이동 『무료 셔틀버스』<br>
-		• 호텔 → 공항 (10:00, 13:00, 16:00)<br>
-		• 공항 → 호텔 (11:20, 14:20, 17:20)</p>
-		
-		<p>※ 제주공항 출구 GATE 1번 출구, 대형버스 주차장 B구역 위치<br>
-		※ 사전 예약제 운영 및 투숙객전용 무료 서비스<br>
-		※ 예약 및 문의 ☎064.731.4343</p>
-      </div>
-    </div>
-  </div>
-</div>
-	</div>
+      	</section><!-- #page-title end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap bgcolor-grey-light">
+
+                <div class="container clearfix">
+
+                    <!-- Post Content
+                    ============================================= -->
+                    <div >
+						
+                        <!-- Posts
+                        ============================================= -->
+                        <div id="posts">
+
+                            <div class="entry clearfix">
+                             
+                                <div class="entry-title">
+                                    <h2><a href="blog-single.html">호텔 델루나</a></h2>
+                                </div>
+                                
+                                <div class="entry-content">
+                          
+                                    <p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.
+                                    <br>남아프리카의 리조트 호텔 ‘The Palace of the Lost City’를 모델로 설계되어 천혜의 제주 자연과 어우러진 이국적인 분위기를 느낄 수 있습니다.
+                                    <br>8개의 레스토랑 및 라운지, 7개의 연회장을 구비해 대규모 국제행사와 세미나에 최적일 뿐만 아니라 4계절 온수풀, 헬로키티 캐릭터 룸 등 다양한 시설을 갖춰 가족과 연인들에게 사랑 받는 호텔입니다.</p>
+                                    
+                                   <!--  <a href="blog-single.html" class="more-link">Read More</a> -->
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <a href="deluxe-1.html">
+                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
+                                    	<B>객실</B><br>
+                                     	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
+										- 여유로운 면적의 최고급 객실<br>
+										- 세련미와 편안함이 어우러진 격조 높은 인테리어<br>
+										- 최상의 평온함을 위한 Super-premium Bedding System (Simmons사 공동 개발)<br>
+                              	  </div>
+                              
+                                <div class="col-md-6">
+                                	<a href="dining-1.html">
+                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
+                                    <B>다이닝</B><br>
+                                     	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
+										- 세계 각국의 다양한 요리를 즐길 수 있는 야외 뷔페<br>				
+                               		 </div>
+                                 </div>
+                                 
+                                 <p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                	<a href="menu-item.jsp">
+                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/meetings&banquets.jpg" alt="Standard Post with Image"></a>
+                                    <B>미팅&웨딩</B><br>
+                                     	<strong>호텔 델루나는 대규모 국제 행사와 세미나, 컨퍼런스, 가족연회, 음악회, 각종 공연 등이 가능한 실내 외 연회장을 갖추고 있습니다.</strong><br>
+										- 중문관광단지에서 가장 큰 규모의 연회장인 크리스탈 볼룸<br>
+										- 야외 리셉션 장소 구비<br>
+										- 첨단시설이 구비된 현대적인 비즈니스 회의실<br>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                	<a href="menu-item.jsp">
+                                    <img class="image_fade img-rounded img-responsive" src="../resources/images/hotel-about/facilities.jpg" alt="Standard Post with Image"></a>
+                                    <B>부대시설</B><br>
+                                     	<strong>호텔 델루나는 제주의 자연과 더불어 최상의 휴식을 즐길 수 있는 다양한 공간과 아이들을 위한 특별한 즐거움이 마련되어 있습니다.</strong><br>
+										- 로맨틱하고 환상적인 분위기의 사계절 럭셔리 야외 스파 & 가든 해온(he:on)<br>
+										- 가족단위 여행객을 위한 어린이 멀티 체험 놀이공간, 키즈월드<br>
+                               	  </div>
+                                </div>
+                         </div>
+                	</div>
+				</div>
+            </div>
+		</div>
+        </section><!-- #content end -->
 
         <!-- Footer
         ============================================= -->
@@ -299,7 +226,7 @@
         
             <div class="container">
 
-                <!-- Footer Widgets
+               <!-- Footer Widgets
                 ============================================= -->
                 <div class="footer-widgets-wrap clearfix">
 
@@ -316,6 +243,9 @@
                                 <div class="widget subscribe-widget clearfix">
                                     <h5>Email : hoteldelluna@hoteldelluna.co.kr
                                     <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+                                    <form id="widget-subscribe-form" role="form" method="post" class="nobottommargin">
+  								
+                                    </form>
                                     <script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
                                             submitHandler: function(form) {
@@ -413,7 +343,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
+                            <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">
