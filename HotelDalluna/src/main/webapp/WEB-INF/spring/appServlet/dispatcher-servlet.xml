@@ -13,7 +13,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
-
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	<context:annotation-config/>
@@ -25,6 +24,15 @@
 	<mvc:resources mapping="/js/**" location="/webapp/resources/js/" />
 	<mvc:resources mapping="/img/**" location="/webapp/resources/img/" />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- 컨트롤러 없이 이동  -->
+	<mvc:view-controller path="/hotel-About-Us.do" view-name="hotel-About-Us"/>
+	<mvc:view-controller path="/Location.do" view-name="Location"/>
+	<mvc:view-controller path="/dining-1.do" view-name="dining-1"/>
+	<mvc:view-controller path="/deluxe-1.do" view-name="deluxe-1"/>
+	<mvc:view-controller path="/deluxe-2.do" view-name="deluxe-2"/>
+	<mvc:view-controller path="/suite-1.do" view-name="suite-1"/>
+	<mvc:view-controller path="/suite-2.do" view-name="suite-2"/>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

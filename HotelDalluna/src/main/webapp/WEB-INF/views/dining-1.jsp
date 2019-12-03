@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -7,17 +10,16 @@
 
     <!-- Stylesheets
     ============================================= -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"> 
+  <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -25,8 +27,8 @@
 
     <!-- External JavaScripts
     ============================================= -->
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/plugins.js"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -53,64 +55,65 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="index.do" class="standard-logo" data-dark-logo="images/logo/mainlogo.png"><img src="images/logo/mainlogo.png" alt="Chocolat Logo"></a>
-                        <a href="index.do" class="retina-logo" data-dark-logo="images/logo/logo-dark-large.png"><img src="images/logo/logo-large.png" alt="Chocolat Logo"></a>                
+                        <a href="index.do" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+                        <a href="index.do" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>          
                     </div><!-- #logo end -->
 
                     <!-- Primary Navigation
                     ============================================= -->
-                    <nav id="primary-menu">
+                      <nav id="primary-menu">
+						<ul class="">
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+								<ul>
+									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
+									<li><a href="list.do"><div>공지사항</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>객실</div></a>
+								<ul>
+									<li><a href="deluxe-1.do"><div>디럭스</div></a>
+										<ul>
+											<li><a href="deluxe-1.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-2.do"><div>디럭스 트윈</div></a></li>
+										</ul></li>
+									<li><a href="suite-1.do"><div>스위트</div></a>
+										<ul>
+											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
 
-                        <ul class="">
-                            <li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
-                                        <ul>                                
-                                    		<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    		<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                    		<li><a href="list.do"><div>공지사항</div></a></li>
-                                         </ul>                                                              
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>객실</div></a>
-                                <ul>
-                                    <li><a href="deluxe-1.html"><div>디럭스</div></a>
-                                        <ul>
-                                            <li><a href="deluxe-1.html"><div>디럭스 더블</div></a></li>
-                                            <li><a href="deluxe-2.html"><div>디럭스 트윈</div></a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li><a href="suite-1.html"><div>스위트</div></a>
-                                        <ul>
-                                            <li><a href="suite-1.html"><div>패밀리 스위트</div></a></li>
-                                            <li><a href="suite-2.html"><div>그랜드 스위트</div></a></li>
-                     
-                                        </ul>
-                                    </li>                                                                                                                                       
-                                </ul>
-                            </li>
-                            <li><a href="dining-1.html"><div>다이닝</div></a>
-                                <ul>
-                                    <li><a href="dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>부대시설</div></a>
-                                <ul>
-                                	<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
-                                	<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
-                            		<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
-                            <li><a href="Reseravtion.do"><div>예약하기</div></a></li>     
-                            <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>                             
-                            <li><a href="hewon.jsp"><div>로그인</div></a>
-                                <ul>
-                                	<li><a href="hewon.jsp"><div>로그인</div></a></li>
-                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
-                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
-                                </ul>                            
-                            </li>
-                        </ul>
-                    </nav><!-- #primary-menu end -->
+										</ul></li>
+								</ul></li>
+							<li><a href="dining-1.do"><div>다이닝</div></a>
+								<ul>
+									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
+								<ul>
+									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
+								</ul></li>
+							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							
+							<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<sec:authorize access="isAnonymous()">
+								 <li><a href="login.do"><div>로그인</div></a>
+									<ul>
+	                                	<li><a href="login.do"><div>로그인</div></a></li>
+	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="MemberAddForm2.do"><div>회원가입</div></a></li>
+                              	 	 </ul>   
+                              	 </li>
+								</sec:authorize>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="logout.do" > <div>로그아웃</div></a></li>
+							</sec:authorize>
+							<%-- <c:url value="logout" /> --%>
+						</ul>
+					</nav><!-- #primary-menu end -->
                 </div>
           </div>
 
@@ -148,8 +151,8 @@
 							 	포근한 우드 인테리어가 공간에 포근함을 더하는 근사한 식사를 즐기고 싶은 이들에게 잊지 못할 경험이 될 것 입니다.<br><br>
 								</span>
                               <p>
-                               <a href="images/logo/test.jpeg" class="btn btn-primary" role="button">메뉴보기</a>
-                               <a href="contact-2.jsp" class="btn btn-primary" role="button">문의하기</a>
+                               <a href="resources/images/logo/test.jpeg" class="btn btn-primary" role="button">메뉴보기</a>
+                               <a href="contact-2.do" class="btn btn-primary" role="button">문의하기</a>
                               </p>
                                                             
                               <div id="portfolio" class="portfolio-1 clearfix">
@@ -183,8 +186,15 @@
                                    	어른 : 35,000원 / 투숙객 : 31000원 <br>
                                    	어린이(48개월 ~ 초등학생까지) : 28,000원 / 투숙객 : 24,000원.
                                     <hr style="border: solid 1px navy;">
+                        </div>
+                        
                 </div>
-
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+			
           </div>
 
         </section><!-- #content end -->
@@ -210,10 +220,7 @@
 
                             <div class="col_half">
                                 <div class="widget subscribe-widget clearfix">
-                                    <h5>Email : hoteldelluna@hoteldelluna.co.kr
-                                    <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-                                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
-  								
+                                    <h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
                                     </form>
                                     <script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
@@ -247,7 +254,7 @@
                                     			<li><a href="list.do"><div>공지사항</div></a></li>
                                     			<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
                                     			<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                                <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
+                                                <li><a href="contact-1.do"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -256,9 +263,9 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><a href="deluxe-1.html"><div>객실 - 디럭스</div></a></li>
-                                    			<li><a href="suite-1.html"><div>객실 - 스위트</div></a></li>
-                                    			<li><a href="dining-1.html"><div>다이닝</div></a></li>
+                                    			<li><a href="deluxe-1.do"><div>객실 - 디럭스</div></a></li>
+                                    			<li><a href="suite-1.do"><div>객실 - 스위트</div></a></li>
+                                    			<li><a href="dining-1.do"><div>다이닝</div></a></li>
                                     			<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
                                                 <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
@@ -371,7 +378,7 @@
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="resources/js/functions.js"></script>
 
 </body>
 </html>
