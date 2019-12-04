@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html>
+<html dir="ltr" lang="UTF-8">
 <head>
-    <meta charset="UTF-8" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
+
     <!-- Stylesheets
     ============================================= -->
 	<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
@@ -24,7 +24,7 @@
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
-<!--  -->
+
     <!-- External JavaScripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/jquery.js"></script>
@@ -32,44 +32,39 @@
 
     <!-- Document Title
     ============================================= -->
-	<title> Hotel Delluna </title>
-	<!-- google-font  
-	====================================================
-	 -->
-	 <style>
-	@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
-	</style>
+	<title>Hotel Delluna</title>
+
+
 </head>
+
 <body class="stretched">
 
-	<!-- Document Wrapper
+    <!-- Document Wrapper
     ============================================= -->
-	<div id="wrapper" class="clearfix">
+    <div id="wrapper" class="clearfix">
 
-		<!-- Header
+        <!-- Header
         ============================================= -->
-		<header id="header" class="full-header">
+        <header id="header" class="full-header">
 
-			<div id="header-wrap">
+            <div id="header-wrap">
 
-				<div class="container clearfix">
+                <div class="container clearfix">
 
-					<div id="primary-menu-trigger">
-						<i class="icon-reorder"></i>
-					</div>
+                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
-					<!-- Logo============================================= -->
+                	  <!-- Logo============================================= -->
 					<div id="logo">
 						<a href="index.do" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
                         <a href="index.do" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
-
-					<!-- Primary Navigation
+					
+                                  <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
-                        <ul class="">
+                         <ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
@@ -121,24 +116,19 @@
 							<%-- <c:url value="logout" /> --%>
 						</ul>
                     </nav><!-- #primary-menu end -->
-				</div>
-			</div>
+                </div>
+          </div>
 
-		</header><!-- #header end -->    
-  
+        </header><!-- #header end -->
         
         <!-- Page Title
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
-
+        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/favicon/on2.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
             <div class="container clearfix">
-                <h1>호텔 델루나 소개</h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.do">홈</a></li>
-                    <li class="active">호텔 델루나 소개</li>
-                </ol>
+            
             </div>
-      	</section><!-- #page-title end -->
+
+   	  </section><!-- #page-title end -->        
 
         <!-- Content
         ============================================= -->
@@ -148,74 +138,191 @@
 
                 <div class="container clearfix">
 
-                    <!-- Post Content
+                    <!-- Portfolio Single Image
                     ============================================= -->
-                    <div >
-						
-                        <!-- Posts
-                        ============================================= -->
-                        <div id="posts">
+                    <div class="col_two_third portfolio-single-image nobottommargin">
+                    <!--menu-item.jpg  -->
+                        <img src="resources/images/favicon/on.jpg" alt="" width="300" height="430">                     
+                    </div><!-- .portfolio-single-image end -->
 
-                            <div class="entry clearfix">
-                             
-                                <div class="entry-title">
-                                    <h2><a href="blog-single.html">호텔 델루나</a></h2>
+                    <!-- Portfolio Single Content
+                    ============================================= -->
+                    <div class="col_one_third portfolio-single-content col_last nobottommargin">
+
+                        <!-- Portfolio Single - Description
+                        ============================================= -->
+                        <div class="fancy-title title-bottom-border">
+                            <h1>해온 루프탑 테라스</h1>
+                        </div>
+                      <p>이국적인 야자수와 제주의 파란 하늘 아래 특별한 휴식을 선사할 롯데호텔제주 신규 휴양시설 해온 루프탑 테라스를 만나보세요. </p>
+                      <p>황금빛 석양이 비치는 해온 루프탑 테라스에서 그 동안 꿈꿔온 여행의 로망을 완성할 수 있습니다.</p>
+                       
+                        <!-- Portfolio Single - Description End -->
+
+                        <!-- Portfolio Single - Share
+                        ============================================= -->
+                        <div class="si-share clearfix">
+                            <span>Share:</span>
+                            <div>
+                         	<a href="https://www.facebook.com/" class="social-icon si-light si-small si-facebook">
+                            	<i class="icon-facebook"></i>
+                                <i class="icon-facebook"></i></a>
+                            <a href="https://twitter.com/?lang=ko" class="social-icon si-light si-small si-twitter">
+                                <i class="icon-twitter"></i>
+                                <i class="icon-twitter"></i></a>
+                            <a href="https://www.pinterest.co.kr/" class="social-icon si-light si-small si-pinterest">
+                                <i class="icon-pinterest"></i>
+                                <i class="icon-pinterest"></i></a>
+                            <a href="https://plus.google.com/" class="social-icon si-light si-small si-gplus">
+                                <i class="icon-gplus"></i>
+                                <i class="icon-gplus"></i></a>
+                            <a href="https://www.moakt.com/ko" class="social-icon si-light si-small si-email3">
+                                <i class="icon-email3"></i>
+                                <i class="icon-email3"></i></a>                   
+                        	</div>
+                        </div>
+                        <!-- Portfolio Single - Share End -->
+                    </div><!-- .portfolio-single-content end -->
+
+                    <div class="clear"></div>
+                    
+                            <!-- Comments
+                            ============================================= -->
+					<div id="comments" class="clearfix">
+
+						<h2 id="comments-title">부대시설 개요</h2>
+						<b>타입</b> He:on Rooftop Terrace <br> <b>위치</b> Garden 2F <br>
+						<b>이용시간</b><br> 09:00 ~ 23:00 (5월~10월) <br> 09:30 ~
+						23:00 (11월~4월)
+						<p>
+						<h2 id="comments-title2">추가 정보</h2>
+
+						<br>360도 워터 슬라이드, 3가지 타입의 자쿠지, 어린이 전용 키즈풀,<br> 프라이빗 카바나
+						등 다채로운 시설로 많은 사랑을 받고 있는 롯데호텔제주 해온에 또 하나의 신규 휴양시설이 오픈하였습니다.<br>
+						트로피칼 칵테일을 즐길 수 있는 풀사이드 카페와 눈부시도록 아름다운 석양이 비치는 2층 테라스로 구성된 해온 루프탑
+						테라스에서 <br> 그 동안 꿈꿔온 여름 바캉스의 모든 로망을 완성해보시기 바랍니다. <br> <br>
+						<br>
+					</div>
+
+
+					<h2>문의안내</h2>
+					<b>TEL +82-1234-1234 </b><br> <b>※ </b>해온 루프탑 테라스는 호텔 투숙객 전용으로 운영되고
+					있습니다. <br> <b>※ </b>어린이는 키즈풀 이용을 권장하며, 반드시 보호자 동반을 부탁드립니다.
+					<br> <b>※ </b>귀중품은 객실에 보관해 주시기 바랍니다.<br>
+
+
+					<!-- Disqus Comments
+                                ============================================= -->
+                                       
+
+                    <div class="divider divider-center"><i class="icon-circle"></i></div>
+
+                    <!-- Related Portfolio Items
+                    ============================================= -->
+                    <h3>갤러리</h3>
+
+                    <div id="related-portfolio" class="owl-carousel portfolio-carousel">
+
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.html"><img src="resources/images/favicon/on.jpg" alt=""></a>
+                                	<div class="portfolio-overlay">
+                                    	<a href="resources/images/favicon/on.jpg" class="left-icon" data-lightbox="image">
+                                    	<i class="icon-picture"></i></a>
+                                                                 
+                                	</div>
+                            	</div>
+                            	<div class="portfolio-desc">
+                            		              
+                            	</div>
+                        	</div>                        
+                        </div>
+                        
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on2.jpg" alt=""></a>
+                                    <div class="portfolio-overlay">
+                                    	<a href="resources/images/favicon/on2.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
+                                                                    
+                                    </div>
                                 </div>
-                                
-                                <div class="entry-content">
-                          
-                                    <p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.
-                                    <br>남아프리카의 리조트 호텔 ‘The Palace of the Lost City’를 모델로 설계되어 천혜의 제주 자연과 어우러진 이국적인 분위기를 느낄 수 있습니다.
-                                    <br>8개의 레스토랑 및 라운지, 7개의 연회장을 구비해 대규모 국제행사와 세미나에 최적일 뿐만 아니라 4계절 온수풀, 헬로키티 캐릭터 룸 등 다양한 시설을 갖춰 가족과 연인들에게 사랑 받는 호텔입니다.</p>
-                                    
-                                   <!--  <a href="blog-single.html" class="more-link">Read More</a> -->
+                      
+                        	</div>
+                        </div>
+                        
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on3.jpg" alt=""></a>
+                                    <div class="portfolio-overlay">
+                                        <a href="resources/images/favicon/on3.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
+                                                            
+                                    </div>
                                 </div>
-                                <div class="row">
-                                <div class="col-md-6">
-                                    <a href="deluxe-1.html">
-                                    <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
-                                    	<B>객실</B><br>
-                                     	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
-										- 여유로운 면적의 최고급 객실<br>
-										- 세련미와 편안함이 어우러진 격조 높은 인테리어<br>
-										- 최상의 평온함을 위한 Super-premium Bedding System (Simmons사 공동 개발)<br>
-                              	  </div>
-                              
-                                <div class="col-md-6">
-                                	<a href="dining-1.html">
-                                    <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
-                                    <B>다이닝</B><br>
-                                     	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
-										- 세계 각국의 다양한 요리를 즐길 수 있는 야외 뷔페<br>				
-                               		 </div>
-                                 </div>
-                                 
-                                 <p>
-                                <div class="row">
-                                  <div class="col-md-6">
-                                	<a href="menu-item.jsp">
-                                    <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/meetings&banquets.jpg" alt="Standard Post with Image"></a>
-                                    <B>미팅&웨딩</B><br>
-                                     	<strong>호텔 델루나는 대규모 국제 행사와 세미나, 컨퍼런스, 가족연회, 음악회, 각종 공연 등이 가능한 실내 외 연회장을 갖추고 있습니다.</strong><br>
-										- 중문관광단지에서 가장 큰 규모의 연회장인 크리스탈 볼룸<br>
-										- 야외 리셉션 장소 구비<br>
-										- 첨단시설이 구비된 현대적인 비즈니스 회의실<br>
+                                <div class="portfolio-desc">
+                                       
                                 </div>
-                                
-                                <div class="col-md-6">
-                                	<a href="menu-item.jsp">
-                                    <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/facilities.jpg" alt="Standard Post with Image"></a>
-                                    <B>부대시설</B><br>
-                                     	<strong>호텔 델루나는 제주의 자연과 더불어 최상의 휴식을 즐길 수 있는 다양한 공간과 아이들을 위한 특별한 즐거움이 마련되어 있습니다.</strong><br>
-										- 로맨틱하고 환상적인 분위기의 사계절 럭셔리 야외 스파 & 가든 해온(he:on)<br>
-										- 가족단위 여행객을 위한 어린이 멀티 체험 놀이공간, 키즈월드<br>
-                               	  </div>
+                            </div>
+                        </div>
+                        
+                       
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on5.jpg" alt=""></a>
+                                    <div class="portfolio-overlay">
+                                        <a href="resources/images/favicon/on5.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
+                                                                   
+                                    </div>
                                 </div>
-                         </div>
-                	</div>
-				</div>
-            </div>
-		</div>
+                            
+                            </div>
+                        </div>
+                        
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.html"><img src="resources/images/favicon/onsu6.jpg" alt=""></a>
+                                    <div class="portfolio-overlay">
+                                        <a href="resources/images/favicon/onsu6.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
+                                                            
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+                        
+                    </div><!-- .portfolio-carousel end -->
+
+                    <script type="text/javascript">
+
+                        jQuery(document).ready(function($) {
+
+                            var relatedPortfolio = $("#related-portfolio");
+
+                            relatedPortfolio.owlCarousel({
+                                margin: 20,
+                                nav: true,
+                                dots:true,
+                                autoplay: true,
+                                autoplayHoverPause: true,
+                                responsive:{
+                                    0:{ items:1 },
+                                    480:{ items:2 },
+                                    768:{ items:3 },
+                                    992: { items:4 }
+                                }
+                            });
+
+                        });
+
+                    </script>
+                </div>
+
+          </div>
+
         </section><!-- #content end -->
 
         <!-- Footer
@@ -224,7 +331,7 @@
         
             <div class="container">
 
-               <!-- Footer Widgets
+                <!-- Footer Widgets
                 ============================================= -->
                 <div class="footer-widgets-wrap clearfix">
 
@@ -233,14 +340,22 @@
                         <div class="widget clearfix">
 
                             <h3>(주)호텔 델루나 <span>02-1544-1111</span></h3>
-                            <p>63535, 제주특별자치도 서귀포시 중문관광로 72번길, 호텔 델루나.</p>
+                            <p>Email : hoteldelluna@hoteldelluna.co.kr</p>
 
                             <div class="line" style="margin: 30px 0;"></div>
 
                             <div class="col_half">
                                 <div class="widget subscribe-widget clearfix">
-                                    <h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
-                            <!--         <script type="text/javascript">
+                                   
+                                    <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+                                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
+                                        <div class="input-group divcenter">                                            
+                                            
+                                            <span class="input-group-btn">
+                                              
+                                            </span>                                        </div>
+                                    </form>
+                                    <script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
                                             submitHandler: function(form) {
                                                 $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
@@ -255,7 +370,7 @@
                                                 });
                                             }
                                         });
-                                    </script> -->
+                                    </script>
                                 </div>                            
                             </div>
 

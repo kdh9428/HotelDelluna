@@ -171,7 +171,6 @@
 							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
-
 					<!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
