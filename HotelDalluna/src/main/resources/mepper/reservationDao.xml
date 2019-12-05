@@ -46,7 +46,6 @@
 	</delete>
 	
 	<!-- 예약 완료 후 확인 -->
-	
 	<select id="reservationConfirm" parameterType="string" resultType="com.java.dto.ReservationDTO">
 	<![CDATA[
 		select 

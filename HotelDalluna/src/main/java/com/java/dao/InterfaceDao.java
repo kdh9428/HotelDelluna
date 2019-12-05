@@ -20,7 +20,7 @@ public interface InterfaceDao {
 	public void reservationPeople(ReservationDTO reservationDto);
 	
 	//예약에 필요한 메소드 수행 후 예약 완료
-	public void reservation(ReservationDTO reservationDto);
+	public int reservation(ReservationDTO reservationDto);
 	
 	//예약 취소
 	public void reservationCancell(String reservation_number);

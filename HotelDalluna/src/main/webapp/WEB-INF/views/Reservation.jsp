@@ -109,10 +109,10 @@
       .inline-with-input input {
         width: 100%;
       }
-    </style>      
+    </style>     
+    
 </head>
 
-<!--  -->
 <body class="stretched">
 
 	<!-- Document Wrapper
@@ -147,61 +147,56 @@
                     <nav id="primary-menu">
 
                         <ul class="">
-                            <li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
-                                        <ul>                                
-                                    		<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    		<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                    		<li><a href="list.do"><div>공지사항</div></a></li>
-                                         </ul>                                                              
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>객실</div></a>
-                                <ul>
-                                    <li><a href="deluxe-1.html"><div>디럭스</div></a>
-                                        <ul>
-                                            <li><a href="deluxe-1.html"><div>디럭스 더블</div></a></li>
-                                            <li><a href="deluxe-2.html"><div>디럭스 트윈</div></a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li><a href="suite-1.html"><div>스위트</div></a>
-                                        <ul>
-                                            <li><a href="suite-1.html"><div>패밀리 스위트</div></a></li>
-                                            <li><a href="suite-2.html"><div>그랜드 스위트</div></a></li>
-                     
-                                        </ul>
-                                    </li>                                                                                                                                       
-                                </ul>
-                            </li>
-                            <li><a href="dining-1.html"><div>다이닝</div></a>
-                                <ul>
-                                    <li><a href="dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>부대시설</div></a>
-                                <ul>
-                                	<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
-                                	<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
-                            		<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
-                            <li><a href="Reservation.do"><div>예약하기</div></a></li>     
-                            <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>         
-                        	<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+								<ul>
+									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
+									<li><a href="list.do"><div>공지사항</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>객실</div></a>
+								<ul>
+									<li><a href="deluxe-1.do"><div>디럭스</div></a>
+										<ul>
+											<li><a href="deluxe-1.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-2.do"><div>디럭스 트윈</div></a></li>
+										</ul></li>
+									<li><a href="suite-1.do"><div>스위트</div></a>
+										<ul>
+											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
+
+										</ul></li>
+								</ul></li>
+							<li><a href="dining-1.do"><div>다이닝</div></a>
+								<ul>
+									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
+								<ul>
+									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
+								</ul></li>
+							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							
+							<!-- 로그인 하지 않았을 경우 보여준다.  -->
 							<sec:authorize access="isAnonymous()">
 								 <li><a href="login.do"><div>로그인</div></a>
 									<ul>
 	                                	<li><a href="login.do"><div>로그인</div></a></li>
 	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
-	                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
+	                                	<li><a href="MemberAddForm2.do"><div>회원가입</div></a></li>
                               	 	 </ul>   
                               	 </li>
 								</sec:authorize>
 								<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><a href="logout.do"><div>로그아웃</div></a></li>
+									<li><a href="logout.do" > <div>로그아웃</div></a></li>
 							</sec:authorize>
-                        </ul>
+							<%-- <c:url value="logout" /> --%>
+						</ul>
                     </nav><!-- #primary-menu end -->
 				</div>
 			</div>
@@ -261,6 +256,7 @@
 											<div class="panel-body">
 											<div class="row">
 											<div class="col-md-3">
+											
 												<!-- 달력시작 -->
 												<div id="app" class="app" :class="{'align-right': alignRight}">
 												 <div  class="datepicker-container with-button">
@@ -288,8 +284,17 @@
 											      </div>
 											    </div><!-- 달력끝 -->
 											    </div>
-
-											    <div class="col-md-3">
+											    
+												<!-- 예약 확인 -->
+														<c:if test="${!empty page}">
+															<c:if test="${page ne 1}">
+																<script type="text/javascript">
+																	alert("이미 예약 되어 있습니다.")
+																</script>
+															</c:if>
+														</c:if>
+	
+												<div class="col-md-3">
 												<select class="form-control" name="room_type" >
 												  <option value="1">디럭스 더블</option>
 												  <option value="2">디럭스 트윈</option>
@@ -298,8 +303,7 @@
 												</select>
 												</div>
 												
-													<div class="col-md-3">
-												
+												<div class="col-md-3">
 												<select class="form-control" name="adult" >
 												  <option value="1">성인 1</option>
 												  <option value="2">성인 2</option>
@@ -315,9 +319,7 @@
 												  <option value="3">어린이 3</option>
 												</select>
 												</div>
-												
 												<!-- <input type="text" name="customer_id" value="임시 id"> --> 
-												
 												</div>
 												<!-- <input type="text" name="reservation_number" value="reservation_number"> -->
 												<%-- <input type="hidden" name="customer_id" value="${customer_id}"> --%>
@@ -339,6 +341,7 @@
 			</div>
 		</section>
 		</form>
+		
 		
 		<!-- #content end -->
 	<script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
@@ -433,10 +436,7 @@
 
 							<div class="col_half">
 								<div class="widget subscribe-widget clearfix">
-									<h5>
-										Email : hoteldelluna@hoteldelluna.co.kr
-								<div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-										<form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin"></form>
+									<h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
 										<script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
                                             submitHandler: function(form) {
@@ -494,7 +494,6 @@
 					</div>
 
 					<div class="col_one_third col_last">
-
 						<div class="widget clearfix">
 							<div class="fancy-title title-border">
 								<h4>Hours</h4>
@@ -522,15 +521,12 @@
 					</div>
 				</div>
 				<!-- .footer-widgets-wrap end -->
-
 			</div>
 
 			<!-- Copyrights
             ============================================= -->
 			<div id="copyrights">
-
 				<div class="container clearfix">
-
 					<div class="col_half">
 						<img src="resources/images/logo/footer-logo.png" alt=""
 							class="footer-logo standard-logo"> <img

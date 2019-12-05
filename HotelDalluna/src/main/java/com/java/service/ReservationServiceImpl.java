@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class ReservationServiceImpl implements ReservationService {
 	// 예약하기
 	@Transactional
 	@Override
-	public ReservationDTO reservationCheck(ReservationDTO reservationDto) {
+	public int reservationCheck(ReservationDTO reservationDto) {
 		
 		//Security id Session 생성
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -79,8 +80,6 @@ public class ReservationServiceImpl implements ReservationService {
 				String mTime = mSimpleDateFormat.format(date);
 				mTime = mTime + "-" + UUID.randomUUID().toString().replace("-", "").substring(start, start + 4);
 				// UUID는 범용 고유 식별자로 현재시간 + 랜덤 4자리//replace("-", "")는 문자열 치환 ex)26a5-424f를
-				// 26a5424f로 변경
-				// subString(시작값, 끝값)까지 문자열 자른다.
 				System.out.println("예약번호 확인 : " + mTime);
 				reservationDto.setReservation_number(mTime);
 				
@@ -88,11 +87,10 @@ public class ReservationServiceImpl implements ReservationService {
 				interfaceDao.reservationPeople(reservationDto);
 
 				// 예약 테이블에 넣는다.
-				interfaceDao.reservation(reservationDto);
+				reCheck = interfaceDao.reservation(reservationDto);
 
-				// 예약 완료 0성공
-				reCheck = 0;
-
+				// 예약 완료 1이면 성공
+				System.out.println("예약 완료 1이면 성공!" + reCheck);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -102,13 +100,13 @@ public class ReservationServiceImpl implements ReservationService {
 			// 예약 실패
 			reCheck = -1;
 		}
-		return reservationDto;
+		return reCheck;
 	}
 	
 	//예약 취소하기
 	@Override
 	public void reservationCancell(String reservation_number) {
-		System.out.println("예약 취소 Service");
+		logger.debug("예약 취소");
 		interfaceDao.reservationCancell(reservation_number);
 		
 	}

@@ -1,9 +1,7 @@
 package com.java.hotel.controller;
 
 
-import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
@@ -30,38 +27,32 @@ public class ReservationController  {
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 	
+	
 	@Autowired
 	private ReservationService reservation;
 	
+	//예약 페이지
 	@RequestMapping("Reservation.do")
 	public String reservation() throws Exception{
-		/* logger.info("reservation 페이지 실행"); */
-		System.out.println("reservation.do 컨트롤러 실행");
+		logger.info("reservation 페이지 실행"); 
 		return "Reservation";
 	}
 	
+	//예약 체크 확인
 	@RequestMapping(value="ReservationCheck.do",method = RequestMethod.POST)
 	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		System.out.println("reservationCheck 컨트롤러 시작");
-		 reservation.reservationCheck(reservationDto);
+		String page;
+		 int check = reservation.reservationCheck(reservationDto);
 		 
-		/*
-		 * model.addAttribute("reservation_number",
-		 * reservationDto.getReservation_number());
-		 */ 
-		/*
-		 * model.addAttribute("reservation_data_in",
-		 * reservationDto.getReservation_date_in());
-		 * model.addAttribute("reservation_data_out",
-		 * reservationDto.getReservation_date_out());
-		 */
-		/*
-		 * ModelAndView md =new ModelAndView(); md.setViewName("ReservationConfirm");
-		 * md.addObject("reservation_number",reservationDto.getReservation_number());
-		 * md.addObject("reservation_data_in","aslkdjf");
-		 */
-		
-		return "ReservationConfirm";
+		 if(check==1) {
+			 model.addAttribute("page",check);
+			 page="ReservationConfirm";
+		 }else{
+			 model.addAttribute("page",check);
+			 page="Reservation";
+		 }
+		 return page;
 	}
 	
 	//예약 완료 확인
@@ -70,27 +61,23 @@ public class ReservationController  {
 		 
 		reservation.reservationConfirm();
 		 List<ReservationDTO> dto1 = reservation.reservationConfirm(); 
-		
-		 for(ReservationDTO vo:dto1) {
-			 String listresult = vo.getReservation_number();
-			 System.out.println("데이터 확인중.."+listresult+", "+ vo.getPriceproduct());
-		 }
-		 
-		 DecimalFormat df = new DecimalFormat("##,###원");
-		 String priceproduct = (String)df.format(dto1.get(0).getPrice());
-		 model.addAttribute("dto",dto1.get(0));
-		 model.addAttribute("dto.priceproduct",priceproduct);
-		 System.out.println(priceproduct);
-		 /*
-		 * ModelAndView mav = new ModelAndView();
-		 * mav.addObject("dto",reservationDto); mav.setViewName("ReservationConfirm");
+		/*
+		 * for(ReservationDTO vo:dto1) { String listresult = vo.getReservation_number();
+		 * System.out.println("데이터 확인중.."+listresult+", "+ vo.getPriceproduct()); }
 		 */
+		 if(dto1.isEmpty()) {
+			 System.out.println("예약된 값 확인");
+			 model.addAttribute("notReservation",1);
+		 }else {
+		 model.addAttribute("dto",dto1.get(0));
+		 }
 		return "ReservationConfirm";
 	}
 	
 	@RequestMapping("ReservationCancell.do")
 	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
 		reservation.reservationCancell(reservation_number);
+		
 		return"Reservation";
 	}
 	
@@ -98,13 +85,9 @@ public class ReservationController  {
 	public String index() throws Exception  {
 		/* ReservationService reservationService = new ReservationServiceImpl(); */
 		String asd = "123";
-		
 		String sss = passwordEncoder.encode(asd);
-		
 		System.out.println("index 시작");
 		 
-		
-		
 		return "index";
 	}
 	
@@ -121,15 +104,8 @@ public class ReservationController  {
 		/* System.out.println("getparameter : "+customer); */
 		 System.out.println("home 실행!"+reservationDto);
 		 reservation.reservationCheck(reservationDto);
+		 
 		 return "home";
 	 }
-	
-	@RequestMapping("hotel-About-Us.do")
-	public String hotel() {
-		logger.debug("hotel-About-Us");
-		
-		
-		return "hotel-About-Us";
-	}
 
 }
