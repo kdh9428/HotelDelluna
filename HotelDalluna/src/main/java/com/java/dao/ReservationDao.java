@@ -65,7 +65,6 @@ public class ReservationDao implements InterfaceDao {
 	//예약 완료 후 예약 확인
 	@Override
 	public List<ReservationDTO> reservationConfirm(String customer_id) {
-		System.out.println("예약 완료 아이디"+customer_id);
 		logger.debug("예약 완료 아이디" + customer_id);
 		/* List<ReservationDTO> rs = */
 		return sqlSession.selectList("com.java.dao.InterfaceDao.reservationConfirm", customer_id);
