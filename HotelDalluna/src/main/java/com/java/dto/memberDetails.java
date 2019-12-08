@@ -23,8 +23,6 @@ public class memberDetails implements UserDetails{
 		return customer_id;
 	}
 	public void setCustomer_id(String customer_id) {
-		
-		System.out.println("customer_ id 확인"+customer_id);
 		this.customer_id = customer_id;
 	}
 	public String getZip() {

@@ -41,10 +41,11 @@ public class ReservationController  {
 	//예약 체크 확인
 	@RequestMapping(value="ReservationCheck.do",method = RequestMethod.POST)
 	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
-		System.out.println("reservationCheck 컨트롤러 시작");
+		logger.info("reservationCheck 컨트롤러 확인");
 		String page;
 		 int check = reservation.reservationCheck(reservationDto);
 		 
+		 //check가 1이면 예약 되어있음 
 		 if(check==1) {
 			 model.addAttribute("page",check);
 			 page="ReservationConfirm";
@@ -60,16 +61,17 @@ public class ReservationController  {
 	public String reservationConfirm(ReservationDTO reservationDto, Model model) {
 		 
 		reservation.reservationConfirm();
-		 List<ReservationDTO> dto1 = reservation.reservationConfirm(); 
+		 List<ReservationDTO> reservationConfirm = reservation.reservationConfirm(); 
 		/*
 		 * for(ReservationDTO vo:dto1) { String listresult = vo.getReservation_number();
 		 * System.out.println("데이터 확인중.."+listresult+", "+ vo.getPriceproduct()); }
 		 */
-		 if(dto1.isEmpty()) {
-			 System.out.println("예약된 값 확인");
+		 
+		 //reservationConfirm에 값이 없는지 확인, 없으면 1을 view로 보내서 예약하지 않았다고 체크 
+		 if(reservationConfirm.isEmpty()) {
 			 model.addAttribute("notReservation",1);
 		 }else {
-		 model.addAttribute("dto",dto1.get(0));
+		 model.addAttribute("dto",reservationConfirm.get(0));
 		 }
 		return "ReservationConfirm";
 	}
@@ -84,28 +86,9 @@ public class ReservationController  {
 	@RequestMapping("index.do")
 	public String index() throws Exception  {
 		/* ReservationService reservationService = new ReservationServiceImpl(); */
-		String asd = "123";
-		String sss = passwordEncoder.encode(asd);
-		System.out.println("index 시작");
+//		String asd = "123";
+//		String sss = passwordEncoder.encode(asd);
 		 
 		return "index";
 	}
-	
-	@RequestMapping("home.do")
-	public String home() throws Exception  {
-		/* ReservationService reservationService = new ReservationServiceImpl(); */
-		System.out.println("index 시작");
-		
-		return "home";
-	}
-	
-	@RequestMapping(value="home1.do", method = RequestMethod.POST)
-	 public String home1(@ModelAttribute("click") ReservationDTO reservationDto, Model model ) {
-		/* System.out.println("getparameter : "+customer); */
-		 System.out.println("home 실행!"+reservationDto);
-		 reservation.reservationCheck(reservationDto);
-		 
-		 return "home";
-	 }
-
 }

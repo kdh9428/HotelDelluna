@@ -21,7 +21,7 @@ import com.java.dto.ReservationDTO;
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
-	private static final Logger logger = LoggerFactory.getLogger(ReservationServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReservationServiceImpl.class.getName());
 	
 	@Autowired
 	protected InterfaceDao interfaceDao;
@@ -33,21 +33,20 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		//Security id Session 생성
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		//로그인 id
+		//로그인 id 
 		reservationDto.setCustomer_id(auth.getName());
-		System.out.println("Session 확인 ====="+reservationDto.getCustomer_id());
 		
 		int reCheck = 1;
 		//체크 아웃을 선택했는지 확인
 		if(reservationDto.getReservation_date_out() == "" || reservationDto.getReservation_date_out().equals(null) ){
 			reservationDto.setReservation_date_out(reservationDto.getReservation_date_in());
-			System.out.println("Checkout null 확인"+reservationDto.getReservation_date_out());
+			logger.info("checkout null 확인" + reservationDto.getReservation_date_out());
 		}
 		
 		// 체크인, 체크아웃, 룸타입을 비교해서 테이블이 있으면 예약 되어 있다.
 		int check;
 		check = interfaceDao.reservationCheck(reservationDto);
-		System.out.println("Service에서 check 확인" + check);
+		logger.info("Service에서 check 확인" + check);
 		
 		// 비교 예약 0이면 예약 가능
 		if (check == 0) {
@@ -64,7 +63,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 				// 날짜 차이 * 룸 가격
 				int price = Integer.parseInt(roomprices) * (int) diffDays;
-				System.out.println("날짜 차이 * 룸가격 =>" + diffDays + "*" + roomprices + "=" + price);
+				logger.info("날짜 차이 * 룸가격 확인 = " + diffDays + "*" + roomprices + "=" + price );
 				reservationDto.setPrice(price);
 				
 				/*
@@ -80,7 +79,7 @@ public class ReservationServiceImpl implements ReservationService {
 				String mTime = mSimpleDateFormat.format(date);
 				mTime = mTime + "-" + UUID.randomUUID().toString().replace("-", "").substring(start, start + 4);
 				// UUID는 범용 고유 식별자로 현재시간 + 랜덤 4자리//replace("-", "")는 문자열 치환 ex)26a5-424f를
-				System.out.println("예약번호 확인 : " + mTime);
+				logger.info("예약번호 확인 : " + mTime);
 				reservationDto.setReservation_number(mTime);
 				
 				// 룸 인원 테이블에 룸 예약번호, 룸 타입, 인원수 넣어준다.
@@ -90,13 +89,13 @@ public class ReservationServiceImpl implements ReservationService {
 				reCheck = interfaceDao.reservation(reservationDto);
 
 				// 예약 완료 1이면 성공
-				System.out.println("예약 완료 1이면 성공!" + reCheck);
+				logger.info("예약 완료 1이면 성공" + reCheck);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 		} else {
-			System.out.println("예약 되어있는 날짜");
+			logger.info("예약 되어 있는 날짜, 예약 실패");
 			// 예약 실패
 			reCheck = -1;
 		}
@@ -106,7 +105,7 @@ public class ReservationServiceImpl implements ReservationService {
 	//예약 취소하기
 	@Override
 	public void reservationCancell(String reservation_number) {
-		logger.debug("예약 취소");
+		logger.info("예약 취소");
 		interfaceDao.reservationCancell(reservation_number);
 		
 	}
@@ -119,7 +118,7 @@ public class ReservationServiceImpl implements ReservationService {
 		//로그인 id Security에서 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String customer_id= auth.getName();
-		logger.debug("예약 완료 아이디" + customer_id);
+		logger.info("예약 완료 아이디" + customer_id);
 		reservationDto.setCustomer_id(auth.getName());
 		return interfaceDao.reservationConfirm(customer_id);
 	}

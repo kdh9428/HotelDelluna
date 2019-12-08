@@ -12,7 +12,7 @@ public class BoardController {
 	
 	@RequestMapping("list")
 	public String boardList() {
-		logger.debug("list 에러");
+		logger.info("list 시작");
 		
 		return "list";
 	}
