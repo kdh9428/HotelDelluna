@@ -1,277 +1,272 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html>
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <meta name="description" content="Bootstrap 3 Website Template" />
+	<meta name="description" content="Bootstrap 3 Website Template" />
 
     <!-- Stylesheets
     ============================================= -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">    
-   <link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-
-    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
-       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
     <!-- External JavaScripts
     ============================================= -->
-   <script type="text/javascript" src="js/jquery.js"></script>
-   <script type="text/javascript" src="js/plugins.js"></script>
+    
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/plugins.js"></script>
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	
+	<!-- 달력 스크립트  -->
+	 <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
+	<!-- 달력 스크립트 종료 -->  
+	
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="resources/include/rs-plugin/css/settings.css" media="screen" />
 
     <!-- Document Title
     ============================================= -->
-   <title>Hotel Delluna | Notice </title>
-<script language="JavaScript" src="script.js"></script>
-
+	<title>Hotel Delluna</title>
+<!-- google-font  
+	====================================================
+	 -->
 <style>
-   form{
-      margin: 0 auto;
-      width: 400px;
-   }
-   table{
-      margin: 0 auto;
-      width: 1300px;
-      border-top: 1px solid black;
-      border-collapse: collapse;
-   }
-   hr{
-      margin: 0 auto;
-      width: 1100px;
-   }
-     th, td {
-       border-bottom: 1px solid black;
-       padding: 18px;
-       text-align: center;
-      }
+@import
+	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean')
+	;
 </style>
+    
 </head>
 
 <body class="stretched">
 
-    <!-- Document Wrapper
+	<!-- Document Wrapper
     ============================================= -->
-    <div id="wrapper" class="clearfix">
+	<div id="wrapper" class="clearfix">
 
-        <!-- Header
+		<!-- Header
         ============================================= -->
-        <header id="header" class="full-header">
+		<header id="header" class="full-header">
 
-            <div id="header-wrap">
+			<div id="header-wrap">
 
-                <div class="container clearfix">
+				<div class="container clearfix">
 
-                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+					<div id="primary-menu-trigger">
+						<i class="icon-reorder"></i>
+					</div>
 
-                    <!-- Logo
-                    ============================================= -->
-                    <div id="logo">
-                    <a href="index.do" class="standard-logo" data-dark-logo="images/logo/mainlogo.png"><img src="images/logo/mainlogo.png" alt="Chocolat Logo"></a>
-                    <a href="index.do" class="retina-logo" data-dark-logo="images/logo/logo-dark-large.png"><img src="images/logo/logo-large.png" alt="Chocolat Logo"></a>                 </div><!-- #logo end -->
+					<!-- Logo============================================= -->
+					<div id="logo">
+						<a href="index.do" class="standard-logo"
+							data-dark-logo="images/logo/logo-dark.png"><img
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+						<a href="index.do" class="retina-logo"
+							data-dark-logo="images/logo/logo-dark-large.png"><img
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+					</div>
+					<!-- #logo end -->
 
-                    <!-- Primary Navigation
+					<!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
                         <ul class="">
-                            <li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
-                                        <ul>                                
-                                    		<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    		<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                    		<li><a href="list.do"><div>공지사항</div></a></li>
-                                         </ul>                                                              
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>객실</div></a>
-                                <ul>
-                                    <li><a href="deluxe-1.html"><div>디럭스</div></a>
-                                        <ul>
-                                            <li><a href="deluxe-1.html"><div>디럭스 더블</div></a></li>
-                                            <li><a href="deluxe-2.html"><div>디럭스 트윈</div></a></li>
-                                            
-                                        </ul>
-                                    </li>
-                                    <li><a href="suite-1.html"><div>스위트</div></a>
-                                        <ul>
-                                            <li><a href="suite-1.html"><div>패밀리 스위트</div></a></li>
-                                            <li><a href="suite-2.html"><div>그랜드 스위트</div></a></li>
-                     
-                                        </ul>
-                                    </li>                                                                                                                                       
-                                </ul>
-                            </li>
-                            <li><a href="dining-1.html"><div>다이닝</div></a>
-                                <ul>
-                                    <li><a href="dining-1.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="return false;"><div>부대시설</div></a>
-                                <ul>
-                                	<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
-                                	<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
-                            		<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
-                            <li><a href="Reseravtion.do"><div>예약하기</div></a></li>     
-                            <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>      
-                            
-                              <c:if test="${customer_id eq null}">                       
-                            <li><a href="hewon.jsp"><div>로그인</div></a>
-                                <ul>
-                                	<li><a href="hewon.jsp"><div>로그인</div></a></li>
-                                	<li><a href="searchIdpass.jsp"><div>아이디/비밀번호 찾기</div></a></li>
-                                	<li><a href="MemberAddForm2.jsp"><div>회원가입</div></a></li>
-                                </ul>                            
-                            </li>
-                            </c:if>
-                            <c:if test="${customer_id ne null}">
-                                    <li><a href="memLogout.do"><div>로그아웃</div></a>
-                                    </li>
-                               </c:if>
-                        </ul>
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+								<ul>
+									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
+									<li><a href="list.do"><div>공지사항</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>객실</div></a>
+								<ul>
+									<li><a href="deluxe-1.do"><div>디럭스</div></a>
+										<ul>
+											<li><a href="deluxe-1.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-2.do"><div>디럭스 트윈</div></a></li>
+										</ul></li>
+									<li><a href="suite-1.do"><div>스위트</div></a>
+										<ul>
+											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
+
+										</ul></li>
+								</ul></li>
+							<li><a href="dining-1.do"><div>다이닝</div></a>
+								<ul>
+									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+								</ul></li>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
+								<ul>
+									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
+								</ul></li>
+							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							
+							<!-- 로그인 하지 않았을 경우 보여준다.  -->
+							<sec:authorize access="isAnonymous()">
+								 <li><a href="login.do"><div>로그인</div></a>
+									<ul>
+	                                	<li><a href="login.do"><div>로그인</div></a></li>
+	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="MemberAddForm2.do"><div>회원가입</div></a></li>
+                              	 	 </ul>   
+                              	 </li>
+								</sec:authorize>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="logout.do" > <div>로그아웃</div></a></li>
+							</sec:authorize>
+							<%-- <c:url value="logout" /> --%>
+						</ul>
                     </nav><!-- #primary-menu end -->
-                </div>
-          </div>
+				</div>
+			</div>
+		</header>
+		<!-- #header end -->
 
-        </header><!-- #header end -->    
-        
-        <!-- Page Title
+		<!-- Page Title
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('images/logo/room.PNG'); padding: 120px 0;" data-stellar-background-ratio="0.3">
+		<section id="page-title" class="page-title-parallax"
+			style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;"
+			data-stellar-background-ratio="0.3">
 
-            <div class="container clearfix">
-                <FONT SIZE="6" COLOR="white">Hotel Delluna | 공지사항 </span></FONT>
-                <ol class="breadcrumb">
-                </ol>
-            </div><br>
-        </section><!-- #page-title end -->
+			<div class="container clearfix">
+				<h1>게시판</h1>
+				<ol class="breadcrumb">
+					<li><a href="index.do">홈</a></li>
+					<li class="active">게시판</li>
+				</ol>
+			</div>
 
-<!-- 검색창  -->
-<br>
-<form name="test"  action="/hotel/list.do">
-   <select name="search">
-      <option value="subject_content">통합검색</option>
-   </select>
-   <input type="text" size="30" name="searchtext">&nbsp;
-   <input type="submit" value="검색">
-</form>
+		</section>
+		<!-- #page-title end -->
 
-<!--관리자만 글쓰기 가능 ----------------------------------------------------------------------------------------- -->
-<br>
-<c:if test="${customer_id eq 'admin'}"> 
- <input type="button" value="글작성" style="border:1px solid red; font-size:11pt; background-color:white; color:red; border-radius:5px; margin-left:150px;'"
-			 onclick="document.location.href='/hotel/writeForm.do'">
-</c:if>
-
-<!-- ---------------------------------------------------------------------------------------------------- -->
-<!-- 게시글 없을때  -->
-<br>
-<c:if test="${pgList.count==0}">
-<div class="entry clearfix">
-<table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
-   <tr>
-        <td align="center">저장된 글이 없습니다.</td>
-   </tr>
-</table>
-</div>
-</c:if>
-
-<!--게시글 있을때 -->
-<br>
-<c:if test="${pgList.count > 0}">
-<div class="entry clearfix">   
-   <table style="font-size:17px; color:black">
-    <tr height="40" style="font-weight:bolder"> 
-      <td align="center" width="50">번호</td> 
-      <td align="center" width="250" >제목</td> 
-      <td align="center" width="50" >작성일</td> 
-    </tr>
-    
-    <c:set var="number" value="${pgList.number}" />
-    <c:forEach var="article" items="${articleList}">
-    <td align="center"  width="70" >
-          <c:out value="${number}" />
-          <c:set var="number"  value="${number-1}" />
-    </td>
-    <td width="250" >
-    
-    <!-- num(게시물번호),pageNum(페이지번호)  -->           
-      <a href="/hotel/content.do?num=${article.notice_number}&pageNum=${pgList.currentPage}" style="color:black">${article.notice_title}</a> 
-    </td>
-    <td align="center" width="150">
-        <fmt:formatDate value="${article.notice_date}" timeStyle="medium" pattern="yyyy-MM-dd"/>
-    </td>
-<%--     <td align="center" width="50">${article.readcount}</td> --%>
-  </tr>
-   </c:forEach>
-</table>
-</div>
-</c:if>
-
-<!-- 페이징 처리  -->
-      <div style="margin: 0 auto;">
-         <c:if test="${pgList.startPage > pgList.blockSize}">
-            <a
-               href="/hotel/list.do?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}">[이전]</a>
-         </c:if>
-
-         <c:forEach var="i" begin="${pgList.startPage}" end="${pgList.endPage}">
-            <a href="/hotel/list.do?pageNum=${i}&search=${search}&searchtext=${searchtext}">
-         <c:if test="${pgList.currentPage==i}">
-            <font color="black"><b>[${i}]</b></font>
-         </c:if> <c:if test="${pgList.currentPage!=i}">${i}
-      </c:if>
-     
-            </a>
-         </c:forEach>
-
-         <c:if test="${pgList.endPage < pgList.pageCount}">
-            <a href="/hotel/list.do?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}">[다음]</a>
-         </c:if>
-	</div>
-
-    
-        </section><!-- #content end --> 
-
-        <!-- Footer
+		<!-- Content
         ============================================= -->
-        <footer id="footer" class="footer">
-        
-            <div class="container">
+		<section id="content">
 
-                <!-- Footer Widgets
+			<div class="content-wrap bgcolor-grey-li2ght">
+
+				<div class="container clearfix">
+
+					<!-- Post Content
+                    ============================================= -->
+					<div>
+						<!-- Posts
+                        ============================================= -->
+							<article>
+								<div class="container">
+									<div class="table-responsive">
+										<table class="table table-striped table-sm">
+											<colgroup>
+												<col style="width: 5%;" />
+												<col style="width: auto;" />
+												<col style="width: 15%;" />
+												<col style="width: 10%;" />
+												<col style="width: 10%;" />
+											</colgroup>
+
+											<thead>
+												<tr>
+													<th>NO</th>
+													<th>글제목</th>
+													<th>작성자</th>
+													<th>조회수</th>
+													<th>작성일</th>
+												</tr>
+											</thead>
+											<tbody>
+
+												<c:choose>
+													<c:when test="${empty boardList }">
+														<tr>
+															<td colspan="5" align="center">데이터가 없습니다.</td>
+														</tr>
+													</c:when>
+
+													<c:when test="${!empty boardList}">
+														<c:forEach var="list" items="${boardList}">
+															<tr>
+																<td>${list.notice_number}</td>
+																<td>${list.notice_title}</td>
+																<td>${list.customer_id}</td>
+																<td>${list.ref}</td>
+																<td><fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd"/></td>
+															</tr>
+														</c:forEach>
+													</c:when>
+												</c:choose>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</article><!-- 게시판끝 -->
+
+					</div>
+					<!-- .sidebar end -->
+				</div>
+			</div>
+		</section>
+		<!-- Footer
+        ============================================= -->
+		<footer id="footer" class="footer">
+
+			<div class="container">
+
+				<!-- Footer Widgets
                 ============================================= -->
-                <div class="footer-widgets-wrap clearfix">
+				<div class="footer-widgets-wrap clearfix">
 
-                    <div class="col_two_third">
+					<div class="col_two_third">
 
-                        <div class="widget clearfix">
+						<div class="widget clearfix">
 
-                            <h3>(주)호텔 델루나 <span>02-1544-1111</span></h3>
-                            <p>63535, 제주특별자치도 서귀포시 중문관광로 72번길, 호텔 델루나.</p>
+							<h3>
+								(주)호텔 델루나 <span>02-1544-1111</span>
+							</h3>
+							<p>63535, 제주특별자치도 서귀포시 중문관광로 72번길, 호텔 델루나.</p>
 
-                            <div class="line" style="margin: 30px 0;"></div>
+							<div class="line" style="margin: 30px 0;"></div>
 
-                            <div class="col_half">
-                                <div class="widget subscribe-widget clearfix">
-                                    <h5>Email : hoteldelluna@hoteldelluna.co.kr
-                                    <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-                                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
-                          
-                                    </form>
-                                    <script type="text/javascript">
+							<div class="col_half">
+								<div class="widget subscribe-widget clearfix">
+									<h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
+										<script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
                                             submitHandler: function(form) {
                                                 $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
@@ -287,17 +282,19 @@
                                             }
                                         });
                                     </script>
-                                </div>                            
-                            </div>
+								</div>
+							</div>
 
-                            <div class="col_half col_last">
-                                <div class="widget clearfix">
+							<div class="col_half col_last">
+								<div class="widget clearfix">
 
-                                    <div class="hidden-xs hidden-sm"><div class="clear" style="padding-top: 10px;"></div></div>
+									<div class="hidden-xs hidden-sm">
+										<div class="clear" style="padding-top: 10px;"></div>
+									</div>
 
-                                    <div class="col-md-6 bottommargin-sm">
+									<div class="col-md-6 bottommargin-sm">
 
-                                     <div class="widget_links clearfix">
+										<div class="widget_links clearfix">
                                 			<ul>
                                     			<li><a href="index.do"><div>메인</div></a></li>
                                     			<li><a href="list.do"><div>공지사항</div></a></li>
@@ -318,116 +315,108 @@
                                     			<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
                                                 <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
-                                     </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                    <div class="col_one_third col_last">
+					<div class="col_one_third col_last">
+						<div class="widget clearfix">
+							<div class="fancy-title title-border">
+								<h4>Hours</h4>
+							</div>
+							<ul class="nobottommargin nobullets">
+								<li><strong>호텔서비스</strong><br>00:00 ~ 24:00</li>
+								<br>
+								<li><strong>객실예약(주중)</strong><br>09:00 ~ 18:00</li>
+								<br>
+								<li>업무시간 외에는<br> 온라인 예약을 이용해주시기 바랍니다.
+								</li>
+							</ul>
+						</div>
 
-                        <div class="widget clearfix">
-                        <div class="fancy-title title-border">
-                            <h4>Hours</h4>
-                        </div>
-                        <ul class="nobottommargin nobullets">
-                            <li><strong>호텔서비스.</strong><br>00:00 ~ 24:00</li><br>
-                            <li><strong>객실예약(주중)안내.</strong><br>전화예약 09:00 ~ 18:00</li><p>온라인예약 00:00 ~ 24:00<br>
-                            <li>업무시간 외에는<br> 온라인 예약을 이용해주시기 바랍니다.</li>
-                        </ul>
-                        </div>
-                        
-                        <div class="widget clearfix">
-                        <div class="fancy-title title-border">
-                            <h4>Address</h4>
-                        </div>
+						<div class="widget clearfix">
+							<div class="fancy-title title-border">
+								<h4>Address</h4>
+							</div>
 
-                        <ul class="nobottommargin nobullets">
-                            <li>63535, 제주특별자치도 </li>
-                            <li>서귀포시 중문관광로 72번길, 호텔 델루나.</li>
-                        </ul>
-                        </div>                                                
-                    </div>
-                </div>
-              <!-- .footer-widgets-wrap end -->
+							<ul class="nobottommargin nobullets">
+								<li>63535, 제주특별자치도</li>
+								<li>서귀포시 중문관광로 72번길, 호텔 델루나.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- .footer-widgets-wrap end -->
+			</div>
 
-            </div>        
-
-            <!-- Copyrights
+			<!-- Copyrights
             ============================================= -->
-            <div id="copyrights">
+			<div id="copyrights">
+				<div class="container clearfix">
+					<div class="col_half">
+						<img src="resources/images/logo/footer-logo.png" alt=""
+							class="footer-logo standard-logo"> <img
+							src="resources/images/logo/footer-logo-large.png" alt=""
+							class="footer-logo retina-logo"> Copyright &copy; 2019
+						Hotel Delluna. All Rights Reserved.
+					</div>
 
-                <div class="container clearfix">
+					<div class="col_half col_last tright">
+						<div class="copyrights-menu copyright-links fright clearfix">
+							<a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a
+								href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및
+								취소</a> <a href="contact-1.jsp">고객의 소리</a>
+						</div>
+						<div class="fright clearfix">
+							<a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-facebook">
+								<i class="icon-facebook"></i> <i class="icon-facebook"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-twitter">
+								<i class="icon-twitter"></i> <i class="icon-twitter"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-gplus">
+								<i class="icon-gplus"></i> <i class="icon-gplus"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-pinterest">
+								<i class="icon-pinterest"></i> <i class="icon-pinterest"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-vimeo">
+								<i class="icon-vimeo"></i> <i class="icon-vimeo"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-github">
+								<i class="icon-github"></i> <i class="icon-github"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-yahoo">
+								<i class="icon-yahoo"></i> <i class="icon-yahoo"></i>
+							</a> <a href="#"
+								class="social-icon si-small si-borderless nobottommargin si-linkedin">
+								<i class="icon-linkedin"></i> <i class="icon-linkedin"></i>
+							</a>
+						</div>
+					</div>
 
-                    <div class="col_half">
-                        <img src="images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
-                        <img src="images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
-                        Copyright &copy; 2019 Hotel Delluna. All Rights Reserved.
-                    </div>
+				</div>
 
-                    <div class="col_half col_last tright">
-                        <div class="copyrights-menu copyright-links fright clearfix">
-                            <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
-                        </div>
-                        <div class="fright clearfix">
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">
-                                <i class="icon-facebook"></i>
-                                <i class="icon-facebook"></i>
-                            </a>
+			</div>
+			<!-- #copyrights end -->
 
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-twitter">
-                                <i class="icon-twitter"></i>
-                                <i class="icon-twitter"></i>
-                            </a>
+		</footer>
+		<!-- #footer end -->
 
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-gplus">
-                                <i class="icon-gplus"></i>
-                                <i class="icon-gplus"></i>
-                            </a>
+	</div>
+	<!-- #wrapper end -->
 
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-pinterest">
-                                <i class="icon-pinterest"></i>
-                                <i class="icon-pinterest"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-vimeo">
-                                <i class="icon-vimeo"></i>
-                                <i class="icon-vimeo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-github">
-                                <i class="icon-github"></i>
-                                <i class="icon-github"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-yahoo">
-                                <i class="icon-yahoo"></i>
-                                <i class="icon-yahoo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless nobottommargin si-linkedin">
-                                <i class="icon-linkedin"></i>
-                                <i class="icon-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div><!-- #copyrights end -->
-
-        </footer><!-- #footer end -->
-
-    </div><!-- #wrapper end -->
-
-    <!-- Go To Top
+	<!-- Go To Top
     ============================================= -->
-    <div id="gotoTop" class="icon-angle-up"></div>
+	<div id="gotoTop" class="icon-angle-up"></div>
 
-    <!-- Footer Scripts
+	<!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="resources/js/functions.js"></script>
 
 </body>
 </html>

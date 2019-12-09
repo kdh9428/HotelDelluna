@@ -7,9 +7,16 @@ public class BoardVO {
 	private String notice_number;//번호
 	private String notice_title;//제목
 	private String notice_contents;//내용
-	private Date notice_date;//날짜
-	private int ref;//읽은 수
+	private String customer_id; //작성자
+	private int ref;//조회수
+	private Date notice_date;//작성일
 	
+	public String getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
+	}
 	public String getNotice_number() {
 		return notice_number;
 	}
