@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.java.BoardDto.BoardVO;
@@ -36,10 +38,33 @@ public class BoardController {
 	}
 	
 	//작성글 저장
-	@RequestMapping("boardSave")
+	@RequestMapping(value="boardSave", method =RequestMethod.POST)
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardvo, RedirectAttributes rra) throws Exception {
-		
+		logger.info("작성글 저장");
 		boardService.boardInsert(boardvo);
-		return "redirect:boardSave";
+		return "redirect:list.do";
+	}
+	
+	//게시물 조회
+	@RequestMapping(value="boardContent" ,method=RequestMethod.GET)
+	public String boardContent(@RequestParam("notice_number") int notice_number, Model model) throws Exception{
+		logger.info("게시물 상세 조회");
+		model.addAttribute("content",boardService.boardContent(notice_number).get(0));
+		return "boardContent";
+	}
+	
+	//게시물 삭제
+	@RequestMapping("boardDelete")
+	public String boardDelete(@RequestParam("notice_number") int notice_number) throws Exception {
+		logger.info("게시글 삭제");
+		boardService.boardDelete(notice_number);
+		return "redirect:list.do";
+	}
+	
+	//게시물 수정
+	@RequestMapping("boardUpdate")
+	public String boardUpdate() {
+		
+		return"boardForm";
 	}
 }

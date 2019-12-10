@@ -107,7 +107,6 @@ public class ReservationServiceImpl implements ReservationService {
 	public void reservationCancell(String reservation_number) {
 		logger.info("예약 취소");
 		interfaceDao.reservationCancell(reservation_number);
-		
 	}
 	
 	//예약 완료 확인

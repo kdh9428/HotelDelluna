@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
@@ -37,21 +36,6 @@
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 	
-	<!-- 달력 스크립트  -->
-	 <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
-	<!-- 달력 스크립트 종료 -->  
-	
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="resources/include/rs-plugin/css/settings.css" media="screen" />
 
@@ -65,6 +49,62 @@
 @import
 	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean')
 	;
+</style>
+<style>
+.board_title {
+
+	font-weight : 700;
+
+	font-size : 22pt;
+
+	margin : 10pt;
+
+}
+
+.board_info_box {
+
+	color : #6B6B6B;
+
+	margin : 10pt;
+
+}
+
+.board_author {
+
+	font-size : 10pt;
+
+	margin-right : 10pt;
+
+}
+
+.board_date {
+
+	font-size : 10pt;
+
+}
+
+.board_content {
+
+	color : #444343;
+
+	font-size : 12pt;
+
+	margin : 10pt;
+
+}
+
+.board_tag {
+
+	font-size : 11pt;
+
+	margin : 10pt;
+
+	padding-bottom : 10pt;
+
+}
+
+
+
 </style>
     
 </head>
@@ -189,56 +229,48 @@
 					<div>
 						<!-- Posts
                         ============================================= -->
-                        
-							<article>
-								<div class="container">
-									<div class="table-responsive">
-										<table class="table table-striped table-sm">
-											<colgroup>
-												<col style="width: 5%;" />
-												<col style="width: auto;" />
-												<col style="width: 15%;" />
-												<col style="width: 10%;" />
-												<col style="width: 10%;" />
-											</colgroup>
+						<article>
+						<form action="list.do" method="get">
+							<div class="container" role="main">
 
-											<thead>
-												<tr>
-													<th>NO</th>
-													<th>글제목</th>
-													<th>작성자</th>
-													<th>조회수</th>
-													<th>작성일</th>
-												</tr>
-											</thead>
-											<tbody>
+								<h2>게시글 상세보기</h2>
+								<div class="bg-white rounded shadow-sm">
 
-												<c:choose>
-													<c:when test="${empty boardList}">
-														<tr>
-															<td colspan="5" align="center">데이터가 없습니다.</td>
-														</tr>
-													</c:when>
+									<div class="board_title">
+										${content.notice_title}
+									</div>
 
-													<c:when test="${!empty boardList}">
-														<c:forEach var="list" items="${boardList}">
-															<tr>
-																<td>${list.notice_number}</td>
-																
-																<td><a href="boardContent.do?notice_number=${list.notice_number }">${list.notice_title}</a></td>
-																<td>${list.customer_id}</td>
-																<td>${list.ref}</td>
-																<td><fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd"/></td>
-															</tr>
-														</c:forEach>
-													</c:when>
-												</c:choose>
-											</tbody>
-										</table>
-										<button type="button" class="btn btn-primary" name="write" id="write">글 작성</button>
+									<div class="board_info_box">
+
+										<span class="board_author">
+										작성자 : ${content.customer_id},
+										</span>
+										
+										<span class="board_date">작성날짜 : ${content.notice_date}</span>
+
+									</div>
+
+									<div class="board_content">${content.notice_contents}</div>
+
+									<div class="board_tag">
+										TAG :
+										<c:out value="${tag}" />
 									</div>
 								</div>
-							</article><!-- 게시판끝 -->
+
+								<div style="margin-top: 20px">
+
+									<button type="button" class="btn btn-primary"
+										id="btnUpdate">수정</button>
+
+									<button type="button" class="btn btn-primary"
+										id="btnDelete" onclick="location.href='boardDelete.do?notice_number=${content.notice_number}'">삭제</button>
+									<button type="button" id="btnList" class="btn btn-primary" >목록</button>
+								</div>
+
+							</div>
+							</form>
+						</article>
 
 					</div>
 					<!-- .sidebar end -->
@@ -269,22 +301,6 @@
 							<div class="col_half">
 								<div class="widget subscribe-widget clearfix">
 									<h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
-										<script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script>
 								</div>
 							</div>
 
@@ -412,6 +428,15 @@
 
 	</div>
 	<!-- #wrapper end -->
+	<script type="text/javascript">
+			document.getElementById('btnUpdate').onclick = function(){
+				document.getElementById('form').submit()
+				return false
+			}			
+			document.getElementById("btnList").onclick = function(){
+				location.href="list.do"
+			}
+	</script>
 
 	<!-- Go To Top
     ============================================= -->
@@ -420,11 +445,6 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	<script type="text/javascript">
-		document.getElementById("write").onclick = function(){
-			location.href="boardForm.do"
-		}
-	</script>
 
 </body>
 </html>

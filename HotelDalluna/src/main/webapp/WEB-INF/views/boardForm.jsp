@@ -179,23 +179,23 @@
 
 			<h2>게시판</h2>
 
-			<form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+			<form name="form" id="form" role="form" method="post" action="boardSave.do">
 
 			<div class="row">
 				<div class="col-md-6">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="notice_title" id="notice_title" placeholder="제목을 입력해 주세요">
 				</div>
 				
 				<div class="col-md-6">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="이름을 입력해 주세요">
 				</div>
 			</div>
 
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+					<textarea class="form-control" rows="5" name="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" ></textarea>
 				</div>
 
 				<div class="mb-3">
@@ -210,8 +210,6 @@
 		</form>
 	</div>
 	</article>
-
-
 					</div>
 					<!-- .sidebar end -->
 				</div>

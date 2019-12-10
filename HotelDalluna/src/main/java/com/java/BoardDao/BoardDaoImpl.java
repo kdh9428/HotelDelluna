@@ -25,5 +25,22 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return sqlSession.selectList("com.java.BoardDao.boardList");
 	}
-
+	
+	@Override
+	public void boardWrite(BoardVO boardVO) {
+		// TODO Auto-generated method stub
+		logger.info("boardWrite 작성");
+		sqlSession.insert("com.java.BoardDao.boardWrite",boardVO);
+	}
+	
+	@Override
+	public List<BoardVO> boardContent(int notice_number) {
+		
+		return sqlSession.selectList("com.java.BoardDao.boardContent", notice_number);
+	}
+	@Override
+	public void boardDelete(int notice_number) {
+		
+		sqlSession.delete("com.java.BoardDao.boardDelete", notice_number);
+	}
 }
