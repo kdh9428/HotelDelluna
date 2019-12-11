@@ -21,8 +21,8 @@ public class memberDetailsSevice implements UserDetailsService{
 	public UserDetails loadUserByUsername(String customer_id) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		
-		logger.info("로그인 아이디 체크");
 		memberDetails user = memberAuthDao.getUserById(customer_id);
+		logger.info("로그인 아이디 체크" + user);
 		if(user==null) {
 			throw new UsernameNotFoundException(customer_id);
 		}

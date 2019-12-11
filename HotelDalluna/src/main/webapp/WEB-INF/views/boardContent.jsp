@@ -246,18 +246,17 @@
 										작성자 : ${content.customer_id},
 										</span>
 										
-										<span class="board_date">작성날짜 : ${content.notice_date}</span>
+										<span class="board_date">작성날짜 : <fmt:formatDate value="${content.notice_date}" pattern="yyyy-MM-dd hh:mm:ss"/></span>
 
 									</div>
 
-									<div class="board_content">${content.notice_contents}</div>
+									<div class="board_content"><pre><c:out value="${content.notice_contents}" /></pre></div>
 
 									<div class="board_tag">
 										TAG :
 										<c:out value="${tag}" />
 									</div>
 								</div>
-
 								<div style="margin-top: 20px">
 
 									<button type="button" class="btn btn-primary"

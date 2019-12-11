@@ -16,7 +16,6 @@ public class MemberAuthDao {
 	@Autowired
 	private SqlSessionTemplate sqlSesstion;
 	
-	
 	public memberDetails getUserById(String customer_id) {
 		logger.info("id 확인" + customer_id);
 		return sqlSesstion.selectOne("getUserById", customer_id);
