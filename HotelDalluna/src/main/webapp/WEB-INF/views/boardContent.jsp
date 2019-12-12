@@ -52,61 +52,37 @@
 </style>
 <style>
 .board_title {
-
-	font-weight : 700;
-
-	font-size : 22pt;
-
-	margin : 10pt;
-
+	font-weight: 700;
+	font-size: 22pt;
+	margin: 10pt;
 }
 
 .board_info_box {
-
-	color : #6B6B6B;
-
-	margin : 10pt;
-
+	color: #6B6B6B;
+	margin: 10pt;
 }
 
 .board_author {
-
-	font-size : 10pt;
-
-	margin-right : 10pt;
-
+	font-size: 10pt;
+	margin-right: 10pt;
 }
 
 .board_date {
-
-	font-size : 10pt;
-
+	font-size: 10pt;
 }
 
 .board_content {
-
-	color : #444343;
-
-	font-size : 12pt;
-
-	margin : 10pt;
-
+	color: #444343;
+	font-size: 12pt;
+	margin: 10pt;
 }
 
 .board_tag {
-
-	font-size : 11pt;
-
-	margin : 10pt;
-
-	padding-bottom : 10pt;
-
+	font-size: 11pt;
+	margin: 10pt;
+	padding-bottom: 10pt;
 }
-
-
-
 </style>
-    
 </head>
 
 <body class="stretched">
@@ -191,7 +167,6 @@
 							 <sec:authorize access="isAuthenticated()">
 									<li><a href="logout.do" > <div>로그아웃</div></a></li>
 							</sec:authorize>
-							<%-- <c:url value="logout" /> --%>
 						</ul>
                     </nav><!-- #primary-menu end -->
 				</div>
@@ -427,15 +402,7 @@
 
 	</div>
 	<!-- #wrapper end -->
-	<script type="text/javascript">
-			document.getElementById('btnUpdate').onclick = function(){
-				document.getElementById('form').submit()
-				return false
-			}			
-			document.getElementById("btnList").onclick = function(){
-				location.href="list.do"
-			}
-	</script>
+
 
 	<!-- Go To Top
     ============================================= -->
@@ -444,6 +411,16 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+	
+		<script type="text/javascript">
+			document.getElementById('btnUpdate').onclick = function(){
+				document.getElementById('form').submit()
+				return false
+			}			
+			document.getElementById("btnList").onclick = function(){
+				location.href="list.do"
+			}
+	</script>
 
 </body>
 </html>

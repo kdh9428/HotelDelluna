@@ -184,12 +184,12 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="notice_title" id="notice_title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="notice_title" id="notice_title" placeholder="제목을 입력해 주세요" required>
 				</div>
 				
 				<div class="col-md-6">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="이름을 입력해 주세요" required>
 				</div>
 			</div>
 
@@ -198,13 +198,21 @@
 					<textarea class="form-control" rows="5" name="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" ></textarea>
 				</div>
 
-				<div class="mb-3">
+
+			<div class="row">
+				<div class="col-md-6">
 					<label for="tag">TAG</label>
 					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
 				</div>
+				
+				<div class="col-md-6">
+					<label for="reg_id">비밀번호</label>
+					<input type="password" class="form-control" name="boardpassword" id="boardpassword" placeholder="비밀번호" required>
+				</div>
+			</div>
 
 			<div>
-				<button type="button" class="btn btn-primary" id="btnSave">저장</button>
+				<button type="submit" class="btn btn-primary" id="btnSave">저장</button>
 				<button type="button" class="btn btn-primary" id="btnList">목록</button>
 			</div>
 		</form>
@@ -375,10 +383,11 @@
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript">
-			document.getElementById('btnSave').onclick = function(){
+		/*  	required설정, javascript로 submit이동시 required는 작동하지 않는다.
+		document.getElementById('btnSave').onclick = function(){
 				document.getElementById('form').submit()
 				return false
-			}			
+			}			 */
 		
 			document.getElementById("btnList").onclick =function(){
 				location.href="list.do"
