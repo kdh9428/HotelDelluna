@@ -10,7 +10,14 @@ public class BoardVO {
 	private String customer_id; //작성자
 	private int ref;//조회수
 	private Date notice_date;//작성일
+	private String boardpw;
 	
+	public String getBoardpw() {
+		return boardpw;
+	}
+	public void setBoardpw(String boardpw) {
+		this.boardpw = boardpw;
+	}
 	public String getCustomer_id() {
 		return customer_id;
 	}

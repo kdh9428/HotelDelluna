@@ -26,6 +26,8 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectList("com.java.BoardDao.boardList");
 	}
 	
+	
+	//게시판 작성
 	@Override
 	public void boardWrite(BoardVO boardVO) {
 		// TODO Auto-generated method stub

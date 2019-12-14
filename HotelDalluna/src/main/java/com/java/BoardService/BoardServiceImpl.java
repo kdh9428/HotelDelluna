@@ -1,12 +1,11 @@
 package com.java.BoardService;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.java.BoardDao.BoardDao;
@@ -16,6 +15,9 @@ import com.java.BoardDto.BoardVO;
 public class BoardServiceImpl implements BoardService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired 
 	BoardDao boardDao;
@@ -29,7 +31,10 @@ public class BoardServiceImpl implements BoardService {
 	//게시판 작성
 	@Override
 	public void boardInsert(BoardVO boardVO) throws Exception {
-		logger.info("게시판 작성완료");
+		logger.info("게시판 작성완료 BoardService");
+		String pw = boardVO.getBoardpw();
+		String encoder = passwordEncoder.encode(pw);
+		boardVO.setBoardpw(encoder);
 		boardDao.boardWrite(boardVO);
 		
 	}
