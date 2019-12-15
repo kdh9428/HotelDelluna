@@ -3,6 +3,8 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib prefix="form" uri = "http://www.springframework.org/tags/form" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -189,7 +191,7 @@
 				
 				<div class="col-md-6">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="이름을 입력해 주세요" required>
+					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="${customer_id }" readonly>
 				</div>
 			</div>
 

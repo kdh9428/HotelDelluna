@@ -3,6 +3,8 @@ package com.java.hotel.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,8 +34,11 @@ public class BoardController {
 	
 	//게시판 작성 폼
 	@RequestMapping("boardForm")
-	public String boardForm() {
+	public String boardForm(Model model) {
 		logger.info("게시판 작성폼");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println("아이디" + auth.getName());
+		model.addAttribute("customer_id",auth.getName());
 		return "boardForm";
 	}
 	
@@ -63,8 +68,8 @@ public class BoardController {
 	
 	//게시물 수정
 	@RequestMapping(value = "/editForm", method = RequestMethod.GET)
-	public String editForm(@RequestParam("custemor_id") int custemor_id, @RequestParam("mode") String mode, Model model) throws Exception {
-		model.addAttribute("boardContent", boardService.boardContent(custemor_id));
+	public String editForm(@RequestParam("customer_id") int customer_id, @RequestParam("mode") String mode, Model model) throws Exception {
+		model.addAttribute("boardContent", boardService.boardContent(customer_id));
 		model.addAttribute("mode", mode);
 		model.addAttribute("boardVO", new BoardVO());
 		return "board/boardForm";

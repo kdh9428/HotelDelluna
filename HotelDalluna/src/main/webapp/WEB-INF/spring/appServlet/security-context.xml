@@ -30,6 +30,7 @@
 		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
 		<intercept-url pattern="/ReservationConfirm.do" access="isAuthenticated()" />
 		<intercept-url pattern="/Reservation.do" access="isAuthenticated()" />
+		<intercept-url pattern="/boardForm.do" access="isAuthenticated()" />
 		
 		<!-- invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지
 			 max-sessions="1" : 최대 허용 가능 중복 세션 수 
