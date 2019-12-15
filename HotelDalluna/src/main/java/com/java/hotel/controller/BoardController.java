@@ -62,9 +62,13 @@ public class BoardController {
 	}
 	
 	//게시물 수정
-	@RequestMapping("boardUpdate")
-	public String boardUpdate() {
-		
-		return"boardForm";
+	@RequestMapping(value = "/editForm", method = RequestMethod.GET)
+	public String editForm(@RequestParam("custemor_id") int custemor_id, @RequestParam("mode") String mode, Model model) throws Exception {
+		model.addAttribute("boardContent", boardService.boardContent(custemor_id));
+		model.addAttribute("mode", mode);
+		model.addAttribute("boardVO", new BoardVO());
+		return "board/boardForm";
+
 	}
+
 }
