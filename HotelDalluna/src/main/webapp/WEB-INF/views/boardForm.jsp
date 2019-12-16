@@ -191,7 +191,7 @@
 				
 				<div class="col-md-6">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="${customer_id }" readonly>
+					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="${customer_id }" value="${customer_id }" readonly>
 				</div>
 			</div>
 
@@ -202,15 +202,15 @@
 
 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label for="tag">TAG</label>
 					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
 				</div>
 				
-				<div class="col-md-6">
+			<!-- 	<div class="col-md-6">
 					<label for="reg_id">비밀번호</label>
 					<input type="password" class="form-control" name="boardpw" id="boardpw" placeholder="비밀번호" required>
-				</div>
+				</div> -->
 			</div>
 
 			<div>

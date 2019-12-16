@@ -37,7 +37,6 @@ public class BoardController {
 	public String boardForm(Model model) {
 		logger.info("게시판 작성폼");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("아이디" + auth.getName());
 		model.addAttribute("customer_id",auth.getName());
 		return "boardForm";
 	}
@@ -46,6 +45,7 @@ public class BoardController {
 	@RequestMapping(value="boardSave", method =RequestMethod.POST)
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardvo, RedirectAttributes rra) throws Exception {
 		logger.info("작성글 저장");
+		System.out.println("아이디확인 boardSave Controller"+ boardvo.getCustomer_id());
 		boardService.boardInsert(boardvo);
 		return "redirect:list.do";
 	}
