@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -49,16 +51,23 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void boardDelete(int notice_number) throws Exception {
+	public int boardDelete(int notice_number) throws Exception {
 		logger.info("게시글 삭제 확인");
+		int check;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String sessionId = auth.getName();
 		
 		//아이디 확인
 		String customer_id = boardDao.boardDeleteId(notice_number);
-		if(customer_id.equals(customer_id)) {
+		
+		if(customer_id.equals(sessionId)) {
+			boardDao.boardDelete(notice_number);
+			check = 1;
+			return check;
+		}else {
+			return check=0;
 			
 		}
-		boardDao.boardDelete(notice_number);
-		
 	}
 
 }

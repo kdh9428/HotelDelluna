@@ -60,9 +60,15 @@ public class BoardController {
 	
 	//게시물 삭제
 	@RequestMapping("boardDelete")
-	public String boardDelete(@RequestParam("notice_number") int notice_number) throws Exception {
+	public String boardDelete(@RequestParam("notice_number") int notice_number,Model model) throws Exception {
 		logger.info("게시글 삭제");
-		boardService.boardDelete(notice_number);
+		int check = boardService.boardDelete(notice_number);
+		
+		if(check == 1) {
+			model.addAttribute("check",1);
+		}else {
+			model.addAttribute("check",0);
+		}
 		return "redirect:list.do";
 	}
 	
