@@ -16,5 +16,5 @@ public interface BoardService {
 	public List<BoardVO> boardContent(int notice_number) throws Exception;
 
 	//게시글 삭제
-	public void boardDelete(int notice_number) throws Exception;
+	public void boardDelete( int notice_number) throws Exception;
 }

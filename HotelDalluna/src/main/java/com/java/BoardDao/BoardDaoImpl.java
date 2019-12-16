@@ -40,6 +40,14 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return sqlSession.selectList("com.java.BoardDao.boardContent", notice_number);
 	}
+	//게시글 삭제 아이디확인
+	@Override
+	public String boardDeleteId(int notice_number) {
+		logger.info("게시글 삭제 아이디 확인");
+		return sqlSession.selectOne("com.java.BoardDao.boardDeleteId", notice_number);
+	}
+	
+	//게시글 삭제
 	@Override
 	public void boardDelete(int notice_number) {
 		

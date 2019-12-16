@@ -23,6 +23,10 @@
     		select * from notice where notice_number = #{notice_number}
     	</select>
     	
+    	<select id="boardDeleteId" parameterType="int" resultType="String">
+    		select customer_id from notice where notice_number = #{notice_number}
+    	</select>
+    	
     	<!-- 게시글 삭제 -->
     	<delete id="boardDelete">
     		delete from notice where notice_number = #{notice_number}

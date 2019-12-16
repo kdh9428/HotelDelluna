@@ -32,9 +32,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardInsert(BoardVO boardVO) throws Exception {
 		logger.info("게시판 작성완료 BoardService");
-		String pw = boardVO.getBoardpw();
-		String encoder = passwordEncoder.encode(pw);
-		boardVO.setBoardpw(encoder);
+		/*
+		 * String pw = boardVO.getBoardpw(); String encoder =
+		 * passwordEncoder.encode(pw);
+		 */
+		/* boardVO.setBoardpw(encoder); */
 		boardDao.boardWrite(boardVO);
 		
 	}
@@ -49,6 +51,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardDelete(int notice_number) throws Exception {
 		logger.info("게시글 삭제 확인");
+		
+		//아이디 확인
+		String customer_id = boardDao.boardDeleteId(notice_number);
+		if(customer_id.equals(customer_id)) {
+			
+		}
 		boardDao.boardDelete(notice_number);
 		
 	}
