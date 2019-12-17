@@ -206,9 +206,11 @@
                         ============================================= -->
 						<article>
 						<form action="list.do" method="get">
+						
 							<div class="container" role="main">
+									
 
-								<h2>게시글 상세보기</h2>
+									<h2>게시글 상세보기</h2>
 								<div class="bg-white rounded shadow-sm">
 
 									<div class="board_title">
@@ -420,7 +422,7 @@
 			document.getElementById("btnList").onclick = function(){
 				location.href="list.do"
 			}
+			
 	</script>
-
 </body>
 </html>

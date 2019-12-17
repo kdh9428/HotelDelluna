@@ -189,7 +189,11 @@
 					<div>
 						<!-- Posts
                         ============================================= -->
-                        
+                        <c:if test="${check eq 1 }">
+										<script>
+											alert("삭제되었습니다.")
+										</script>
+									</c:if>
 							<article>
 								<div class="container">
 									<div class="table-responsive">
