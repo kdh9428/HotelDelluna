@@ -45,7 +45,6 @@ public class BoardController {
 	@RequestMapping(value="boardSave", method =RequestMethod.POST)
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardvo, RedirectAttributes rra) throws Exception {
 		logger.info("작성글 저장");
-		System.out.println("아이디확인 boardSave Controller"+ boardvo.getCustomer_id());
 		boardService.boardInsert(boardvo);
 		return "redirect:list.do";
 	}
@@ -64,12 +63,14 @@ public class BoardController {
 		logger.info("게시글 삭제");
 		int check = boardService.boardDelete(notice_number);
 		
+		//삭제 확인 후 list페이지로 
 		if(check == 1) {
 			model.addAttribute("check",1);
+			model.addAttribute("boardList",boardService.boardList()); 
 		}else {
 			model.addAttribute("check",0);
 		}
-		return "redirect:list.do";
+		return "list";
 	}
 	
 	//게시물 수정

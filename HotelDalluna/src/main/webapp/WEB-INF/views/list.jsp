@@ -189,11 +189,11 @@
 					<div>
 						<!-- Posts
                         ============================================= -->
-                        <c:if test="${check eq 1 }">
+                      <%--   <c:if test="${check eq 1 }">
 										<script>
 											alert("삭제되었습니다.")
 										</script>
-									</c:if>
+									</c:if> --%>
 							<article>
 								<div class="container">
 									<div class="table-responsive">
@@ -216,11 +216,10 @@
 												</tr>
 											</thead>
 											<tbody>
-
 												<c:choose>
 													<c:when test="${empty boardList}">
 														<tr>
-															<td colspan="5" align="center">데이터가 없습니다.</td>
+															<td colspan="5" align="center">작성된 글이 없습니다.</td>
 														</tr>
 													</c:when>
 
@@ -428,6 +427,15 @@
 		document.getElementById("write").onclick = function(){
 			location.href="boardForm.do"
 		}
+	</script>
+	
+	<script type="text/javascript">
+		if(${check}==1){
+		alert("삭제 되었습니다.");
+		}else{
+		alert("삭제 되지 않았습니다.")
+		}
+			
 	</script>
 
 </body>
