@@ -26,7 +26,7 @@ public class BoardController {
 	
 	//게시판 리스트
 	@RequestMapping("list")
-	public String boardList(Model model) throws Exception{
+	public String boardList( Model model) throws Exception{
 		logger.info("list 시작");
 		model.addAttribute("boardList",boardService.boardList()); 
 		return "list";
@@ -34,7 +34,7 @@ public class BoardController {
 	
 	//게시판 작성 폼
 	@RequestMapping("boardForm")
-	public String boardForm(Model model) {
+	public String boardForm(@ModelAttribute("boardVO")BoardVO boardVO, Model model) {
 		logger.info("게시판 작성폼");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("customer_id",auth.getName());
@@ -74,12 +74,14 @@ public class BoardController {
 	}
 	
 	//게시물 수정
-	@RequestMapping(value = "/editForm", method = RequestMethod.GET)
-	public String editForm(@RequestParam("customer_id") int customer_id, @RequestParam("mode") String mode, Model model) throws Exception {
-		model.addAttribute("boardContent", boardService.boardContent(customer_id));
+	@RequestMapping(value = "editForm", method = RequestMethod.GET)
+	public String editForm(@RequestParam("notice_number") int notice_number, 
+						@RequestParam("mode") String mode,
+						@ModelAttribute("boardVO")BoardVO boardVO, Model model) throws Exception {
+		System.out.println("게시글 확인"+ notice_number + mode);
+		model.addAttribute("boardContent", boardService.boardContent(notice_number).get(0));
 		model.addAttribute("mode", mode);
-		model.addAttribute("boardVO", new BoardVO());
-		return "board/boardForm";
+		return "boardForm";
 
 	}
 

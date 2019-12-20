@@ -237,7 +237,7 @@
 								<div style="margin-top: 20px">
 
 									<button type="button" class="btn btn-primary"
-										id="btnUpdate">수정</button>
+										id="btnUpdate" onclick="location.href='editForm.do?notice_number=${content.notice_number}&mode=edit'">수정</button>
 
 									<button type="button" class="btn btn-primary"
 										id="btnDelete" onclick="location.href='boardDelete.do?notice_number=${content.notice_number}'">삭제</button>
@@ -415,10 +415,10 @@
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 		<script type="text/javascript">
-			document.getElementById('btnUpdate').onclick = function(){
+		/* 	document.getElementById('btnUpdate').onclick = function(){
 				document.getElementById('form').submit()
 				return false
-			}			
+			} */			
 			document.getElementById("btnList").onclick = function(){
 				location.href="list.do"
 			}

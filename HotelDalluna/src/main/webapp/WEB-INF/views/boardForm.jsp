@@ -3,7 +3,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-	<%@ taglib prefix="form" uri = "http://www.springframework.org/tags/form" %> 
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 
 <!DOCTYPE html>
 <html>
@@ -181,23 +181,24 @@
 
 			<h2>게시판</h2>
 
-			<form name="form" id="form" role="form" method="post" action="boardSave.do">
-
+			<form:form name="form" id="form" role="form" method="post" modelAttribute="boardVO" action="boardSave.do">
+				
+				<input type="hidden" name="mode"/>
 			<div class="row">
 				<div class="col-md-6">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="notice_title" id="notice_title" placeholder="제목을 입력해 주세요" required>
+					<form:input path="notice_title" id="notice_title" class="form-control" placeholder="제목을 입력해 주세요" />
 				</div>
 				
 				<div class="col-md-6">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="customer_id" id="customer_id" placeholder="${customer_id }" value="${customer_id }" readonly>
+					<form:input class="form-control" path="customer_id" id="customer_id" placeholder="${customer_id }" value="${customer_id }"/>
 				</div>
 			</div>
 
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" required></textarea>
+					<form:textarea class="form-control" rows="5" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요"></form:textarea>
 				</div>
 
 
@@ -217,7 +218,7 @@
 				<button type="submit" class="btn btn-primary" id="btnSave">저장</button>
 				<button type="button" class="btn btn-primary" id="btnList">목록</button>
 			</div>
-		</form>
+		</form:form>
 	</div>
 	</article>
 					</div>
@@ -394,6 +395,19 @@
 			document.getElementById("btnList").onclick =function(){
 				location.href="list.do"
 			}
+	</script>
+	
+	<script type="text/javascript">
+/* 		var mode = 
+		
+		console.log(mode)
+		 */
+		if('${mode}'=='edit'){
+			document.getElementById('notice_title').value = '${boardContent.notice_title}';
+			document.getElementById('notice_contents').value= '${boardContent.notice_contents}';
+			document.getElementById('customer_id').value= '${boardContent.customer_id}';
+		}
+		
 	</script>
 
 </body>
