@@ -234,13 +234,18 @@
 										<c:out value="${tag}" />
 									</div>
 								</div>
-								<div style="margin-top: 20px">
+								
+								<sec:authorize access="isAuthenticated()">
+                    			<sec:authentication property="principal.username" var="user_id" />
+								</sec:authorize>
 
+								<div style="margin-top: 20px">
+								<c:if test="${content.customer_id eq user_id }">
 									<button type="button" class="btn btn-primary"
 										id="btnUpdate" onclick="location.href='editForm.do?notice_number=${content.notice_number}&mode=edit'">수정</button>
-
 									<button type="button" class="btn btn-primary"
 										id="btnDelete" onclick="location.href='boardDelete.do?notice_number=${content.notice_number}'">삭제</button>
+								</c:if>
 									<button type="button" id="btnList" class="btn btn-primary" >목록</button>
 								</div>
 

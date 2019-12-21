@@ -1,8 +1,5 @@
 package com.java.hotel.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +83,6 @@ public class BoardController {
 		boardVO.setNotice_contents(boardvo.getNotice_contents());
 		boardVO.setCustomer_id(boardvo.getCustomer_id());
 		boardVO.setNotice_title(boardvo.getNotice_title());
-		/* model.addAttribute("content", content); */
 		model.addAttribute("boardContent", boardvo);
 		model.addAttribute("mode", mode);
 		return "boardForm";
