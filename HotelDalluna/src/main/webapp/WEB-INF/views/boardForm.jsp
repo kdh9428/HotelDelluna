@@ -4,6 +4,7 @@
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -186,22 +187,20 @@
 				<input type="hidden" name="mode"/>
 			<div class="row">
 				<div class="col-md-6">
-					<label for="title">제목</label>
+					<label for="notice_title">제목</label>
 					<form:input path="notice_title" id="notice_title" class="form-control" placeholder="제목을 입력해 주세요" />
 				</div>
 				
 				<div class="col-md-6">
-					<label for="reg_id">작성자</label>
-					<form:input class="form-control" path="customer_id" id="customer_id" placeholder="${customer_id }" value="${customer_id }"/>
+					<label for="customer_id">작성자</label>
+					<form:input class="form-control" path="customer_id" id="customer_id" placeholder="${customer_id }" value="${customer_id }" readonly="true"/>
 				</div>
 			</div>
-
+				
 				<div class="mb-3">
-					<label for="content">내용</label>
-					<form:textarea class="form-control" rows="5" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요"></form:textarea>
+					<label for="notice_contents">내용</label>
+					<form:textarea class="form-control" rows="10" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" />
 				</div>
-
-
 			<div class="row">
 				<div class="col-md-12">
 					<label for="tag">TAG</label>
@@ -396,19 +395,19 @@
 				location.href="list.do"
 			}
 	</script>
-	
-	<script type="text/javascript">
-/* 		var mode = 
-		
-		console.log(mode)
-		 */
+	<%-- <% pageContext.setAttribute("newLineChar", "\r\n"); 
+	%> --%>
+<%-- 		var contents = ${fn:replace(boardContent.notice_contentss, newLineChar, '&#10')}; --%>
+<!-- 	<script type="text/javascript">
+
+		 
 		if('${mode}'=='edit'){
 			document.getElementById('notice_title').value = '${boardContent.notice_title}';
-			document.getElementById('notice_contents').value= '${boardContent.notice_contents}';
-			document.getElementById('customer_id').value= '${boardContent.customer_id}';
+			/* document.getElementById('notice_contents').value= ; */
+			document.getElementById('customer_id').value = '${boardContent.customer_id}';
 		}
 		
-	</script>
+	</script> -->
 
 </body>
 </html>

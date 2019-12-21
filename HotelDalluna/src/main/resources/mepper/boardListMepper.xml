@@ -13,9 +13,9 @@
     	<!-- 게시글 작성 -->
     	<insert id="boardWrite" parameterType="com.java.BoardDto.BoardVO">
     		insert into notice
-    			(notice_title,notice_contents,customer_id,ref,boardpw) 
+    			(notice_title,notice_contents,customer_id,ref) 
     		values
-    			( #{notice_title}, #{notice_contents},#{customer_id}, #{ref}, #{boardpw})
+    			( #{notice_title}, #{notice_contents},#{customer_id}, #{ref})
     	</insert>
     	
     	<!-- 게시글 상세보기 -->
