@@ -183,8 +183,12 @@
 			<h2>게시판</h2>
 
 			<form:form name="form" id="form" role="form" method="post" modelAttribute="boardVO" action="boardSave.do">
+				<form:hidden path="notice_number" value="${notice_number}"/>
 				
-				<input type="hidden" name="mode"/>
+				<c:if test="${mode eq 'edit'}">
+					<input type="hidden" name="mode" value="edit"/>
+				</c:if>
+				
 			<div class="row">
 				<div class="col-md-6">
 					<label for="notice_title">제목</label>

@@ -20,4 +20,7 @@ public interface BoardDao {
 	
 	//게시글 삭제 아이디 확인
 	public String boardDeleteId(int notice_number);
+	
+	//게시글 업데이트
+	public int boardUpdate(BoardVO boardVO);
 }

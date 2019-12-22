@@ -31,4 +31,11 @@
     	<delete id="boardDelete">
     		delete from notice where notice_number = #{notice_number}
     	</delete>
+    	
+    	<!-- 게시글 업데이트  -->
+    	<update id="boardUpdate" parameterType="com.java.BoardDto.BoardVO">
+    		update notice 
+    		set notice_title=#{notice_title}, notice_contents=#{notice_contents}, ref=#{ref}
+    		where notice_number = #{notice_number} limit 1
+    	</update>
     </mapper>

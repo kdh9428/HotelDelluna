@@ -43,9 +43,17 @@ public class BoardController {
 	
 	//작성글 저장
 	@RequestMapping(value="boardSave", method =RequestMethod.POST)
-	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardvo, RedirectAttributes rra) throws Exception {
+	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode, RedirectAttributes rra) throws Exception {
 		logger.info("작성글 저장");
-		boardService.boardInsert(boardvo);
+		System.out.println("notice number = " + boardVO.getNotice_number() +mode);
+		//작성글이 수정일 경우
+		if(mode.contentEquals("edit")) {
+		int update = boardService.boardUpdate(boardVO);
+		System.out.println("업데이트 확인"+update);
+		}else {
+		//새로운 글
+		boardService.boardInsert(boardVO);
+		}
 		return "redirect:list.do";
 	}
 	
@@ -53,7 +61,14 @@ public class BoardController {
 	@RequestMapping(value="boardContent" ,method=RequestMethod.GET)
 	public String boardContent(@RequestParam("notice_number") int notice_number, Model model) throws Exception{
 		logger.info("게시물 상세 조회");
-		model.addAttribute("content",boardService.boardContent(notice_number).get(0));
+		
+		BoardVO ref = boardService.boardContent(notice_number).get(0);
+		
+		//게시물 조회수
+		ref.setRef(ref.getRef()+1);
+		boardService.boardUpdate(ref);
+		model.addAttribute("content",ref);
+		
 		return "boardContent";
 	}
 	
@@ -78,7 +93,7 @@ public class BoardController {
 	public String editForm(@RequestParam("notice_number") int notice_number, 
 						@RequestParam("mode") String mode,
 						@ModelAttribute("boardVO") BoardVO boardVO, Model model) throws Exception {
-		System.out.println("게시글 확인"+ notice_number + mode);
+		logger.info("게시물 수정 컨트롤러");
 		BoardVO boardvo = boardService.boardContent(notice_number).get(0);
 		boardVO.setNotice_contents(boardvo.getNotice_contents());
 		boardVO.setCustomer_id(boardvo.getCustomer_id());
@@ -86,7 +101,6 @@ public class BoardController {
 		model.addAttribute("boardContent", boardvo);
 		model.addAttribute("mode", mode);
 		return "boardForm";
-
 	}
-
+	
 }

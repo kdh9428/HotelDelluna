@@ -223,8 +223,8 @@
 										작성자 : ${content.customer_id},
 										</span>
 										
-										<span class="board_date">작성날짜 : <fmt:formatDate value="${content.notice_date}" pattern="yyyy-MM-dd hh:mm:ss"/></span>
-
+										<span class="board_date">작성날짜 : <fmt:formatDate value="${content.notice_date}" pattern="yyyy-MM-dd hh:mm:ss"/>,</span>
+										<span class="board_author">조회수 : ${content.ref}</span>
 									</div>
 
 									<div class="board_content"><pre><c:out value="${content.notice_contents}" /></pre></div>
@@ -240,6 +240,7 @@
 								</sec:authorize>
 
 								<div style="margin-top: 20px">
+								<!-- 작성자가 맞는지 체크 -->
 								<c:if test="${content.customer_id eq user_id }">
 									<button type="button" class="btn btn-primary"
 										id="btnUpdate" onclick="location.href='editForm.do?notice_number=${content.notice_number}&mode=edit'">수정</button>
@@ -248,7 +249,6 @@
 								</c:if>
 									<button type="button" id="btnList" class="btn btn-primary" >목록</button>
 								</div>
-
 							</div>
 							</form>
 						</article>

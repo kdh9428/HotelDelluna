@@ -17,4 +17,7 @@ public interface BoardService {
 
 	//게시글 삭제
 	public int boardDelete( int notice_number) throws Exception;
+	
+	//게시글 업데이트
+	public int boardUpdate(BoardVO boardVO) throws Exception;
 }

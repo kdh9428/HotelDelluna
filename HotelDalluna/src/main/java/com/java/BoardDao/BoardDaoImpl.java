@@ -20,12 +20,9 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public List<BoardVO> boardList() {
-
 		logger.info("boardList Dao 시작");
-		
 		return sqlSession.selectList("com.java.BoardDao.boardList");
 	}
-	
 	
 	//게시판 작성
 	@Override
@@ -37,9 +34,9 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public List<BoardVO> boardContent(int notice_number) {
-		
 		return sqlSession.selectList("com.java.BoardDao.boardContent", notice_number);
 	}
+	
 	//게시글 삭제 아이디확인
 	@Override
 	public String boardDeleteId(int notice_number) {
@@ -50,7 +47,12 @@ public class BoardDaoImpl implements BoardDao {
 	//게시글 삭제
 	@Override
 	public void boardDelete(int notice_number) {
-		
 		sqlSession.delete("com.java.BoardDao.boardDelete", notice_number);
+	}
+	
+	//게시글 업데이트
+	@Override
+	public int boardUpdate(BoardVO boardVO) {
+		return sqlSession.update("com.java.BoardDao.boardUpdate", boardVO);
 	}
 }

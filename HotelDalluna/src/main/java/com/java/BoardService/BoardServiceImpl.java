@@ -23,6 +23,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired 
 	BoardDao boardDao;
+	
 	//게시글 리스트
 	@Override
 	public List<BoardVO> boardList() throws Exception {
@@ -68,6 +69,13 @@ public class BoardServiceImpl implements BoardService {
 			return check=0;
 			
 		}
+	}
+	
+	//업데이트
+	@Override
+	public int boardUpdate(BoardVO boardVO) throws Exception {
+		logger.info("업데이트 확인");
+		return boardDao.boardUpdate(boardVO);
 	}
 
 }
