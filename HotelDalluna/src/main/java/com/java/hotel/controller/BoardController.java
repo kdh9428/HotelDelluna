@@ -45,11 +45,13 @@ public class BoardController {
 	@RequestMapping(value="boardSave", method =RequestMethod.POST)
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode, RedirectAttributes rra) throws Exception {
 		logger.info("작성글 저장");
-		System.out.println("notice number = " + boardVO.getNotice_number() +mode);
 		//작성글이 수정일 경우
 		if(mode.contentEquals("edit")) {
+			
 		int update = boardService.boardUpdate(boardVO);
-		System.out.println("업데이트 확인"+update);
+		if(update==1) {
+			System.out.println("확인중"+update);
+		}
 		}else {
 		//새로운 글
 		boardService.boardInsert(boardVO);
@@ -94,6 +96,8 @@ public class BoardController {
 						@RequestParam("mode") String mode,
 						@ModelAttribute("boardVO") BoardVO boardVO, Model model) throws Exception {
 		logger.info("게시물 수정 컨트롤러");
+		
+		//ModelAttribute로 바인딩 시킴
 		BoardVO boardvo = boardService.boardContent(notice_number).get(0);
 		boardVO.setNotice_contents(boardvo.getNotice_contents());
 		boardVO.setCustomer_id(boardvo.getCustomer_id());

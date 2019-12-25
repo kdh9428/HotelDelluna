@@ -187,6 +187,7 @@
 				
 				<c:if test="${mode eq 'edit'}">
 					<input type="hidden" name="mode" value="edit"/>
+					<form:hidden path="ref" value="${boardContent.ref }"/>
 				</c:if>
 				
 			<div class="row">
