@@ -48,6 +48,8 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
+	<bean class="com.java.error.controller.CommonException"/>
+	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-
+	
 </beans>

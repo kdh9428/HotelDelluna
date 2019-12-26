@@ -19,40 +19,41 @@ public class BoardDaoImpl implements BoardDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVO> boardList() {
+	public List<BoardVO> boardList()throws Exception {
 		logger.info("boardList Dao 시작");
 		return sqlSession.selectList("com.java.BoardDao.boardList");
 	}
 	
 	//게시판 작성
 	@Override
-	public void boardWrite(BoardVO boardVO) {
+	public void boardWrite(BoardVO boardVO) throws Exception {
 		// TODO Auto-generated method stub
 		logger.info("boardWrite 작성");
 		sqlSession.insert("com.java.BoardDao.boardWrite",boardVO);
 	}
 	
+	//상세보기
 	@Override
-	public List<BoardVO> boardContent(int notice_number) {
+	public List<BoardVO> boardContent(int notice_number) throws Exception{
 		return sqlSession.selectList("com.java.BoardDao.boardContent", notice_number);
 	}
 	
 	//게시글 삭제 아이디확인
 	@Override
-	public String boardDeleteId(int notice_number) {
+	public String boardDeleteId(int notice_number)throws Exception {
 		logger.info("게시글 삭제 아이디 확인");
 		return sqlSession.selectOne("com.java.BoardDao.boardDeleteId", notice_number);
 	}
 	
 	//게시글 삭제
 	@Override
-	public void boardDelete(int notice_number) {
+	public void boardDelete(int notice_number)throws Exception {
 		sqlSession.delete("com.java.BoardDao.boardDelete", notice_number);
 	}
 	
 	//게시글 업데이트
 	@Override
-	public int boardUpdate(BoardVO boardVO) {
+	public int boardUpdate(BoardVO boardVO) throws Exception {
 		return sqlSession.update("com.java.BoardDao.boardUpdate", boardVO);
 	}
 }

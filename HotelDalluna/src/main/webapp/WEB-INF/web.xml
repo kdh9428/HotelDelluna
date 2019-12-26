@@ -45,7 +45,7 @@
 	</servlet-mapping>
 
 	<!-- html 설정 -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>htmlServlet</servlet-name>
 		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
@@ -54,10 +54,10 @@
 	<servlet-mapping>
 		<servlet-name>htmlServlet</servlet-name>
 		<url-pattern>*.html</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	
 	<!-- Exception 처리 -->
-	<!-- <error-page>
+	<error-page>
 		<error-code>400</error-code>
 		<location>/WEB-INF/views/Exception.jsp</location>
 	</error-page>
@@ -76,7 +76,8 @@
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/views/Exception.jsp</location>
-	</error-page> -->
+	</error-page>
+
 
 	<!-- 한글처리 -->
     <filter>

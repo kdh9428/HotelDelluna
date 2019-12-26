@@ -7,10 +7,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.java.BoardDto.BoardVO;
@@ -23,6 +25,15 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	//예외처리 연습
+	@ExceptionHandler(IllegalStateException.class)
+	public String exceptionHandler(Model model, IllegalStateException e) {
+		System.out.println("exception 처리 ");
+		logger.info("exception : " + e.getMessage());
+		model.addAttribute("exception", e);
+		return "Exception";
+	}
 	
 	//게시판 리스트
 	@RequestMapping("list")
@@ -65,7 +76,6 @@ public class BoardController {
 		logger.info("게시물 상세 조회");
 		
 		BoardVO ref = boardService.boardContent(notice_number).get(0);
-		
 		//게시물 조회수
 		ref.setRef(ref.getRef()+1);
 		boardService.boardUpdate(ref);
@@ -106,5 +116,7 @@ public class BoardController {
 		model.addAttribute("mode", mode);
 		return "boardForm";
 	}
+	
+	
 	
 }

@@ -48,6 +48,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardContent(int notice_number) throws Exception {
 		logger.info("게시글 상세보기");
+		
 		return boardDao.boardContent(notice_number);
 	}
 	
@@ -67,10 +68,8 @@ public class BoardServiceImpl implements BoardService {
 			return check;
 		}else {
 			return check=0;
-			
 		}
 	}
-	
 	//업데이트
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
