@@ -27,13 +27,13 @@ public class BoardController {
 	BoardService boardService;
 	
 	//예외처리 연습
-	@ExceptionHandler(Exception.class)
-	public String exceptionHandler(Model model, Exception e) {
-		System.out.println("exception 처리 ");
-		logger.info("exception : " + e.getMessage());
-		model.addAttribute("exception", e);
-		return "Exception";
-	}
+//	@ExceptionHandler(Exception.class)
+//	public String exceptionHandler(Model model, Exception e) {
+//		System.out.println("exception 처리 ");
+//		logger.info("exception : " + e.getMessage());
+//		model.addAttribute("exception", e);
+//		return "Exception";
+//	}
 	
 	//게시판 리스트
 	@RequestMapping("list")
