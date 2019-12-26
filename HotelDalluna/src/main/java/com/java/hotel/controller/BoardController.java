@@ -27,8 +27,8 @@ public class BoardController {
 	BoardService boardService;
 	
 	//예외처리 연습
-	@ExceptionHandler(IllegalStateException.class)
-	public String exceptionHandler(Model model, IllegalStateException e) {
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Model model, Exception e) {
 		System.out.println("exception 처리 ");
 		logger.info("exception : " + e.getMessage());
 		model.addAttribute("exception", e);

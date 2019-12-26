@@ -58,11 +58,11 @@
 	
 	<!-- Exception 처리 -->
 	<error-page>
-		<error-code>400</error-code>
+		<error-code>404</error-code>
 		<location>/WEB-INF/views/Exception.jsp</location>
 	</error-page>
-	<error-page>
-		<error-code>404</error-code>
+	<!-- <error-page>
+		<error-code>400</error-code>
 		<location>/WEB-INF/views/Exception.jsp</location>
 	</error-page>
 	<error-page>
@@ -76,7 +76,7 @@
 	<error-page>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/WEB-INF/views/Exception.jsp</location>
-	</error-page>
+	</error-page> -->
 
 
 	<!-- 한글처리 -->
