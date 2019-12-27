@@ -46,7 +46,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	//게시판 상세보기
-	@Transactional
 	@Override
 	public BoardVO boardContent(int notice_number) throws Exception {
 		logger.info("게시글 상세보기");
@@ -55,15 +54,10 @@ public class BoardServiceImpl implements BoardService {
 		BoardVO boardvo = boardDao.boardContent(notice_number).get(0);
 		/* boardvo.addAll(boardvo.get(0).getRef()+1); */
 		boardvo.setRef(boardvo.getRef()+1);
-		
 		System.out.println("ref서비스"+(boardvo.getRef()));
-		
 		boardDao.boardUpdate(boardvo);
-		
 		boardvo.setNotice_title("sadjkfsdajklfsdakjlfsdakjlfdaskljfsdakljfdaskljfdskljfdaskljfdaskljfdsakljfsdalkjfdsa");
-		
 		boardDao.boardUpdate(boardvo);
-		
 		return boardvo;
 	}
 	
