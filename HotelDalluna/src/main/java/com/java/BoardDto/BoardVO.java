@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardVO {
 
-	private String notice_number;//번호
+	private int notice_number;//번호
 	private String notice_title;//제목
 	private String notice_contents;//내용
 	private String customer_id; //작성자
@@ -12,6 +12,13 @@ public class BoardVO {
 	private Date notice_date;//작성일
 	private String boardpw;
 	
+	
+	public int getNotice_number() {
+		return notice_number;
+	}
+	public void setNotice_number(int notice_number) {
+		this.notice_number = notice_number;
+	}
 	public String getBoardpw() {
 		return boardpw;
 	}
@@ -23,12 +30,6 @@ public class BoardVO {
 	}
 	public void setCustomer_id(String customer_id) {
 		this.customer_id = customer_id;
-	}
-	public String getNotice_number() {
-		return notice_number;
-	}
-	public void setNotice_number(String notice_number) {
-		this.notice_number = notice_number;
 	}
 	public String getNotice_title() {
 		return notice_title;

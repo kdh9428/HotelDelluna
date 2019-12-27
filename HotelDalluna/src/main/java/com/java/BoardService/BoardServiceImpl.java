@@ -49,7 +49,18 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> boardContent(int notice_number) throws Exception {
 		logger.info("게시글 상세보기");
 		
-		return boardDao.boardContent(notice_number);
+		List<BoardVO> boardvo = boardDao.boardContent(notice_number);
+		
+		/* boardvo.addAll(boardvo.get(0).getRef()+1); */
+		BoardVO vo = new BoardVO();
+		vo.setRef(boardvo.get(0).getRef()+1);
+		vo.setNotice_number(notice_number);
+		System.out.println("ref서비스"+(boardvo.get(0).getRef()+1));
+		
+		boardDao.boardUpdate(vo);
+		
+		
+		return boardvo;
 	}
 	
 	@Override

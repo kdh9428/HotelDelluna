@@ -15,8 +15,6 @@ public class CommonException {
 	@ExceptionHandler(Exception.class)
 	public String Exception(Model model, Exception e) {
 		logger.info("exception : " + e.getMessage());
-		System.out.println("exception 연습" +e.getMessage());
-		logger.info("@ControllerAdvice error" + e.getMessage());
 		return "Exception";
 	}
 }

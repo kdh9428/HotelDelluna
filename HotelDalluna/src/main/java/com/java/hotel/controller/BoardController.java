@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -71,18 +72,30 @@ public class BoardController {
 	}
 	
 	//게시물 조회
+	
 	@RequestMapping(value="boardContent" ,method=RequestMethod.GET)
 	public String boardContent(@RequestParam("notice_number") int notice_number, Model model) throws Exception{
 		logger.info("게시물 상세 조회");
 		
 		BoardVO ref = boardService.boardContent(notice_number).get(0);
 		//게시물 조회수
-		ref.setRef(ref.getRef()+1);
-		boardService.boardUpdate(ref);
+		
+//		ref.setRef(ref.getRef()+1);
+//		System.out.println("게시물 조회 테스트중"+ref.getRef());
+//		boardService.boardUpdate(ref);
+//		System.out.println("테스트 확인");
+		
 		model.addAttribute("content",ref);
 		
 		return "boardContent";
 	}
+	
+	/*
+	 * public void boardtest(int notice_number) throws Exception { BoardVO test
+	 * =boardService.boardContent(notice_number).get(0); test.setNotice_title(
+	 * "slkdjfslkdjfslkdjfkljfsdasdfasfdsdfasdfkjlfdsljkfdsljkfsdlk");
+	 * boardService.boardUpdate(test); }
+	 */
 	
 	//게시물 삭제
 	@RequestMapping("boardDelete")
