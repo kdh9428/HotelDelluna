@@ -77,7 +77,7 @@ public class BoardController {
 	public String boardContent(@RequestParam("notice_number") int notice_number, Model model) throws Exception{
 		logger.info("게시물 상세 조회");
 		
-		BoardVO ref = boardService.boardContent(notice_number).get(0);
+		BoardVO ref = boardService.boardContent(notice_number);
 		//게시물 조회수
 		
 //		ref.setRef(ref.getRef()+1);
@@ -121,7 +121,7 @@ public class BoardController {
 		logger.info("게시물 수정 컨트롤러");
 		
 		//ModelAttribute로 바인딩 시킴
-		BoardVO boardvo = boardService.boardContent(notice_number).get(0);
+		BoardVO boardvo = boardService.boardContent(notice_number);
 		boardVO.setNotice_contents(boardvo.getNotice_contents());
 		boardVO.setCustomer_id(boardvo.getCustomer_id());
 		boardVO.setNotice_title(boardvo.getNotice_title());

@@ -11,9 +11,9 @@ public interface BoardService {
 	
 	//게시글 작성
 	public void boardInsert(BoardVO boardVO) throws Exception;
-	
+
 	//게시글 상세보기
-	public List<BoardVO> boardContent(int notice_number) throws Exception;
+	public BoardVO boardContent(int notice_number) throws Exception;
 
 	//게시글 삭제
 	public int boardDelete( int notice_number) throws Exception;

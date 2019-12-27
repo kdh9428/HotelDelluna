@@ -19,7 +19,7 @@
 	<!-- 선언적 Transaction 설정  -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="board*" rollback-for="Exception" propagation="REQUIRED" />
+			<tx:method name="boardContent" rollback-for="Exception" propagation="REQUIRED" />
 		</tx:attributes>    
  	</tx:advice> 	
 	<!-- 트랜잭션 설정 -->

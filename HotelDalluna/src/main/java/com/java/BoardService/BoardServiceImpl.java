@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
@@ -45,20 +46,23 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	//게시판 상세보기
+	@Transactional
 	@Override
-	public List<BoardVO> boardContent(int notice_number) throws Exception {
+	public BoardVO boardContent(int notice_number) throws Exception {
 		logger.info("게시글 상세보기");
 		
-		List<BoardVO> boardvo = boardDao.boardContent(notice_number);
-		
+		/* List<BoardVO> boardvo = boardDao.boardContent(notice_number); */
+		BoardVO boardvo = boardDao.boardContent(notice_number).get(0);
 		/* boardvo.addAll(boardvo.get(0).getRef()+1); */
-		BoardVO vo = new BoardVO();
-		vo.setRef(boardvo.get(0).getRef()+1);
-		vo.setNotice_number(notice_number);
-		System.out.println("ref서비스"+(boardvo.get(0).getRef()+1));
+		boardvo.setRef(boardvo.getRef()+1);
 		
-		boardDao.boardUpdate(vo);
+		System.out.println("ref서비스"+(boardvo.getRef()));
 		
+		boardDao.boardUpdate(boardvo);
+		
+		boardvo.setNotice_title("sadjkfsdajklfsdakjlfsdakjlfdaskljfsdakljfdaskljfdskljfdaskljfdaskljfdsakljfsdalkjfdsa");
+		
+		boardDao.boardUpdate(boardvo);
 		
 		return boardvo;
 	}
