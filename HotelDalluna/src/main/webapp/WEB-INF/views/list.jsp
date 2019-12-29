@@ -79,14 +79,11 @@ function fn_prev(page, range, rangeSize) {
 
 		
 
-		var url = "${pageContext.request.contextPath}/boardList";
+		var url = "${pageContext.request.contextPath}/list.do";
 
 		url = url + "?page=" + page;
 
 		url = url + "&range=" + range;
-
-		
-
 		location.href = url;
 
 	}
@@ -97,7 +94,7 @@ function fn_prev(page, range, rangeSize) {
 
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 
-		var url = "${pageContext.request.contextPath}/boardList";
+		var url = "${pageContext.request.contextPath}/list.do";
 
 		url = url + "?page=" + page;
 
@@ -121,7 +118,7 @@ function fn_prev(page, range, rangeSize) {
 
 		
 
-		var url = "${pageContext.request.contextPath}/boardList";
+		var url = "${pageContext.request.contextPath}/list.do";
 
 		url = url + "?page=" + page;
 
