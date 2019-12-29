@@ -2,12 +2,13 @@ package com.java.BoardService;
 
 import java.util.List;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
 
 public interface BoardService {
 	
 	//게시판 리스트
-	public List<BoardVO> boardList() throws Exception;
+	public List<BoardVO> boardList(Pagination pagination) throws Exception;
 	
 	//게시글 작성
 	public void boardInsert(BoardVO boardVO) throws Exception;
@@ -20,4 +21,7 @@ public interface BoardService {
 	
 	//게시글 업데이트
 	public int boardUpdate(BoardVO boardVO) throws Exception;
+	
+	//총 게시글 수 확인
+	public int boardListCnt() throws Exception;
 }

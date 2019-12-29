@@ -12,7 +12,6 @@ public class BoardVO {
 	private Date notice_date;//작성일
 	private String boardpw;
 	
-	
 	public int getNotice_number() {
 		return notice_number;
 	}

@@ -2,12 +2,13 @@ package com.java.BoardDao;
 
 import java.util.List;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
 
 public interface BoardDao {
 	
 	//게시판 목록
-	public List<BoardVO> boardList() throws Exception;
+	public List<BoardVO> boardList(Pagination pagination) throws Exception;
 	
 	//게시글 작성
 	public void boardWrite(BoardVO boardVO) throws Exception;
@@ -23,4 +24,8 @@ public interface BoardDao {
 	
 	//게시글 업데이트
 	public int boardUpdate(BoardVO boardVO) throws Exception;
+	
+	//총 게시글 수 확인
+	public int boardListCnt() throws Exception;
+	
 }

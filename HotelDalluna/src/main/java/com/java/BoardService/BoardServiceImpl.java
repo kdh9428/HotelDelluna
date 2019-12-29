@@ -9,8 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 
@@ -27,10 +27,10 @@ public class BoardServiceImpl implements BoardService {
 	
 	//게시글 리스트
 	@Override
-	public List<BoardVO> boardList() throws Exception {
+	public List<BoardVO> boardList(Pagination pagination) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return boardDao.boardList();
+		return boardDao.boardList(pagination);
 	}
 	//게시판 작성
 	@Override
@@ -50,13 +50,9 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO boardContent(int notice_number) throws Exception {
 		logger.info("게시글 상세보기");
 		
-		/* List<BoardVO> boardvo = boardDao.boardContent(notice_number); */
+		//게시글 조회수
 		BoardVO boardvo = boardDao.boardContent(notice_number).get(0);
-		/* boardvo.addAll(boardvo.get(0).getRef()+1); */
 		boardvo.setRef(boardvo.getRef()+1);
-		System.out.println("ref서비스"+(boardvo.getRef()));
-		boardDao.boardUpdate(boardvo);
-		boardvo.setNotice_title("sadjkfsdajklfsdakjlfsdakjlfdaskljfsdakljfdaskljfdskljfdaskljfdaskljfdsakljfsdalkjfdsa");
 		boardDao.boardUpdate(boardvo);
 		return boardvo;
 	}
@@ -85,5 +81,12 @@ public class BoardServiceImpl implements BoardService {
 		logger.info("업데이트 확인");
 		return boardDao.boardUpdate(boardVO);
 	}
+	
+	@Override
+	public int boardListCnt() throws Exception {
+		
+		return boardDao.boardListCnt();
+	}
+	
 
 }

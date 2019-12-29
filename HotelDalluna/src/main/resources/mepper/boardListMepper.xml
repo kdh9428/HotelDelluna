@@ -6,25 +6,49 @@
     
     <mapper namespace="com.java.BoardDao">
     	<!-- 게시판 리스트 -->
-    	<select id="boardList" resultType="com.java.BoardDto.BoardVO">
-    		select * from notice
+    	<select id="boardList" parameterType="com.java.BoardCommon.Pagination" resultType="com.java.BoardDto.BoardVO">
+    		select 
+    				* 
+    		from 
+    				notice
+    		limit #{startList}, #{listSize}
+    		
+    	</select>
+    	
+    	<!-- 전체 게시글 수 -->
+    	<select id="boardListCnt" resultType="int">
+    	
+    	select
+    			count(*) as listCnt
+    	from
+    			notice
+    			
     	</select>
     	
     	<!-- 게시글 작성 -->
     	<insert id="boardWrite" parameterType="com.java.BoardDto.BoardVO">
-    		insert into notice
-    			(notice_title,notice_contents,customer_id,ref) 
+    		insert into 
+    				notice(notice_title,notice_contents,customer_id,ref) 
     		values
-    			( #{notice_title}, #{notice_contents},#{customer_id}, #{ref})
+    				( #{notice_title}, #{notice_contents},#{customer_id}, #{ref})
     	</insert>
     	
     	<!-- 게시글 상세보기 -->
     	<select id="boardContent" parameterType="int" resultType="com.java.BoardDto.BoardVO">
-    		select * from notice where notice_number = #{notice_number}
+    		select 
+    				* 
+    		from 
+    				notice 
+    		where 
+    				notice_number = #{notice_number}
     	</select>
     	
     	<select id="boardDeleteId" parameterType="int" resultType="String">
-    		select customer_id from notice where notice_number = #{notice_number}
+    		select 
+    				customer_id 
+    		from 
+    				notice 
+    		where notice_number = #{notice_number}
     	</select>
     	
     	<!-- 게시글 삭제 -->

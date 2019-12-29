@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
 
 @Repository
@@ -19,9 +20,9 @@ public class BoardDaoImpl implements BoardDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVO> boardList()throws Exception {
+	public List<BoardVO> boardList(Pagination pagination)throws Exception {
 		logger.info("boardList Dao 시작");
-		return sqlSession.selectList("com.java.BoardDao.boardList");
+		return sqlSession.selectList("com.java.BoardDao.boardList", pagination);
 	}
 	
 	//게시판 작성
@@ -57,5 +58,10 @@ public class BoardDaoImpl implements BoardDao {
 		logger.info("테테테테테"+boardVO.getRef());
 		
 		return sqlSession.update("com.java.BoardDao.boardUpdate", boardVO);
+	}
+	
+	@Override
+	public int boardListCnt() throws Exception {
+		return sqlSession.selectOne("com.java.BoardDao.boardListCnt");
 	}
 }
