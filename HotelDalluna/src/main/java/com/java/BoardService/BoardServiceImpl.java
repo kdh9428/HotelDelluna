@@ -41,6 +41,7 @@ public class BoardServiceImpl implements BoardService {
 		 * passwordEncoder.encode(pw);
 		 */
 		/* boardVO.setBoardpw(encoder); */
+		System.out.println("boardVO 확인"+boardVO.getCustomer_id());
 		boardDao.boardWrite(boardVO);
 		
 	}
