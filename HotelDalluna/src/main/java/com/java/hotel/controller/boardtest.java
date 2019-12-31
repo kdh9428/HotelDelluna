@@ -17,7 +17,7 @@ import com.java.BoardCommon.Pagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
-import com.java.dao.ReservationDao;
+import com.java.dao.ReservationDaoImpl;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
@@ -44,7 +44,7 @@ public class boardtest {
 	ReservationService reservationService;
 	
 	@Autowired
-	ReservationDao reservationDao;
+	ReservationDaoImpl reservationDao;
 	
 	@Test @Ignore
 	public void testGetBoardList() throws Exception {

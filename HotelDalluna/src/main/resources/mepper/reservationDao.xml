@@ -58,6 +58,16 @@
 			customer_id=#{customer_id}
 			]]>  
 	</select>
+	
+	<!-- 총 예약 개수 확인 -->
+	<select id="reservationCount" parameterType="String" resultType="int">
+		select
+			count(*)
+		from
+			reservation
+		where
+			customer_id=#{customer_id}
+	</select>
 	 
 
 </mapper>

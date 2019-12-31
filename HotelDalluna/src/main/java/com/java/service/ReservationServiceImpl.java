@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.java.dao.InterfaceDao;
+import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
 
 @Service
@@ -24,7 +24,7 @@ public class ReservationServiceImpl implements ReservationService {
 	private static final Logger logger = LoggerFactory.getLogger(ReservationServiceImpl.class.getName());
 	
 	@Autowired
-	protected InterfaceDao interfaceDao;
+	protected ReservationDao interfaceDao;
 	
 	// 예약하기
 	@Transactional
