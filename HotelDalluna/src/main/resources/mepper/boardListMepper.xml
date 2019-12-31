@@ -11,6 +11,8 @@
     				* 
     		from 
     				notice
+    		order by 
+    				notice_number desc
     		limit #{startList}, #{listSize}
     		
     	</select>

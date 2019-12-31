@@ -39,7 +39,6 @@ public class BoardController {
 	public String boardList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
 											@RequestParam(required = false, defaultValue = "1") int range) throws Exception{
 		logger.info("list 시작");
-		System.out.println("컨트롤러"+page+range);
 		int listCnt = boardService.boardListCnt();
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, listCnt);

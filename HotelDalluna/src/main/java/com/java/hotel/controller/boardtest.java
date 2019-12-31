@@ -17,11 +17,14 @@ import com.java.BoardCommon.Pagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
+import com.java.dao.ReservationDao;
+import com.java.dto.ReservationDTO;
+import com.java.service.ReservationService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-		"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"classpath:WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/dispatcher-servlet.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/security-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/transaction-context.xml"
@@ -37,8 +40,13 @@ public class boardtest {
 	@Autowired
 	BoardService boardService;
 	
+	@Autowired
+	ReservationService reservationService;
 	
-	@Test @Ignore 
+	@Autowired
+	ReservationDao reservationDao;
+	
+	@Test @Ignore
 	public void testGetBoardList() throws Exception {
 
 		Pagination pagination = new Pagination();
@@ -54,7 +62,8 @@ public class boardtest {
 			for(BoardVO list : boardList) {
 
 				logger.info(list.getNotice_title());
-
+				logger.info(list.getNotice_contents());
+				
 			}
 
 		} else {
@@ -65,7 +74,7 @@ public class boardtest {
 
 	}
 
-	@Test  
+	@Test  @Ignore 
 	public void testInsertBoard() throws Exception {
 		
 
@@ -79,19 +88,16 @@ public class boardtest {
 		
 
 
-   for( int i = 1; i < 100 ; i++) {
-    boardVO.setNotice_title(i + " 번째 게시물 입니다.");
+		for (int i = 1; i < 100; i++) {
+			boardVO.setNotice_title(i + " 번째 게시물 입니다.");
 
-    boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
-    boardVO.setCustomer_id("aaa");
-    boardVO.setRef(0);
+			boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
+			boardVO.setCustomer_id("aaa");
+			boardVO.setRef(0);
 			/* boardDao.boardUpdate(boardVO); */
-		boardService.boardInsert(boardVO);
+			boardService.boardInsert(boardVO);
 
-
-		logger.info("\n Insert Board Result ");
-
-
+			logger.info("\n Insert Board Result ");
 
 //		if(result == 1) {
 //
@@ -102,11 +108,32 @@ public class boardtest {
 //			logger.info("\n 게시물 등록 실패");
 //
 //		}
-
-  }
-
+		}
 	}
 
+	
+	
+	//예약 완료 테스트
+	@Test
+	public void reservationTest() {
+		
+		ReservationDTO reservation =  new ReservationDTO();
+		
+		List<ReservationDTO> reservation1 = reservationDao.reservationConfirm("aaa");
+		
+		if(reservation1.size() > 0 ) {
+			
+			for(ReservationDTO size : reservation1) {
+				logger.info(size.getReservation_number());
+				logger.info(size.getReservation_date_in()+ " ~ " + size.getReservation_date_out());
+				logger.info(size.getCustomer_id());
+				/* logger.info(size.getPrice()); */
+			}
+			
+		}
+		
+		
+	}
 
 
 }

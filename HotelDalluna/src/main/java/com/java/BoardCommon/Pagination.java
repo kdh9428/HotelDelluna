@@ -102,7 +102,7 @@ public class Pagination {
 		
 		//이전 버튼 상태
 		this.prev = range ==1 ? false:true; //첫번째 페이지에서는 이전 버튼이 필요 없기 때문에 1이라면 false
-		System.out.println("확인중"+page+",,"+range+",,"+listCnt);
+		
 		//다음 버튼 상태 //현재 페이지의 마지막 페이지 번호가 전체 페이지 개수 보다 크면 활성화
 		this.next = endPage>pageCnt?false:true;
 		if(this.endPage>this.pageCnt) { //마지막번호가 총개수보다 크면 마지막 번호로 셋팅되도록 해준다.

@@ -34,8 +34,6 @@ public class BoardVO {
 		return notice_title;
 	}
 	public void setNotice_title(String notice_title) {
-		
-		System.out.println("제발");
 		this.notice_title = notice_title;
 	}
 	public String getNotice_contents() {
