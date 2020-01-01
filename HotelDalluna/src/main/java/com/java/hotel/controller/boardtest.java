@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.java.BoardCommon.Pagination;
+import com.java.BoardCommon.ReservationPage;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
@@ -119,20 +120,36 @@ public class boardtest {
 		
 		ReservationDTO reservation =  new ReservationDTO();
 		
-		List<ReservationDTO> reservation1 = reservationDao.reservationConfirm("aaa");
+//		List<ReservationDTO> reservation1 = reservationDao.reservationConfirm("aaa");
+//		
+//		if(reservation1.size() > 0 ) {
+//			
+//			for(ReservationDTO size : reservation1) {
+//				logger.info(size.getReservation_number());
+//				logger.info(size.getReservation_date_in()+ " ~ " + size.getReservation_date_out());
+//				logger.info(size.getCustomer_id());
+//			}
+//			
+//		}
+		int listCnt = reservationDao.reservationCount("aaa");
+		System.out.println(listCnt);
+//		logger.info(reservationDao.reservationCount("aaa"));
 		
-		if(reservation1.size() > 0 ) {
+		ReservationPage page = new ReservationPage();
+		page.pageInfo(1, 1, listCnt);
+		page.setCustomer_id("aaa");
+		List<ReservationDTO> reserva =  reservationService.reservationConfirm(page);
+		System.out.println("확인"+reserva.get(0).getCustomer_id());
+		for(ReservationDTO pages : reserva) {
+			System.out.println(pages.getConfirmation_payment());
+			System.out.println(pages.getAdult());
+			System.out.println(pages.getChild());
+			logger.info(pages.getCustomer_id());
+			System.out.println(pages.getReservation_date_in());
+			System.out.println(pages.getReservation_date_out());
 			
-			for(ReservationDTO size : reservation1) {
-				logger.info(size.getReservation_number());
-				logger.info(size.getReservation_date_in()+ " ~ " + size.getReservation_date_out());
-				logger.info(size.getCustomer_id());
-				/* logger.info(size.getPrice()); */
-			}
 			
 		}
-		
-		
 	}
 
 

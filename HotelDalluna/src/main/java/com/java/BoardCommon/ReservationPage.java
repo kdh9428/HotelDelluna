@@ -1,9 +1,10 @@
 package com.java.BoardCommon;
 
-public class Pagination {
-
+public class ReservationPage {
 	
-	private int listSize=10; 	//초기값 목록 개수, 한 페이지당 보여질 리스트의 개수
+	
+	private String customer_id;
+	private int listSize=1; 	//초기값 목록 개수, 한 페이지당 보여질 리스트의 개수
 	private int rangeSize=10; 	//초기값 페이지 범위 10으로 세팅, 한 페이지 범위에 보여질 페이지의 개수
 	private int page;	//현재 목록 페이지
 	private int range;	//각 페이지 범위 시작 번호
@@ -15,74 +16,133 @@ public class Pagination {
 	private boolean prev;	//이전 페이지 여부
 	private boolean next;	//다음 페이지 여부
 
-	public int getStartList() {
-		return startList;
+	
+	
+
+
+	public String getCustomer_id() {
+		return customer_id;
 	}
-	public void setStartList(int startList) {
-		this.startList = startList;
+
+
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
+
+
 	public int getListSize() {
 		return listSize;
 	}
+
+
 	public void setListSize(int listSize) {
 		this.listSize = listSize;
 	}
+
+
 	public int getRangeSize() {
 		return rangeSize;
 	}
+
+
 	public void setRangeSize(int rangeSize) {
 		this.rangeSize = rangeSize;
 	}
+
+
 	public int getPage() {
 		return page;
 	}
+
+
 	public void setPage(int page) {
 		this.page = page;
 	}
+
+
 	public int getRange() {
 		return range;
 	}
+
+
 	public void setRange(int range) {
 		this.range = range;
 	}
+
+
 	public int getListCnt() {
 		return listCnt;
 	}
+
+
 	public void setListCnt(int listCnt) {
 		this.listCnt = listCnt;
 	}
+
+
 	public int getPageCnt() {
 		return pageCnt;
 	}
+
+
 	public void setPageCnt(int pageCnt) {
 		this.pageCnt = pageCnt;
 	}
+
+
 	public int getStartPage() {
 		return startPage;
 	}
+
+
 	public void setStartPage(int startPage) {
 		this.startPage = startPage;
 	}
+
+
 	public int getEndPage() {
 		return endPage;
 	}
+
+
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
 	}
+
+
+	public int getStartList() {
+		return startList;
+	}
+
+
+	public void setStartList(int startList) {
+		this.startList = startList;
+	}
+
+
 	public boolean isPrev() {
 		return prev;
 	}
+
+
 	public void setPrev(boolean prev) {
 		this.prev = prev;
 	}
+
+
 	public boolean isNext() {
 		return next;
 	}
+
+
 	public void setNext(boolean next) {
 		this.next = next;
 	}
-	
+
 	public void pageInfo(int page, int range, int listCnt) {
+		
+		System.out.println("계산 시작"+page + range + listCnt);
+		
 		this.page=page;	//페이지 정보
 		this.range = range;	//페이지 범위 정보
 		this.listCnt=listCnt;	//게시물의 총 개수
@@ -112,4 +172,7 @@ public class Pagination {
 			next=false;//다음 페이지에 대한 이동을 하지 못하도록 false를 준다.
 		}
 	}
+	
+	
+	
 }

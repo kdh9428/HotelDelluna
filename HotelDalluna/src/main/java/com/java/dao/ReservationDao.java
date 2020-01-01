@@ -2,6 +2,7 @@ package com.java.dao;
 
 import java.util.List;
 
+import com.java.BoardCommon.ReservationPage;
 import com.java.dto.ReservationDTO;
 
 public interface ReservationDao {
@@ -26,7 +27,7 @@ public interface ReservationDao {
 	public void reservationCancell(String reservation_number);
 	
 	//예약 완료 후 예약 확인
-	public List<ReservationDTO> reservationConfirm(String customer_id);
+	public List<ReservationDTO> reservationConfirm(ReservationPage reservationPage);
 	
 	//총 예약 완료 개수 확인
 	public int reservationCount (String customer_id);

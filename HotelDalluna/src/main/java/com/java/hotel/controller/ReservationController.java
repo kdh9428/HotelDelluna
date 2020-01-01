@@ -6,6 +6,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.java.BoardCommon.ReservationPage;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
@@ -29,7 +32,7 @@ public class ReservationController  {
 	
 	
 	@Autowired
-	private ReservationService reservation;
+	private ReservationService reservationService;
 	
 	//예약 페이지
 	@RequestMapping("Reservation.do")
@@ -43,7 +46,7 @@ public class ReservationController  {
 	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		logger.info("reservationCheck 컨트롤러 확인");
 		String page;
-		 int check = reservation.reservationCheck(reservationDto);
+		 int check = reservationService.reservationCheck(reservationDto);
 		 
 		 //check가 1이면 예약 되어있음 
 		 if(check==1) {
@@ -58,10 +61,19 @@ public class ReservationController  {
 	
 	//예약 완료 확인
 	@RequestMapping("ReservationConfirm.do")
-	public String reservationConfirm(ReservationDTO reservationDto, Model model) {
-		 
-		reservation.reservationConfirm();
-		 List<ReservationDTO> reservationConfirm = reservation.reservationConfirm(); 
+	public String reservationConfirm(@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range, Model model) {
+		//로그인 id Security에서 받아오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		//페이징 처리
+		ReservationPage pages = new ReservationPage(); 
+		
+		//총 페이지 가져오기
+		pages.pageInfo(page, range, reservationService.reservationCount(auth.getName()));
+//		pages.setCustmer_id(auth.getName());
+		reservationService.reservationConfirm(pages);
+		 List<ReservationDTO> reservationConfirm = reservationService.reservationConfirm(pages); 
 		/*
 		 * for(ReservationDTO vo:dto1) { String listresult = vo.getReservation_number();
 		 * System.out.println("데이터 확인중.."+listresult+", "+ vo.getPriceproduct()); }
@@ -78,7 +90,7 @@ public class ReservationController  {
 	
 	@RequestMapping("ReservationCancell.do")
 	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
-		reservation.reservationCancell(reservation_number);
+		reservationService.reservationCancell(reservation_number);
 		
 		return"Reservation";
 	}

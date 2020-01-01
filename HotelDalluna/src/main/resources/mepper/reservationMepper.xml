@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.java.dao.InterfaceDao">
+<mapper namespace="com.java.dao.ReservationDao">
 	
 	<!-- 예약이 되어있나 체크 -->
 	<select id="reservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="int">
@@ -46,8 +46,7 @@
 	</delete>
 	
 	<!-- 예약 완료 후 확인 -->
-	<select id="reservationConfirm" parameterType="string" resultType="com.java.dto.ReservationDTO">
-	<![CDATA[
+	<select id="reservationConfirm" parameterType="com.java.BoardCommon.ReservationPage" resultType="com.java.dto.ReservationDTO">
 		select 
 			r.CUSTOMER_ID,r.RESERVATION_DATE_IN,r.RESERVATION_DATE_OUT,r.price,p.RESERVATION_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
 		from 
@@ -56,7 +55,9 @@
 			r.reservation_number = p.reservation_number 
 		where 
 			customer_id=#{customer_id}
-			]]>  
+		order by 
+			reservation_date_in desc
+		limit #{startList}, #{listSize}
 	</select>
 	
 	<!-- 총 예약 개수 확인 -->

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-import org.apache.tomcat.jni.Local;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.java.BoardCommon.ReservationPage;
 import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
 
@@ -24,7 +24,7 @@ public class ReservationServiceImpl implements ReservationService {
 	private static final Logger logger = LoggerFactory.getLogger(ReservationServiceImpl.class.getName());
 	
 	@Autowired
-	protected ReservationDao interfaceDao;
+	protected ReservationDao reservationDao;
 	
 	// 예약하기
 	@Transactional
@@ -45,13 +45,13 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		// 체크인, 체크아웃, 룸타입을 비교해서 테이블이 있으면 예약 되어 있다.
 		int check;
-		check = interfaceDao.reservationCheck(reservationDto);
+		check = reservationDao.reservationCheck(reservationDto);
 		logger.info("Service에서 check 확인" + check);
 		
 		// 비교 예약 0이면 예약 가능
 		if (check == 0) {
 			// 룸 정보 테이블에서 룸 가격을 가져온다.
-			String roomprices = interfaceDao.roomprices(reservationDto);
+			String roomprices = reservationDao.roomprices(reservationDto);
 
 			try {
 				// 예약날짜가 몇일인지 계산한다.
@@ -83,10 +83,10 @@ public class ReservationServiceImpl implements ReservationService {
 				reservationDto.setReservation_number(mTime);
 				
 				// 룸 인원 테이블에 룸 예약번호, 룸 타입, 인원수 넣어준다.
-				interfaceDao.reservationPeople(reservationDto);
+				reservationDao.reservationPeople(reservationDto);
 
 				// 예약 테이블에 넣는다.
-				reCheck = interfaceDao.reservation(reservationDto);
+				reCheck = reservationDao.reservation(reservationDto);
 
 				// 예약 완료 1이면 성공
 				logger.info("예약 완료 1이면 성공" + reCheck);
@@ -106,20 +106,31 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public void reservationCancell(String reservation_number) {
 		logger.info("예약 취소");
-		interfaceDao.reservationCancell(reservation_number);
+		reservationDao.reservationCancell(reservation_number);
 	}
 	
 	//예약 완료 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm() {
-		ReservationDTO reservationDto =new ReservationDTO();
-		
-		//로그인 id Security에서 받아오기
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String customer_id= auth.getName();
-		logger.info("예약 완료 아이디" + customer_id);
-		reservationDto.setCustomer_id(auth.getName());
-		return interfaceDao.reservationConfirm(customer_id);
+	public List<ReservationDTO> reservationConfirm(ReservationPage reservationPage) {
+//		//로그인 id Security에서 받아오기
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		
+//		int page=1;
+//		int range=1;
+//		
+//		//페이징 처리
+//		ReservationPage pages = new ReservationPage();
+//		
+//		//총 페이지 가져오기
+//		pages.pageInfo(page, range, reservationCount("aaa"));
+//		pages.setCustmer_id("aaa");
+		return reservationDao.reservationConfirm(reservationPage);
+	}
+	
+	@Override
+	public int reservationCount(String customer_id) {
+	
+		return reservationDao.reservationCount(customer_id);
 	}
 
 }

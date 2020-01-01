@@ -1,5 +1,6 @@
 package com.java.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.BoardCommon.ReservationPage;
 import com.java.dto.ReservationDTO;
 
 @Repository
@@ -56,16 +58,19 @@ public class ReservationDaoImpl implements ReservationDao {
 	
 	//예약 완료 후 예약 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm(String customer_id) {
-		logger.info("예약 완료 아이디" + customer_id);
+	public List<ReservationDTO> reservationConfirm(ReservationPage reservationPage) {
+		logger.info("예약 완료 아이디" + reservationPage);
+		System.out.println("확인중..");
 		/* List<ReservationDTO> rs = */
-		return sqlSession.selectList("com.java.dao.InterfaceDao.reservationConfirm", customer_id);
+		List<ReservationDTO> rs = sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", reservationPage);
+		System.out.println("ㅁㄴㅁㅇㄻㄴㅇㄹ"+rs.get(0).getReservation_date_in());
+		return rs;
 	}
 	
 	//예약 완료 개수 확인
 	@Override
 	public int reservationCount(String customer_id) {
-		logger.info("Dao 예약 완료 개수 확인");
-		return sqlSession.selectOne("com.java.dao.InterfaceDao.reservationCount" ,customer_id);
+		logger.info("Dao 예약 완료 개수 확인 해보자");
+		return sqlSession.selectOne("com.java.dao.ReservationDao.reservationCount" ,customer_id);
 	}
 }
