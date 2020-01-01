@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardCommon.ReservationPage;
 import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
@@ -111,7 +112,7 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	//예약 완료 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm(ReservationPage reservationPage) {
+	public List<ReservationDTO> reservationConfirm(Pagination pagination) {
 //		//로그인 id Security에서 받아오기
 //		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //		
@@ -124,7 +125,7 @@ public class ReservationServiceImpl implements ReservationService {
 //		//총 페이지 가져오기
 //		pages.pageInfo(page, range, reservationCount("aaa"));
 //		pages.setCustmer_id("aaa");
-		return reservationDao.reservationConfirm(reservationPage);
+		return reservationDao.reservationConfirm(pagination);
 	}
 	
 	@Override

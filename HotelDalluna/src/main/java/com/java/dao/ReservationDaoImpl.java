@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.java.BoardCommon.Pagination;
 import com.java.BoardCommon.ReservationPage;
 import com.java.dto.ReservationDTO;
 
@@ -58,11 +59,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	
 	//예약 완료 후 예약 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm(ReservationPage reservationPage) {
-		logger.info("예약 완료 아이디" + reservationPage);
+	public List<ReservationDTO> reservationConfirm(Pagination pagination) {
+		logger.info("예약 완료 아이디" + pagination);
 		System.out.println("확인중..");
 		/* List<ReservationDTO> rs = */
-		List<ReservationDTO> rs = sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", reservationPage);
+		List<ReservationDTO> rs = sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", pagination);
 		System.out.println("ㅁㄴㅁㅇㄻㄴㅇㄹ"+rs.get(0).getReservation_date_in());
 		return rs;
 	}

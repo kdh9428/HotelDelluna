@@ -135,9 +135,10 @@ public class boardtest {
 		System.out.println(listCnt);
 //		logger.info(reservationDao.reservationCount("aaa"));
 		
-		ReservationPage page = new ReservationPage();
+		Pagination page = new Pagination();
 		page.pageInfo(1, 1, listCnt);
 		page.setCustomer_id("aaa");
+		page.setListSize(1);
 		List<ReservationDTO> reserva =  reservationService.reservationConfirm(page);
 		System.out.println("확인"+reserva.get(0).getCustomer_id());
 		for(ReservationDTO pages : reserva) {

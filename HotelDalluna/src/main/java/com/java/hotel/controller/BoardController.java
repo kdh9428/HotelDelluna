@@ -39,9 +39,11 @@ public class BoardController {
 	public String boardList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
 											@RequestParam(required = false, defaultValue = "1") int range) throws Exception{
 		logger.info("list 시작");
-		int listCnt = boardService.boardListCnt();
+		
 		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
+		pagination.pageInfo(page, range, boardService.boardListCnt());
+		//한페이지 당 보여질 리스트 삽입
+		pagination.setListSize(10);
 		
 		model.addAttribute("pagination",pagination);
 		model.addAttribute("boardList",boardService.boardList(pagination));

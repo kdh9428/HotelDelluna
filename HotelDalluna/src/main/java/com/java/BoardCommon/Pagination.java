@@ -3,7 +3,7 @@ package com.java.BoardCommon;
 public class Pagination {
 
 	
-	private int listSize=10; 	//초기값 목록 개수, 한 페이지당 보여질 리스트의 개수
+	private int listSize; 	//초기값 목록 개수, 한 페이지당 보여질 리스트의 개수
 	private int rangeSize=10; 	//초기값 페이지 범위 10으로 세팅, 한 페이지 범위에 보여질 페이지의 개수
 	private int page;	//현재 목록 페이지
 	private int range;	//각 페이지 범위 시작 번호
@@ -14,7 +14,14 @@ public class Pagination {
 	private int startList;	//게시판 시작번호
 	private boolean prev;	//이전 페이지 여부
 	private boolean next;	//다음 페이지 여부
+	private String customer_id;
 
+	public String getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
+	}
 	public int getStartList() {
 		return startList;
 	}
