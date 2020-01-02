@@ -46,7 +46,7 @@
 	</delete>
 	
 	<!-- 예약 완료 후 확인 -->
-	<select id="reservationConfirm" parameterType="com.java.BoardCommon.ReservationPage" resultType="com.java.dto.ReservationDTO">
+	<select id="reservationConfirm" parameterType="com.java.BoardCommon.Pagination" resultType="com.java.dto.ReservationDTO">
 		select 
 			r.CUSTOMER_ID,r.RESERVATION_DATE_IN,r.RESERVATION_DATE_OUT,r.price,p.RESERVATION_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
 		from 

@@ -41,9 +41,12 @@ public class BoardController {
 		logger.info("list 시작");
 		
 		Pagination pagination = new Pagination();
+		pagination.setListSize(10);
+		pagination.setRangeSize(10);
 		pagination.pageInfo(page, range, boardService.boardListCnt());
 		//한페이지 당 보여질 리스트 삽입
-		pagination.setListSize(10);
+		System.out.println("boardcontroller"+ pagination.getStartPage() + " , "+pagination.getEndPage());
+		System.out.println("boardcontroller"+ pagination.getStartList() + " , "+pagination.getListSize());
 		
 		model.addAttribute("pagination",pagination);
 		model.addAttribute("boardList",boardService.boardList(pagination));

@@ -4,7 +4,7 @@ public class Pagination {
 
 	
 	private int listSize; 	//초기값 목록 개수, 한 페이지당 보여질 리스트의 개수
-	private int rangeSize=10; 	//초기값 페이지 범위 10으로 세팅, 한 페이지 범위에 보여질 페이지의 개수
+	private int rangeSize; 	//초기값 페이지 범위 10으로 세팅, 한 페이지 범위에 보여질 페이지의 개수
 	private int page;	//현재 목록 페이지
 	private int range;	//각 페이지 범위 시작 번호
 	private int listCnt; //전체 개시물의 개수
@@ -110,7 +110,7 @@ public class Pagination {
 		this.startList = (page-1)*listSize;
 		
 		//이전 버튼 상태
-		this.prev = range ==1 ? false:true; //첫번째 페이지에서는 이전 버튼이 필요 없기 때문에 1이라면 false
+		this.prev = range ==1 ? false:true; //페이지 범위가(10으로 설정하면 10페이지) 설정한 처음 범위이면 이전 버튼이 필요 없기 때문에 1이라면 false
 		
 		//다음 버튼 상태 //현재 페이지의 마지막 페이지 번호가 전체 페이지 개수 보다 크면 활성화
 		this.next = endPage>pageCnt?false:true;

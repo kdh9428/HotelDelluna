@@ -277,8 +277,8 @@ function fn_prev(page, range, rangeSize) {
 										</table>
 										<button type="button" class="btn btn-primary" name="write" id="write">글 작성</button>
 									</div>
+									
 								<!-- pagination{s} -->
-
 								<div id="paginationBox">
 									<ul class="pagination">
 									

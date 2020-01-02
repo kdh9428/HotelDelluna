@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.java.BoardCommon.Pagination;
-import com.java.BoardCommon.ReservationPage;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;

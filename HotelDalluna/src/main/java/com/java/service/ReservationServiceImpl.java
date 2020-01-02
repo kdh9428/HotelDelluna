@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.java.BoardCommon.Pagination;
-import com.java.BoardCommon.ReservationPage;
 import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
 

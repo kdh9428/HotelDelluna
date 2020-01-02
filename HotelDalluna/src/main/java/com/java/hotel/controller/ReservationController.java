@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.java.BoardCommon.ReservationPage;
+import com.java.BoardCommon.Pagination;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
@@ -29,7 +29,6 @@ public class ReservationController  {
 	//암호화 test
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
-	
 	
 	@Autowired
 	private ReservationService reservationService;
@@ -67,11 +66,19 @@ public class ReservationController  {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		//페이징 처리
-		ReservationPage pages = new ReservationPage(); 
+		Pagination pages = new Pagination();
 		
+		int count = reservationService.reservationCount(auth.getName());
+		System.out.println("count"+count);
+		pages.setListSize(1);
+		pages.setRangeSize(10);
 		//총 페이지 가져오기
-		pages.pageInfo(page, range, reservationService.reservationCount(auth.getName()));
-//		pages.setCustmer_id(auth.getName());
+		pages.pageInfo(page, range, count);
+		
+		//한 페이지에 보여질 리스트 수
+		//아이디 
+		pages.setCustomer_id(auth.getName());
+		
 		reservationService.reservationConfirm(pages);
 		 List<ReservationDTO> reservationConfirm = reservationService.reservationConfirm(pages); 
 		/*
@@ -84,10 +91,13 @@ public class ReservationController  {
 			 model.addAttribute("notReservation",1);
 		 }else {
 		 model.addAttribute("dto",reservationConfirm.get(0));
+		 model.addAttribute("pagination", pages);
+		 System.out.println("컨트롤러 페이징 확인"+pages.getStartPage() + " , " + pages.getEndPage());
 		 }
 		return "ReservationConfirm";
 	}
 	
+	//예약 취소
 	@RequestMapping("ReservationCancell.do")
 	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
 		reservationService.reservationCancell(reservation_number);
