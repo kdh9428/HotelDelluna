@@ -35,7 +35,7 @@ public class BoardController {
 //	}
 	
 	//게시판 리스트
-	@RequestMapping(value="list" ,method = RequestMethod.GET )
+	@RequestMapping(value="list" )
 	public String boardList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
 											@RequestParam(required = false, defaultValue = "1") int range) throws Exception{
 		logger.info("list 시작");
