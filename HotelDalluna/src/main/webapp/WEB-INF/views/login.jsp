@@ -83,6 +83,9 @@
 								<button class="login100-form-btn" value="로그인">로그인</button>
 								<button class="login100-form-btn" type="button" value="회원가입" onclick="location.href='agreePage.jsp'">회원가입</button>
 							</div>
+							
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							
 						</form>
 						<c:if test="${pwnot ne null}"> 
 							<script>alert('${pwnot}')</script>

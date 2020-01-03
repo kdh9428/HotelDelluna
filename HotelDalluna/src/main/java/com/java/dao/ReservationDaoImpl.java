@@ -31,14 +31,14 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public String roomprices(ReservationDTO reservationDto) {
 		logger.info("룸 가격");
-		return sqlSession.selectOne("com.java.dao.InterfaceDao.roomprices",reservationDto);
+		return sqlSession.selectOne("com.java.dao.ReservationDao.roomprices",reservationDto);
 	}
 	
 	//룸 인원 테이블 확인
 	@Override
 	public void reservationPeople(ReservationDTO reservationDto) {
 		logger.info("룸 인원 테이블 확인");
-		sqlSession.insert("com.java.dao.InterfaceDao.reservationPeople",reservationDto);
+		sqlSession.insert("com.java.dao.ReservationDao.reservationPeople",reservationDto);
 	}
 	
 	//예약 완료 처리
@@ -58,18 +58,14 @@ public class ReservationDaoImpl implements ReservationDao {
 	//예약 완료 후 예약 확인
 	@Override
 	public List<ReservationDTO> reservationConfirm(Pagination pagination) {
-		logger.info("예약 완료 아이디" + pagination);
-		System.out.println("확인중..");
-		/* List<ReservationDTO> rs = */
-		List<ReservationDTO> rs = sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", pagination);
-		System.out.println("ㅁㄴㅁㅇㄻㄴㅇㄹ"+rs.get(0).getReservation_date_in());
-		return rs;
+		logger.info("예약 완료 확인 Dao");
+		return sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", pagination);
 	}
 	
 	//예약 완료 개수 확인
 	@Override
 	public int reservationCount(String customer_id) {
-		logger.info("Dao 예약 완료 개수 확인 해보자");
+		logger.info("Dao 예약 완료 총 개수");
 		return sqlSession.selectOne("com.java.dao.ReservationDao.reservationCount" ,customer_id);
 	}
 }

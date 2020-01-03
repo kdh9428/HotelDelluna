@@ -240,8 +240,10 @@
                                 <button type="button" onClick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                                 
+                                
+                                
                                 	<!-- pagination{s} -->
-								<div id="paginationBox">
+								<div id="paginationBox" align="center">
 									<ul class="pagination">
 									
 										<c:if test="${pagination.prev}">

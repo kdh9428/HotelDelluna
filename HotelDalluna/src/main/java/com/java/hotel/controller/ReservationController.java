@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,9 +70,10 @@ public class ReservationController  {
 		Pagination pages = new Pagination();
 		
 		int count = reservationService.reservationCount(auth.getName());
-		System.out.println("count"+count);
+		logger.info("예약 완료 컨트롤러");
 		pages.setListSize(1);
 		pages.setRangeSize(10);
+		
 		//총 페이지 가져오기
 		pages.pageInfo(page, range, count);
 		
@@ -80,6 +82,7 @@ public class ReservationController  {
 		pages.setCustomer_id(auth.getName());
 		
 		reservationService.reservationConfirm(pages);
+		
 		 List<ReservationDTO> reservationConfirm = reservationService.reservationConfirm(pages); 
 		/*
 		 * for(ReservationDTO vo:dto1) { String listresult = vo.getReservation_number();
@@ -90,9 +93,8 @@ public class ReservationController  {
 		 if(reservationConfirm.isEmpty()) {
 			 model.addAttribute("notReservation",1);
 		 }else {
-		 model.addAttribute("dto",reservationConfirm.get(0));
-		 model.addAttribute("pagination", pages);
-		 System.out.println("컨트롤러 페이징 확인"+pages.getStartPage() + " , " + pages.getEndPage());
+			 model.addAttribute("dto",reservationConfirm.get(0));
+			 model.addAttribute("pagination", pages);
 		 }
 		return "ReservationConfirm";
 	}
