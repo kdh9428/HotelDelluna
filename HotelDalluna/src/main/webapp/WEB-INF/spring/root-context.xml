@@ -12,10 +12,10 @@
 
 		<!-- mybatis설정  -->
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	 	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	 	<property name="url" value="jdbc:mysql://127.0.0.1:3306/hotel?useUnicode=true&amp;characterEncoding=UTF-8"/>
-	 	<property name="username" value="root"/>
-	 	<property name="password" value="1234"/>
+	 	<property name="driverClassName" value="#{datasource['jdbc.driverClassName']}"/>
+	 	<property name="url" value="#{datasource['jdbc.url']}"/>
+	 	<property name="username" value="#{datasource['jdbc.username']}"/>
+	 	<property name="password" value="#{datasource['jdbc.password']}"/>
 	 </bean>
 	 
 	  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -102,7 +102,7 @@ public class ReservationController  {
 	
 	//예약 취소
 	@GetMapping("ReservationCancell.do")
-	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) {
+	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) throws Exception{
 		reservationService.reservationCancell(reservation_number);
 		
 		return"Reservation";

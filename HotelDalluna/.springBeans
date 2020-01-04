@@ -7,10 +7,12 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+		<config>src/main/resources/springSetting/common-context.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/security-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/dispatcher-servlet.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/transaction-context.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
 	</autoconfigs>
 	<configSets>
