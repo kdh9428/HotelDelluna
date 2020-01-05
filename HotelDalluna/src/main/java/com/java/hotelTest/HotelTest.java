@@ -1,5 +1,4 @@
-package com.java.hotel.controller;
-
+package com.java.hotelTest;
 
 import java.util.List;
 
@@ -21,19 +20,19 @@ import com.java.dao.ReservationDaoImpl;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-		"classpath:WEB-INF/spring/root-context.xml",
+		"classpath:/WEB-INF/spring/root-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/dispatcher-servlet.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/security-context.xml",
-		"file:src/main/webapp/WEB-INF/spring/appServlet/transaction-context.xml"
+		"file:src/main/webapp/WEB-INF/spring/appServlet/transaction-context.xml",
+		"classpath:/springSetting/common-context.xml"
 		})
 @WebAppConfiguration
-public class boardtest {
+public class HotelTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(boardtest.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(HotelTest.class);
+
 	@Autowired
 	BoardDao boardDao;
 	
