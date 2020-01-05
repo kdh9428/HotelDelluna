@@ -28,4 +28,7 @@ public interface BoardDao {
 	//총 게시글 수 확인
 	public int boardListCnt() throws Exception;
 	
+	//리플 확인
+	public List<ReplyVO> replyList(int bid) throws Exception;
+
 }
