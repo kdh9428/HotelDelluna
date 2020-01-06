@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
+import com.java.BoardDto.ReplyVO;
 
 public interface BoardDao {
 	
@@ -29,6 +30,6 @@ public interface BoardDao {
 	public int boardListCnt() throws Exception;
 	
 	//리플 확인
-	public List<ReplyVO> replyList(int bid) throws Exception;
+	public List<ReplyVO> replyList(int replyid) throws Exception;
 
 }

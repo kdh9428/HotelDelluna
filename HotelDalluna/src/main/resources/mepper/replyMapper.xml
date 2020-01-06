@@ -5,8 +5,14 @@
 
 <mapper namespace="com.java.board.reply">
 	
-	<select id="">
-	
+	<select id="replyList" parameterType="String" resultType="com.java.BoardDto.ReplyVO">
+		select 
+				*
+		from
+				notice_reply
+		where
+				replyid = #{replyid}
+		order by reg_dt desc
 	</select>
 
 

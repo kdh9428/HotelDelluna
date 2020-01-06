@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
+import com.java.BoardDto.ReplyVO;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
@@ -60,8 +61,16 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.update("com.java.BoardDao.boardUpdate", boardVO);
 	}
 	
+	//게시글 리스트 개수 확인
 	@Override
 	public int boardListCnt() throws Exception {
 		return sqlSession.selectOne("com.java.BoardDao.boardListCnt");
+	}
+	
+	//댓글 불러오기
+	@Override
+	public List<ReplyVO> replyList(int replyid) throws Exception {
+		
+		return sqlSession.selectList("com.java.board.reply.replyList", replyid);
 	}
 }

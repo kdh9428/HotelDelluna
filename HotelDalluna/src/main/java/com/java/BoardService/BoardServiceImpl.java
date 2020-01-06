@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.java.BoardCommon.Pagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
+import com.java.BoardDto.ReplyVO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -87,6 +88,12 @@ public class BoardServiceImpl implements BoardService {
 	public int boardListCnt() throws Exception {
 		
 		return boardDao.boardListCnt();
+	}
+	
+	//리플 리스트
+	@Override
+	public List<ReplyVO> replyList(int replyid) throws Exception {
+		return boardDao.replyList(replyid);
 	}
 	
 
