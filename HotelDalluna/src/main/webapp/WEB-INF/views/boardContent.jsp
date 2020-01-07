@@ -3,6 +3,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,8 +206,8 @@
 						<!-- Posts
                         ============================================= -->
 						<article>
-						<form action="list.do" method="get">
-						
+						<form action="list.do" method="post">
+							 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							<div class="container" role="main">
 									
 
@@ -251,10 +252,69 @@
 								</div>
 							</div>
 							</form>
+							
+								<!-- .sidebar end -->
+
+					
 						</article>
+						
 
 					</div>
-					<!-- .sidebar end -->
+					
+					<!-- Reply Form {s} -->
+
+					<div class="my-3 p-3 bg-white rounded shadow-sm"
+						style="padding-top: 10px">
+
+						<form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
+
+							<form:hidden path="notice_number" id="notice_number" />
+
+							<div class="row">
+
+								<div class="col-sm-10">
+
+									<form:textarea path="context" id="context" class="form-control"
+										rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
+
+								</div>
+
+								<div class="col-sm-2">
+
+									<form:input path="customer_id" class="form-control" id="customer_id"
+										placeholder="댓글 작성자"></form:input>
+
+									<button type="button" class="btn btn-sm btn-primary"
+										id="btnReplySave" style="width: 100%; margin-top: 10px">
+										저 장</button>
+
+								</div>
+
+							</div>
+
+						</form:form>
+
+					</div>
+
+					<!-- Reply Form {e} -->
+
+
+
+					<!-- Reply List {s}-->
+
+					<div class="my-3 p-3 bg-white rounded shadow-sm"
+						style="padding-top: 10px">
+
+						<h6 class="border-bottom pb-2 mb-0">Reply list</h6>
+
+						<div id="replyList"></div>
+
+					</div>
+
+					<!-- Reply List {e}-->
+				
+
+
 				</div>
 			</div>
 		</section>
@@ -418,8 +478,102 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	
-		<script type="text/javascript">
+
+	<script>
+			$(document).ready(function(){
+		
+				showReplyList();
+		
+			});
+		// 이전 코드 생략
+
+		function showReplyList() {
+			
+			console.info('확인작업');
+			console.info("${content.notice_number}");
+			var url = "${pageContext.request.contextPath}/ReplyList.do";
+
+			var paramData = {
+				"notice_number" : "${content.notice_number}"
+			};
+
+			$.ajax({
+						type : 'POST',
+				 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+						url : url,
+						data : paramData,
+						dataType : 'json',
+						beforeSend : function(xhr)
+		                      {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+		                          xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		                      },
+						success : function(result) {
+							var htmls = "";
+							if (result.length < 1) {
+								htmls.push("등록된 댓글이 없습니다.");
+							} else {
+								$(result).each(
+												function() {
+
+													htmls += '<div class="media text-muted pt-3" id="replyid' + this.replyid + '">';
+
+													htmls += '<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">';
+
+													htmls += '<title>Placeholder</title>';
+
+													htmls += '<rect width="100%" height="100%" fill="#007bff"></rect>';
+
+													htmls += '<text x="50%" fill="#007bff" dy=".3em">32x32</text>';
+
+													htmls += '</svg>';
+
+													htmls += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">';
+
+													htmls += '<span class="d-block">';
+
+													htmls += '<strong class="text-gray-dark">'
+															+ this.customer_id
+															+ '</strong>';
+
+													htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+
+													htmls += '<a href="javascript:void(0)" onclick="fn_editReply('
+															+ this.replyid
+															+ ', \''
+															+ this.customer_id
+															+ '\', \''
+															+ this.context
+															+ '\' )" style="padding-right:5px">수정</a>';
+
+													htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply('
+															+ this.replyid
+															+ ')" >삭제</a>';
+
+													htmls += '</span>';
+
+													htmls += '</span>';
+
+													htmls += '<br>'+this.context;
+
+													htmls += '</p>';
+
+													htmls += '</div>';
+
+												}); //each end
+
+							}
+
+							$("#replyList").html(htmls);
+
+						} // Ajax success end
+
+					}); // Ajax end
+
+		}
+	</script>
+
+
+	<script type="text/javascript">
 		/* 	document.getElementById('btnUpdate').onclick = function(){
 				document.getElementById('form').submit()
 				return false

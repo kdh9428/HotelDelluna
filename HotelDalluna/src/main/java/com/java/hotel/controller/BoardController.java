@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.java.BoardCommon.Pagination;
 import com.java.BoardDto.BoardVO;
+import com.java.BoardDto.ReplyVO;
 import com.java.BoardService.BoardService;
 
 @Controller
@@ -93,7 +94,7 @@ public class BoardController {
 //		System.out.println("게시물 조회 테스트중"+ref.getRef());
 //		boardService.boardUpdate(ref);
 //		System.out.println("테스트 확인");
-		
+		model.addAttribute("replyVO", new ReplyVO());
 		model.addAttribute("content",ref);
 		
 		return "boardContent";

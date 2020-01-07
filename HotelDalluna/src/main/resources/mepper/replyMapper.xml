@@ -11,7 +11,7 @@
 		from
 				notice_reply
 		where
-				replyid = #{replyid}
+				notice_number = #{notice_number}
 		order by reg_dt desc
 	</select>
 

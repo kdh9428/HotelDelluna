@@ -69,8 +69,8 @@ public class BoardDaoImpl implements BoardDao {
 	
 	//댓글 불러오기
 	@Override
-	public List<ReplyVO> replyList(int replyid) throws Exception {
+	public List<ReplyVO> replyList(int notice_number) throws Exception {
 		
-		return sqlSession.selectList("com.java.board.reply.replyList", replyid);
+		return sqlSession.selectList("com.java.board.reply.replyList", notice_number);
 	}
 }

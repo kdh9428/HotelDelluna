@@ -92,8 +92,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	//리플 리스트
 	@Override
-	public List<ReplyVO> replyList(int replyid) throws Exception {
-		return boardDao.replyList(replyid);
+	public List<ReplyVO> replyList(int notice_number) throws Exception {
+		logger.info("리플 확인 service");
+		return boardDao.replyList(notice_number);
 	}
 	
 
