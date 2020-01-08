@@ -73,4 +73,10 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return sqlSession.selectList("com.java.board.reply.replyList", notice_number);
 	}
+	
+	//댓글 저장
+	@Override
+	public int insertReply(ReplyVO replyVO) throws Exception {
+		return sqlSession.insert("com.java.board.reply.insertReply", replyVO);
+	}
 }

@@ -28,4 +28,8 @@ public interface BoardService {
 	
 	//리플 확인
 	public List<ReplyVO> replyList(int replyid) throws Exception;
+	
+	//댓글 저장
+	public int insertReply(ReplyVO replyVO) throws Exception;
+	
 }

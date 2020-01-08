@@ -260,7 +260,6 @@
 						
 
 					</div>
-					
 					<!-- Reply Form {s} -->
 
 					<div class="my-3 p-3 bg-white rounded shadow-sm"
@@ -312,10 +311,10 @@
 					</div>
 
 					<!-- Reply List {e}-->
-				
-
-
+					
 				</div>
+				
+				
 			</div>
 		</section>
 		<!-- Footer
@@ -504,9 +503,9 @@
 						data : paramData,
 						dataType : 'json',
 						beforeSend : function(xhr)
-		                      {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-		                          xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-		                      },
+	                      {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+	                          xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+	                      },
 						success : function(result) {
 							var htmls = "";
 							if (result.length < 1) {
@@ -514,29 +513,20 @@
 							} else {
 								$(result).each(
 												function() {
-
+													htmls += '<hr>'
 													htmls += '<div class="media text-muted pt-3" id="replyid' + this.replyid + '">';
-
 													htmls += '<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">';
-
 													htmls += '<title>Placeholder</title>';
-
 													htmls += '<rect width="100%" height="100%" fill="#007bff"></rect>';
-
 													htmls += '<text x="50%" fill="#007bff" dy=".3em">32x32</text>';
-
 													htmls += '</svg>';
-
 													htmls += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">';
-
 													htmls += '<span class="d-block">';
-
 													htmls += '<strong class="text-gray-dark">'
-															+ this.customer_id
+															+ '작성자 : '+this.customer_id
 															+ '</strong>';
 
 													htmls += '<span style="padding-left: 7px; font-size: 9pt">';
-
 													htmls += '<a href="javascript:void(0)" onclick="fn_editReply('
 															+ this.replyid
 															+ ', \''
@@ -548,28 +538,53 @@
 													htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply('
 															+ this.replyid
 															+ ')" >삭제</a>';
-
 													htmls += '</span>';
-
 													htmls += '</span>';
-
 													htmls += '<br>'+this.context;
-
 													htmls += '</p>';
-
 													htmls += '</div>';
-
 												}); //each end
-
 							}
-
 							$("#replyList").html(htmls);
-
 						} // Ajax success end
-
 					}); // Ajax end
-
 		}
+	</script>
+	
+	<script type="text/javascript">
+	//댓글 저장 버튼 클릭 이벤트
+	$(document).on('click', '#btnReplySave', function(){
+		var replyContent = $('#context').val();
+		var replyReg_id = $('#customer_id').val();
+		var paramData = JSON.stringify({"context": replyContent
+				, "customer_id": replyReg_id
+				, "notice_number":'${content.notice_number}'
+
+		});
+		var headers = {"Content-Type" : "application/json"
+				, "X-HTTP-Method-Override" : "POST"};
+
+		$.ajax({
+			url: "${pageContext.request.contextPath}/insertReply.do"
+			, headers : headers
+			, data : paramData
+			, type : 'POST'
+			, dataType : 'text'
+			, beforeSend : function(xhr)
+               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                },
+			 success: function(result){
+				showReplyList();
+				$('#context').val('');
+				$('#customer_id').val('');
+			}
+			, error: function(error){
+				console.log("에러 : " + error);
+			}
+		});
+	});
+
 	</script>
 
 

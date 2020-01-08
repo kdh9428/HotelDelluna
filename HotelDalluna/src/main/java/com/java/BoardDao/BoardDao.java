@@ -29,7 +29,11 @@ public interface BoardDao {
 	//총 게시글 수 확인
 	public int boardListCnt() throws Exception;
 	
-	//리플 확인
-	public List<ReplyVO> replyList(int replyid) throws Exception;
+	//댓글 리스트 
+	public List<ReplyVO> replyList(int replyid) throws Exception;	
+	
+	//댓글 저장
+	public int insertReply(ReplyVO replyVO) throws Exception;
+	
 
 }

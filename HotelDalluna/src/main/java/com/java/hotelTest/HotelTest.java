@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.java.BoardCommon.Pagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
@@ -147,7 +148,7 @@ public class HotelTest {
 			System.out.println(pages.getReservation_date_in());
 			System.out.println(pages.getReservation_date_out());
 			
-			
+
 		}
 	}
 

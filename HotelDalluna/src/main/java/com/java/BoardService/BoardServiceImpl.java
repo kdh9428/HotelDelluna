@@ -1,7 +1,10 @@
 package com.java.BoardService;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +98,12 @@ public class BoardServiceImpl implements BoardService {
 	public List<ReplyVO> replyList(int notice_number) throws Exception {
 		logger.info("리플 확인 service");
 		return boardDao.replyList(notice_number);
+	}
+	
+	//댓글 저장
+	@Override
+	public int insertReply(ReplyVO replyVO) throws Exception {
+		return boardDao.insertReply(replyVO);
 	}
 	
 
