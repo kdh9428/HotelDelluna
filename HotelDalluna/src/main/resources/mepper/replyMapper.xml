@@ -21,6 +21,14 @@
 				values
 					( #{notice_number}, #{context}, #{customer_id}, now(), now() )
 	</insert>
-
+	
+	<!--삭제 -->
+	<delete id="deleteReply" parameterType="int">
+		
+			delete from notice_reply
+			
+			where
+					replyid = #{replyid}
+	</delete>
 
 </mapper>

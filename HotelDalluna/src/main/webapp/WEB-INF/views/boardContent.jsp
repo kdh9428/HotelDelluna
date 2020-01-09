@@ -489,7 +489,7 @@
 		function showReplyList() {
 			
 			console.info('확인작업');
-			console.info("${content.notice_number}");
+			console.info("${content.notice_number}"+"확인!!"+"${pageContext.request.contextPath}");
 			var url = "${pageContext.request.contextPath}/ReplyList.do";
 
 			var paramData = {
@@ -515,11 +515,6 @@
 												function() {
 													htmls += '<hr>'
 													htmls += '<div class="media text-muted pt-3" id="replyid' + this.replyid + '">';
-													htmls += '<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder:32x32">';
-													htmls += '<title>Placeholder</title>';
-													htmls += '<rect width="100%" height="100%" fill="#007bff"></rect>';
-													htmls += '<text x="50%" fill="#007bff" dy=".3em">32x32</text>';
-													htmls += '</svg>';
 													htmls += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom horder-gray">';
 													htmls += '<span class="d-block">';
 													htmls += '<strong class="text-gray-dark">'
@@ -585,6 +580,29 @@
 		});
 	});
 
+	</script>
+
+	<script type="text/javascript">
+		function fn_deleteReply(replyid) {
+			var paramData = {"replyid" : replyid};
+			$.ajax({
+				url : "${pageContext.request.contextPath}/deleteReply.do",
+				data : paramData,
+				type : 'POST',
+				dataType : 'text',
+				beforeSend : function(xhr)
+	            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+	                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+	             },
+				success : function(result) {
+					console.log("result 확인"+result)
+					showReplyList();
+				},
+				error : function(error) {
+					console.log("에러 : " + error);
+				}
+			});
+		}
 	</script>
 
 

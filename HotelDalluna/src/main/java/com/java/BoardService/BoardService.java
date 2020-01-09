@@ -32,4 +32,7 @@ public interface BoardService {
 	//댓글 저장
 	public int insertReply(ReplyVO replyVO) throws Exception;
 	
+	//댓글 삭제
+	public int deleteReply(int replyid) throws Exception;
+	
 }

@@ -106,5 +106,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.insertReply(replyVO);
 	}
 	
+	 @Override
+	public int deleteReply(int replyid) throws Exception {
+		 
+		 return boardDao.deleteReply(replyid);
+	}
 
 }

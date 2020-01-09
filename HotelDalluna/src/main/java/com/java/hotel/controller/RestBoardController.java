@@ -38,6 +38,7 @@ public class RestBoardController {
 		return re;
 	}
 	
+	//댓글 입력
 	@PostMapping("insertReply")
 	public Map<String, Object> insertReply(@RequestBody ReplyVO replyVO) throws Exception{
 		
@@ -54,4 +55,10 @@ public class RestBoardController {
 		
 		return result;
 	}
+	 @PostMapping("deleteReply")
+	 public int deleteReply(@RequestParam("replyid") int replyid) throws Exception{
+		 
+		return boardService.deleteReply(replyid);
+		 
+	 }
 }
