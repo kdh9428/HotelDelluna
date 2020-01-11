@@ -35,9 +35,6 @@ public class RestBoardController {
 		logger.info("RestController 리플확인");
 		logger.info("확인"+notice_number);
 		List<ReplyVO> re = boardService.replyList(notice_number);
-		
-		String text = re.get(0).getContext();
-		System.out.println(text);
 		return re;
 	}
 	
@@ -46,6 +43,7 @@ public class RestBoardController {
 	public Map<String, Object> insertReply(@RequestBody ReplyVO replyVO) throws Exception{
 		
 		Map<String, Object> result = new HashMap<>();
+		
 		
 		try {
 			boardService.insertReply(replyVO);
