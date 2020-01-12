@@ -35,6 +35,9 @@ public interface BoardDao {
 	//댓글 저장
 	public int insertReply(ReplyVO replyVO) throws Exception;
 	
+	//댓글 수정
+	public int updateReply(ReplyVO replyVO) throws Exception;
+	
 	//댓글 삭제
 	public int deleteReply(int replyid) throws Exception;
 	

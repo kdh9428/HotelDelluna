@@ -22,6 +22,17 @@
 					( #{notice_number}, #{context}, #{customer_id}, now(), now() )
 	</insert>
 	
+	<!-- 댓글 수정 -->
+	
+	<update id="updateReply" parameterType="com.java.BoardDto.ReplyVO">
+		update 
+				notice_reply 
+		set 
+			context=#{context}, edit_dt=now()
+		where 
+			replyid=#{replyid}
+	</update>
+	
 	<!--삭제 -->
 	<delete id="deleteReply" parameterType="int">
 		

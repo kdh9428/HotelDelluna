@@ -80,6 +80,12 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.insert("com.java.board.reply.insertReply", replyVO);
 	}
 	
+	//댓글 수정
+	@Override
+	public int updateReply(ReplyVO replyVO) throws Exception {
+		return sqlSession.update("com.java.board.reply.updateReply", replyVO);
+	}
+	
 	@Override
 	public int deleteReply(int replyid) throws Exception {
 		return sqlSession.delete("com.java.board.reply.deleteReply",replyid);
