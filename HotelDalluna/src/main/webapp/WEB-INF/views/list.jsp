@@ -302,12 +302,27 @@ function fn_prev(page, range, rangeSize) {
 										
 									</ul>
 								</div><!-- pagination{e} -->
-
 							</div>
 							</article><!-- 게시판끝 -->
-
 					</div>
 					<!-- .sidebar end -->
+					
+						<!-- search{s} -->
+								<div class="form-group row justify-content-center">
+									<div class="w100" style="padding-right: 10px">
+										<select class="form-control form-control-sm" name="searchType" id="searchType">
+											<option value="notice_title">제목</option>
+											<option value="notice_contents">본문</option>
+											<option value="customer_id">작성자</option>
+										</select>
+									</div>
+									<div class="w300" style="padding-right: 10px">
+										<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+									</div>
+									<div>
+										<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+									</div>
+								</div> <!-- search{e} -->
 				</div>
 			</div>
 		</section>
@@ -489,12 +504,28 @@ function fn_prev(page, range, rangeSize) {
 	<script type="text/javascript">
 		document.getElementById("write").onclick = function(){
 			location.href="boardForm.do"
+		};
+		
+		
+	</script>
+	
+	<!-- 게시글 검색 -->
+	<script>
+		document.getElementById("btnSearch").onclick = function(){
+			event.preventDefault();
+			var url = "${pageContext.request.contextPath}/list.do";
+			var getkeyword = document.getElementById('keyword').value;
+			var serch = document.getElementById('searchType').value;
+				url = url+"?searchType="+serch+"&keyword="+getkeyword;
+			location.href = url;
+			console.info(url);
 		}
 	</script>
 	
-	<script type="text/javascript">
+	<script>
 		if(${check}==1){
 		alert("삭제 되었습니다.");
+		location.href= "${pageContext.request.contextPath}/list.do"+ "?page="+page+"&range="+range;
 		}else{
 		alert("삭제 되지 않았습니다.")
 		}

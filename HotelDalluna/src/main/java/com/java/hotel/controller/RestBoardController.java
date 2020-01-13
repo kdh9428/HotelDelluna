@@ -60,7 +60,6 @@ public class RestBoardController {
 	
 	@PutMapping("updateReply")
 	public int updateReply(@RequestBody ReplyVO replyVO) throws Exception{
-		
 		return boardService.updateReply(replyVO);
 	}
 	

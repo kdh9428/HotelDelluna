@@ -38,8 +38,10 @@ public class BoardController {
 	//게시판 리스트
 	@RequestMapping(value="list" )
 	public String boardList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
-											@RequestParam(required = false, defaultValue = "1") int range) throws Exception{
-		logger.info("list 시작");
+											@RequestParam(required = false, defaultValue = "1") int range,
+											 @RequestParam(required = false, defaultValue = "notice_title") String searchType,
+											 @RequestParam(required = false) String keyword) throws Exception{
+		logger.info("list 시작" +searchType+"확인"+keyword);
 		
 		Pagination pagination = new Pagination();
 		pagination.setListSize(10);
