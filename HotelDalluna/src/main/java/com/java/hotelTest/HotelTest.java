@@ -12,8 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.java.BoardCommon.Pagination;
+import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
@@ -46,15 +46,24 @@ public class HotelTest {
 	@Autowired
 	ReservationDaoImpl reservationDao;
 	
-	@Test @Ignore
+	@Test 
 	public void testGetBoardList() throws Exception {
 
-		Pagination pagination = new Pagination();
-		int listCnt = boardService.boardListCnt();
+//		Pagination pagination = new Pagination();
+		SearchPagination pagination = new SearchPagination();
+		
+		pagination.setListSize(10);
+		pagination.setRangeSize(10);
+		
+		pagination.setSearchType("notice_title");
+		pagination.setKeyword("7");
+		
+		int listCnt = boardService.boardListCnt(pagination);
 		System.out.println("listCnt확인"+listCnt);
 		pagination.pageInfo(1, 1, listCnt);
 		List<BoardVO> boardList = boardDao.boardList(pagination);
 
+		logger.info("startList"+pagination.getListSize());
 		logger.info("\n Board List \n ");
 
 		if(boardList.size() > 0) {
@@ -114,7 +123,7 @@ public class HotelTest {
 	
 	
 	//예약 완료 테스트
-	@Test
+	@Test @Ignore
 	public void reservationTest() {
 		
 		ReservationDTO reservation =  new ReservationDTO();
@@ -151,6 +160,36 @@ public class HotelTest {
 
 		}
 	}
-
+	
+//	class A{
+//		public void a() {
+//			System.out.println("오버라이딩");
+//		}
+//	}
+//	
+//	class B extends A{
+//		
+//		public B() {
+//			// TODO Auto-generated constructor stub
+//		}
+//		
+//		public B(int a) {
+//			// TODO Auto-generated constructor stub
+//		}
+//		
+//		public B(int a, int b) {
+//			// TODO Auto-generated constructor stub
+//		}
+//		
+//		@Override
+//		public void a() {
+//			// TODO Auto-generated method stub
+//			super.a();
+//		}
+//		
+//		public void a(int a) {
+//			
+//		}
+//	}
 
 }

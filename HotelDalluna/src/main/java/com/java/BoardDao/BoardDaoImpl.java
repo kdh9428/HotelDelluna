@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.java.BoardCommon.Pagination;
+import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardDto.ReplyVO;
 
@@ -21,8 +21,8 @@ public class BoardDaoImpl implements BoardDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVO> boardList(Pagination pagination)throws Exception {
-		logger.info("boardList Dao 시작");
+	public List<BoardVO> boardList(SearchPagination pagination)throws Exception {
+		logger.info("boardList Dao 시작"+pagination.getKeyword());
 		return sqlSession.selectList("com.java.BoardDao.boardList", pagination);
 	}
 	
@@ -63,8 +63,8 @@ public class BoardDaoImpl implements BoardDao {
 	
 	//게시글 리스트 개수 확인
 	@Override
-	public int boardListCnt() throws Exception {
-		return sqlSession.selectOne("com.java.BoardDao.boardListCnt");
+	public int boardListCnt(SearchPagination pagination) throws Exception {
+		return sqlSession.selectOne("com.java.BoardDao.boardListCnt", pagination);
 	}
 	
 	//댓글 불러오기

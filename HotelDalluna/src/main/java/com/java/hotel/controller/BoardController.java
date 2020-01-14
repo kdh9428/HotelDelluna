@@ -1,5 +1,7 @@
 package com.java.hotel.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.java.BoardCommon.Pagination;
+import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardDto.ReplyVO;
 import com.java.BoardService.BoardService;
@@ -43,16 +46,25 @@ public class BoardController {
 											 @RequestParam(required = false) String keyword) throws Exception{
 		logger.info("list 시작" +searchType+"확인"+keyword);
 		
-		Pagination pagination = new Pagination();
-		pagination.setListSize(10);
-		pagination.setRangeSize(10);
-		pagination.pageInfo(page, range, boardService.boardListCnt());
+//		Pagination pagination = new Pagination();
+//		pagination.setListSize(10);
+//		pagination.setRangeSize(10);
+
+//		pagination.pageInfo(page, range, boardService.boardListCnt());
 		//한페이지 당 보여질 리스트 삽입
-		System.out.println("boardcontroller"+ pagination.getStartPage() + " , "+pagination.getEndPage());
-		System.out.println("boardcontroller"+ pagination.getStartList() + " , "+pagination.getListSize());
+		SearchPagination search = new SearchPagination();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		search.setListSize(10);
+		search.setRangeSize(10);
+		search.pageInfo(page, range, boardService.boardListCnt(search));
 		
-		model.addAttribute("pagination",pagination);
-		model.addAttribute("boardList",boardService.boardList(pagination));
+		logger.info("하하"+search.getPage());
+		
+		List<BoardVO> list = boardService.boardList(search);
+		logger.info(list.get(0).getNotice_contents());
+		model.addAttribute("pagination",search);
+		model.addAttribute("boardList",list);
 		return "list";
 	}
 	

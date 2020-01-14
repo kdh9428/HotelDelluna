@@ -6,24 +6,48 @@
     
     <mapper namespace="com.java.BoardDao">
     	<!-- 게시판 리스트 -->
-    	<select id="boardList" parameterType="com.java.BoardCommon.Pagination" resultType="com.java.BoardDto.BoardVO">
+    	<select id="boardList" parameterType="com.java.BoardCommon.SearchPagination" resultType="com.java.BoardDto.BoardVO">
     		select 
     				* 
     		from 
     				notice
+    		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    			<if test="searchType=='notice_title' and keyword != null and keyword !=''">
+    				and notice_title like CONCAT('%',#{keyword},'%')
+    			</if>
+    			<if test="searchType=='notice_contents' and keyword != null and keyword!=''">
+    				and notice_contents like CONCAT('%', #{keyword},'%')
+    			</if>
+    			<if test="searchType == 'customer_id' and keyword != null and keyword !=''">
+    				and customer_id like CONCAT('%',#{keyword},'%')
+    			</if>
+    		</trim>
     		order by 
-    				notice_number desc
+    				notice_number DESC
     		limit #{startList}, #{listSize}
     		
     	</select>
     	
     	<!-- 전체 게시글 수 -->
-    	<select id="boardListCnt" resultType="int">
+    	<select id="boardListCnt" parameterType="com.java.BoardCommon.SearchPagination" resultType="int">
     	
     	select
     			count(*) as listCnt
     	from
     			notice
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="keyword != null and keyword !=''">
+    			<if test="searchType == 'notice_title'">
+    				AND notice_title like CONCAT('%',#{keyword},'%')
+    			</if>
+    			<if test="searchType == 'notice_contents'">
+    				AND notice_contents like CONCAT('%',#{keyword},'%')
+    			</if>
+    			<if test="searchType == 'customer_id'">
+    				AND customer_id like CONCAT('%',#{keyword},'%')
+    			</if>
+    		</if>
+    	</trim>
     			
     	</select>
     	

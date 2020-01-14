@@ -1,10 +1,7 @@
 package com.java.BoardService;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.java.BoardCommon.Pagination;
+import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardDto.ReplyVO;
@@ -31,7 +28,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	//게시글 리스트
 	@Override
-	public List<BoardVO> boardList(Pagination pagination) throws Exception {
+	public List<BoardVO> boardList(SearchPagination pagination) throws Exception {
 		// TODO Auto-generated method stub
 		
 		return boardDao.boardList(pagination);
@@ -88,9 +85,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public int boardListCnt() throws Exception {
+	public int boardListCnt(SearchPagination pagination) throws Exception {
 		
-		return boardDao.boardListCnt();
+		return boardDao.boardListCnt(pagination);
 	}
 	
 	//리플 리스트
