@@ -240,7 +240,7 @@
 									</div>
 									
 								<!-- pagination{s} -->
-								<div id="paginationBox">
+								<div id="paginationBox" style="float: none; margin: 0 auto;">
 									<ul class="pagination">
 									
 										<c:if test="${pagination.prev}">
@@ -265,25 +265,24 @@
 								</div><!-- pagination{e} -->
 							</div>
 							</article><!-- 게시판끝 -->
-					</div>
-					<!-- .sidebar end -->
+					</div>	<!-- .sidebar end -->
 					
-						<!-- search{s} -->
-								<div class="form-group row justify-content-center">
-									<div class="w100" style="padding-right: 10px">
-										<select class="form-control form-control-sm" name="searchType" id="searchType">
-											<option value="notice_title">제목</option>
-											<option value="notice_contents">본문</option>
-											<option value="customer_id">작성자</option>
-										</select>
-									</div>
-									<div class="w300" style="padding-right: 10px">
-										<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
-									</div>
-									<div>
-										<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-									</div>
-								</div> <!-- search{e} -->
+							<!-- search{s} -->
+						<div class="row" >
+							<div class="col-md-offset-3 col-md-2">
+								<select class="form-control" name="searchType" id="searchType">
+									<option value="notice_title">제목</option>
+									<option value="notice_contents">본문</option>
+									<option value="customer_id">작성자</option>
+								</select>
+							</div>
+							<div class="col-md-4" >
+								<input type="text" class="form-control" name="keyword" id="keyword">
+							</div>
+							<div class="col-md-1">
+								<button class="btn btn-primary" name="btnSearch" id="btnSearch">검색</button>
+							</div>
+						</div> <!-- search{e} -->
 				</div>
 			</div>
 		</section>
@@ -311,22 +310,6 @@
 							<div class="col_half">
 								<div class="widget subscribe-widget clearfix">
 									<h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
-										<script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script>
 								</div>
 							</div>
 
@@ -472,10 +455,8 @@
 		}else if(check == 0){
 			alert('삭제 되지 않았습니다.')
 		}else {
-			
 		}
 	}
-	
 	</script>
 
 </body>
