@@ -46,6 +46,6 @@
 	</bean>
 
 	<!-- 예외처리 -->
-<!-- 	<bean class="com.java.error.controller.CommonException"/> -->
+	<bean class="com.java.error.controller.CommonException"/>
 
 </beans>

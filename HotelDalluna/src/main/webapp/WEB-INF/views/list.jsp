@@ -65,40 +65,6 @@
 	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean')
 	;
 </style>
-
-<script>
-
-	//이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize) {
-		var page = ((range - 2) * rangeSize) + 1;
-		var range = range - 1;
-		var url = "${pageContext.request.contextPath}/list.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;
-
-	}
-
-  //페이지 번호 클릭
-	function fn_pagination(page, range, rangeSize, searchType, keyword) {
-		var url = "${pageContext.request.contextPath}/list.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;	
-	}
-
-  //다음 버튼 이벤트
-	function fn_next(page, range, rangeSize) {
-		var page = parseInt((range * rangeSize)) + 1;
-		var range = parseInt(range) + 1;
-		var url = "${pageContext.request.contextPath}/list.do";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		location.href = url;
-	}
-
-</script>
-    
 </head>
 
 <body class="stretched">
@@ -496,35 +462,20 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	<script type="text/javascript">
-		document.getElementById("write").onclick = function(){
-			location.href="boardForm.do"
-		};
-		
-		
-	</script>
-	
-	<!-- 게시글 검색 -->
+	<script type="text/javascript" src="resources/js/boardList/boardList.js"></script>
 	<script>
-		document.getElementById("btnSearch").onclick = function(){
-			event.preventDefault();
-			var url = "${pageContext.request.contextPath}/list.do";
-			var getkeyword = document.getElementById('keyword').value;
-			var serch = document.getElementById('searchType').value;
-				url = url+"?searchType="+serch+"&keyword="+getkeyword;
-			location.href = url;
-			console.info(url);
-		}
-	</script>
-	
-	<script>
-		if(${check}==1){
-		alert("삭제 되었습니다.");
-		location.href= "${pageContext.request.contextPath}/list.do"+ "?page="+page+"&range="+range;
-		}else{
-		alert("삭제 되지 않았습니다.")
-		}
+	var check = ${check}
+	window.onload= function(){
+		if(check == 1){
+			alert('정상적으로 삭제 되었습니다.')
+			location.href = "${pageContext.request.contextPath}/list.do"
+		}else if(check == 0){
+			alert('삭제 되지 않았습니다.')
+		}else {
 			
+		}
+	}
+	
 	</script>
 
 </body>
