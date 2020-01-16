@@ -252,7 +252,7 @@
 											end="${pagination.endPage}" var="idx">
 
 											<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-											<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+											<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${pagination.searchType }', '${pagination.keyword }')">
 													${idx} </a></li>
 										</c:forEach>
 
@@ -448,6 +448,12 @@
 	<script type="text/javascript" src="resources/js/boardList/boardList.js"></script>
 	<script>
 	var check = ${check}
+/* 	 	검색 페이지 다음 버튼 누를 경우 keyword, searchType넘어갈 수 있도록 
+  		if('${pagination.keyword}' != null || '${pagination.keyword}' != ''){
+			document.getElementById('keyword').value='${pagination.keyword}';
+			console.log('${pagination.keyword}')
+			document.getElementById('searchType').value='${pagination.searchType}';
+		} */
 	window.onload= function(){
 		if(check == 1){
 			alert('정상적으로 삭제 되었습니다.')
@@ -457,6 +463,8 @@
 		}else {
 		}
 	}
+	
+	
 	</script>
 
 </body>

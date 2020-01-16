@@ -42,16 +42,20 @@ document.getElementById("write").onclick = function() {
 			var url = getContextPath();
 			url = url + "?page=" + page;
 			url = url + "&range=" + range;
+			url = url+"&searchType="+searchType+"&keyword="+keyword;
 			location.href = url;	
 		}
 
 	  //다음 버튼 이벤트
 		function fn_next(page, range, rangeSize) {
+			var getkeyword = document.getElementById('keyword').value;
+			var serch = document.getElementById('searchType').value;
 			var page = parseInt((range * rangeSize)) + 1;
 			var range = parseInt(range) + 1;
 			var url = 	getContextPath()
 			url = url + "?page=" + page;
 			url = url + "&range=" + range;
+			url = url+"&searchType="+serch+"&keyword="+getkeyword;
 			location.href = url;
 		}
 
