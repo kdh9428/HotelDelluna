@@ -509,7 +509,7 @@
 						success : function(result) {
 							var htmls = "";
 							if (result.length < 1) {
-								htmls.push("등록된 댓글이 없습니다.");
+								htmls = "등록된 댓글이 없습니다.";
 							} else {
 								$(result).each(
 												function() {
