@@ -224,6 +224,7 @@
 		<!-- Content
         ============================================= -->
         <form action="ReservationCheck.do" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input id="dateOne" name="reservation_date_in" type="hidden">
         <input id="dateTwo" name="reservation_date_out" type="hidden">
 		<section id="content">

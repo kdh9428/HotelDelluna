@@ -47,5 +47,8 @@
 
 	<!-- 예외처리 -->
 	<bean class="com.java.error.controller.CommonException"/>
+	
+
+
 
 </beans>

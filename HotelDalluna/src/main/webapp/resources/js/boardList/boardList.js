@@ -8,7 +8,6 @@ function getContextPath(){
 	return contextPath;
 }
 
-console.info(getContextPath()+'/list.do');
 
 document.getElementById("write").onclick = function() {
 		location.href = "boardForm.do"

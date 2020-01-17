@@ -27,4 +27,14 @@
 	 	<constructor-arg index="0" ref="sqlSessionFactory"/>
 	 </bean>
 	 
+	 	<!--한글처리 -->
+	<bean class="org.springframework.http.converter.StringHttpMessageConverter" >
+   	<property name="supportedMediaTypes">
+               <list>
+                   <value>text/html;charset=UTF-8</value>
+               </list>
+       </property>
+ </bean>
+	 
+	 
 </beans>

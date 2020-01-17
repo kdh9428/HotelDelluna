@@ -246,19 +246,16 @@
 									<button type="button" class="btn btn-primary"
 										id="btnUpdate" onclick="location.href='editForm.do?notice_number=${content.notice_number}&mode=edit'">수정</button>
 									<button type="button" class="btn btn-primary"
-										id="btnDelete" onclick="location.href='boardDelete.do?notice_number=${content.notice_number}'">삭제</button>
+										id="btnDelete" onclick="fn_btnDelete('${content.notice_number}')">삭제</button>
 								</c:if>
-									<button type="button" id="btnList" class="btn btn-primary" >목록</button>
+									<button type="button" id="btnList" class="btn btn-primary" onclick="fn_List()">목록</button>
 								</div>
 							</div>
 							</form>
 							
 								<!-- .sidebar end -->
-
 					
 						</article>
-						
-
 					</div>
 					<!-- Reply Form {s} -->
 
@@ -669,10 +666,19 @@
 				document.getElementById('form').submit()
 				return false
 			} */			
-			document.getElementById("btnList").onclick = function(){
+			function fn_List(){
 				location.href="list.do"
 			}
+			/* 삭제 후 이동 replace()를 사용해서 삭제 한 페이지로 이동X */
+			function fn_btnDelete(notice_number) {
+				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+ notice_number)
+			}
 			
+	</script>
+
+	<script type="text/javascript">
+	
+	
 	</script>
 </body>
 </html>

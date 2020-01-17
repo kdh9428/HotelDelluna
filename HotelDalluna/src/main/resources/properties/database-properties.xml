@@ -4,7 +4,7 @@
 <properties>
 	<comment>DATA_SOURCE</comment>
 	<entry key="jdbc.driverClassName">com.mysql.jdbc.Driver</entry>
-	<entry key="jdbc.url">jdbc:mysql://127.0.0.1:3306/hotel?useUnicode=true&amp;characterEncoding=UTF-8</entry>
+	<entry key="jdbc.url">jdbc:mysql://127.0.0.1:3306/hotel?useUnicode=yes&amp;characterEncoding=UTF-8</entry>
 	<entry key="jdbc.username">root</entry>
 	<entry key="jdbc.password">1234</entry>
 </properties>

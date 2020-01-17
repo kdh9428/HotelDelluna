@@ -456,7 +456,7 @@
 	window.onload= function(){
 		if('${check}' != '' && '${check}' == 1 ){
 			alert('정상적으로 삭제 되었습니다.')
-			location.href = "${pageContext.request.contextPath}/list.do"
+			location.replace("${pageContext.request.contextPath}/list.do")
 		}else if('${check}' == 0 && '${check}' != ''){
 			alert('삭제 되지 않았습니다.')
 		}else {

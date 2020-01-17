@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,9 +80,11 @@ public class BoardController {
 	}
 	
 	//작성글 저장
-	@RequestMapping(value="boardSave", method =RequestMethod.POST)
+	@PostMapping(value="boardSave", produces="text/plain;charset=UTF-8")
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode, RedirectAttributes rra) throws Exception {
 		logger.info("작성글 저장");
+		logger.info("수정글 저장 확인"+boardVO.getNotice_contents());
+		
 		//작성글이 수정일 경우
 		if(mode.contentEquals("edit")) {
 			
@@ -98,7 +102,7 @@ public class BoardController {
 	//게시물 조회
 	
 	@RequestMapping(value="boardContent" ,method=RequestMethod.GET)
-	public String boardContent(@RequestParam("notice_number") int notice_number, Model model) throws Exception{
+	public String boardContent(@RequestParam(value = "notice_number") int notice_number, Model model) throws Exception{
 		logger.info("게시물 상세 조회");
 		
 		BoardVO ref = boardService.boardContent(notice_number);

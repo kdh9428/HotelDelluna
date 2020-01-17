@@ -1,16 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+	
+	
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Bootstrap 3 Website Template" />
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="description" content="Bootstrap 3 Website Template" />
+
 
     <!-- Stylesheets
     ============================================= -->
@@ -179,12 +180,11 @@
 							<article>
 
 		<div class="container" role="main">
-
 			<h2>게시판</h2>
 
-			<form:form name="form" id="form" role="form" method="post" modelAttribute="boardVO" action="boardSave.do">
+			<form:form name="form" id="form" role="form" method="post" modelAttribute="boardVO" action="boardSave.do" accept-charset="UTF-8">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<form:hidden path="notice_number" value="${notice_number}"/>
-				
 				<c:if test="${mode eq 'edit'}">
 					<input type="hidden" name="mode" value="edit"/>
 					<form:hidden path="ref" value="${boardContent.ref }"/>
