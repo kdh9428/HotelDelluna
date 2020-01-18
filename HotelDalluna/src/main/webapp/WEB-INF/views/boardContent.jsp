@@ -276,7 +276,7 @@
 								</div>
 								<div class="col-sm-2">
 									<form:input path="customer_id" class="form-control" id="customer_id"
-										placeholder="댓글 작성자" value="${login_id }" readonly="true" name="customer_id"/>
+										placeholder="${login_id }" value="${login_id }" readonly="true" name="customer_id"/>
 									<button type="button" class="btn btn-sm btn-primary"
 										id="btnReplySave" style="width: 100%; margin-top: 10px">
 										저 장</button>
@@ -681,10 +681,10 @@
 			
 		}			
 	) */
-	/* $('#context').focus(function{
-		$('#context').attr('placeholder','${login_id} 님 댓글을 작성해 주세요');
+	 $('#context').focus(function(){
+		$('#context').attr('placeholder','${login_id} 님 댓글을 입력하세요');
 	});
-	 */
+	 
 	$('#context').blur(function(){
 		$('#customer_id').val('${login_id}');
 	});
