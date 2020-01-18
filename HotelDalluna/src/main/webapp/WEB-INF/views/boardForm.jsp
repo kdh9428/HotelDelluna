@@ -183,8 +183,6 @@
 			<h2>게시판</h2>
 
 			<form:form name="form" id="form" role="form" method="post" modelAttribute="boardVO" action="boardSave.do" accept-charset="UTF-8">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<form:hidden path="notice_number" value="${notice_number}"/>
 				<c:if test="${mode eq 'edit'}">
 					<input type="hidden" name="mode" value="edit"/>
 					<form:hidden path="ref" value="${boardContent.ref }"/>
@@ -222,6 +220,10 @@
 				<button type="submit" class="btn btn-primary" id="btnSave">저장</button>
 				<button type="button" class="btn btn-primary" id="btnList">목록</button>
 			</div>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<input type="hidden" name="test" id="test" value="테스트중">
+				<form:hidden path="notice_number" value="${notice_number}"/>
+				
 		</form:form>
 	</div>
 	</article>

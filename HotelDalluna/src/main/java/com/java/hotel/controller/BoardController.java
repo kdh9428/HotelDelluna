@@ -2,6 +2,9 @@ package com.java.hotel.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.java.BoardCommon.Pagination;
 import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardDto.ReplyVO;
@@ -42,7 +43,7 @@ public class BoardController {
 	
 	//게시판 리스트
 	@RequestMapping(value="list" )
-	public String boardList( Model model, @RequestParam(required = false, defaultValue = "1") int page,
+	public String boardList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
 											@RequestParam(required = false, defaultValue = "1") int range,
 											 @RequestParam(required = false, defaultValue = "notice_title") String searchType,
 											 @RequestParam(required = false) String keyword) throws Exception{
@@ -80,11 +81,13 @@ public class BoardController {
 	}
 	
 	//작성글 저장
-	@PostMapping(value="boardSave", produces="text/plain;charset=UTF-8")
-	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode, RedirectAttributes rra) throws Exception {
-		logger.info("작성글 저장");
+	@PostMapping(value="boardSave")
+	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode,
+							@RequestParam("notice_contents") String notice_contents, 
+							@RequestParam("test") String test, RedirectAttributes rra) throws Exception {
+		logger.info("작성글 저장"+notice_contents);
 		logger.info("수정글 저장 확인"+boardVO.getNotice_contents());
-		
+		System.out.println("test 중 "+ test);
 		//작성글이 수정일 경우
 		if(mode.contentEquals("edit")) {
 			
@@ -158,6 +161,24 @@ public class BoardController {
 		return "boardForm";
 	}
 	
+	
+	
+	@RequestMapping("test")
+	public String test() {
+		
+		return "test";
+	}
+	@RequestMapping(value = "test1", method = RequestMethod.POST)
+	public String test1(HttpServletRequest req, HttpServletResponse resp,@RequestParam(value="test1", required = false, defaultValue = "하하하") String test1, Model model) throws Exception{
+		req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        
+        System.out.println(req.getAttribute(test1));
+		System.out.println("테스트               " + test1);
+		
+		model.addAttribute("test1",test1);
+		return "test";
+	}
 	
 	
 }

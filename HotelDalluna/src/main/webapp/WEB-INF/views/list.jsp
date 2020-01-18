@@ -454,6 +454,7 @@
 			document.getElementById('searchType').value='${pagination.searchType}';
 		} */
 	window.onload= function(){
+			
 		if('${check}' != '' && '${check}' == 1 ){
 			alert('정상적으로 삭제 되었습니다.')
 			location.replace("${pageContext.request.contextPath}/list.do")
