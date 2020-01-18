@@ -39,7 +39,7 @@
 			delete from notice_reply
 			
 			where
-					replyid = #{replyid}
+				replyid = #{replyid}
 	</delete>
 
 </mapper>

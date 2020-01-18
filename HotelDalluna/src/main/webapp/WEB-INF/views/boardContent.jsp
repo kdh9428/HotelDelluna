@@ -258,37 +258,32 @@
 						</article>
 					</div>
 					<!-- Reply Form {s} -->
-
+					
 					<div class="my-3 p-3 bg-white rounded shadow-sm"
 						style="padding-top: 10px">
-
+						
+						<sec:authorize access="isAnonymous()">
+							<div>댓글은 로그인 후 작성 가능합니다.</div>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="principal.username" var="login_id" />
 						<form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
-
 							<form:hidden path="notice_number" id="notice_number" />
-
 							<div class="row">
-
 								<div class="col-sm-10">
-
 									<form:textarea path="context" id="context" class="form-control"
 										rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
-
 								</div>
-
 								<div class="col-sm-2">
-
 									<form:input path="customer_id" class="form-control" id="customer_id"
-										placeholder="댓글 작성자"></form:input>
-
+										placeholder="댓글 작성자" value="${login_id }" readonly="true" name="customer_id"/>
 									<button type="button" class="btn btn-sm btn-primary"
 										id="btnReplySave" style="width: 100%; margin-top: 10px">
 										저 장</button>
-
 								</div>
-
 							</div>
-
 						</form:form>
+						</sec:authorize>
 
 					</div>
 
@@ -548,6 +543,9 @@
 	$(document).on('click', '#btnReplySave', function(){
 		var replyContent = $('#context').val();
 		var replyReg_id = $('#customer_id').val();
+		$('#customer_id').val('${login_id }');
+		$('input[name=customer_id]').attr('value','${login_id }');
+		console.log('${login_id }');
 		var paramData = JSON.stringify({"context": replyContent
 				, "customer_id": replyReg_id
 				, "notice_number":'${content.notice_number}'
@@ -678,7 +676,21 @@
 
 	<script type="text/javascript">
 	
-	
+	/* window.onload = function(
+		if('${login_id}' == null){
+			
+		}			
+	) */
+	/* $('#context').focus(function{
+		$('#context').attr('placeholder','${login_id} 님 댓글을 작성해 주세요');
+	});
+	 */
+	$('#context').blur(function(){
+		$('#customer_id').val('${login_id}');
+	});
+	$("#Text1").bind('cut paste', function(e) { 
+	    alert(e.type + ' text!'); 
+	}); 
 	</script>
 </body>
 </html>

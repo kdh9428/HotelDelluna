@@ -20,7 +20,8 @@
 					login-processing-url="/loginSuccess"
 					username-parameter="customer_id"
 					password-parameter="password"
-			authentication-failure-url="/login.do?error=true" />
+			authentication-failure-url="/login.do?error=true"/>
+			<!-- authentication-success-handler-ref="customAuthenticationSuccessHandler" -->
 	
 			<!-- login-processing-url="/login" -->
 
@@ -40,10 +41,13 @@
 		 <session-management invalid-session-url="/index.do">
      	   <concurrency-control max-sessions="1" expired-url="/login.do"/>
    		 </session-management>
+   		 
+	
 	</http>
 	
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
+	<!-- 로그인 완료 후 처리 -->
 	<!-- 로그인   -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
