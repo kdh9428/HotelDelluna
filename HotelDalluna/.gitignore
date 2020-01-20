@@ -133,6 +133,7 @@ crashlytics-build.properties
 fabric.properties
 pom.properties
 */pom.properties
+*.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
