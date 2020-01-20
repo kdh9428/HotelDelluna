@@ -70,7 +70,9 @@ tmp/**/*
 *.swp
 *~.nib
 .classpath
-.settings/
+*.classpath
+*.settings/
+/*.settings
 .loadpath
 /src/main/resources/rebel.xml
 # External tool builders
