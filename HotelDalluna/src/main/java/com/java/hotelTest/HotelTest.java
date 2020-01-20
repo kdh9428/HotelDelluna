@@ -2,7 +2,6 @@ package com.java.hotelTest;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,6 +19,8 @@ import com.java.BoardService.BoardService;
 import com.java.dao.ReservationDaoImpl;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
+
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
