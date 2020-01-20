@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!--확장자를 이용해 패턴을 걸때는 /**/*.해당 확장자 -->
 	<http pattern="/**/*.js" security="none" />
 	<http pattern="/**/*.css" security="none" />
@@ -20,12 +22,10 @@
 					login-processing-url="/loginSuccess"
 					username-parameter="customer_id"
 					password-parameter="password"
-			authentication-failure-url="/login.do?error=true" />
+			authentication-failure-url="/login.do?error=true"/>
+			<!-- authentication-success-handler-ref="customAuthenticationSuccessHandler" -->
 	
 			<!-- login-processing-url="/login" -->
-
-		<!-- 로그아웃 요청주소 지정 -->
-		<logout logout-url="/logout.do" logout-success-url="/index.do" invalidate-session="true"/>
 
 		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
 		<intercept-url pattern="/ReservationConfirm.do" access="isAuthenticated()" />
@@ -40,10 +40,14 @@
 		 <session-management invalid-session-url="/index.do">
      	   <concurrency-control max-sessions="1" expired-url="/login.do"/>
    		 </session-management>
+   		 
+   		 <!-- 로그아웃 요청주소 지정 -->
+		<logout logout-url="/logout.do" logout-success-url="/index.do" invalidate-session="true" />
 	</http>
 	
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
+	<!-- 로그인 완료 후 처리 -->
 	<!-- 로그인   -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="userService">
@@ -51,5 +55,7 @@
 		</authentication-provider>
 	</authentication-manager>
 	<beans:bean id="userService" class="com.java.service.memberDetailsSevice"/>
+	
+	
 
 </beans:beans>

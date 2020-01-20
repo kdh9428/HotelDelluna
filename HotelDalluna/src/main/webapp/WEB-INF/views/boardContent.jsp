@@ -166,7 +166,10 @@
 								</sec:authorize>
 								<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><a href="logout.do" > <div>로그아웃</div></a></li>
+									<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
+									<form id="logout-form" action="logout.do" method="post"> 
+									    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+									</form>
 							</sec:authorize>
 						</ul>
                     </nav><!-- #primary-menu end -->
@@ -199,7 +202,7 @@
 			<div class="content-wrap bgcolor-grey-li2ght">
 
 				<div class="container clearfix">
-
+				
 					<!-- Post Content
                     ============================================= -->
 					<div>
@@ -237,12 +240,12 @@
 								</div>
 								
 								<sec:authorize access="isAuthenticated()">
-                    			<sec:authentication property="principal.username" var="user_id" />
+                    			<sec:authentication property="principal.username" var="login_id" />
 								</sec:authorize>
 
 								<div style="margin-top: 20px">
 								<!-- 작성자가 맞는지 체크 -->
-								<c:if test="${content.customer_id eq user_id }">
+								<c:if test="${content.customer_id eq login_id }">
 									<button type="button" class="btn btn-primary"
 										id="btnUpdate" onclick="location.href='editForm.do?notice_number=${content.notice_number}&mode=edit'">수정</button>
 									<button type="button" class="btn btn-primary"
@@ -258,37 +261,30 @@
 						</article>
 					</div>
 					<!-- Reply Form {s} -->
-
 					<div class="my-3 p-3 bg-white rounded shadow-sm"
 						style="padding-top: 10px">
-
+						
+						<sec:authorize access="isAnonymous()">
+							<div><h4><a href="login.do">댓글은 로그인 후 작성 가능합니다.</a></h4></div>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
 						<form:form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
-
 							<form:hidden path="notice_number" id="notice_number" />
-
 							<div class="row">
-
 								<div class="col-sm-10">
-
 									<form:textarea path="context" id="context" class="form-control"
-										rows="3" placeholder="댓글을 입력해 주세요"></form:textarea>
-
+										rows="3" placeholder="댓글을 입력해 주세요" ></form:textarea>
 								</div>
-
 								<div class="col-sm-2">
-
 									<form:input path="customer_id" class="form-control" id="customer_id"
-										placeholder="댓글 작성자"></form:input>
-
+										placeholder="${login_id }" value="${login_id }" readonly="true" name="customer_id"/>
 									<button type="button" class="btn btn-sm btn-primary"
 										id="btnReplySave" style="width: 100%; margin-top: 10px">
 										저 장</button>
-
 								</div>
-
 							</div>
-
 						</form:form>
+						</sec:authorize>
 
 					</div>
 
@@ -484,11 +480,7 @@
 		// 이전 코드 생략
 
 		function showReplyList() {
-			
-			console.info('확인작업');
-			console.info("${content.notice_number}"+"확인!!"+"${pageContext.request.contextPath}");
 			var url = "${pageContext.request.contextPath}/ReplyList.do";
-
 			var paramData = {
 				"notice_number" : "${content.notice_number}"
 			};
@@ -517,8 +509,8 @@
 													htmls += '<strong class="text-gray-dark">'
 															+ '작성자 : '+this.customer_id
 															+ '</strong>';
-
 													htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+													if(this.customer_id =='${login_id}'){
 													htmls += '<a href="javascript:void(0)" onclick="fn_editReply('
 															+ this.replyid
 															+ ', \''
@@ -535,19 +527,28 @@
 													htmls += '<br>'+this.context;
 													htmls += '</p>';
 													htmls += '</div>';
+													}else{
+													htmls += '</span>';
+													htmls += '</span>';
+													htmls += '<br>'+this.context;
+													htmls += '</p>';
+													htmls += '</div>';
+													}
 												}); //each end
-							}
+									}
 							$("#replyList").html(htmls);
 						} // Ajax success end
 					}); // Ajax end
 		}
 	</script>
-	
 	<script type="text/javascript">
 	//댓글 저장 버튼 클릭 이벤트
 	$(document).on('click', '#btnReplySave', function(){
 		var replyContent = $('#context').val();
 		var replyReg_id = $('#customer_id').val();
+		$('#customer_id').val('${login_id }');
+		$('input[name=customer_id]').attr('value','${login_id }');
+		console.log('${login_id }');
 		var paramData = JSON.stringify({"context": replyContent
 				, "customer_id": replyReg_id
 				, "notice_number":'${content.notice_number}'
@@ -608,7 +609,6 @@
 	function fn_updateReply(replyid, customer_id){
 		
 		var replyEditContent = $('#editContent').val();
-		console.log(replyEditContent)
 		var paramData = JSON.stringify({"context": replyEditContent
 				, "replyid": replyid
 		});
@@ -633,7 +633,6 @@
 			}
 		});
 	}
-
 	</script>
 
 	<!-- 댓글 삭제 -->
@@ -669,7 +668,7 @@
 			function fn_List(){
 				location.href="list.do"
 			}
-			/* 삭제 후 이동 replace()를 사용해서 삭제 한 페이지로 이동X */
+			/* 삭제 후 이동 replace()를 사용해서 다시 삭제 한 페이지로 이동X */
 			function fn_btnDelete(notice_number) {
 				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+ notice_number)
 			}
@@ -678,7 +677,28 @@
 
 	<script type="text/javascript">
 	
+		var focus = document.getElementById('context');
+			focus.addEventListener("focusin", inFocus);
+			focus.addEventListener("focusout", outFocus);
+		
+		function inFocus(){
+			document.getElementById('context').setAttribute('placeholder', '${login_id}님 댓글을 입력하세요')
+		}
+		function outFocus(){
+			document.getElementById('customer_id').value = '${login_id}';
+		}
+		
 	
+	/*  jQuery test
+	
+	 $('#context').focus(function(){
+		$('#context').attr('placeholder','${login_id} 님 댓글을 입력하세요');
+	});
+	  */
+	/* $('#context').blur(function(){
+		$('#customer_id').val('${login_id}');
+	});
+ */
 	</script>
 </body>
 </html>

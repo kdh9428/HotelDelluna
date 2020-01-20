@@ -12,7 +12,7 @@
 				notice_reply
 		where
 				notice_number = #{notice_number}
-		order by reg_dt desc
+		order by replyid desc
 	</select>
 	
 	<insert id="insertReply" parameterType="com.java.BoardDto.ReplyVO">
@@ -39,7 +39,7 @@
 			delete from notice_reply
 			
 			where
-					replyid = #{replyid}
+				replyid = #{replyid}
 	</delete>
 
 </mapper>

@@ -27,7 +27,7 @@
 	 	<constructor-arg index="0" ref="sqlSessionFactory"/>
 	 </bean>
 	 
-	 	<!--한글처리 -->
+	 	<!--한글처리 @ResponseBody 사용시-->
 <!-- 	<bean class="org.springframework.http.converter.StringHttpMessageConverter" >
    	<property name="supportedMediaTypes">
                <list>
