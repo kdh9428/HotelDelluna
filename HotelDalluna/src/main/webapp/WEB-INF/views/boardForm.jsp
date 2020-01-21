@@ -6,6 +6,7 @@
 	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	
 	
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +40,9 @@
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    
+    <!-- CKEditor 5 생성  -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 	
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="resources/include/rs-plugin/css/settings.css" media="screen" />
@@ -393,6 +397,7 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+	<script type="text/javascript" src="resources/js/board/ckeditor.js"></script>
 	<script type="text/javascript">
 		/*  	required설정, javascript로 submit이동시 required는 작동하지 않는다.
 		document.getElementById('btnSave').onclick = function(){
