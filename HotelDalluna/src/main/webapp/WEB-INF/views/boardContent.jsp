@@ -231,7 +231,7 @@
 										<span class="board_author">조회수 : ${content.ref}</span>
 									</div>
 
-									<div class="board_content"><pre><c:out value="${content.notice_contents}" /></pre></div>
+									<div class="board_content"><pre>${content.notice_contents}</pre></div>
 
 									<div class="board_tag">
 										TAG :

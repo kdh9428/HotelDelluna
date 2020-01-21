@@ -22,7 +22,7 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public List<BoardVO> boardList(SearchPagination pagination)throws Exception {
-		logger.info("boardList Dao 시작"+pagination.getKeyword());
+		logger.info("boardList Dao 시작");
 		return sqlSession.selectList("com.java.BoardDao.boardList", pagination);
 	}
 	

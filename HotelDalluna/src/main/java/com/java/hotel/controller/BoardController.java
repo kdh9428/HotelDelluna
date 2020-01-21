@@ -1,5 +1,4 @@
 package com.java.hotel.controller;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,10 +61,7 @@ public class BoardController {
 		search.setRangeSize(10);
 		search.pageInfo(page, range, boardService.boardListCnt(search));
 		
-		logger.info("하하"+search.getPage());
-		
 		List<BoardVO> list = boardService.boardList(search);
-		logger.info(list.get(0).getNotice_contents());
 		model.addAttribute("pagination",search);
 		model.addAttribute("boardList",list);
 		return "list";
@@ -75,6 +71,8 @@ public class BoardController {
 	@RequestMapping("boardForm")
 	public String boardForm(@ModelAttribute("boardVO")BoardVO boardVO, Model model) {
 		logger.info("게시판 작성폼");
+		
+		//게시판 작성 로그인 아이디 확인
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		model.addAttribute("customer_id",auth.getName());
 		return "boardForm";
@@ -83,17 +81,14 @@ public class BoardController {
 	//작성글 저장
 	@PostMapping(value="boardSave")
 	public String boardSave(@ModelAttribute("BoardVO") BoardVO boardVO, @RequestParam(value="mode", defaultValue = "null") String mode,
-							@RequestParam("notice_contents") String notice_contents, 
-							@RequestParam("test") String test, RedirectAttributes rra) throws Exception {
-		logger.info("작성글 저장"+notice_contents);
-		logger.info("수정글 저장 확인"+boardVO.getNotice_contents());
-		System.out.println("test 중 "+ test);
-		//작성글이 수정일 경우
+							@RequestParam("notice_contents") String notice_contents, RedirectAttributes rra) throws Exception {
+		logger.info("작성글 저장");
+		//작성글이 수정일 경우 edit parameter 받는다.
 		if(mode.contentEquals("edit")) {
 			
 		int update = boardService.boardUpdate(boardVO);
 		if(update==1) {
-			System.out.println("확인중"+update);
+			logger.info("작성글 저장 성공, 성공시 '1'반환  :" +update );
 		}
 		}else {
 		//새로운 글
@@ -103,7 +98,6 @@ public class BoardController {
 	}
 	
 	//게시물 조회
-	
 	@RequestMapping(value="boardContent" ,method=RequestMethod.GET)
 	public String boardContent(@RequestParam(value = "notice_number") int notice_number, Model model) throws Exception{
 		logger.info("게시물 상세 조회");
@@ -111,22 +105,11 @@ public class BoardController {
 		BoardVO ref = boardService.boardContent(notice_number);
 		//게시물 조회수
 		
-//		ref.setRef(ref.getRef()+1);
-//		System.out.println("게시물 조회 테스트중"+ref.getRef());
-//		boardService.boardUpdate(ref);
-//		System.out.println("테스트 확인");
 		model.addAttribute("replyVO", new ReplyVO());
 		model.addAttribute("content",ref);
 		
 		return "boardContent";
 	}
-	
-	/*
-	 * public void boardtest(int notice_number) throws Exception { BoardVO test
-	 * =boardService.boardContent(notice_number).get(0); test.setNotice_title(
-	 * "slkdjfslkdjfslkdjfkljfsdasdfasfdsdfasdfkjlfdsljkfdsljkfsdlk");
-	 * boardService.boardUpdate(test); }
-	 */
 	
 	//게시물 삭제
 	@RequestMapping("boardDelete")
@@ -160,25 +143,4 @@ public class BoardController {
 		model.addAttribute("mode", mode);
 		return "boardForm";
 	}
-	
-	
-	
-	@RequestMapping("test")
-	public String test() {
-		
-		return "test";
-	}
-	@RequestMapping(value = "test1", method = RequestMethod.POST)
-	public String test1(HttpServletRequest req, HttpServletResponse resp,@RequestParam(value="test1", required = false, defaultValue = "하하하") String test1, Model model) throws Exception{
-		req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-        
-        System.out.println(req.getAttribute(test1));
-		System.out.println("테스트               " + test1);
-		
-		model.addAttribute("test1",test1);
-		return "test";
-	}
-	
-	
 }

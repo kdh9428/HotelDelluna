@@ -197,7 +197,7 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label for="notice_title">제목</label>
-					<form:input path="notice_title" id="notice_title" class="form-control" placeholder="제목을 입력해 주세요" />
+					<form:input path="notice_title" id="notice_title" class="form-control" placeholder="제목을 입력해 주세요" required = "true"/>
 				</div>
 				
 				<div class="col-md-6">
@@ -208,7 +208,7 @@
 				
 				<div class="mb-3">
 					<label for="notice_contents">내용</label>
-					<form:textarea class="form-control" rows="10" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" />
+					<form:textarea class="form-control" rows="10" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" value="${boardVO.notice_contents }"/>
 				</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -216,18 +216,17 @@
 					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
 				</div>
 				
-			<!-- 	<div class="col-md-6">
+			<!-- 	비밀번호 생성 하지 않고 아이디체크로 게시물 삭제 버튼 생성
+					<div class="col-md-6">
 					<label for="reg_id">비밀번호</label>
 					<input type="password" class="form-control" name="boardpw" id="boardpw" placeholder="비밀번호" required>
 				</div> -->
 			</div>
-
 			<div>
 				<button type="submit" class="btn btn-primary" id="btnSave">저장</button>
 				<button type="button" class="btn btn-primary" id="btnList">목록</button>
 			</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" name="test" id="test" value="테스트중">
 				<form:hidden path="notice_number" value="${notice_number}"/>
 				
 		</form:form>
