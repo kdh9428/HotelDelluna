@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="UTF-8">
 <head>
@@ -8,10 +7,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
-    <!-- Stylesheets
+    <!-- Stylesheets 고객의소리
     ============================================= -->
-	<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
+	 <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">   
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
@@ -19,6 +18,7 @@
     <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+
     <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
@@ -33,7 +33,6 @@
     <!-- Document Title
     ============================================= -->
 	<title>Hotel Delluna</title>
-
 
 </head>
 
@@ -53,19 +52,22 @@
 
                     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
-                	  <!-- Logo============================================= -->
+                    <!-- Logo============================================= -->
 					<div id="logo">
-						<a href="index.do" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
-                        <a href="index.do" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
-					</div>
-					<!-- #logo end -->
-					
-                                  <!-- Primary Navigation
+						<a href="index.do" class="standard-logo"
+							data-dark-logo="images/logo/logo-dark.png"><img
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+						<a href="index.do" class="retina-logo"
+							data-dark-logo="images/logo/logo-dark-large.png"><img
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+					</div><!-- #logo end -->
+
+                                      <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
-                         <ul class="">
-							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
+                        <ul class="">
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
@@ -89,7 +91,7 @@
 								<ul>
 									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
-							<li class="current" ><a href="#" onclick="return false;"><div>부대시설</div></a>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
 									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
 									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
@@ -109,62 +111,132 @@
                               	 	 </ul>   
                               	 </li>
 								</sec:authorize>
-								<!-- 로그인 했을 경우 보여준다.  -->
+									<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><a href="logout.do" > <div>로그아웃</div></a></li>
+									<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
+								<form id="logout-form" action="logout.do" method="post"> 
+								    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+								</form>
 							</sec:authorize>
-							<%-- <c:url value="logout" /> --%>
 						</ul>
                     </nav><!-- #primary-menu end -->
                 </div>
           </div>
 
-        </header><!-- #header end -->
+        </header><!-- #header end -->    
         
-        <!-- Page Title
+        <!-- Page Title 배경
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/favicon/on2.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
-            <div class="container clearfix">
-            
-            </div>
+        
 
-   	  </section><!-- #page-title end -->        
+          
 
+        <!-- #page-title end -->        
+
+        <!-- Google Map
+        ============================================= -->
+      
         <!-- Content
         ============================================= -->
         <section id="content">
 
-            <div class="content-wrap bgcolor-grey-light">
+            <div class="section content-wrap notopmargin nobottommargin bgcolor-grey">
 
                 <div class="container clearfix">
 
-                    <!-- Portfolio Single Image
+                    <!-- Postcontent
                     ============================================= -->
-                    <div class="col_two_third portfolio-single-image nobottommargin">
-                    <!--menu-item.jpg  -->
-                        <img src="resources/images/favicon/on.jpg" alt="" width="300" height="430">                     
-                    </div><!-- .portfolio-single-image end -->
+                    <div class="postcontent nobottommargin">
 
-                    <!-- Portfolio Single Content
+                        <h3>고객의 소리</h3>
+
+                        <div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+
+                        <form class="nobottommargin" id="template-contactform" name="template-contactform" action="sendemail.jsp" method="post">
+
+                            <div class="form-process"></div>
+
+                            <div class="col_one_third">
+                                <label for="template-contactform-name">성함 <small>*</small></label>
+                                <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" disabled/>
+                            </div>
+
+                            <div class="col_one_third">
+                                <label for="template-contactform-email">이메일 <small>*</small></label>
+                                <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" disabled />
+                            </div>
+
+                         
+
+                            <div class="clear"></div>
+
+                            <div class="col_two_third">
+                                <label for="template-contactform-subject">제목 <small>*</small></label>
+                                <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
+                            </div>
+
+                            <div class="col_one_third col_last">
+                                <label for="template-contactform-service">질문유형</label>
+                                <select id="template-contactform-service" name="template-contactform-service" class="sm-form-control">
+                                    <option value="">-- Select One --</option>
+                                    <option value="Customer Service">고객 서비스</option>
+                                    <option value="Manager">매니저</option>
+                                    <option value="Advertising">Advertising</option>
+                                    <option value="Marketing">Marketing</option>
+                                </select>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="col_full">
+                                <label for="template-contactform-message">작성 <small>*</small></label>
+                                <textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+                            </div>
+
+                            <div class="col_full hidden">
+                                <input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+                            </div>
+
+                            <div class="col_full">
+                                <button class="btn button nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">접수</button>
+                            </div>
+
+                        </form>
+
+                        <script type="text/javascript">
+
+                            $("#template-contactform").validate({
+                                submitHandler: function(form) {
+                                    $('.form-process').fadeIn();
+                                    $(form).ajaxSubmit({
+                                        target: '#contact-form-result',
+                                        success: function() {
+                                            $('.form-process').fadeOut();
+                                            $('#template-contactform').find('.sm-form-control').val('');
+                                            $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
+                                            IGNITE.widget.notifications($('#contact-form-result'));
+                                        }
+                                    });
+                                }
+                            });
+
+                        </script>
+
+                    </div><!-- .postcontent end -->
+				
+                    <!-- Sidebar
                     ============================================= -->
-                    <div class="col_one_third portfolio-single-content col_last nobottommargin">
+                    <div class="sidebar col_last nobottommargin">
 
-                        <!-- Portfolio Single - Description
-                        ============================================= -->
-                        <div class="fancy-title title-bottom-border">
-                            <h1>해온 루프탑 테라스</h1>
-                        </div>
-                      <p>이국적인 야자수와 제주의 파란 하늘 아래 특별한 휴식을 선사할 롯데호텔제주 신규 휴양시설 해온 루프탑 테라스를 만나보세요. </p>
-                      <p>황금빛 석양이 비치는 해온 루프탑 테라스에서 그 동안 꿈꿔온 여행의 로망을 완성할 수 있습니다.</p>
-                       
-                        <!-- Portfolio Single - Description End -->
-
-                        <!-- Portfolio Single - Share
-                        ============================================= -->
-                        <div class="si-share clearfix">
-                            <span>Share:</span>
-                            <div>
-                         	<a href="https://www.facebook.com/" class="social-icon si-light si-small si-facebook">
+                        <address>
+                            <strong>Address:</strong><br>
+                           63535, 제주특별자치도 서귀포시 중문관광로 72번길, 호텔 델루나.
+                        </address>
+                        <strong>Phone:</strong> (341) 457 432678<br>
+                        <strong>Fax:</strong> (341) 457 538478<br>
+                     
+                        <div class="widget noborder notoppadding">
+                        	<a href="https://www.facebook.com/" class="social-icon si-light si-small si-facebook">
                             	<i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i></a>
                             <a href="https://twitter.com/?lang=ko" class="social-icon si-light si-small si-twitter">
@@ -178,150 +250,14 @@
                                 <i class="icon-gplus"></i></a>
                             <a href="https://www.moakt.com/ko" class="social-icon si-light si-small si-email3">
                                 <i class="icon-email3"></i>
-                                <i class="icon-email3"></i></a>                   
-                        	</div>
-                        </div>
-                        <!-- Portfolio Single - Share End -->
-                    </div><!-- .portfolio-single-content end -->
+                                <i class="icon-email3"></i></a>
+                        </div>                        
 
-                    <div class="clear"></div>
-                    
-                            <!-- Comments
-                            ============================================= -->
-					<div id="comments" class="clearfix">
+                    </div><!-- .sidebar end -->
 
-						<h2 id="comments-title">부대시설 개요</h2>
-						<b>타입</b> He:on Rooftop Terrace <br> <b>위치</b> Garden 2F <br>
-						<b>이용시간</b><br> 09:00 ~ 23:00 (5월~10월) <br> 09:30 ~
-						23:00 (11월~4월)
-						<p>
-						<h2 id="comments-title2">추가 정보</h2>
-
-						<br>360도 워터 슬라이드, 3가지 타입의 자쿠지, 어린이 전용 키즈풀,<br> 프라이빗 카바나
-						등 다채로운 시설로 많은 사랑을 받고 있는 롯데호텔제주 해온에 또 하나의 신규 휴양시설이 오픈하였습니다.<br>
-						트로피칼 칵테일을 즐길 수 있는 풀사이드 카페와 눈부시도록 아름다운 석양이 비치는 2층 테라스로 구성된 해온 루프탑
-						테라스에서 <br> 그 동안 꿈꿔온 여름 바캉스의 모든 로망을 완성해보시기 바랍니다. <br> <br>
-						<br>
-					</div>
-
-
-					<h2>문의안내</h2>
-					<b>TEL +82-1234-1234 </b><br> <b>※ </b>해온 루프탑 테라스는 호텔 투숙객 전용으로 운영되고
-					있습니다. <br> <b>※ </b>어린이는 키즈풀 이용을 권장하며, 반드시 보호자 동반을 부탁드립니다.
-					<br> <b>※ </b>귀중품은 객실에 보관해 주시기 바랍니다.<br>
-
-
-					<!-- Disqus Comments
-                                ============================================= -->
-                                       
-
-                    <div class="divider divider-center"><i class="icon-circle"></i></div>
-
-                    <!-- Related Portfolio Items
-                    ============================================= -->
-                    <h3>갤러리</h3>
-
-                    <div id="related-portfolio" class="owl-carousel portfolio-carousel">
-
-                        <div class="oc-item">
-                            <div class="iportfolio">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html"><img src="resources/images/favicon/on.jpg" alt=""></a>
-                                	<div class="portfolio-overlay">
-                                    	<a href="resources/images/favicon/on.jpg" class="left-icon" data-lightbox="image">
-                                    	<i class="icon-picture"></i></a>
-                                                                 
-                                	</div>
-                            	</div>
-                            	<div class="portfolio-desc">
-                            		              
-                            	</div>
-                        	</div>                        
-                        </div>
-                        
-                        <div class="oc-item">
-                            <div class="iportfolio">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on2.jpg" alt=""></a>
-                                    <div class="portfolio-overlay">
-                                    	<a href="resources/images/favicon/on2.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
-                                                                    
-                                    </div>
-                                </div>
-                      
-                        	</div>
-                        </div>
-                        
-                        <div class="oc-item">
-                            <div class="iportfolio">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on3.jpg" alt=""></a>
-                                    <div class="portfolio-overlay">
-                                        <a href="resources/images/favicon/on3.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
-                                                            
-                                    </div>
-                                </div>
-                                <div class="portfolio-desc">
-                                       
-                                </div>
-                            </div>
-                        </div>
-                        
-                       
-                        <div class="oc-item">
-                            <div class="iportfolio">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.do"><img src="resources/images/favicon/on5.jpg" alt=""></a>
-                                    <div class="portfolio-overlay">
-                                        <a href="resources/images/favicon/on5.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
-                                                                   
-                                    </div>
-                                </div>
-                            
-                            </div>
-                        </div>
-                        
-                        <div class="oc-item">
-                            <div class="iportfolio">
-                                <div class="portfolio-image">
-                                    <a href="portfolio-single.html"><img src="resources/images/favicon/onsu6.jpg" alt=""></a>
-                                    <div class="portfolio-overlay">
-                                        <a href="resources/images/favicon/onsu6.jpg" class="left-icon" data-lightbox="image"><i class="icon-picture"></i></a>
-                                                            
-                                    </div>
-                                </div>
-                            
-                            </div>
-                        </div>
-                        
-                    </div><!-- .portfolio-carousel end -->
-
-                    <script type="text/javascript">
-
-                        jQuery(document).ready(function($) {
-
-                            var relatedPortfolio = $("#related-portfolio");
-
-                            relatedPortfolio.owlCarousel({
-                                margin: 20,
-                                nav: true,
-                                dots:true,
-                                autoplay: true,
-                                autoplayHoverPause: true,
-                                responsive:{
-                                    0:{ items:1 },
-                                    480:{ items:2 },
-                                    768:{ items:3 },
-                                    992: { items:4 }
-                                }
-                            });
-
-                        });
-
-                    </script>
                 </div>
 
-          </div>
+            </div>
 
         </section><!-- #content end -->
 
@@ -340,20 +276,16 @@
                         <div class="widget clearfix">
 
                             <h3>(주)호텔 델루나 <span>02-1544-1111</span></h3>
-                            <p>Email : hoteldelluna@hoteldelluna.co.kr</p>
+                            <p>63535, 제주특별자치도 서귀포시 중문관광로 72번길, 호텔 델루나.</p>
 
                             <div class="line" style="margin: 30px 0;"></div>
 
                             <div class="col_half">
                                 <div class="widget subscribe-widget clearfix">
-                                   
+                                    <h5>Email : hoteldelluna@hoteldelluna.co.kr
                                     <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
                                     <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
-                                        <div class="input-group divcenter">                                            
-                                            
-                                            <span class="input-group-btn">
-                                              
-                                            </span>                                        </div>
+  								
                                     </form>
                                     <script type="text/javascript">
                                         $("#widget-subscribe-form").validate({
@@ -373,7 +305,6 @@
                                     </script>
                                 </div>                            
                             </div>
-
                             <div class="col_half col_last">
                                 <div class="widget clearfix">
 
@@ -385,9 +316,9 @@
                                 			<ul>
                                     			<li><a href="index.do"><div>메인</div></a></li>
                                     			<li><a href="list.do"><div>공지사항</div></a></li>
-                                    			<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-                                    			<li><a href="Location.do"><div>호텔위치</div></a></li>
-                                                <li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+                                    			<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
+                                    			<li><a href="Location.html"><div>호텔위치</div></a></li>
+                                                <li><a href="contact-1.jsp"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -396,9 +327,9 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><a href="deluxe-1.do"><div>객실 - 디럭스</div></a></li>
-                                    			<li><a href="suite-1.do"><div>객실 - 스위트</div></a></li>
-                                    			<li><a href="dining-1.do"><div>다이닝</div></a></li>
+                                    			<li><a href="deluxe-1.html"><div>객실 - 디럭스</div></a></li>
+                                    			<li><a href="suite-1.html"><div>객실 - 스위트</div></a></li>
+                                    			<li><a href="dining-1.html"><div>다이닝</div></a></li>
                                     			<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
                                                 <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
@@ -436,23 +367,23 @@
                 </div>
               <!-- .footer-widgets-wrap end -->
 
-            </div>       
+            </div>        
 
-             <!-- Copyrights
+            <!-- Copyrights
             ============================================= -->
             <div id="copyrights">
 
                 <div class="container clearfix">
 
                     <div class="col_half">
-                       <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
+                        <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
                         <img src="resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
                         Copyright &copy; 2019 Hotel Delluna. All Rights Reserved.
                     </div>
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                             <a href="#">공지사항</a> <a href="hotel-About-Us.do">호텔소개</a> <a href="deluxe-1.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
+                            <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">

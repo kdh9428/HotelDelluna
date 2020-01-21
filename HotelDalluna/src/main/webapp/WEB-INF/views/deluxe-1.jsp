@@ -65,13 +65,13 @@
                     <nav id="primary-menu">
 
                         <ul class="">
-							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
 									<li><a href="list.do"><div>공지사항</div></a></li>
 								</ul></li>
-							<li><a href="#" onclick="return false;"><div>객실</div></a>
+							<li class="current"><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
 									<li><a href="deluxe-1.do"><div>디럭스</div></a>
 										<ul>

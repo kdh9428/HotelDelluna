@@ -63,7 +63,7 @@
                     ============================================= -->
                       <nav id="primary-menu">
 						<ul class="">
-							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
@@ -80,10 +80,9 @@
 										<ul>
 											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
 											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
-
 										</ul></li>
 								</ul></li>
-							<li><a href="dining-1.do"><div>다이닝</div></a>
+							<li class="current"><a href="dining-1.do"><div>다이닝</div></a>
 								<ul>
 									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>

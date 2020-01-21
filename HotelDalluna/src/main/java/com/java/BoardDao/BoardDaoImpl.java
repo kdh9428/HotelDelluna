@@ -57,7 +57,6 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
 		logger.info("게시글 업데이트 확인"+boardVO.getRef());
-		
 		return sqlSession.update("com.java.BoardDao.boardUpdate", boardVO);
 	}
 	

@@ -6,6 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-156464840-1');
+	</script>
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
@@ -385,9 +396,9 @@
             <div class="content-wrap"> 
             <!--  -->
                 <!-- Promo -->
-                <div class="promo promo-light promo-full header-stick nobottommargin">
+              <!--   <div class="promo promo-light promo-full header-stick nobottommargin">
                     <div class="container clearfix" style="width:70%;">
-                        <!-- 달력시작 -->
+                        달력시작
 												<div id="app" class="app" :class="{'align-right': alignRight}">
 												 <div class="datepicker-container with-button">
 											        <div class="datepicker-trigger">
@@ -413,11 +424,11 @@
 											          ></airbnb-style-datepicker>
 											        </div>
 											      </div>
-											    </div><!-- 달력끝 -->
+											    </div>달력끝
                         <a href="Reseravtion.do" class="button button-light bgcolor-grey-light button-rounded button-reveal button-large button-3d tright" style="display: inline-block;">
                         <i class="icon-angle-right"></i><span>Reservations</span></a>
                    </div>
-       	  	  	</div><!-- End Promo -->                                                                  
+       	  	  	</div> --><!-- End Promo -->                                                                  
              
               
           		<div class="section bgcolor-grey-light notopmargin noborder nobottommargin">

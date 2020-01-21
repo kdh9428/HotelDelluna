@@ -63,7 +63,7 @@
                     <nav id="primary-menu">
 
                         <ul class="">
-							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
@@ -87,7 +87,7 @@
 								<ul>
 									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
-							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
+							<li class="current"><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
 									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
 									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>

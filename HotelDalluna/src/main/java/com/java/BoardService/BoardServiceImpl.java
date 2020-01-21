@@ -33,7 +33,7 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardDao.boardList(pagination);
 	}
-	//게시판 작성
+	//게시판 작성 저장
 	@Override
 	public void boardInsert(BoardVO boardVO) throws Exception {
 		logger.info("게시판 작성완료 BoardService");
@@ -42,7 +42,6 @@ public class BoardServiceImpl implements BoardService {
 		 * passwordEncoder.encode(pw);
 		 */
 		/* boardVO.setBoardpw(encoder); */
-		System.out.println("boardVO 확인"+boardVO.getCustomer_id());
 		boardDao.boardWrite(boardVO);
 		
 	}
@@ -59,6 +58,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardvo;
 	}
 	
+	//게시글 삭제
 	@Override
 	public int boardDelete(int notice_number) throws Exception {
 		logger.info("게시글 삭제 확인");
@@ -84,6 +84,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.boardUpdate(boardVO);
 	}
 	
+	//게시판 총 개수 확인
 	@Override
 	public int boardListCnt(SearchPagination pagination) throws Exception {
 		
@@ -108,9 +109,9 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.updateReply(replyVO);
 	}
 	
+	//댓글 삭제
 	 @Override
 	public int deleteReply(int replyid) throws Exception {
-		 
 		 return boardDao.deleteReply(replyid);
 	}
 
