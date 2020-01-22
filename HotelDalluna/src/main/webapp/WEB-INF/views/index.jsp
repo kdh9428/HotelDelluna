@@ -16,8 +16,17 @@
 	
 	  gtag('config', 'UA-156464840-1');
 	</script>
+	
+	<!-- NAVER 통계  -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script type="text/javascript">
+		if (!wcs_add)
+			var wcs_add = {};
+		wcs_add["wa"] = "8d13c212f2058";
+		wcs_do();
+	</script>
 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
@@ -344,7 +353,6 @@
                         data-endelementdelay="0.1"
                         data-endspeed="1000"
                         data-endeasing="Power4.easeIn" style="z-index: 11; max-width: 550px; white-space: normal; color: #222;"></div>
-
                     </li>
                     <!-- END SLIDE  -->
                    

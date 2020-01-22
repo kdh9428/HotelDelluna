@@ -15,7 +15,8 @@ public class Pagination {
 	private boolean prev;	//이전 페이지 여부
 	private boolean next;	//다음 페이지 여부
 	private String customer_id;
-
+	
+	
 	public String getCustomer_id() {
 		return customer_id;
 	}

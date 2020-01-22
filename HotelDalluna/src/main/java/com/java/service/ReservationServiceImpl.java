@@ -1,5 +1,7 @@
 package com.java.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.java.BoardCommon.Pagination;
 import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
+
+import sun.net.www.content.text.plain;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -111,26 +115,37 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	//예약 완료 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm(Pagination pagination) {
-//		//로그인 id Security에서 받아오기
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		
-//		int page=1;
-//		int range=1;
-//		
-//		//페이징 처리
-//		ReservationPage pages = new ReservationPage();
-//		
-//		//총 페이지 가져오기
-//		pages.pageInfo(page, range, reservationCount("aaa"));
-//		pages.setCustmer_id("aaa");
-		return reservationDao.reservationConfirm(pagination);
+	public List<ReservationDTO> reservationConfirm(int page, int range) {
+		
+		logger.info("페이지 테스트"+page+"dd"+range);
+		return reservationDao.reservationConfirm(pagination(page, range));
 	}
 	
 	@Override
 	public int reservationCount(String customer_id) {
 	
 		return reservationDao.reservationCount(customer_id);
+	}
+	
+	//예약 페이징 처리
+	@Override
+	public Pagination pagination(int page, int range) {
+		Pagination paging = new Pagination();
+		
+		//로그인 id Security에서 받아오기
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		//한 페이지에 보여질 리스트 수
+		paging.setListSize(1);
+		paging.setRangeSize(10);
+		
+		//아이디 
+		paging.setCustomer_id(auth.getName());
+		
+		//총 페이지 가져오기
+		paging.pageInfo(page, range, reservationCount(auth.getName()));
+		
+		return paging;
 	}
 
 }

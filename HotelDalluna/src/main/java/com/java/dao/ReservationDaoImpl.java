@@ -22,7 +22,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	//예약 가능 확인 체크
 	@Override
 	public int reservationCheck(ReservationDTO reservationDto) {
-		logger.info("check 확인");
+		logger.info("reservationCheck 확인");
 		//System.out.println("check 확인 값 0이면 없음 1이면 있음");
 		return sqlSession.selectOne("reservationCheck", reservationDto);
 	}

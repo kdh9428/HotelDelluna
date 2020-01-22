@@ -147,7 +147,7 @@
        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
 
             <div class="container clearfix" style="border-width:3px;">
-                <h1>호텔 델루나 위치</h1>
+                <h1>예약 조회 및 취소</h1>
                 
                 <ol class="breadcrumb">
                     <li><a href="index.html">홈</a></li>

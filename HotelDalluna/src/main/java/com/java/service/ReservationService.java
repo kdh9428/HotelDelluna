@@ -13,9 +13,11 @@ public interface ReservationService {
 	public void reservationCancell(String reservation_number);
 	
 	//예약 완료 확인
-	public List<ReservationDTO> reservationConfirm(Pagination pagination);
+	public List<ReservationDTO> reservationConfirm(int page, int range);
 	
 	//예약 개수 확인
 	public int reservationCount(String customer_id);
 
+	//페이징 처리
+	public Pagination pagination(int page, int range);
 }

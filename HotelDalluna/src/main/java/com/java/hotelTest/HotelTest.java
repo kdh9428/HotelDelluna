@@ -148,18 +148,18 @@ public class HotelTest {
 		page.pageInfo(1, 1, listCnt);
 		page.setCustomer_id("aaa");
 		page.setListSize(1);
-		List<ReservationDTO> reserva =  reservationService.reservationConfirm(page);
-		System.out.println("확인"+reserva.get(0).getCustomer_id());
-		for(ReservationDTO pages : reserva) {
-			System.out.println(pages.getConfirmation_payment());
-			System.out.println(pages.getAdult());
-			System.out.println(pages.getChild());
-			logger.info(pages.getCustomer_id());
-			System.out.println(pages.getReservation_date_in());
-			System.out.println(pages.getReservation_date_out());
-			
+//		List<ReservationDTO> reserva =  reservationService.reservationConfirm(page);
+//		System.out.println("확인"+reserva.get(0).getCustomer_id());
+//		for(ReservationDTO pages : reserva) {
+//			System.out.println(pages.getConfirmation_payment());
+//			System.out.println(pages.getAdult());
+//			System.out.println(pages.getChild());
+//			logger.info(pages.getCustomer_id());
+//			System.out.println(pages.getReservation_date_in());
+//			System.out.println(pages.getReservation_date_out());
+//			
 
-		}
+//		}
 	}
 	
 //	class A{
