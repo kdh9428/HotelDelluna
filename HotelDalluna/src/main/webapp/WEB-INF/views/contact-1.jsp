@@ -67,7 +67,7 @@
                     <nav id="primary-menu">
 
                         <ul class="">
-							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
+							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
@@ -97,7 +97,7 @@
 									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
 									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li class="current"><a href="contact-1.do"><div>고객의 소리</div></a></li>
 							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 							
@@ -165,11 +165,7 @@
                                 <label for="template-contactform-email">이메일 <small>*</small></label>
                                 <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" disabled />
                             </div>
-
-                         
-
                             <div class="clear"></div>
-
                             <div class="col_two_third">
                                 <label for="template-contactform-subject">제목 <small>*</small></label>
                                 <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />

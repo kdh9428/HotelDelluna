@@ -37,62 +37,7 @@
     <!-- Document Title
     ============================================= -->
 	<title>호텔 델루나 위치</title>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Pgbl1JjLRBLlmueNAGO5pfMsZzmFJ7U&callback=initMap" 
-	async defer></script> <!--  -->
-	<script>
-		function initialize() { //맵을 초기화 해주기위한 함수 
-	
-			var Y_point = 33.248645;
-			var X_point = 126.410565;	
-			var zoomLevel = 18; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
-
-			var markerTitle	= "호텔 델루나"; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
-			var markerMaxWidth	= 600; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-			
-			// 말풍선 내용
-			var contentString	= '<div>' +
-			'<h2>호텔 델루나</h2>'+
-			'<p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 <br>500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.<br />' +
-			'<a href="index.html" target="_blank">http://www.HotalDelluna.co.kr</a>'
-			'</div>';
-		
-			var myLatlng = new google.maps.LatLng(Y_point, X_point);
-			var mapOptions = {
-								zoom: zoomLevel,
-								center: myLatlng,
-								mapTypeId: google.maps.MapTypeId.ROADMAP
-								
-								/* 37.304800, 127.079497 */
-								/*  mapTypeId 속성은 화면에 표시될 맵 타입을 정의합니다. 아래 나오는 맵 타입을 지원합니다:
-										  - Roadmap(normal, default 2D map)
-										  - Satellite(photographic map)
-										  - Hybrid(photographic map + roads and city names)
-										  - Terrain(map with mountains, rivers, etc.)
-								*/
-			}
-			var map = new google.maps.Map(document.getElementById('google-map'), mapOptions); //새로운  맵 생성
-
-			var marker = new google.maps.Marker({ //빨간색 마카는 어디에 둘건지 설정 
-													position: myLatlng, // 어떤 위치에 있는가 
-													map: map, // 맵에  이 마커가 어떤 지도안에 있는가 
-													title: markerTitle //호텔 델루나
-			});
-
-			var infowindow = new google.maps.InfoWindow( //말풍선
-														{
-															content: contentString,
-															maxWidth: markerMaxWidth
-														}
-			);
-
-			google.maps.event.addListener(marker, 'click', function() {
-				
-				infowindow.open(map, marker);
-			});
-		}
-	</script>
-
- 
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Pgbl1JjLRBLlmueNAGO5pfMsZzmFJ7U&callback=initMap" async defer></script> <!--  -->
 </head>
 
 <body class="stretched" onload="initialize()">
@@ -481,6 +426,60 @@
     <!-- Footer Scripts
     ============================================= -->
     <script type="text/javascript" src="resources/js/functions.js"></script>
+    
+    <!-- google 맵  -->
+    <script>
+		function initialize() { //맵을 초기화 해주기위한 함수 
+	
+			var Y_point = 33.248645;
+			var X_point = 126.410565;	
+			var zoomLevel = 18; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+
+			var markerTitle	= "호텔 델루나"; // 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+			var markerMaxWidth	= 600; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+			
+			// 말풍선 내용
+			var contentString	= '<div>' +
+			'<h2>호텔 델루나</h2>'+
+			'<p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 <br>500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.<br />' +
+			'<a href="index.html" target="_blank">http://www.HotalDelluna.co.kr</a>'
+			'</div>';
+		
+			var myLatlng = new google.maps.LatLng(Y_point, X_point);
+			var mapOptions = {
+								zoom: zoomLevel,
+								center: myLatlng,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+								
+								/* 37.304800, 127.079497 */
+								/*  mapTypeId 속성은 화면에 표시될 맵 타입을 정의합니다. 아래 나오는 맵 타입을 지원합니다:
+										  - Roadmap(normal, default 2D map)
+										  - Satellite(photographic map)
+										  - Hybrid(photographic map + roads and city names)
+										  - Terrain(map with mountains, rivers, etc.)
+								*/
+			}
+			var map = new google.maps.Map(document.getElementById('google-map'), mapOptions); //새로운  맵 생성
+
+			var marker = new google.maps.Marker({ //빨간색 마카는 어디에 둘건지 설정 
+													position: myLatlng, // 어떤 위치에 있는가 
+													map: map, // 맵에  이 마커가 어떤 지도안에 있는가 
+													title: markerTitle //호텔 델루나
+			});
+
+			var infowindow = new google.maps.InfoWindow( //말풍선
+														{
+															content: contentString,
+															maxWidth: markerMaxWidth
+														}
+			);
+
+			google.maps.event.addListener(marker, 'click', function() {
+				
+				infowindow.open(map, marker);
+			});
+		}
+	</script>
 
 </body>
 </html>
