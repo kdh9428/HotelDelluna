@@ -9,21 +9,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />
-	<meta name="description" content="Bootstrap 3 Website Template" />
 	<meta name="viewport" content="initial-scale=1.0">
     <!-- Stylesheets
     ============================================= -->
 	<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">    
 	
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
-    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
-
+	<link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
+	 
     <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
@@ -40,7 +38,7 @@
 	<title>회원가입</title>
 </head>
 
-<body class="stretched" onload="initialize()">
+<body class="stretched">
 
     <!-- Document Wrapper
     ============================================= -->
@@ -141,7 +139,8 @@
 
    	  </section><!-- #page-title end -->
    	  <div class="container clearfix">
-   	  			<div class="jumbotron panel-heading text-center lead"><h3>회원 가입</h3>회원 가입 하시면 호텔 델루나의 모든 기능을 사용하실 수 있습니다.</div>
+   	  <p></p>
+   	  			<div class="jumbotron panel-heading text-center lead"><h2>회원 가입</h2><p>회원 가입 하시면 호텔 델루나의 모든 기능을 사용하실 수 있습니다.</p></div>
    	  			<form name="form" id="form" class="form-signup" role="form" modelAttribute="userVO" method="post" action="${pageContext.request.contextPath}/user/insertUser">
    	  					<div class="panel-body">
    	  					<div class="form-group">
@@ -150,7 +149,7 @@
 		   	  						<label for="uid" class="col-md-2 col-md-offset-2 col-form-label text-md-right">아이디 </label>
 		   	  					</div>
 	   	  						<div class="col-md-5">
-	   	  							<input path="uid" id="uid" class="form-control required sm-form-control" placeholder="아이디을 입력해 주세요" /> 
+	   	  							<input path="uid" id="uid" class="form-control required sm-form-control" placeholder="아이디을 입력해 주세요"> 
 	   	  						</div>
 	   	  					</div>
 	   	  					</div>
@@ -172,7 +171,7 @@
 	   	  							<input type="password" path="password2" id="password2" class="form-control required sm-form-control" placeholder="비밀번호 재입력" /> 
 	   	  						</div>
 	   	  					</div>
-   	  					</div>
+					</div>
    	  			</form>
 		</div>
         <!-- Footer
