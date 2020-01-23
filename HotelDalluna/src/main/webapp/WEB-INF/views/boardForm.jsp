@@ -55,8 +55,12 @@
 	 -->
 <style>
 @import
-	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean')
-	;
+	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
+	
+	.ck-editor__editable_inline {
+    min-height: 400px;
+	}
+	
 </style>
     
 </head>
@@ -208,7 +212,7 @@
 				
 				<div class="mb-3">
 					<label for="notice_contents">내용</label>
-					<form:textarea class="form-control" rows="10" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" value="${boardVO.notice_contents }"/>
+					<form:textarea class="form-control" rows="10" cols="30" path="notice_contents" id="notice_contents" placeholder="내용을 입력해 주세요" value="${boardVO.notice_contents }" />
 				</div>
 			<div class="row">
 				<div class="col-md-12">
