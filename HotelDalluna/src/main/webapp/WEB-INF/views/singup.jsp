@@ -517,16 +517,21 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			return str.replace(/[^a-zA-Z0-9]$/gi,'');
 		}
 		 
-		/* onkeyup="this.value=number_filter(this.value);" */
-		
-		window.onload = function appendYear(){
+		 window.onload =function appendYear(){
 			var date = new Date();
 			var year = date.getFullYear();
-			var optionindex = 0;
+			var optionIndex = 0;
 			
-			for(var i=year-100; i<= year;i++){
-				document.getElementById('year').options[0] = new option(i+"년",i);
-				/* selectValue.add(new Option(i+"년",i),optionIndex++); */
+			for(var i=year-100;i<=year;i++){
+				document.getElementById('year').add(new Option(i+"년",i),optionIndex++);
+			}
+			
+			for(var i=1;i<=12;i++){
+				document.getElementById('month').add(new Option(i+'월',i),optionIndex++);
+			}
+			
+			for(var i=1;i<=31;i++){
+				document.getElementById('day').add(new Option(i+'일',i),optionIndex++);
 			}
 		}
 				
