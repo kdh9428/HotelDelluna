@@ -138,7 +138,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 									<ul>
 										<li><a href="login.do"><div>로그인</div></a></li>
 										<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
-										<li><a href="MemberAddForm2.do"><div>회원가입</div></a></li>
+										<li><a href="singup.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
 							<!-- 로그인 했을 경우 보여준다.  -->
@@ -223,6 +223,19 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6 mt-5">
 							<input type="password" path="password2" id="password2"
 								class="form-control required" placeholder="비밀번호 재입력" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="customerName"
+								class="col-md-2 col-md-offset-2 col-form-label text-md-right">이름</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" style="ime-mode: disabled" path="customerName" id="customerName" class="form-control required"
+								placeholder="이름을 입력해 주세요">
 						</div>
 					</div>
 				</div>

@@ -80,8 +80,8 @@
 								</div>
 							</div>
 							<div class="container-login100-form-btn">
-								<button class="login100-form-btn" value="로그인">로그인</button>
-								<button class="login100-form-btn" type="button" value="회원가입" onclick="location.href='agreePage.jsp'">회원가입</button>
+								<button class="login100-form-btn" value="로그인" style="margin:0 5px">로그인</button>
+								<button class="login100-form-btn" type="button" style="margin:0 5px" value="회원가입" onclick="location.href='singup.do'">회원가입</button>
 							</div>
 							
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
