@@ -2,6 +2,8 @@ package com.java.hotelTest;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,7 +20,9 @@ import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
 import com.java.dao.ReservationDaoImpl;
 import com.java.dto.ReservationDTO;
+import com.java.dto.memberDetails;
 import com.java.service.ReservationService;
+import com.java.service.memberDetailsSeviceImpl;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
@@ -47,7 +51,10 @@ public class HotelTest {
 	@Autowired
 	ReservationDaoImpl reservationDao;
 	
-	@Test 
+	@Inject
+	memberDetailsSeviceImpl impl;
+	
+	@Test @Ignore
 	public void testGetBoardList() throws Exception {
 
 //		Pagination pagination = new Pagination();
@@ -191,6 +198,14 @@ public class HotelTest {
 //		public void a(int a) {
 //			
 //		}
-//	}
-
+//	}	
+		@Test
+		public void test1() {
+			memberDetails mem = new memberDetails();
+			mem.setPassword("password");
+			mem.setPassword2("password");
+			impl.singup(mem);
+			
+			
+		}
 }
