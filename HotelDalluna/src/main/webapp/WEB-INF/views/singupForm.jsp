@@ -138,7 +138,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 									<ul>
 										<li><a href="login.do"><div>로그인</div></a></li>
 										<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
-										<li><a href="singup.do"><div>회원가입</div></a></li>
+										<li><a href="singupForm.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
 							<!-- 로그인 했을 경우 보여준다.  -->
@@ -180,8 +180,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
-		<form name="form" id="form" class="form-signup" role="form"
-				modelAttribute="userVO" method="post" action="#">
+		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="singup.do">
 			<p></p>
 			<div class="jumbotron panel-heading text-center lead">
 				<h2>Hotel Delluna</h2>
@@ -195,8 +194,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</label>
 						</div>
 						<div class="col-md-6">
-							<input type="text" style="ime-mode: disabled" path="customer_id" id="customer_id" class="form-control required"
-								placeholder="아이디를 입력해 주세요" onkeyup="this.value=numberFilter(this.value);">
+							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
+								placeholder="아이디를 입력해 주세요" onkeyup="this.value=numberFilter(this.value);"></form:input>
 						</div>
 					</div>
 				</div>
@@ -208,7 +207,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</label>
 						</div>
 						<div class="col-md-6">
-							<input type="password" path="password" id="password"
+							<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
 						</div>
 					</div>
@@ -221,7 +220,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								재입력 </label>
 						</div>
 						<div class="col-md-6 mt-5">
-							<input type="password" path="password2" id="password2"
+							<form:input type="password" path="password2" id="password2"
 								class="form-control required" placeholder="비밀번호 재입력" />
 						</div>
 					</div>
@@ -234,8 +233,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								class="col-md-2 col-md-offset-2 col-form-label text-md-right">이름</label>
 						</div>
 						<div class="col-md-6">
-							<input type="text" style="ime-mode: disabled" path="customerName" id="customerName" class="form-control required"
-								placeholder="이름을 입력해 주세요">
+							<form:input type="text" style="ime-mode: disabled" path="customerName" id="customerName" class="form-control required"
+								placeholder="이름을 입력해 주세요"/>
 						</div>
 					</div>
 				</div>
@@ -247,7 +246,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">전화번호</label>
 						</div>
 						<div class="col-md-6 mt-5">
-							<input type="number" style="ime-mode: disabled" path="tel"
+							<form:input type="number" style="ime-mode: disabled" path="tel"
 								id="tel" class="form-control required" placeholder="전화번호"
 								onkeyup="this.value=number_filter(this.value);" min="0" />
 						</div>
@@ -257,12 +256,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				<div class="form-group has-success">
 					<div class="row">
 						<div class="col-md-offset-1">
-							<label for="email"
+							<label for="userEmail"
 								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">이메일</label>
 						</div>
 						<div class="col-md-6 mt-5">
-							<input type="email" style="ime-mode: disabled" path="email"
-								id="email" class="form-control required" placeholder="이메일 주소 입력"
+							<form:input type="email" style="ime-mode: disabled" path="userEmail"
+								id="userEmail" class="form-control required" placeholder="이메일 주소 입력"
 								min="0" />
 						</div>
 					</div>
@@ -275,28 +274,28 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								class="col-md-2 col-md-offset-2 col-form-label text-md-right">생년월일</label>
 					</div>
 						<div class="mtd col-md-2">
-					<select class="form-control" id="year" >
+					<form:select path="year" class="form-control" id="year" >
 						<option>연도</option>
-					</select>
+					</form:select>
 						</div>
 						
 						<div class="mtd col-md-2">
-					<select class="form-control" id="month">
+					<form:select path="month" class="form-control" id="month">
 						<option>월</option>
-					</select>
+					</form:select>
 						</div>
 						
 						<div class="mtd col-md-2">
-					<select class="form-control" id="day">
+					<form:select path="day" class="form-control" id="day">
 						<option>일</option>
-					</select>
+					</form:select>
 						</div>
 					</div>
 					</div>
 						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
 							<button type="submit" class="center btn btn-primary btn-lg btn-block">가입</button>
 						</div>
-				</form>
+				</form:form>
 			</div>
 		
 		

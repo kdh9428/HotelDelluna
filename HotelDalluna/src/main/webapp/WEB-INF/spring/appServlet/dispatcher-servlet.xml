@@ -42,6 +42,7 @@
 	<mvc:view-controller path="/menu-item3.do" view-name="menu-item3"/>
 	<mvc:view-controller path="/contact-1.do" view-name="contact-1"/>
 	<mvc:view-controller path="/index.do" view-name="index"/>
+	<!-- <mvc:view-controller path="/singupForm.do" view-name="singup"/> -->
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

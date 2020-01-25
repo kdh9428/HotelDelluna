@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@SuppressWarnings("serial")
 public class memberDetails implements UserDetails{
 	
 	private String customer_id; // 고객 id
@@ -15,10 +16,38 @@ public class memberDetails implements UserDetails{
 	private String tel; // 전화번호
 	private String userEmail; // 이메일
 	private String password; // 비밀번호
+	private String password2;
 	private String userEmailHash;
 	private boolean userEmailChecked;
 	private String authority;
+	private String year;
+	private String month;
+	private String day;
 	
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getPassword2() {
+		return password2;
+	}
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
 	public String getCustomer_id() {
 		return customer_id;
 	}
