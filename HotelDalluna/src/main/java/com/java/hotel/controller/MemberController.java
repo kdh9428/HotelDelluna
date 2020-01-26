@@ -36,12 +36,16 @@ public class MemberController {
 	
 	@PostMapping("singup.do")
 	public String singUp(@ModelAttribute("memberDetails") memberDetails details ,Model model) throws Exception{
-		logger.info("회원가입 신청");
+		int check = memberDetail.singup(details);
+		logger.info("회원가입 완료"+check);
 		
-		logger.info(details.getUserEmail());
-		logger.info(details.getPassword());
-		
-		memberDetail.singup(details);
+		if(check==1) {
+			model.addAttribute("loginCheck", check);
+			model.addAttribute("customer_name",details.getCustomer_name());
+			return "singupComplete";
+		}else {
+			model.addAttribute("loginCheck", check);
+		}
 		
 		return "singupForm";
 	}

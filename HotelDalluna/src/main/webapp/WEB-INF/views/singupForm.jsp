@@ -545,6 +545,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			for(var i=1;i<=31;i++){
 				document.getElementById('day').add(new Option(i+'일',i),optionIndex++);
 			}
+			
+			if('${loginCheck}' != "" && '${loginCheck}'== 0 ){
+				alert("회원가입이 실패하였습니다. 다시 시도해 주세요")
+			}
+			console.log('${loginCheck}')
 		}
 				
 	</script>
