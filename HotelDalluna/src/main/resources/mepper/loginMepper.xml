@@ -12,14 +12,16 @@
             FROM
                 customer
             WHERE
-                customer_id=#{CUSTOMER_ID}
+          		customer_id=#{CUSTOMER_ID}
         ]]>
-    </select>
+    	</select>
     
     <!-- 회원가입  -->
-   		<insert id="singup" parameterType="com.java.dto.memberDetails">
-   			insert into (customer_id, customer_name, tel, password, userEmail, authority, birthday )
-   			values(#{customer_id}, #{customer_name}, #{tel}, #{password}, #{userEmail}, #{authority}, #{birthday} )
+   		<insert id="singup"  parameterType="com.java.dto.memberDetails">
+	   		<![CDATA[
+	   			insert into customer (CUSTOMER_ID, CUSTOMER_NAME, TEL, PASSWORD, userEmail, authority, birthday, userEmailChecked )
+	   			values(#{customer_id}, #{customer_name}, #{tel}, #{password}, #{userEmail}, "ROLE_ADMIN", #{birthday}, 1 )
+	   		]]>
    		</insert>
     
     </mapper>

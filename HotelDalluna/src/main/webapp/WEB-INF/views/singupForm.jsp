@@ -229,11 +229,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				<div class="form-group has-success">
 					<div class="row">
 						<div class="col-md-offset-1">
-							<label for="customerName"
+							<label for="customer_name"
 								class="col-md-2 col-md-offset-2 col-form-label text-md-right">이름</label>
 						</div>
 						<div class="col-md-6">
-							<form:input type="text" style="ime-mode: disabled" path="customerName" id="customerName" class="form-control required"
+							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
 								placeholder="이름을 입력해 주세요"/>
 						</div>
 					</div>

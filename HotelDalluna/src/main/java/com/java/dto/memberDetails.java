@@ -2,7 +2,6 @@ package com.java.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,7 +12,7 @@ public class memberDetails implements UserDetails{
 	
 	private String customer_id; // 고객 id
 	private String zip; // 우편번호
-	private String customerName; // 성함
+	private String customer_name; // 성함
 	private String tel; // 전화번호
 	private String userEmail; // 이메일
 	private String password; // 비밀번호
@@ -28,6 +27,12 @@ public class memberDetails implements UserDetails{
 	
 	
 	
+	public String getCustomer_name() {
+		return customer_name;
+	}
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
+	}
 	public String getBirthday() {
 		return birthday;
 	}
@@ -70,12 +75,7 @@ public class memberDetails implements UserDetails{
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public String getCustomerName() {
-		return customerName;
-	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
+	
 	public String getTel() {
 		return tel;
 	}

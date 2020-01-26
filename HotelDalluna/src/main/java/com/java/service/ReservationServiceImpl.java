@@ -1,7 +1,5 @@
 package com.java.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.java.BoardCommon.Pagination;
 import com.java.dao.ReservationDao;
 import com.java.dto.ReservationDTO;
-
-import sun.net.www.content.text.plain;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {

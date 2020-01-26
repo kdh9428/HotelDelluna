@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.java.dao.MemberAuthDao;
+import com.java.dao.MemberAuthDaoImpl;
 import com.java.dto.memberDetails;
 
 public class memberDetailsSeviceImpl implements UserDetailsService, memberDetailsSevice{
@@ -22,7 +22,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private MemberAuthDao memberAuthDao;
+	private MemberAuthDaoImpl memberAuthDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String customer_id) throws UsernameNotFoundException {
@@ -38,7 +38,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	
 	//회원가입
 	@Override
-	public String singup(memberDetails details) throws Exception {
+	public int singup(memberDetails details) throws Exception {
 		//1차 비밀번호와 2차 비밀번호가 맞는지 확인 후 부호화
 		if(details.getPassword().equals(details.getPassword2())) {
 			String pass = passwordEncoder.encode(details.getPassword());
@@ -52,8 +52,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		Date d = datformat.parse(date);
 		details.setBirthday(datformat.format(d));
 		logger.info("날짜"+details.getBirthday());
-		
-		
-		return"";
+		return memberAuthDao.singup(details);
 	}
 }
