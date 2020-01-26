@@ -20,4 +20,10 @@ public class MemberAuthDao {
 		logger.info("id 확인" + customer_id);
 		return sqlSesstion.selectOne("getUserById", customer_id);
 	}
+	
+	public int singup(memberDetails details){
+		
+		return sqlSesstion.insert("singup"+details);
+		
+	}
 }

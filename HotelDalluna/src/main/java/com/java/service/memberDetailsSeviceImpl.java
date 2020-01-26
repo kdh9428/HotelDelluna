@@ -1,5 +1,8 @@
 package com.java.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +37,23 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	}
 	
 	//회원가입
-	public String singup(memberDetails details) {
-		
+	@Override
+	public String singup(memberDetails details) throws Exception {
 		//1차 비밀번호와 2차 비밀번호가 맞는지 확인 후 부호화
 		if(details.getPassword().equals(details.getPassword2())) {
 			String pass = passwordEncoder.encode(details.getPassword());
+			details.setPassword(pass);
 			logger.info("비밀번호 생성"+pass);
 		}
-		String date=details.getYear()+details.getMonth()+details.getDay();
-		logger.info(date);
+		
+		
+		String date=details.getYear()+"-"+details.getMonth()+"-"+details.getDay();
+		SimpleDateFormat datformat = new SimpleDateFormat("yyyy-M-d");
+		Date d = datformat.parse(date);
+		details.setBirthday(datformat.format(d));
+		logger.info("날짜"+details.getBirthday());
+		
+		
 		return"";
 	}
 }

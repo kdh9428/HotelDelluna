@@ -2,6 +2,7 @@ package com.java.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +24,16 @@ public class memberDetails implements UserDetails{
 	private String year;
 	private String month;
 	private String day;
+	private String birthday;
 	
+	
+	
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 	public String getYear() {
 		return year;
 	}

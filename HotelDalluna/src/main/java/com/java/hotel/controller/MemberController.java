@@ -2,6 +2,7 @@ package com.java.hotel.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.java.dto.memberDetails;
+import com.java.service.memberDetailsSevice;
 
 
 @Controller
@@ -16,6 +18,9 @@ public class MemberController {
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	@Autowired
+	memberDetailsSevice memberDetail;
 	
 	@GetMapping("login.do")
 	public String logincheck(Model model) {
@@ -30,11 +35,14 @@ public class MemberController {
 	}
 	
 	@PostMapping("singup.do")
-	public String singUp(@ModelAttribute("memberDetails") memberDetails details ,Model model) {
+	public String singUp(@ModelAttribute("memberDetails") memberDetails details ,Model model) throws Exception{
 		logger.info("회원가입 신청");
 		
 		logger.info(details.getUserEmail());
 		logger.info(details.getPassword());
+		
+		memberDetail.singup(details);
+		
 		return "singupForm";
 	}
 	

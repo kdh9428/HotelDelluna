@@ -22,7 +22,7 @@ import com.java.dao.ReservationDaoImpl;
 import com.java.dto.ReservationDTO;
 import com.java.dto.memberDetails;
 import com.java.service.ReservationService;
-import com.java.service.memberDetailsSeviceImpl;
+import com.java.service.memberDetailsSevice;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
@@ -52,7 +52,7 @@ public class HotelTest {
 	ReservationDaoImpl reservationDao;
 	
 	@Inject
-	memberDetailsSeviceImpl impl;
+	memberDetailsSevice impl;
 	
 	@Test @Ignore
 	public void testGetBoardList() throws Exception {
@@ -200,7 +200,7 @@ public class HotelTest {
 //		}
 //	}	
 		@Test
-		public void test1() {
+		public void test1() throws Exception{
 			memberDetails mem = new memberDetails();
 			mem.setPassword("password");
 			mem.setPassword2("password");

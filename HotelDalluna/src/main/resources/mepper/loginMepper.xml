@@ -15,4 +15,11 @@
                 customer_id=#{CUSTOMER_ID}
         ]]>
     </select>
+    
+    <!-- 회원가입  -->
+   		<insert id="singup" parameterType="com.java.dto.memberDetails">
+   			insert into (customer_id, customer_name, tel, password, userEmail, authority, birthday )
+   			values(#{customer_id}, #{customer_name}, #{tel}, #{password}, #{userEmail}, #{authority}, #{birthday} )
+   		</insert>
+    
     </mapper>
