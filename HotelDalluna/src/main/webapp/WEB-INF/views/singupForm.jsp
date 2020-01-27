@@ -196,7 +196,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
 								placeholder="아이디를 입력해 주세요" onkeyup="this.value=numberFilter(this.value);"></form:input>
+								<div class="userIdCheck" id="userIdCheck">영문/숫자4자 이상을 입력해 주세요</div>
 						</div>
+						<div class="check"> </div>
 					</div>
 				</div>
 				<div class="form-group has-success">
@@ -209,6 +211,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
+								8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.
 						</div>
 					</div>
 				</div>
@@ -551,7 +554,43 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			}
 			console.log('${loginCheck}')
 		}
+		
+		 
+		 
+			document.getElementById('customer_id').addEventListener("blur",function(){
+				console.log("이벤트 체크")
+				var	customer_id = document.getElementById('customer_id').value
+				 var xhr = new XMLHttpRequest()
+				 /* ajax */
+				 xhr.onload = function(){
+					 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
+						 responseObject = JSON.parse(xhr.responseText);// 서버로부터 전달 된 데이터를 responseObject에 저장
+						 
+						 //dom 조작
+						 var newContent = '';
+						 if(responseObjext.length >= 1){
+								  newContent += '<div class="userIdCheck">'
+								  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
+								  newContent += '</div>'
+							 
+					 	}else{
+						 			newContent += '<div class="userIdCheck">'
+									newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
+									newContent += '</div>'
+					 	}
+							 document.getElementById("userIdCheck").innerHTML = newContent
+					 }else{
+						 alert("ajax 통신 실패")
+					 }
+					 httpRequest.open('POST', "doubleCheck.do")
+					 httpRequest.send('customer_id='customer_id);
+				 }
+						
 				
+			})		 
+		
+		 
+		
 	</script>
 
 </body>

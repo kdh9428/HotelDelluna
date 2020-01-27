@@ -3,17 +3,18 @@ package com.java.hotel.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.java.dto.memberDetails;
 import com.java.service.memberDetailsSevice;
 
 
-@Controller
+@RestController
 public class MemberController {
 
 	
@@ -29,7 +30,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("singupForm.do")
-	public String singupForm(@ModelAttribute("memberDetails") memberDetails details,Model model) {
+	public String singupForm(@ModelAttribute("memberDetails") memberDetails details,Model model) throws Exception {
 		logger.info("회원가입");
 		return "singupForm";
 	}
@@ -48,6 +49,13 @@ public class MemberController {
 		}
 		
 		return "singupForm";
+	}
+	
+	@PostMapping("doubleCheck.do")
+	public int doubleCheck(@RequestParam("custmoer_id") String customer_id) throws Exception{
+	
+		
+		return 1;
 	}
 	
 	
