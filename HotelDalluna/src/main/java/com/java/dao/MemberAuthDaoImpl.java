@@ -29,4 +29,11 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.insert("com.java.dao.MemberAuthDao.singup", details);
 		
 	}
+	
+	@Override
+	public int doubleCheck(String customer_id) throws Exception {
+		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.doubleCheck",customer_id);
+	}
+	
+	
 }

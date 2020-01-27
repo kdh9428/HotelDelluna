@@ -554,43 +554,80 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			}
 			console.log('${loginCheck}')
 		}
-		
-		 
-		 
-			document.getElementById('customer_id').addEventListener("blur",function(){
-				console.log("이벤트 체크")
-				var	customer_id = document.getElementById('customer_id').value
-				 var xhr = new XMLHttpRequest()
-				 /* ajax */
-				 xhr.onload = function(){
-					 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
-						 responseObject = JSON.parse(xhr.responseText);// 서버로부터 전달 된 데이터를 responseObject에 저장
-						 
-						 //dom 조작
-						 var newContent = '';
-						 if(responseObjext.length >= 1){
-								  newContent += '<div class="userIdCheck">'
-								  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
-								  newContent += '</div>'
-							 
-					 	}else{
-						 			newContent += '<div class="userIdCheck">'
-									newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
-									newContent += '</div>'
-					 	}
-							 document.getElementById("userIdCheck").innerHTML = newContent
-					 }else{
-						 alert("ajax 통신 실패")
-					 }
-					 httpRequest.open('POST', "doubleCheck.do")
-					 httpRequest.send('customer_id='customer_id);
-				 }
-						
+	</script>
+	
+	<script>
+	document.getElementById('customer_id').addEventListener("blur",function(){
+		 var customer_id = document.getElementById('customer_id').value
+		 var newContent = '';
+		 var xhr = new XMLHttpRequest()
+		xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
+		xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		xhr.send();
+		if(customer_id == null || customer_id ==""){
+			
+				newContent += '<div class="userIdCheck">'
+				newContent += '<small style="color:red">아이디를 입력해 주세요.</small>'
+				newContent += '</div>'
+				document.getElementById("userIdCheck").innerHTML = newContent
+		}else{
+
+		 /* ajax */
+		xhr.onreadystatechange = function(){
+			
+			 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
+				var responseObject = xhr.responseText;// 서버로부터 전달 된 데이터를 responseObject에 저장
+				 console.log(responseObject)
+				 //dom 조작
+				newContent = '';
+				 if(responseObject >= 1){
+						  newContent += '<div class="userIdCheck">'
+						  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
+						  newContent += '</div>'
+					 
+			 	}else{
+				 			newContent += '<div class="userIdCheck">'
+							newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
+							newContent += '</div>'
+			 	}
+					 document.getElementById("userIdCheck").innerHTML = newContent
+			 }else{
+				 alert("ajax 통신 실패")
+			 }
+			
+		 	}
+		}
 				
-			})		 
-		
-		 
-		
+	})		
+	</script>
+	
+	
+	<script type="text/javascript">
+		/* jQuery ajax 통신 */
+// 		$(document).on('blur', '#customer_id', function(){
+			
+// 			var replyReg_id = $('#customer_id').val()
+// 			console.log('확인'+replyReg_id)
+// 			var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "GET"}
+// 			$.ajax({
+// 				url: "${pageContext.request.contextPath}/doubleCheck.do?custmoer_id="+replyReg_id
+// 				, headers : headers
+// 				, contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+// 				, type : 'GET'
+// 				, dataType : 'text'
+// 				, beforeSend : function(xhr)
+// 	               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+// 	                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+// 	                },
+// 	                success: function(result){
+// 	                	console.log("연결 성공")
+	                	
+// 	                },
+// 	                error: function(error){
+// 	    			console.log("에러 : " + error);
+// 	                }
+// 			})
+// 		});
 	</script>
 
 </body>

@@ -23,5 +23,16 @@
 	   			values(#{customer_id}, #{customer_name}, #{tel}, #{password}, #{userEmail}, "ROLE_ADMIN", #{birthday}, 1 )
 	   		]]>
    		</insert>
+   		
+   		<!-- id확인 -->
+   		
+   		<select id="doubleCheck" resultType="int" parameterType="string">
+   			select 
+   					count(*)
+   			from 
+   					customer
+   			where 
+   					customer_id = #{customer_id}
+   		</select>
     
     </mapper>

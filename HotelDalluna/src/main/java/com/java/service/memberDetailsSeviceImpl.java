@@ -54,4 +54,9 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		logger.info("날짜"+details.getBirthday());
 		return memberAuthDao.singup(details);
 	}
+	
+	@Override
+	public int doubleCheck(String customer_id) throws Exception {
+		return memberAuthDao.doubleCheck(customer_id);
+	}
 }

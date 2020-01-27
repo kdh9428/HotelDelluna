@@ -3,18 +3,22 @@ package com.java.hotel.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.dto.memberDetails;
 import com.java.service.memberDetailsSevice;
 
 
-@RestController
+@Controller
 public class MemberController {
 
 	
@@ -51,11 +55,12 @@ public class MemberController {
 		return "singupForm";
 	}
 	
-	@PostMapping("doubleCheck.do")
-	public int doubleCheck(@RequestParam("custmoer_id") String customer_id) throws Exception{
-	
-		
-		return 1;
+	@GetMapping("doubleCheck.do")
+	public @ResponseBody int doubleCheck(@RequestParam("customer_id") String customer_id) throws Exception{
+		logger.info("아이디 확인 "+customer_id);
+		int a = memberDetail.doubleCheck(customer_id);
+		logger.info("확인용"+a);
+		return a;
 	}
 	
 	
