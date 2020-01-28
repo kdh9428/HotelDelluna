@@ -180,7 +180,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
-		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="singup.do">
+		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="singup.do" onsubmit="return validate()">
 			<p></p>
 			<div class="jumbotron panel-heading text-center lead">
 				<h2>Hotel Delluna</h2>
@@ -298,7 +298,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					</div>
 					</div>
 						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
-							<button type="submit" class="center btn btn-primary btn-lg btn-block">가입</button>
+							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">가입</form:button>
 						</div>
 				</form:form>
 			</div>
@@ -558,21 +558,59 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		}
 	</script>
 	
-	
 	<script>
-	
 	/* 아이디 확인 check */
-	document.getElementById('customer_id').addEventListener("blur",function(){
-		 var customer_id = document.getElementById('customer_id').value
-		 var newContent = '';
-		if(customer_id == null || customer_id ==""){
+	customerIdCheck = document.getElementById('customer_id')
+	userIdCheck = document.getElementById("userIdCheck")
+	 var check =''	//check확인
+	 var newContent = ''
+	customerIdCheck.onkeyup = function(){
+		var customer_id = customerIdCheck.value
+		
+		console.log(customer_id.length)
+		console.log(customer_id)
+		if(customer_id.length > 0 && customer_id.length < 4){
+				newContent += '<div class="userIdCheck">'
+				newContent += '<small style="color:red">아이디는 4자 이상이어야 합니다.</small>'
+				newContent += '</div>'
+				userIdCheck.innerHTML = newContent
+				newContent = ''
+				check ='false'
+				return false
+		}else if(customer_id == null || customer_id =='' || customer_id.length == 0){
 				newContent += '<div class="userIdCheck">'
 				newContent += '<small style="color:red">아이디를 입력해 주세요.</small>'
 				newContent += '</div>'
-				document.getElementById("userIdCheck").innerHTML = newContent
+				userIdCheck.innerHTML = newContent
+				newContent = ''
+				check ='false'
+				return false
+		}else if(customer_id.length >=20){
+				newContent += '<div class="userIdCheck">'
+				newContent += '<small style="color:red">아이디는 20자 이하이어야 합니다.</small>'
+				newContent += '</div>'
+				userIdCheck.innerHTML = newContent
+				newContent = ''
+				check ='false'
+				return false
 		}else{
-
-		 var xhr = new XMLHttpRequest()
+				newContent += '<div class="userIdCheck">'
+				newContent += '<small style="color:red">중복확인이 필요합니다.</small>'
+				newContent += '</div>'
+				userIdCheck.innerHTML = newContent
+				newContent = ''
+				check = 'true'
+				return true
+			}
+		}
+	
+			/* 포커스 아웃일 경우 */
+			customerIdCheck.onblur = function(){
+			customer_id = customerIdCheck.value
+			console.log("확인중")
+			
+		if(check == 'true'){
+			 var xhr = new XMLHttpRequest()
 			xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
 			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 			xhr.send();
@@ -588,21 +626,78 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						  newContent += '<div class="userIdCheck">'
 						  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
 						  newContent += '</div>'
+						  userIdCheck.innerHTML = newContent
+						  newContent = ''
+						  check ='false'
+						  return false
 					 
+			 	}else if(responseObject == null || responseObject ==''){
+			 			  check ='false'
 			 	}else{
 				 			newContent += '<div class="userIdCheck">'
 							newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
 							newContent += '</div>'
+							userIdCheck.innerHTML = newContent
+							newContent = ''
+							check ='true'
+							return false
 			 	}
-					 document.getElementById("userIdCheck").innerHTML = newContent
+					 
 			 }else{
 				 alert("ajax 통신 실패")
+				 return false
 			 }
 			
 		 	}
+		 
 		}
+	}
+	
+// 	customerIdCheck.addEventListener("blur",function(){
+// 		console.log(customerIdCheck.value)
+// 		var customer_id = customerIdCheck.value
+// 		if(customer_id == null || customer_id ==""){
+// 				newContent += '<div class="userIdCheck">'
+// 				newContent += '<small style="color:red">아이디를 입력해 주세요.</small>'
+// 				newContent += '</div>'
+// 				document.getElementById("userIdCheck").innerHTML = newContent
+// 				newContent = ''
+// 		}else{
+
+// 		 var xhr = new XMLHttpRequest()
+// 			xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
+// 			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+// 			xhr.send();
+// 		 /* ajax */
+// 		xhr.onreadystatechange = function(){
+			
+// 			 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
+// 				var responseObject = xhr.responseText;// 서버로부터 전달 된 데이터를 responseObject에 저장
+// 				 console.log(responseObject)
+// 				 //dom 조작
+// 				newContent = '';
+// 				 if(responseObject >= 1){
+// 						  newContent += '<div class="userIdCheck">'
+// 						  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
+// 						  newContent += '</div>'
+// 						  newContent = ''
+					 
+// 			 	}else{
+// 				 			newContent += '<div class="userIdCheck">'
+// 							newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
+// 							newContent += '</div>'
+// 							newContent = ''
+// 							return true
+// 			 	}
+// 					 document.getElementById("userIdCheck").innerHTML = newContent
+// 			 }else{
+// 				 alert("ajax 통신 실패")
+// 			 }
+			
+// 		 	}
+// 		}
 				
-	})		
+// 	})		
 	
 	/* 비밀번호 확인 */
 		var passwordContent =''
@@ -676,9 +771,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				nameContent +='</div>'
 				document.getElementById("nameCheck").innerHTML = nameContent
 				nameContent = ''
+				
 			}
 		})
-		
 	</script>
 	
 	
