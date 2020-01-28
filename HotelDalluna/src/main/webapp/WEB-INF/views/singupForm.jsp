@@ -143,10 +143,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</sec:authorize>
 							<!-- 로그인 했을 경우 보여준다.  -->
 							<sec:authorize access="isAuthenticated()">
-								<li><a href="logout.do"
+								<div><a href="logout.do"
 									onclick="document.getElementById('logout-form').submit();">
-										<div>로그아웃</div>
-								</a></li>
+										로그아웃
+								</a></div>
 								<form id="logout-form" action="logout.do" method="post">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
@@ -564,7 +564,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	userIdCheck = document.getElementById("userIdCheck")
 	 var check =''	//check확인
 	 var newContent = ''
-	customerIdCheck.onkeyup = function(){
+	/* customerIdCheck.onkeyup = */ 
+	customerIdCheck.addEventListener('keyup',checkout)
+	function checkout(){
 		var customer_id = customerIdCheck.value
 		
 		console.log(customer_id.length)
@@ -575,15 +577,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				newContent += '</div>'
 				userIdCheck.innerHTML = newContent
 				newContent = ''
-				check ='false'
-				return false
+				check =false
+				event.preventDefault();
 		}else if(customer_id == null || customer_id =='' || customer_id.length == 0){
 				newContent += '<div class="userIdCheck">'
 				newContent += '<small style="color:red">아이디를 입력해 주세요.</small>'
 				newContent += '</div>'
 				userIdCheck.innerHTML = newContent
 				newContent = ''
-				check ='false'
+				check =false
 				return false
 		}else if(customer_id.length >=20){
 				newContent += '<div class="userIdCheck">'
@@ -591,7 +593,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				newContent += '</div>'
 				userIdCheck.innerHTML = newContent
 				newContent = ''
-				check ='false'
+				check =false
 				return false
 		}else{
 				newContent += '<div class="userIdCheck">'
@@ -599,59 +601,118 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				newContent += '</div>'
 				userIdCheck.innerHTML = newContent
 				newContent = ''
-				check = 'true'
-				return true
+				check = true
+				
+				/* 포커스 아웃일 경우 */
+				customerIdCheck.onblur = function(){
+				customer_id = customerIdCheck.value
+				console.log("확인중")
+				
+				 var xhr = new XMLHttpRequest()
+				xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
+				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				xhr.send();
+			 /* ajax */
+			xhr.onreadystatechange = function(){
+				
+				 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
+					var responseObject = xhr.responseText;// 서버로부터 전달 된 데이터를 responseObject에 저장
+					 console.log(responseObject)
+					 //dom 조작
+					newContent = '';
+					 if(responseObject >= 1){
+							  newContent += '<div class="userIdCheck">'
+							  newContent += '<small id="id-check"style="color:red">이미 사용중인 아이디 입니다.</small>'
+							  newContent += '</div>'
+							  userIdCheck.innerHTML = newContent
+							  newContent = ''
+							check = false
+							  return false
+						 
+				 	}else{
+					 			newContent += '<div class="userIdCheck">'
+								newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
+								newContent += '</div>'
+								userIdCheck.innerHTML = newContent
+								newContent = ''
+								check = true
+								return true
+				 	}
+						 
+					}else{
+						 alert("ajax 통신 실패")
+						 check = false
+						 return false
+						}
+					}
+					customerIdCheck.onblur = null
+				}
 			}
 		}
-	
-			/* 포커스 아웃일 경우 */
-			customerIdCheck.onblur = function(){
-			customer_id = customerIdCheck.value
-			console.log("확인중")
+		
+	function validate(){
+		if(check === true){
 			
-		if(check == 'true'){
-			 var xhr = new XMLHttpRequest()
-			xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
-			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-			xhr.send();
-		 /* ajax */
-		xhr.onreadystatechange = function(){
-			
-			 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
-				var responseObject = xhr.responseText;// 서버로부터 전달 된 데이터를 responseObject에 저장
-				 console.log(responseObject)
-				 //dom 조작
-				newContent = '';
-				 if(responseObject >= 1){
-						  newContent += '<div class="userIdCheck">'
-						  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
-						  newContent += '</div>'
-						  userIdCheck.innerHTML = newContent
-						  newContent = ''
-						  check ='false'
-						  return false
-					 
-			 	}else if(responseObject == null || responseObject ==''){
-			 			  check ='false'
-			 	}else{
-				 			newContent += '<div class="userIdCheck">'
-							newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
-							newContent += '</div>'
-							userIdCheck.innerHTML = newContent
-							newContent = ''
-							check ='true'
-							return false
-			 	}
-					 
-			 }else{
-				 alert("ajax 통신 실패")
-				 return false
-			 }
-			
-		 	}
-		 
+			return true
+		}else{
+			var idCheck = document.getElementById('id-check')
+			alert(idCheck.innerHTML)
+			customerIdCheck.select()
+			return false
 		}
+		
 	}
+		
+	
+	
+// 			/* 포커스 아웃일 경우 */
+// 			customerIdCheck.onblur = function(){
+// 			customer_id = customerIdCheck.value
+// 			console.log("확인중")
+			
+// 		if(check == 'true'){
+// 			 var xhr = new XMLHttpRequest()
+// 			xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
+// 			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+// 			xhr.send();
+// 		 /* ajax */
+// 		xhr.onreadystatechange = function(){
+			
+// 			 if(xhr.status === 200){//서버 응답 체크 200이면 정상 
+// 				var responseObject = xhr.responseText;// 서버로부터 전달 된 데이터를 responseObject에 저장
+// 				 console.log(responseObject)
+// 				 //dom 조작
+// 				newContent = '';
+// 				 if(responseObject >= 1){
+// 						  newContent += '<div class="userIdCheck">'
+// 						  newContent += '<small style="color:red">이미 사용중인 아이디 입니다.</small>'
+// 						  newContent += '</div>'
+// 						  userIdCheck.innerHTML = newContent
+// 						  newContent = ''
+// 						  check ='false'
+// 						  return false
+					 
+// 			 	}else if(responseObject == null || responseObject ==''){
+// 			 			  check ='false'
+// 			 	}else{
+// 				 			newContent += '<div class="userIdCheck">'
+// 							newContent += '<small style="color:red">사용 가능한 아이디 입니다.</small>'
+// 							newContent += '</div>'
+// 							userIdCheck.innerHTML = newContent
+// 							newContent = ''
+// 							check ='true'
+// 							return false
+// 			 	}
+					 
+// 			 }else{
+// 				 alert("ajax 통신 실패")
+// 				 return false
+// 			 }
+			
+// 		 	}
+		 
+// 		}
+// 	}
 	
 // 	customerIdCheck.addEventListener("blur",function(){
 // 		console.log(customerIdCheck.value)
@@ -703,6 +764,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		var passwordContent =''
 		document.getElementById('password').addEventListener("blur",function(){
 			var password = document.getElementById('password').value
+			
 			if(password==null || password ==''){
 				passwordContent +='<div class="passwordCheck">'
 				passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
