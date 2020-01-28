@@ -211,7 +211,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
-								8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.
+								<div id = "passwordCheck">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -225,6 +225,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6 mt-5">
 							<form:input type="password" path="password2" id="password2"
 								class="form-control required" placeholder="비밀번호 재입력" />
+							<div id = "passwordCheck2"></div>
 						</div>
 					</div>
 				</div>
@@ -238,6 +239,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
 								placeholder="이름을 입력해 주세요"/>
+							<div id = "nameCheck"></div>
 						</div>
 					</div>
 				</div>
@@ -556,22 +558,24 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		}
 	</script>
 	
+	
 	<script>
+	
+	/* 아이디 확인 check */
 	document.getElementById('customer_id').addEventListener("blur",function(){
 		 var customer_id = document.getElementById('customer_id').value
 		 var newContent = '';
-		 var xhr = new XMLHttpRequest()
-		xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
-		xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-		xhr.send();
 		if(customer_id == null || customer_id ==""){
-			
 				newContent += '<div class="userIdCheck">'
 				newContent += '<small style="color:red">아이디를 입력해 주세요.</small>'
 				newContent += '</div>'
 				document.getElementById("userIdCheck").innerHTML = newContent
 		}else{
 
+		 var xhr = new XMLHttpRequest()
+			xhr.open('GET', "${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customer_id);
+			xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+			xhr.send();
 		 /* ajax */
 		xhr.onreadystatechange = function(){
 			
@@ -599,6 +603,82 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		}
 				
 	})		
+	
+	/* 비밀번호 확인 */
+		var passwordContent =''
+		document.getElementById('password').addEventListener("blur",function(){
+			var password = document.getElementById('password').value
+			if(password==null || password ==''){
+				passwordContent +='<div class="passwordCheck">'
+				passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
+				passwordContent +='</div>'
+				document.getElementById("passwordCheck").innerHTML = passwordContent
+				passwordContent	= ''
+			}
+		})
+		
+		document.getElementById('password').addEventListener("keyup",function(){
+			var password = document.getElementById('password').value
+				
+				console.log(password)
+				console.log(password.length)
+				if(password.length >=4 && password != null){
+						passwordContent +='<div class="passwordCheck">'
+						passwordContent += '<small style="color:red">사용 가능한 비밀번호 입니다.</small>'
+						passwordContent +='</div>'
+						document.getElementById("passwordCheck").innerHTML = passwordContent
+						passwordContent =''
+				}else if(password.length < 4 && password.length >=1){
+						passwordContent +='<div class="passwordCheck">'
+						passwordContent += '<small style="color:red">8~20자리로 설정해주세요.</small>'
+						passwordContent +='</div>'
+						document.getElementById("passwordCheck").innerHTML = passwordContent
+						passwordContent	= ''
+				}else{
+					passwordContent +='<div class="passwordCheck">'
+					passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
+					passwordContent +='</div>'
+					document.getElementById("passwordCheck").innerHTML = passwordContent
+					passwordContent	= ''
+					
+				}
+		})
+		
+		
+		document.getElementById('password2').addEventListener("keyup",function(){
+			var password2 = document.getElementById('password2').value
+				password = document.getElementById('password').value
+				passwordContent = ''
+				console.info(password + '확인' + password2)
+			if(password === password2){
+					passwordContent +='<div class="passwordCheck2">'
+					passwordContent += '<small style="color:red">비밀번호가 일치 합니다.</small>'
+					passwordContent +='</div>'
+					document.getElementById("passwordCheck2").innerHTML = passwordContent
+					passwordContent =''
+			}else{
+					passwordContent +='<div class="passwordCheck2">'
+					passwordContent += '<small style="color:red">비밀번호가 일치하지 않습니다.</small>'
+					passwordContent +='</div>'
+					document.getElementById("passwordCheck2").innerHTML = passwordContent
+					passwordContent =''
+				
+			}
+		})
+		
+		/* 이름 체크 */
+		document.getElementById('customer_name').addEventListener("blur",function(){
+			var nameContent =''
+			var name = document.getElementById('customer_name').value
+			if(name==null || name ==''){
+				nameContent +='<div class="nameCheck">'
+				nameContent += '<small style="color:red">필수 입력 정보입니다.</small>'
+				nameContent +='</div>'
+				document.getElementById("nameCheck").innerHTML = nameContent
+				nameContent = ''
+			}
+		})
+		
 	</script>
 	
 	
