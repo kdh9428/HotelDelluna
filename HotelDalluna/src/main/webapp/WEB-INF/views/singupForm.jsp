@@ -530,11 +530,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			return new Promise( function (resolve,reject){
 	 			 var customerIdCheckValue = customerIdCheck.value;
 				 var xhr = new XMLHttpRequest();
-				 xhr.open('GET',"${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customerIdCheckValue);
-                	var responseObject = xhr.responseText;
-	           
+				 xhr.open('GET',"${pageContext.request.contextPath}/doubleCheck.do?customer_id="+customerIdCheckValue,false);
+				 xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
+		        
 	            xhr.onreadystatechange = function() {
                 if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
+                	var responseObject = xhr.responseText;
                 	if(responseObject == '1'){
                   	 	resolve('확인작업' + responseObject);
                 		
@@ -546,8 +547,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				}
                 reject(new Error("request is failed"));
 		}
-	           
-	            xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
 	            xhr.send();
 	})
 	
