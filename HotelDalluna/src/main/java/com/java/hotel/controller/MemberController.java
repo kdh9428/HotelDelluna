@@ -56,7 +56,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("doubleCheck.do")
-	public @ResponseBody int doubleCheck(@RequestParam("customer_id") String customer_id) throws Exception{
+	public @ResponseBody int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
 		logger.info("아이디 확인 "+customer_id);
 		int a = memberDetail.doubleCheck(customer_id);
 		logger.info("확인용"+a);
