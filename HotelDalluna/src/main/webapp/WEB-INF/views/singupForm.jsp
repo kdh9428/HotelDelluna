@@ -11,6 +11,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="initial-scale=1.0">
+
+<!-- csrf 설정 -->
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <!-- Stylesheets
     ============================================= -->
 <link rel="icon" type="image/png" sizes="16x16"
@@ -521,105 +525,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
 	
-	<script type="text/javascript">
-		
-		let customerIdCheck = document.querySelector('#customer_id') //아이디 input
-		let idCheckNewContent = document.querySelector('#id-check') //아이디 체크 변경 <div>
-		let responseObject //false 확인
-		
-	function idCheckFunction(){
-	    var customerIdCheckValue =customerIdCheck.value
-	    if(customerIdCheckValue.length > 0 && customerIdCheckValue.length < 4){
-	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 4글자 이상이어야 합니다.</div>'
-	        return false
-	    }else if(customerIdCheckValue == null || customerIdCheckValue == '' || customerIdCheckValue.length == 0){
-	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디를 입력해 주세요.</div>'
-	        return false
-	    }else if(customerIdCheckValue.length >= 20){
-	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 20자 이하이어야 합니다.</div>'
-	        return false
-	    }else{
-	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">중복확인이 필요합니다.</div>'
-	        return true
-	        }
-	}
-		
-	 function getDateId(){
-			return new Promise(function (resolve,reject){
-	 			 var customerIdCheckValue = customerIdCheck.value;
-				 var xhr = new XMLHttpRequest();
-				 xhr.open('GET',"doubleCheck.do?customer_id="+customerIdCheckValue);
-				 xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}");
-		        
-	            xhr.onload = function(){
-                if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
-                	  
-                	if(this.responseText == '1'){
-                		console.log(responseObject)
-                		responseObject = false
-                  	 	resolve(false);
-                		
-                	}else{
-                		console.log(responseObject)
-                		responseObject = true
-						resolve(true);
-                	}
-				}else{
-					alert('ajax 에러!')
-				}
-                reject(new Error("request is failed"));
-		}
-	            xhr.send();
-	})
-	
-}
-	var customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 할 경우 체크한다.
-	function focusBlurCheck(){
-		var customerIdCheckValue = customerIdCheck.value
-		if(customerIdCheckValue != customerAgainCheck && customerIdCheckValue.length >= 4 && customerIdCheckValue.length <= 20 && customerIdCheckValue != null ){
-			getDateId().then( function(state){
-				console.log('확인중'+state)
-				if(state == true){
-					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">사용 가능한 아이디 입니다.</div>'
-				}else{
-					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">이미 사용중인 아이디 입니다.</div>'
-					}
-				})
-			customerAgainCheck = customerIdCheckValue
-		}
-	}
-	
-	customerIdCheck.addEventListener('blur', focusBlurCheck) //포커스가 이동 했을 때
-	customerIdCheck.addEventListener('keyup',idCheckFunction) //태그 안에 값이 변경 됬을 경우
-		
-	
-	function validate(){
-		
-	/* id 체크  유효성 검사*/
-    var customerId = customerIdCheck.value //아이디
-	var idCheck = document.querySelector('#id-check')
-        
-        if (responseObject == false){
-        	alert(idCheckNewContent.innerText)
-			customerIdCheck.select()
-			return false
-        }
-        
-        if(idCheckFunction() == false){
-        	alert(idCheckNewContent.innerText)
-			customerIdCheck.select()
-			return false
-        }
-        if (idCheck == null){
-			alert(idCheckNewContent.innerText)
-			return false
-        }
-        
-        /* 비밀번호 체크 */
-	}
-	
-	</script>
 
 	<script type="text/javascript">
 		function number_filter(str_value) {
