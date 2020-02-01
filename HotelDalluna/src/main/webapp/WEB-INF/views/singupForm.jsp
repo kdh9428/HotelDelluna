@@ -196,7 +196,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
 								placeholder="아이디를 입력해 주세요" onkeyup="this.value=numberFilter(this.value);"></form:input>
-								<div class="userIdCheck" id="userIdCheck">영문/숫자4자 이상을 입력해 주세요</div>
+								<div id="id-check">영문/숫자4자 이상을 입력해 주세요</div>
 						</div>
 						<div class="check"> </div>
 					</div>
@@ -523,42 +523,28 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
-	
+		
 		let customerIdCheck = document.querySelector('#customer_id') //아이디 input
-		let idCheckNewContent = document.querySelector('#userIdCheck') //input 태그 밑에 <div>
-		let newContent='' // #userIdCheck innerHTML 변경 값
-	
+		let idCheckNewContent = document.querySelector('#id-check') //아이디 체크 변경 <div>
+		let responseObject //false 확인
+		
 	function idCheckFunction(){
 	    var customerIdCheckValue =customerIdCheck.value
 	    if(customerIdCheckValue.length > 0 && customerIdCheckValue.length < 4){
-	        newContent = '<div class="userIdCheck">'
-	        newContent += '<small id="id-check" style="color:red">아이디는 4글자 이상이어야 합니다.</small>'
-	        newContent += '</div>'
-	        idCheckNewContent.innerHTML = newContent
+	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 4글자 이상이어야 합니다.</div>'
 	        return false
-	    }else if(customerIdCheckValue == null || customerIdCheckValue =='' || customerIdCheckValue.length == 0){
-	        newContent = '<div class="userIdCheck">'
-	        newContent += '<small id="id-check" style="color:red">아이디를 입력해 주세요.</small>'
-	        newContent += '</div>'
-	        idCheckNewContent.innerHTML = newContent
-
+	    }else if(customerIdCheckValue == null || customerIdCheckValue == '' || customerIdCheckValue.length == 0){
+	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디를 입력해 주세요.</div>'
 	        return false
 	    }else if(customerIdCheckValue.length >= 20){
-	        newContent = '<div class="userIdCheck">'
-			newContent += '<small id="id-check" style="color:red">아이디는 20자 이하이어야 합니다.</small>'
-	        newContent += '</div>'
-	        idCheckNewContent.innerHTML = newContent
+	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 20자 이하이어야 합니다.</div>'
 	        return false
 	    }else{
-	        newContent = '<div class="userIdCheck">'
-			newContent += '<small id="id-check" style="color:red">중복확인이 필요합니다.</small>'
-			newContent += '</div>'
-	        idCheckNewContent.innerHTML = newContent
+	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">중복확인이 필요합니다.</div>'
 	        return true
-	        
 	        }
 	}
-		var	responseObject
+		
 	 function getDateId(){
 			return new Promise(function (resolve,reject){
 	 			 var customerIdCheckValue = customerIdCheck.value;
@@ -571,10 +557,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
                 	  
                 	if(this.responseText == '1'){
                 		console.log(responseObject)
+                		responseObject = false
                   	 	resolve(false);
                 		
                 	}else{
                 		console.log(responseObject)
+                		responseObject = true
 						resolve(true);
                 	}
 				}else{
@@ -592,16 +580,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		if(customerIdCheckValue != customerAgainCheck && customerIdCheckValue.length >= 4 && customerIdCheckValue.length <= 20 && customerIdCheckValue != null ){
 			getDateId().then( function(state){
 				console.log('확인중'+state)
-				if(state === true){
-					newContent = '<div class="userIdCheck">'
-			 		newContent += '<small id="id-check" style="color:red">사용 가능한 아이디 입니다.</small>'
-			 		newContent += '</div>'
-			 		idCheckNewContent.innerHTML = newContent
+				if(state == true){
+					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">사용 가능한 아이디 입니다.</div>'
 				}else{
-					newContent = '<div class="userIdCheck">'
-				 	newContent += '<small id="id-check" style="color:red">이미 사용중인 아이디 입니다.</small>'
-				 	newContent += '</div>'
-				 	idCheckNewContent.innerHTML = newContent
+					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">이미 사용중인 아이디 입니다.</div>'
 					}
 				})
 			customerAgainCheck = customerIdCheckValue
@@ -611,6 +593,32 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	customerIdCheck.addEventListener('blur', focusBlurCheck) //포커스가 이동 했을 때
 	customerIdCheck.addEventListener('keyup',idCheckFunction) //태그 안에 값이 변경 됬을 경우
 		
+	
+	function validate(){
+		
+	/* id 체크  유효성 검사*/
+    var customerId = customerIdCheck.value //아이디
+	var idCheck = document.querySelector('#id-check')
+        
+        if (responseObject == false){
+        	alert(idCheckNewContent.innerText)
+			customerIdCheck.select()
+			return false
+        }
+        
+        if(idCheckFunction() == false){
+        	alert(idCheckNewContent.innerText)
+			customerIdCheck.select()
+			return false
+        }
+        if (idCheck == null){
+			alert(idCheckNewContent.innerText)
+			return false
+        }
+        
+        /* 비밀번호 체크 */
+	}
+	
 	</script>
 
 	<script type="text/javascript">
@@ -618,14 +626,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			return str_value.replace(/[^0-9]{4,12}$/gi, '');
 		}
 		
-	/* 	function number_filter(str_value) {
-			return str_value.replace(/^[a-zA-Z0-9]{4,12}$/gi, "");
-		}
-		 */
 		function numberFilter(str) {
 			return str.replace(/[^a-zA-Z0-9]$/gi,'');
 		}
 		 
+		/* 년 월 일 동적 날짜 생성  */
 		 window.addEventListener('load',function appendYear(){
 			var date = new Date();
 			var year = date.getFullYear();
@@ -654,79 +659,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	
 	<script>
 	
-	
-			
-	/* id 체크  */
-	
-		
-	function validate(){
-        var customerId = document.getElementById('customer_id').value //아이디
-//         var password = document.getElementById('password')  //비밀번호
-//         var password2 = document.getElementById('password2') //비밀번호 확인
-//         var tel =  document.getElementById('tel')   //전화번호
-//         var email =  document.getElementById('email') //이메일
-//         var year =  document.getElementById('year') //년
-//         var month =  document.getElementById('month') //월
-//         var day =  document.getElementById('day') //일
-//         var re = /^[a-zA-Z0-9]{4,20}$/
-        
-		var idCheck = document.getElementById('id-check')
-        console.log(customerId)
-        
-        getDateId().then( function(state){
-        	if(state == true){
-        		return true
-        		}
-        	else{
-        		alert(idCheck.innerHTML)
-    			customerIdCheck.select()
-        		return false
-        		}
-        })
-        
-        if (idCheck == null){
-			alert(document.querySelector('#userIdCheck').innerHTML)
-			return false
-        }
-        
-// 		if(customerId == null || customerId.length >= 20 || customerId.length <= 4 || customerId ==''){
-			
-// 			if (idCheck == null){
-// 			alert(document.querySelector('#userIdCheck').innerHTML)
-// 			}else{
-// 			alert(idCheck.innerHTML)
-// 			customerIdCheck.select()
-// 			}
-// 			return false
-// 		}else{
-// 			alert(idCheck.innerHTML)
-// 			customerIdCheck.select()
-// 			return true
-// 		}
-		
-	}
-
-	
 	/* 비밀번호 확인 */
 		document.getElementById('password').addEventListener("blur",function(){
 			var passwordContent =''
-			
 			var password = document.getElementById('password').value
-			
-			var state1 = function ch(){ getDateId().then( function(state){
-				if(state === true){
-					console.log("비밀번호에서 true 확인중 " + state1)
-					return true
-				}else{
-					state1 = state
-					console.log("비밀번호에서 false 확인중 " + state1)
-					return false
-				}
-				return state
-			})
-			}
-			console.log("비밀번호 밖에서 확인" + state1())
-			
 			if(password==null || password ==''){
 				passwordContent +='<div class="passwordCheck">'
 				passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
@@ -763,7 +699,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				}
 		})
 		
-		
 		document.getElementById('password2').addEventListener("keyup",function(){
 			var password2 = document.getElementById('password2').value
 				password = document.getElementById('password').value
@@ -790,12 +725,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			var nameContent =''
 			var name = document.getElementById('customer_name').value
 			if(name==null || name ==''){
-				nameContent +='<div class="nameCheck">'
+				nameContent ='<div class="nameCheck">'
 				nameContent += '<small style="color:red">필수 입력 정보입니다.</small>'
 				nameContent +='</div>'
 				document.getElementById("nameCheck").innerHTML = nameContent
 				nameContent = ''
-				
+				return false
 			}
 		})
 	</script>
