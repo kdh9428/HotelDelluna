@@ -57,21 +57,6 @@
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 	
-	<!-- 달력 스크립트  -->
-	 <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
-	<!-- 달력 스크립트 종료 -->  
-	
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="resources/include/rs-plugin/css/settings.css" media="screen" />
 
@@ -399,46 +384,8 @@
         <!-- Content
         ============================================= -->
         <section id="content">
-        <form action="Reservation.do" method="post">
        
             <div class="content-wrap"> 
-            <!--  -->
-                <!-- Promo -->
-              <!--   <div class="promo promo-light promo-full header-stick nobottommargin">
-                    <div class="container clearfix" style="width:70%;">
-                        달력시작
-												<div id="app" class="app" :class="{'align-right': alignRight}">
-												 <div class="datepicker-container with-button">
-											        <div class="datepicker-trigger">
-											          <button id="datepicker-button-trigger">
-											            {{ formatDates(buttonDateOne, buttonDateTwo) || '날짜를 선택해 주세요' }}
-											          </button>
-														
-					 						          <airbnb-style-datepicker
-											            :trigger-element-id="'datepicker-button-trigger'"
-											            :mode="'range'"
-											            :date-one="buttonDateOne"
-											            :date-two="buttonDateTwo"
-											            :min-date="'2019-02-28'"
-											            :fullscreen-mobile="true"
-											            :months-to-show="2"
-											            :offset-y="10"
-											            :trigger="trigger"
-											            v-on:date-one-selected="function(val) { buttonDateOne = val }"
-											            v-on:date-two-selected="function(val) { buttonDateTwo = val }"
-											            v-on:closed="onClosed"
-											            v-on:previous-month="onMonthChange"
-											            v-on:next-month="onMonthChange"
-											          ></airbnb-style-datepicker>
-											        </div>
-											      </div>
-											    </div>달력끝
-                        <a href="Reseravtion.do" class="button button-light bgcolor-grey-light button-rounded button-reveal button-large button-3d tright" style="display: inline-block;">
-                        <i class="icon-angle-right"></i><span>Reservations</span></a>
-                   </div>
-       	  	  	</div> --><!-- End Promo -->                                                                  
-             
-              
           		<div class="section bgcolor-grey-light notopmargin noborder nobottommargin">
                     <div class="container clearfix">
                         <div class="col_half nobottommargin center">
@@ -474,7 +421,6 @@
            		  </div> 
            		 </div>  
            		</div>
-           	  </form>                  			
         </section><!-- #content end -->
 
         <!-- Footer

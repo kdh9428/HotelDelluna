@@ -199,7 +199,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						</div>
 						<div class="col-md-6">
 							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
-								placeholder="아이디를 입력해 주세요" onkeyup="this.value=numberFilter(this.value);"></form:input>
+								placeholder="아이디를 입력해 주세요"></form:input>
 								<div id="id-check">영문/숫자4자 이상을 입력해 주세요</div>
 						</div>
 						<div class="check"> </div>
@@ -215,7 +215,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
-								<div id = "passwordCheck">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.</div>
+								<div id = "password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -256,8 +256,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						</div>
 						<div class="col-md-6 mt-5">
 							<form:input type="number" style="ime-mode: disabled" path="tel"
-								id="tel" class="form-control required" placeholder="전화번호"
-								onkeyup="this.value=number_filter(this.value);" min="0" />
+								id="tel" class="form-control required" placeholder="전화번호" min="0" />
+								<div id="number-tel">숫자만 입력하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -272,35 +272,36 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							<form:input type="email" style="ime-mode: disabled" path="userEmail"
 								id="userEmail" class="form-control required" placeholder="이메일 주소 입력"
 								min="0" />
+								
 						</div>
 					</div>
 				</div>
 				
-				<div class="form-group has-success">
-					<div class="row">
+			<div class="form-group has-success">
+				<div class="row">
 					<div class="col-md-offset-1">
-					<label for="year"
-								class="col-md-2 col-md-offset-2 col-form-label text-md-right">생년월일</label>
+						<label for="year"
+									class="col-md-2 col-md-offset-2 col-form-label text-md-right">생년월일</label>
 					</div>
 						<div class="mtd col-md-2">
-					<form:select path="year" class="form-control" id="year" >
-						<option>연도</option>
-					</form:select>
+							<form:select path="year" class="form-control" id="year" >
+								<option>연도</option>
+							</form:select>
 						</div>
-						
+								
 						<div class="mtd col-md-2">
-					<form:select path="month" class="form-control" id="month">
-						<option>월</option>
-					</form:select>
+							<form:select path="month" class="form-control" id="month">
+								<option>월</option>
+							</form:select>
 						</div>
-						
+								
 						<div class="mtd col-md-2">
-					<form:select path="day" class="form-control" id="day">
-						<option>일</option>
-					</form:select>
+							<form:select path="day" class="form-control" id="day">
+								<option>일</option>
+							</form:select>
 						</div>
-					</div>
-					</div>
+				</div>
+			</div>
 						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
 							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">가입</form:button>
 						</div>
@@ -529,117 +530,50 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	
 
 	<script type="text/javascript">
-		function number_filter(str_value) {
-			return str_value.replace(/[^0-9]{4,12}$/gi, '');
-		}
 		
-		function numberFilter(str) {
-			return str.replace(/[^a-zA-Z0-9]$/gi,'');
-		}
-		 
-		/* 년 월 일 동적 날짜 생성  */
-		 window.addEventListener('load',function appendYear(){
-			var date = new Date();
-			var year = date.getFullYear();
-			var optionIndex = 0;
-			
-			console.log(focusBlurCheck())
-			for(var i=year-100;i<=year;i++){
-				document.getElementById('year').add(new Option(i+"년",i),optionIndex++);
-			}
-			
-			for(var i=1;i<=12;i++){
-				document.getElementById('month').add(new Option(i+'월',i),optionIndex++);
-			}
-			
-			for(var i=1;i<=31;i++){
-				document.getElementById('day').add(new Option(i+'일',i),optionIndex++);
-			}
-			
-			if('${loginCheck}' != "" && '${loginCheck}'== 0 ){
-				alert("회원가입이 실패하였습니다. 다시 시도해 주세요")
-			}else{
-				
-			}
-		})
 	</script>
 	
 	<script>
 	
 	/* 비밀번호 확인 */
-		document.getElementById('password').addEventListener("blur",function(){
-			var passwordContent =''
-			var password = document.getElementById('password').value
-			if(password==null || password ==''){
-				passwordContent +='<div class="passwordCheck">'
-				passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
-				passwordContent +='</div>'
-				document.getElementById("passwordCheck").innerHTML = passwordContent
-				passwordContent	= ''
-			}
-		})
+	
 		
-		document.getElementById('password').addEventListener("keyup",function(){
-			var password = document.getElementById('password').value
+		
+		
+// 		document.getElementById('password2').addEventListener("keyup",function(){
+// 			var password2 = document.getElementById('password2').value
+// 				password = document.getElementById('password').value
+// 			var passwordContent = ''
+// 				console.info(password + '확인' + password2)
+// 			if(password === password2){
+// 					passwordContent +='<div class="passwordCheck2">'
+// 					passwordContent += '<small style="color:red">비밀번호가 일치 합니다.</small>'
+// 					passwordContent +='</div>'
+// 					document.getElementById("passwordCheck2").innerHTML = passwordContent
+// 					passwordContent =''
+// 			}else{
+// 					passwordContent +='<div class="passwordCheck2">'
+// 					passwordContent += '<small style="color:red">비밀번호가 일치하지 않습니다.</small>'
+// 					passwordContent +='</div>'
+// 					document.getElementById("passwordCheck2").innerHTML = passwordContent
+// 					passwordContent =''
 				
-				console.log(password)
-				console.log(password.length)
-				if(password.length >=4 && password != null){
-						passwordContent +='<div class="passwordCheck">'
-						passwordContent += '<small style="color:red">사용 가능한 비밀번호 입니다.</small>'
-						passwordContent +='</div>'
-						document.getElementById("passwordCheck").innerHTML = passwordContent
-						passwordContent =''
-				}else if(password.length < 4 && password.length >=1){
-						passwordContent +='<div class="passwordCheck">'
-						passwordContent += '<small style="color:red">8~20자리로 설정해주세요.</small>'
-						passwordContent +='</div>'
-						document.getElementById("passwordCheck").innerHTML = passwordContent
-						passwordContent	= ''
-				}else{
-					passwordContent +='<div class="passwordCheck">'
-					passwordContent += '<small style="color:red">필수 입력 정보입니다.</small>'
-					passwordContent +='</div>'
-					document.getElementById("passwordCheck").innerHTML = passwordContent
-					passwordContent	= ''
-					
-				}
-		})
+// 			}
+// 		})
 		
-		document.getElementById('password2').addEventListener("keyup",function(){
-			var password2 = document.getElementById('password2').value
-				password = document.getElementById('password').value
-				passwordContent = ''
-				console.info(password + '확인' + password2)
-			if(password === password2){
-					passwordContent +='<div class="passwordCheck2">'
-					passwordContent += '<small style="color:red">비밀번호가 일치 합니다.</small>'
-					passwordContent +='</div>'
-					document.getElementById("passwordCheck2").innerHTML = passwordContent
-					passwordContent =''
-			}else{
-					passwordContent +='<div class="passwordCheck2">'
-					passwordContent += '<small style="color:red">비밀번호가 일치하지 않습니다.</small>'
-					passwordContent +='</div>'
-					document.getElementById("passwordCheck2").innerHTML = passwordContent
-					passwordContent =''
-				
-			}
-		})
-		
-		/* 이름 체크 */
-		document.getElementById('customer_name').addEventListener("blur",function(){
-			var nameContent =''
-			var name = document.getElementById('customer_name').value
-			if(name==null || name ==''){
-				nameContent ='<div class="nameCheck">'
-				nameContent += '<small style="color:red">필수 입력 정보입니다.</small>'
-				nameContent +='</div>'
-				document.getElementById("nameCheck").innerHTML = nameContent
-				nameContent = ''
-				return false
-			}
-		})
+// 		/* 이름 체크 */
+// 		document.getElementById('customer_name').addEventListener("blur",function(){
+// 			var nameContent =''
+// 			var name = document.getElementById('customer_name').value
+// 			if(name==null || name ==''){
+// 				nameContent ='<div class="nameCheck">'
+// 				nameContent += '<small style="color:red">필수 입력 정보입니다.</small>'
+// 				nameContent +='</div>'
+// 				document.getElementById("nameCheck").innerHTML = nameContent
+// 				nameContent = ''
+// 				return false
+// 			}
+// 		})
 	</script>
 	
 	
