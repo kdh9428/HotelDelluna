@@ -215,7 +215,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
-								<div id = "password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자를 사용하세요.</div>
+								<div id = "password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -229,7 +229,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6 mt-5">
 							<form:input type="password" path="password2" id="password2"
 								class="form-control required" placeholder="비밀번호 재입력" />
-							<div id = "passwordCheck2"></div>
+							<div id ="password-check2"></div>
 						</div>
 					</div>
 				</div>
@@ -243,7 +243,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
 								placeholder="이름을 입력해 주세요"/>
-							<div id = "nameCheck"></div>
+							<div id = "name-check"></div>
 						</div>
 					</div>
 				</div>

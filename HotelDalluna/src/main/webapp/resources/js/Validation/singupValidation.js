@@ -37,7 +37,7 @@ const header = document.querySelector("meta[name='_csrf_header']").content;
 		
 //유효성 검사, id에 숫자 문자 이외의 값은 입력 불가
 function idFilter() {
-	if(/[^a-zA-Z0-9]$/gi.test(customerIdCheck.value) == true){
+	if(/[^a-zA-Z0-9]+$/gi.test(customerIdCheck.value) == true){
 		customerIdCheck.value = ''
 		return false
 		}
@@ -114,7 +114,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	/*	전화번호 유효성 검사
 	 * 	전화번호에 숫자 이외의 값 불가능
 	 */
-	let telValue = document.querySelector('#tel')
+	const telValue = document.querySelector('#tel')
 	function numberFilter(){
 		if(/[^0-9]{4,12}$/gi.test(telValue.value) == true){
 			
@@ -143,9 +143,10 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	/*
 	 * 비밀번호 태그 설정
 	 */
+	
 	const passwordId = document.querySelector('#password')
 	const passwordCheckDiv = document.querySelector('#password-check')
-	function passwordFocusBlur() {
+	function passwordFocusKeyup() {
 		if(passwordId.value.length > 0 && passwordId.value.length < 8  || passwordId.value.length > 20 ){
 			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">8~20자리로 설정해주세요.</div>'
 			return false
@@ -166,7 +167,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			return true
 		}
 	}
-	passwordId.addEventListener('keyup', passwordFocusBlur) //태그 안에 값이 변경 됬을 경우
+	passwordId.addEventListener('keyup', passwordFocusKeyup) //태그 안에 값이 변경 됬을 경우
 
 	//비밀번호 포커스 이동시 div태그 설정
 	passwordId.addEventListener('blur',()=>{ 
@@ -175,13 +176,61 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		}
 	})
 	
+	
+	const passwordId2 = document.querySelector('#password2')
+	const passwordCheckDiv2 = document.querySelector('#password-check2')
 	//비밀번호 확인 체크
-
+	function passwordFocusKeyup2(){
+		if(passwordId.value != passwordId2.value){
+			passwordCheckDiv2.innerHTML = '<div id="password-check" style="color:red">비밀번호가 일치하지 않습니다.</div>'
+			return false
+		}else if(passwordId2.value == null || passwordId2.value == ''){
+			passwordCheckDiv2.innerHTML = '<div id="password-check" style="color:red">비밀번호를 재입력하세요</div>'
+			return false
+		}else{
+			passwordCheckDiv2.innerHTML = '<div id="password-check" style="color:red">비밀번호가 일치 합니다.</div>'
+			return true 
+		}
+	}
+	passwordId2.addEventListener('blur', passwordFocusKeyup2) //포커스가 이동 했을 때 비밀번호 검사
+	passwordId2.addEventListener('input', passwordFocusKeyup2) //태그 안에 값이 변경 됬을 경우
+	
+	
+	/*
+	 * 이름 유효성 검사
+	 */
+	const customerName = document.querySelector('#customer_name')
+	const nameCheck = document.querySelector('#name-check')
+	customerName.addEventListener('blur',()=>{ 
+		if(customerName.value == null || customerName.value == ''){
+			nameCheck.innerHTML = '<div id="name-check" style="color:red">필수 입력 정보입니다.</div>'
+			return false
+		}
+	})
+	
+	//유효성 검사
+	function nameFocusKeyUp(){
+//		if(customerName.value.search(/[가-힇a-zA-Z]/g) > 0){
+//			console.log(customerName.value.search(/[가-힇a-zA-Z]/g))
+//			nameCheck.innerHTML = '<div id="password-check" style="color:red">이름은 한글, 영문 대소문자만 사용해주세요.</div>'
+//				return false
+		if(/^[가-힇a-z]+$/ig.test(customerName.value)){
+			nameCheck.innerHTML = ''
+				return true
+		}else if(customerName.value == null || customerName.value == ''){
+			nameCheck.innerHTML = '<div id="name-check" style="color:red">필수 입력 정보입니다.</div>'
+				return false
+		}else{
+			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 한글, 영문 대소문자만 사용해주세요.</div>'
+				return false
+			
+		}
+	}
+	customerName.addEventListener('input', nameFocusKeyUp) //포커스가 이동 했을 때 이름 검사
+	
 	
 	function validate(){
 	/* id 체크  유효성 검사*/
-    var customerId = customerIdCheck.value //아이디
-        
         if (responseObject == false){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
@@ -196,16 +245,42 @@ customerIdCheck.addEventListener('keyup',idFilter)
         
         /* 비밀번호 체크 */
         
-        if(passwordFocusBlur() == false){
+        if(passwordFocusKeyup() == false){
         	alert(passwordCheckDiv.innerText)
+        	passwordId.select()
         	return false
         }
         
+        if(passwordFocusKeyup2() == false){
+        	alert(passwordCheckDiv2.innerText)
+        	passwordId2.select()
+        	return false
+        }
+        
+        /* 이름 체크*/
+        if(nameFocusKeyUp() == false){
+        	alert(nameCheck.innerText)
+        	customerName.select()
+        	return false
+        }
+        
+        
+        
+        /* 생년월일 체크*/
         var selected = document.querySelector('#year')
-        var birthday = selected.options[selected.selectedIndex]
-        if (birthday.text == '연도'){
-        	alert('생년월일을 선택하세요')
+        if (selected.options[selected.selectedIndex].text == '연도'){
+        	alert('연도를 선택하세요')
         	return false
         	}
-        }  
+        var selected = document.querySelector('#month')
+        if (selected.options[selected.selectedIndex].text == '월'){
+        	alert('월을 선택하세요')
+        	return false
+        }
+        var selected = document.querySelector('#day')
+        if (selected.options[selected.selectedIndex].text == '일'){
+        	alert('일을 선택하세요')
+        	return false
+        }
+  }  
 	
