@@ -37,10 +37,13 @@ const header = document.querySelector("meta[name='_csrf_header']").content;
 		
 //유효성 검사, id에 숫자 문자 이외의 값은 입력 불가
 function idFilter() {
-	if(/[^a-zA-Z0-9]+$/gi.test(customerIdCheck.value) == true){
-		customerIdCheck.value = ''
-		return false
+	if(/^[a-z0-9]+$/ig.test(customerIdCheck.value)){
+			return true
+		}else{
+			customerIdCheck.value = ''
+				return false
 		}
+	
 	}
 
 
@@ -231,6 +234,8 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	
 	function validate(){
 	/* id 체크  유효성 검사*/
+		
+		
         if (responseObject == false){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
