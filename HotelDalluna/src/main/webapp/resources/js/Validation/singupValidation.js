@@ -27,8 +27,8 @@ window.addEventListener('load',function(){
 			}
 		})
 		
-let customerIdCheck = document.querySelector('#customer_id') //아이디 input
-let idCheckNewContent = document.querySelector('#id-check') //아이디 체크 변경 <div>
+const customerIdCheck = document.querySelector('#customer_id') //아이디 input
+const idCheckNewContent = document.querySelector('#id-check') //아이디 체크 변경 <div>
 let responseObject //false 확인
 
 //spring csrf를 보내기 위해 meta 태그에 contect로 등록, 불러와 사용한다.
@@ -38,6 +38,7 @@ const header = document.querySelector("meta[name='_csrf_header']").content;
 //유효성 검사, id에 숫자 문자 이외의 값은 입력 불가
 function idFilter() {
 	if(/^[a-z0-9]+$/ig.test(customerIdCheck.value)){
+		responseObject = null //id input 태그 안에 내용이 변경 시  null , 다시 중복확인 메세지 변경 
 			return true
 		}else{
 			customerIdCheck.value = ''
@@ -111,6 +112,9 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		}
 	}
 	
+	customerIdCheck.addEventListener('blur', focusBlurCheck) //id tag포커스가 이동 했을 때
+	customerIdCheck.addEventListener('keyup',idCheckFunction) //id tag 안에 값이 변경 됬을 경우
+	
 	/*	전화번호 유효성 검사
 	 * 	전화번호에 숫자 이외의 값 불가능
 	 */
@@ -135,9 +139,6 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			numberTelFocus.style.color = 'red'
 			numberTelFocus.innerText = '숫자만 입력하세요.'
 	})
-	customerIdCheck.addEventListener('blur', focusBlurCheck) //포커스가 이동 했을 때
-	customerIdCheck.addEventListener('keyup',idCheckFunction) //태그 안에 값이 변경 됬을 경우
-		
 	
 	/*
 	 * 비밀번호 태그 설정/유효성검사
@@ -152,7 +153,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">같은 문자를 4번 이상 사용하실 수 없습니다.</div>'
 			return false
 		}else if(passwordId.value == null || passwordId.value == ''){
-			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">필수 입력 정보입니다.</div>'
+			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">비밀번호는 필수 입력 정보입니다.</div>'
 			return false
 		}else if(passwordId.value.search(/[0-9]/g) < 0 || passwordId.value.search(/[a-z]/ig) < 0 || passwordId.value.search(/[!@#$%^*+=-]/ig) < 0 ){
 			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">영문 대/소문자, 숫자, 특수 문자(!@#$%^*+=-)를 사용하세요.</div>'
@@ -170,7 +171,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	//비밀번호 포커스 이동시 div태그 설정
 	passwordId.addEventListener('blur',()=>{ 
 		if(passwordId.value == null || passwordId.value == ''){
-			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">필수 입력 정보입니다.</div>'
+			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">비밀번호는 필수 입력 정보입니다.</div>'
 		}
 	})
 	
@@ -201,7 +202,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	const nameCheck = document.querySelector('#name-check')
 	customerName.addEventListener('blur',()=>{ 
 		if(customerName.value == null || customerName.value == ''){
-			nameCheck.innerHTML = '<div id="name-check" style="color:red">필수 입력 정보입니다.</div>'
+			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 필수 입력 정보입니다.</div>'
 			return false
 		}
 	})
@@ -212,7 +213,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			nameCheck.innerHTML = ''
 				return true
 		}else if(customerName.value == null || customerName.value == ''){
-			nameCheck.innerHTML = '<div id="name-check" style="color:red">필수 입력 정보입니다.</div>'
+			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 필수 입력 정보입니다.</div>'
 				return false
 		}else{
 			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 한글, 영문 대소문자만 사용해주세요.</div>'
@@ -221,9 +222,29 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	}
 	customerName.addEventListener('input', nameFocusKeyUp) //포커스가 이동 했을 때 이름 검사
 	
+	/*
+	 * 이메일 유효성 검사
+	 */
+	const userEmailCheck = document.querySelector('#userEmail')
+	const emailCheckTag =  document.querySelector('#email-check')
+	function emailCheck(){
+		if(userEmailCheck.value == null || userEmailCheck.value =='' ){
+			emailCheckTag.innerHTML = '<div id="email-check" style="color:red">이메일 입력 해주세요.</div>'
+			return false
+		}else if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(userEmailCheck.value) != true){
+			emailCheckTag.innerHTML = '<div id="email-check" style="color:red">적합하지 않은 이메일 형식입니다.</div>'
+			return false
+		}else{
+			emailCheckTag.innerHTML = '<div id="email-check" style="color:black">사용 가능한 이메일입니다.</div>'
+			return true
+		}
+	}
+	userEmailCheck.addEventListener('input', emailCheck)
+	
+	// 회원가입 버튼을 누를 경우 모든 유효성 검사 체크
 	function validate(){
 	/* id 체크  유효성 검사*/
-        if (responseObject == false){
+        if (responseObject == false || responseObject==null ){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
 			return false
@@ -236,7 +257,6 @@ customerIdCheck.addEventListener('keyup',idFilter)
         }
         
         /* 비밀번호 체크 */
-        
         if(passwordFocusKeyup() == false){
         	alert(passwordCheckDiv.innerText)
         	passwordId.select()
@@ -264,8 +284,14 @@ customerIdCheck.addEventListener('keyup',idFilter)
         	return false
         }
         
+        /* 이메일 체크 */
+        if(emailCheck() == false){
+        	alert(emailCheckTag.innerText)
+        	userEmailCheck.select()
+        	return false
+        }
         
-        /* 생년월일 체크*/
+        /* 생년월일 체크 */
         var selected = document.querySelector('#year')
         if (selected.options[selected.selectedIndex].text == '연도'){
         	alert('연도를 선택하세요')
@@ -281,5 +307,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
         	alert('일을 선택하세요')
         	return false
         }
+        
+        
   }  
 	

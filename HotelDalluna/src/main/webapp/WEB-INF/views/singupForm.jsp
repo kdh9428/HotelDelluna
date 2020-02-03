@@ -272,6 +272,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							<form:input type="email" style="ime-mode: disabled" path="userEmail"
 								id="userEmail" class="form-control required" placeholder="이메일 주소 입력"
 								min="0" />
+								<div id="email-check">이메일을 입력해주세요.</div>
 								
 						</div>
 					</div>
