@@ -85,6 +85,7 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.update("com.java.board.reply.updateReply", replyVO);
 	}
 	
+	//댓글 삭제
 	@Override
 	public int deleteReply(int replyid) throws Exception {
 		return sqlSession.delete("com.java.board.reply.deleteReply",replyid);

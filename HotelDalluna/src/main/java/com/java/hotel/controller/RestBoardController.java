@@ -63,8 +63,8 @@ public class RestBoardController {
 		return boardService.updateReply(replyVO);
 	}
 	
-	@DeleteMapping("deleteReply")
-	 public int deleteReply(@RequestParam("replyid") int replyid) throws Exception{
-		return boardService.deleteReply(replyid);
+	@PostMapping("deleteReply")
+	 public int deleteReply(@RequestParam("replyid") int replyid, @RequestParam("customer_id") String customer_id) throws Exception{
+		return boardService.deleteReply(customer_id, replyid);
 	 }
 }

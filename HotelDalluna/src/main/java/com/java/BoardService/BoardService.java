@@ -36,7 +36,7 @@ public interface BoardService {
 	public int updateReply(ReplyVO replyVO) throws Exception;
 	
 	//댓글 삭제
-	public int deleteReply(int replyid) throws Exception;
+	public int deleteReply(String customer_id, int replyid) throws Exception;
 	
 	
 	

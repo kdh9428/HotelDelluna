@@ -625,7 +625,6 @@
 	                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 	         	}
 			, success: function(result){
-                                console.log(result);
 				showReplyList();
 			}
 			, error: function(error){
@@ -638,11 +637,11 @@
 	<!-- 댓글 삭제 -->
 	<script type="text/javascript">
 		function fn_deleteReply(replyid) {
-			var paramData = {"replyid" : replyid};
+			var paramData = {"replyid" : replyid, "customer_id" :"${login_id}"};
 			$.ajax({
-				url : "${pageContext.request.contextPath}/deleteReply.do",
+				url : "deleteReply.do",
 				data : paramData,
-				type : 'DELETE',
+				type : 'POST',
 				dataType : 'text',
 				beforeSend : function(xhr)
 	            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
@@ -670,35 +669,21 @@
 			}
 			/* 삭제 후 이동 replace()를 사용해서 다시 삭제 한 페이지로 이동X */
 			function fn_btnDelete(notice_number) {
-				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+ notice_number)
+				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+notice_number)
 			}
 			
 	</script>
 
 	<script type="text/javascript">
 	
-		var focus = document.getElementById('context');
-			focus.addEventListener("focusin", inFocus);
-			focus.addEventListener("focusout", outFocus);
-		
-		function inFocus(){
-			document.getElementById('context').setAttribute('placeholder', '${login_id}님 댓글을 입력하세요')
-		}
-		function outFocus(){
-			document.getElementById('customer_id').value = '${login_id}';
-		}
-		
+		const focus = document.getElementById('context');
+			focus.addEventListener("focusin", ()=> {
+				document.querySelector('#context').setAttribute('placeholder', '${login_id}님 댓글을 입력하세요')
+			});
+			focus.addEventListener("focusout", ()=> {
+				document.querySelector('#customer_id').value = '${login_id}';
+			});
 	
-	/*  jQuery test
-	
-	 $('#context').focus(function(){
-		$('#context').attr('placeholder','${login_id} 님 댓글을 입력하세요');
-	});
-	  */
-	/* $('#context').blur(function(){
-		$('#customer_id').val('${login_id}');
-	});
- */
 	</script>
 </body>
 </html>

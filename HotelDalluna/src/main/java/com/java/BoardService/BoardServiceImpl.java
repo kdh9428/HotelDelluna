@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDao.BoardDao;
@@ -110,9 +111,18 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	//댓글 삭제
-	 @Override
-	public int deleteReply(int replyid) throws Exception {
-		 return boardDao.deleteReply(replyid);
+	@Transactional
+	@Override
+	public int deleteReply(String customer_id, int replyid) throws Exception {
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String sessionId = auth.getName();
+			int idCheck = 0;
+			if(sessionId.equals(customer_id)) {
+				idCheck= boardDao.deleteReply(replyid);
+			}else {
+				 idCheck = 0;
+			}
+		 return idCheck;
 	}
 
 }

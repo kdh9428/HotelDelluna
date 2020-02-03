@@ -12,7 +12,7 @@
 				notice_reply
 		where
 				notice_number = #{notice_number}
-		order by replyid desc
+		order by replyid
 	</select>
 	
 	<insert id="insertReply" parameterType="com.java.BoardDto.ReplyVO">
