@@ -8,15 +8,15 @@ import com.java.dto.ReservationDTO;
 public interface ReservationService {
 	
 	//예약 
-	public int reservationCheck(ReservationDTO reservationDto);
+	public int ReservationCheck(ReservationDTO ReservationDto);
 	
-	public void reservationCancell(String reservation_number);
+	public void ReservationCancell(String Reservation_number);
 	
 	//예약 완료 확인
-	public List<ReservationDTO> reservationConfirm(int page, int range);
+	public List<ReservationDTO> ReservationConfirm(int page, int range);
 	
 	//예약 개수 확인
-	public int reservationCount(String customer_id);
+	public int ReservationCount(String customer_id);
 
 	//페이징 처리
 	public Pagination pagination(int page, int range);

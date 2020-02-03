@@ -6,14 +6,14 @@
 <mapper namespace="com.java.dao.ReservationDao">
 	
 	<!-- 예약이 되어있나 체크 -->
-	<select id="reservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="int">
-			select count(*) from reservation r join reservation_number_people p 
+	<select id="ReservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="int">
+			select count(*) from Reservation r join Reservation_number_people p 
 		on 
-			r.reservation_number = p.reservation_number where room_type in(#{room_type}) 
+			r.Reservation_number = p.Reservation_number where room_type in(#{room_type}) 
 		and 
-			(#{reservation_date_in} between reservation_date_in and reservation_date_out 
+			(#{Reservation_date_in} between Reservation_date_in and Reservation_date_out 
 		or 
-			#{reservation_date_out} between reservation_date_in and reservation_date_out)
+			#{Reservation_date_out} between Reservation_date_in and Reservation_date_out)
 	</select>
 	
 	<!-- 룸 가격 확인 -->
@@ -22,50 +22,50 @@
 	</select>
 	
 	<!-- 룸 인원 테이블  -->
-	<insert id="reservationPeople" parameterType="com.java.dto.ReservationDTO" >
-		insert into reservation_number_people 
-			(reservation_number,room_type, adult,child) 
+	<insert id="ReservationPeople" parameterType="com.java.dto.ReservationDTO" >
+		insert into Reservation_number_people 
+			(Reservation_number,room_type, adult,child) 
 		values 
-			(#{reservation_number}, #{room_type}, #{adult}, #{child}) 
+			(#{Reservation_number}, #{room_type}, #{adult}, #{child}) 
 	</insert>
 	
 	<!--  예약 하기 --> 
-	<insert id="reservation" parameterType="com.java.dto.ReservationDTO" >
+	<insert id="Reservation" parameterType="com.java.dto.ReservationDTO" >
 		insert into 
-			reservation(reservation_number,customer_id,reservation_date_in,reservation_date_out, price) 
+			Reservation(Reservation_number,customer_id,Reservation_date_in,Reservation_date_out, price) 
 		values
-			(#{reservation_number},#{customer_id},#{reservation_date_in},#{reservation_date_out},#{price})
+			(#{Reservation_number},#{customer_id},#{Reservation_date_in},#{Reservation_date_out},#{price})
 	</insert>
 	
 	<!-- 예약 취소 -->
-	<delete id="reservationCancell" >
+	<delete id="ReservationCancell" >
 	 		delete from 
-	 			reservation_number_people 
+	 			Reservation_number_people 
 	 		where 
-	 			reservation_number=#{reservation_number}
+	 			Reservation_number=#{Reservation_number}
 	</delete>
 	
 	<!-- 예약 완료 후 확인 -->
-	<select id="reservationConfirm" parameterType="com.java.BoardCommon.Pagination" resultType="com.java.dto.ReservationDTO">
+	<select id="ReservationConfirm" parameterType="com.java.BoardCommon.Pagination" resultType="com.java.dto.ReservationDTO">
 		select 
-			r.CUSTOMER_ID,r.RESERVATION_DATE_IN,r.RESERVATION_DATE_OUT,r.price,p.RESERVATION_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
+			r.CUSTOMER_ID,r.Reservation_DATE_IN,r.Reservation_DATE_OUT,r.price,p.Reservation_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
 		from 
-			reservation r join reservation_number_people p 
+			Reservation r join Reservation_number_people p 
 		ON 
-			r.reservation_number = p.reservation_number 
+			r.Reservation_number = p.Reservation_number 
 		where 
 			customer_id=#{customer_id}
 		order by 
-			reservation_date_in desc
+			Reservation_date_in desc
 		limit #{startList}, #{listSize}
 	</select>
 	
 	<!-- 총 예약 개수 확인 -->
-	<select id="reservationCount" parameterType="String" resultType="int">
+	<select id="ReservationCount" parameterType="String" resultType="int">
 		select
 			count(*)
 		from
-			reservation
+			Reservation
 		where
 			customer_id=#{customer_id}
 	</select>

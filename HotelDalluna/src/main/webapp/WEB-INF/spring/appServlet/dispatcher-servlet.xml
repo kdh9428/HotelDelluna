@@ -32,15 +32,15 @@
 	<!-- 컨트롤러 없이 이동  -->
 	<mvc:view-controller path="/hotel-About-Us.do" view-name="hotel-About-Us"/>
 	<mvc:view-controller path="/Location.do" view-name="Location"/>
-	<mvc:view-controller path="/dining-1.do" view-name="dining-1"/>
-	<mvc:view-controller path="/deluxe-1.do" view-name="deluxe-1"/>
-	<mvc:view-controller path="/deluxe-2.do" view-name="deluxe-2"/>
-	<mvc:view-controller path="/suite-1.do" view-name="suite-1"/>
-	<mvc:view-controller path="/suite-2.do" view-name="suite-2"/>
+	<mvc:view-controller path="/dining.do" view-name="dining"/>
+	<mvc:view-controller path="/deluxe-double.do" view-name="deluxe-double"/>
+	<mvc:view-controller path="/deluxe-twin.do" view-name="deluxe-twin"/>
+	<mvc:view-controller path="/family-suite.do" view-name="family-suite"/>
+	<mvc:view-controller path="/grand-suite.do" view-name="grand-suite"/>
 	<mvc:view-controller path="/menu-item.do" view-name="menu-item"/>
 	<mvc:view-controller path="/menu-item2.do" view-name="menu-item2"/>
 	<mvc:view-controller path="/menu-item3.do" view-name="menu-item3"/>
-	<mvc:view-controller path="/contact-1.do" view-name="contact-1"/>
+	<mvc:view-controller path="/contact.do" view-name="contact"/>
 	<mvc:view-controller path="/index.do" view-name="index"/>
 	<!-- <mvc:view-controller path="/singupForm.do" view-name="singup"/> -->
 

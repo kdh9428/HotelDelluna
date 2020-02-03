@@ -21,51 +21,51 @@ public class ReservationDaoImpl implements ReservationDao {
 	
 	//예약 가능 확인 체크
 	@Override
-	public int reservationCheck(ReservationDTO reservationDto) {
-		logger.info("reservationCheck 확인");
+	public int ReservationCheck(ReservationDTO ReservationDto) {
+		logger.info("ReservationCheck 확인");
 		//System.out.println("check 확인 값 0이면 없음 1이면 있음");
-		return sqlSession.selectOne("reservationCheck", reservationDto);
+		return sqlSession.selectOne("ReservationCheck", ReservationDto);
 	}
 	
 	//룸 가격 
 	@Override
-	public String roomprices(ReservationDTO reservationDto) {
+	public String roomprices(ReservationDTO ReservationDto) {
 		logger.info("룸 가격");
-		return sqlSession.selectOne("com.java.dao.ReservationDao.roomprices",reservationDto);
+		return sqlSession.selectOne("com.java.dao.ReservationDao.roomprices",ReservationDto);
 	}
 	
 	//룸 인원 테이블 확인
 	@Override
-	public void reservationPeople(ReservationDTO reservationDto) {
+	public void ReservationPeople(ReservationDTO ReservationDto) {
 		logger.info("룸 인원 테이블 확인");
-		sqlSession.insert("com.java.dao.ReservationDao.reservationPeople",reservationDto);
+		sqlSession.insert("com.java.dao.ReservationDao.ReservationPeople",ReservationDto);
 	}
 	
 	//예약 완료 처리
 	@Override
-	public int reservation(ReservationDTO reservationDto) {
+	public int Reservation(ReservationDTO ReservationDto) {
 		logger.info("예약 완료");
-		return sqlSession.insert("reservation",reservationDto);
+		return sqlSession.insert("Reservation",ReservationDto);
 	}
 	
 	//예약 취소
 	@Override
-	public void reservationCancell(String reservation_number) {
+	public void ReservationCancell(String Reservation_number) {
 		logger.info("예약 취소");
-		sqlSession.delete("reservationCancell", reservation_number);
+		sqlSession.delete("ReservationCancell", Reservation_number);
 	}
 	
 	//예약 완료 후 예약 확인
 	@Override
-	public List<ReservationDTO> reservationConfirm(Pagination pagination) {
+	public List<ReservationDTO> ReservationConfirm(Pagination pagination) {
 		logger.info("예약 완료 확인 Dao");
-		return sqlSession.selectList("com.java.dao.ReservationDao.reservationConfirm", pagination);
+		return sqlSession.selectList("com.java.dao.ReservationDao.ReservationConfirm", pagination);
 	}
 	
 	//예약 완료 개수 확인
 	@Override
-	public int reservationCount(String customer_id) {
+	public int ReservationCount(String customer_id) {
 		logger.info("Dao 예약 완료 총 개수");
-		return sqlSession.selectOne("com.java.dao.ReservationDao.reservationCount" ,customer_id);
+		return sqlSession.selectOne("com.java.dao.ReservationDao.ReservationCount" ,customer_id);
 	}
 }

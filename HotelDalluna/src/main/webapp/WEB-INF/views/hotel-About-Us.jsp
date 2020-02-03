@@ -78,21 +78,21 @@
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><a href="deluxe-1.do"><div>디럭스</div></a>
+									<li><a href="deluxe-double.do"><div>디럭스</div></a>
 										<ul>
-											<li><a href="deluxe-1.do"><div>디럭스 더블</div></a></li>
-											<li><a href="deluxe-2.do"><div>디럭스 트윈</div></a></li>
+											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><a href="suite-1.do"><div>스위트</div></a>
+									<li><a href="family-suite.do"><div>스위트</div></a>
 										<ul>
-											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
-											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
+											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><a href="dining-1.do"><div>다이닝</div></a>
+							<li><a href="dining.do"><div>다이닝</div></a>
 								<ul>
-									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
@@ -100,7 +100,7 @@
 									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
 									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li><a href="contact.do"><div>고객의 소리</div></a></li>
 							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 							
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <a href="deluxe-1.html">
+                                    <a href="deluxe-double.html">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
                                     	<B>객실</B><br>
                                      	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
@@ -184,7 +184,7 @@
                               	  </div>
                               
                                 <div class="col-md-6">
-                                	<a href="dining-1.html">
+                                	<a href="dining.html">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
                                     <B>다이닝</B><br>
                                      	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
@@ -274,7 +274,7 @@
                                     			<li><a href="list.do"><div>공지사항</div></a></li>
                                     			<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
                                     			<li><a href="Location.do"><div>호텔위치</div></a></li>
-                                                <li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+                                                <li><a href="contact.do"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -283,9 +283,9 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><a href="deluxe-1.do"><div>객실 - 디럭스</div></a></li>
-                                    			<li><a href="suite-1.do"><div>객실 - 스위트</div></a></li>
-                                    			<li><a href="dining-1.do"><div>다이닝</div></a></li>
+                                    			<li><a href="deluxe-double.do"><div>객실 - 디럭스</div></a></li>
+                                    			<li><a href="family-suite.do"><div>객실 - 스위트</div></a></li>
+                                    			<li><a href="dining.do"><div>다이닝</div></a></li>
                                     			<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
                                                 <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
@@ -339,7 +339,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                             <a href="#">공지사항</a> <a href="hotel-About-Us.do">호텔소개</a> <a href="deluxe-1.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
+                             <a href="#">공지사항</a> <a href="hotel-About-Us.do">호텔소개</a> <a href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">

@@ -32,21 +32,21 @@ public class ReservationController  {
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private ReservationService reservationService;
+	private ReservationService ReservationService;
 	
 	//예약 페이지
 	@GetMapping("Reservation.do")
-	public String reservation() throws Exception{
-		logger.info("reservation 페이지 실행"); 
+	public String Reservation() throws Exception{
+		logger.info("Reservation 페이지 실행"); 
 		return "Reservation";
 	}
 	
 	//예약 체크 확인
 	@PostMapping("ReservationCheck.do")
-	public String reservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
-		logger.info("reservationCheck 컨트롤러 확인");
+	public String ReservationCheck(@ModelAttribute("dto") ReservationDTO ReservationDto, Model model) throws Exception{
+		logger.info("ReservationCheck 컨트롤러 확인");
 		String url;
-		 int check = reservationService.reservationCheck(reservationDto);
+		 int check = ReservationService.ReservationCheck(ReservationDto);
 		 
 		 //check가 1이면 예약 되어있음 
 		 if(check==1) {
@@ -61,7 +61,7 @@ public class ReservationController  {
 	
 	//예약 완료 확인
 	@GetMapping("ReservationConfirm.do")
-	public String reservationConfirm(@RequestParam(required = false, defaultValue = "1") int page,
+	public String ReservationConfirm(@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range, Model model) {
 //		//로그인 id Security에서 받아오기
 //		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -69,7 +69,7 @@ public class ReservationController  {
 //		//페이징 처리
 //		Pagination pages = new Pagination();
 //		
-//		int count = reservationService.reservationCount(auth.getName());
+//		int count = ReservationService.ReservationCount(auth.getName());
 //		logger.info("예약 완료 컨트롤러");
 //		pages.setListSize(1);
 //		pages.setRangeSize(10);
@@ -80,22 +80,22 @@ public class ReservationController  {
 //		한 페이지에 보여질 리스트 수
 //		아이디 
 //		pages.setCustomer_id(auth.getName());
-		 List<ReservationDTO> reservationConfirm = reservationService.reservationConfirm(page, range);
+		 List<ReservationDTO> ReservationConfirm = ReservationService.ReservationConfirm(page, range);
 		 
-		 //reservationConfirm에 값이 없는지 확인, 없으면 1을 view로 보내서 예약하지 않았다고 체크 
-		 if(reservationConfirm.isEmpty()) {
+		 //ReservationConfirm에 값이 없는지 확인, 없으면 1을 view로 보내서 예약하지 않았다고 체크 
+		 if(ReservationConfirm.isEmpty()) {
 			 model.addAttribute("notReservation",1);
 		 }else {
-			 model.addAttribute("dto",reservationConfirm.get(0));
-			 model.addAttribute("pagination", reservationService.pagination(page, range));
+			 model.addAttribute("dto",ReservationConfirm.get(0));
+			 model.addAttribute("pagination", ReservationService.pagination(page, range));
 		 }
 		return "ReservationConfirm";
 	}
 	
 	//예약 취소
 	@GetMapping("ReservationCancell.do")
-	public String reservationConcell(@RequestParam("reservation_number") String reservation_number) throws Exception{
-		reservationService.reservationCancell(reservation_number);
+	public String ReservationConcell(@RequestParam("Reservation_number") String Reservation_number) throws Exception{
+		ReservationService.ReservationCancell(Reservation_number);
 		
 		return"redirect:ReservationConfirm.do";
 	}

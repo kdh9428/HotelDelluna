@@ -46,10 +46,10 @@ public class HotelTest {
 	BoardService boardService;
 	
 	@Autowired
-	ReservationService reservationService;
+	ReservationService ReservationService;
 	
 	@Autowired
-	ReservationDaoImpl reservationDao;
+	ReservationDaoImpl ReservationDao;
 	
 	@Inject
 	memberDetailsSevice impl;
@@ -132,30 +132,30 @@ public class HotelTest {
 	
 	//예약 완료 테스트
 	@Test @Ignore
-	public void reservationTest() {
+	public void ReservationTest() {
 		
-		ReservationDTO reservation =  new ReservationDTO();
+		ReservationDTO Reservation =  new ReservationDTO();
 		
-//		List<ReservationDTO> reservation1 = reservationDao.reservationConfirm("aaa");
+//		List<ReservationDTO> Reservation1 = ReservationDao.ReservationConfirm("aaa");
 //		
-//		if(reservation1.size() > 0 ) {
+//		if(Reservation1.size() > 0 ) {
 //			
-//			for(ReservationDTO size : reservation1) {
+//			for(ReservationDTO size : Reservation1) {
 //				logger.info(size.getReservation_number());
 //				logger.info(size.getReservation_date_in()+ " ~ " + size.getReservation_date_out());
 //				logger.info(size.getCustomer_id());
 //			}
 //			
 //		}
-		int listCnt = reservationDao.reservationCount("aaa");
+		int listCnt = ReservationDao.ReservationCount("aaa");
 		System.out.println(listCnt);
-//		logger.info(reservationDao.reservationCount("aaa"));
+//		logger.info(ReservationDao.ReservationCount("aaa"));
 		
 		Pagination page = new Pagination();
 		page.pageInfo(1, 1, listCnt);
 		page.setCustomer_id("aaa");
 		page.setListSize(1);
-//		List<ReservationDTO> reserva =  reservationService.reservationConfirm(page);
+//		List<ReservationDTO> reserva =  ReservationService.ReservationConfirm(page);
 //		System.out.println("확인"+reserva.get(0).getCustomer_id());
 //		for(ReservationDTO pages : reserva) {
 //			System.out.println(pages.getConfirmation_payment());

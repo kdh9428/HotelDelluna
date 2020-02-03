@@ -89,21 +89,21 @@
 								</ul></li>
 							<li><div><a href="#" onclick="return false;">객실</a></div>
 								<ul>
-									<li><div><a href="deluxe-1.do">디럭스</a></div>
+									<li><div><a href="deluxe-double.do">디럭스</a></div>
 										<ul>
-											<li><div><a href="deluxe-1.do">디럭스 더블</a></div></li>
-											<li><div><a href="deluxe-2.do">디럭스 트윈</a></div></li>
+											<li><div><a href="deluxe-double.do">디럭스 더블</a></div></li>
+											<li><div><a href="deluxe-twin.do">디럭스 트윈</a></div></li>
 										</ul></li>
-									<li><div><a href="suite-1.do">스위트</a></div>
+									<li><div><a href="family-suite.do">스위트</a></div>
 										<ul>
-											<li><div><a href="suite-1.do">패밀리 스위트</a></div></li>
-											<li><div><a href="suite-2.do">그랜드 스위트</a></div></li>
+											<li><div><a href="family-suite.do">패밀리 스위트</a></div></li>
+											<li><div><a href="grand-suite.do">그랜드 스위트</a></div></li>
 
 										</ul></li>
 								</ul></li>
-							<li><div><a href="dining-1.do">다이닝</a></div>
+							<li><div><a href="dining.do">다이닝</a></div>
 								<ul>
-									<li><div><a href="dining-1.do">파노라마 (올 데이 다이닝)</a></div></li>
+									<li><div><a href="dining.do">파노라마 (올 데이 다이닝)</a></div></li>
 								</ul></li>
 							<li><div><a href="#" onclick="return false;">부대시설</a></div>
 								<ul>
@@ -111,7 +111,7 @@
 									<li><div><a href="menu-item2.do">해온 루프탑 테라스</a></div></li>
 									<li><div><a href="menu-item3.do">프라이빗 카바나</a></div></li>
 								</ul></li>
-							<li><div><a href="contact-1.do">고객의 소리</a></div></li>
+							<li><div><a href="contact.do">고객의 소리</a></div></li>
 							<li><div><a href="Reservation.do">예약하기</a></div></li>
 							<li class="current"><div><a href="ReservationConfirm.do">예약조회 및 취소</a></div></li>
 							
@@ -236,7 +236,7 @@
                                     			<li><div><a href="list.do">공지사항</a></div></li>
                                     			<li><div><a href="hotel-About-Us.html">호텔소개</a></div></li>
                                     			<li><div><a href="Location.html">호텔위치</a></div></li>
-                                                <li><div><a href="contact-1.jsp">고객의 소리</a></div></li>
+                                                <li><div><a href="contact.jsp">고객의 소리</a></div></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -245,9 +245,9 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><div><a href="deluxe-1.html">객실 - 디럭스</a></div></li>
-                                    			<li><div><a href="suite-1.html">객실 - 스위트</a></div></li>
-                                    			<li><div><a href="dining-1.html">다이닝</a></div></li>
+                                    			<li><div><a href="deluxe-double.html">객실 - 디럭스</a></div></li>
+                                    			<li><div><a href="family-suite.html">객실 - 스위트</a></div></li>
+                                    			<li><div><a href="dining.html">다이닝</a></div></li>
                                     			<li><div><a href="Reseravtion.do">예약하기</a></div></li>
                                                 <li><div><a href="ReservationConfirm.do">예약조회 및 취소</a></div></li>
                                 			</ul>
@@ -304,7 +304,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
+                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="https://www.facebook.com/" class="social-icon si-small si-borderless nobottommargin si-facebook">

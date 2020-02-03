@@ -110,21 +110,21 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><a href="deluxe-1.do"><div>디럭스</div></a>
+									<li><a href="deluxe-double.do"><div>디럭스</div></a>
 										<ul>
-											<li><a href="deluxe-1.do"><div>디럭스 더블</div></a></li>
-											<li><a href="deluxe-2.do"><div>디럭스 트윈</div></a></li>
+											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><a href="suite-1.do"><div>스위트</div></a>
+									<li><a href="family-suite.do"><div>스위트</div></a>
 										<ul>
-											<li><a href="suite-1.do"><div>패밀리 스위트</div></a></li>
-											<li><a href="suite-2.do"><div>그랜드 스위트</div></a></li>
+											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><a href="dining-1.do"><div>다이닝</div></a>
+							<li><a href="dining.do"><div>다이닝</div></a>
 								<ul>
-									<li><a href="dining-1.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
@@ -132,7 +132,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
 									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+							<li><a href="contact.do"><div>고객의 소리</div></a></li>
 							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 
@@ -404,7 +404,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 												<li><a href="list.do"><div>공지사항</div></a></li>
 												<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 												<li><a href="Location.do"><div>호텔위치</div></a></li>
-												<li><a href="contact-1.do"><div>고객의 소리</div></a></li>
+												<li><a href="contact.do"><div>고객의 소리</div></a></li>
 											</ul>
 										</div>
 									</div>
@@ -413,9 +413,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 										<div class="widget_links clearfix">
 											<ul>
-												<li><a href="deluxe-1.do"><div>객실 - 디럭스</div></a></li>
-												<li><a href="suite-1.do"><div>객실 - 스위트</div></a></li>
-												<li><a href="dining-1.do"><div>다이닝</div></a></li>
+												<li><a href="deluxe-double.do"><div>객실 - 디럭스</div></a></li>
+												<li><a href="family-suite.do"><div>객실 - 스위트</div></a></li>
+												<li><a href="dining.do"><div>다이닝</div></a></li>
 												<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
 												<li><a href="ReservationConfirm.do"><div>예약조회
 															및 취소</div></a></li>
@@ -476,8 +476,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					<div class="col_half col_last tright">
 						<div class="copyrights-menu copyright-links fright clearfix">
 							<a href="#">공지사항</a> <a href="hotel-About-Us.do">호텔소개</a> <a
-								href="deluxe-1.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a
-								href="contact-1.jsp">고객의 소리</a>
+								href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a
+								href="contact.jsp">고객의 소리</a>
 						</div>
 						<div class="fright clearfix">
 							<a href="#"

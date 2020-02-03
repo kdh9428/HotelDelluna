@@ -89,21 +89,21 @@
 								</ul></li>
 							<li><div><a href="#" onclick="return false;">객실</a></div>
 								<ul>
-									<li><div><a href="deluxe-1.do">디럭스</a></div>
+									<li><div><a href="deluxe-double.do">디럭스</a></div>
 										<ul>
-											<li><div><a href="deluxe-1.do">디럭스 더블</a></div></li>
-											<li><div><a href="deluxe-2.do">디럭스 트윈</a></div></li>
+											<li><div><a href="deluxe-double.do">디럭스 더블</a></div></li>
+											<li><div><a href="deluxe-twin.do">디럭스 트윈</a></div></li>
 										</ul></li>
-									<li><div><a href="suite-1.do">스위트</a></div>
+									<li><div><a href="family-suite.do">스위트</a></div>
 										<ul>
-											<li><div><a href="suite-1.do">패밀리 스위트</a></div></li>
-											<li><div><a href="suite-2.do">그랜드 스위트</a></div></li>
+											<li><div><a href="family-suite.do">패밀리 스위트</a></div></li>
+											<li><div><a href="grand-suite.do">그랜드 스위트</a></div></li>
 
 										</ul></li>
 								</ul></li>
-							<li><div><a href="dining-1.do">다이닝</a></div>
+							<li><div><a href="dining.do">다이닝</a></div>
 								<ul>
-									<li><div><a href="dining-1.do">파노라마 (올 데이 다이닝)</a></div></li>
+									<li><div><a href="dining.do">파노라마 (올 데이 다이닝)</a></div></li>
 								</ul></li>
 							<li><div><a href="#" onclick="return false;">부대시설</a></div>
 								<ul>
@@ -111,7 +111,7 @@
 									<li><div><a href="menu-item2.do">해온 루프탑 테라스</a></div></li>
 									<li><div><a href="menu-item3.do">프라이빗 카바나</a></div></li>
 								</ul></li>
-							<li><div><a href="contact-1.do">고객의 소리</a></div></li>
+							<li><div><a href="contact.do">고객의 소리</a></div></li>
 							<li><div><a href="Reservation.do">예약하기</a></div></li>
 							<li class="current"><div><a href="ReservationConfirm.do">예약조회 및 취소</a></div></li>
 							
@@ -178,11 +178,11 @@
                     		location.href="Reservation.do";
                     	</script>
                     </c:if>
-					<input type="hidden" name="reservation_number" id="reservation_number" value="${dto.reservation_number}">
+					<input type="hidden" name="Reservation_number" id="Reservation_number" value="${dto.Reservation_number}">
 					<div class="row">
 						<div class="col-md-6">
 							<label for="template-contactform-name">예약번호</label><br>
-							<div class="well well-sm">${dto.reservation_number}</div>
+							<div class="well well-sm">${dto.Reservation_number}</div>
 						</div>
 
 						<div class="col-md-6">
@@ -206,7 +206,7 @@
 
 						<div class="col-md-6">
 							<label for="template-contactform-name">예약날짜</label><br>
-							<div class="well well-sm">${dto.reservation_date_in} ~ ${dto.reservation_date_out}</div>
+							<div class="well well-sm">${dto.Reservation_date_in} ~ ${dto.Reservation_date_out}</div>
 						</div>
 					</div>
 					
@@ -233,9 +233,9 @@
 					</div>
 	
                         <div class="clearfix" style=" text-align:center;" >
-                                <button type="button" onclick="popup();" value="${dto.reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
+                                <button type="button" onclick="popup();" value="${dto.Reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
                                 <span >결제하기</span> <i class="icon-angle-right"></i></button>
-                                <button type="button" onClick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
+                                <button type="button" onClick="check()" value="${dto.Reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                                 
                                 
@@ -292,7 +292,7 @@
 				        
 				        function check(){
 				        	if(confirm("예약을 취소 하시겠습니까?")==true){
-				        		document.location.href="ReservationCancell.do?reservation_number=${dto.reservation_number}"
+				        		document.location.href="ReservationCancell.do?Reservation_number=${dto.Reservation_number}"
 				        		document.form.submit();
 				        	}else{
 				        		return false;
@@ -399,7 +399,7 @@
                                     			<li><div><a href="list.do">공지사항</a></div></li>
                                     			<li><div><a href="hotel-About-Us.html">호텔소개</a></div></li>
                                     			<li><div><a href="Location.html">호텔위치</a></div></li>
-                                                <li><div><a href="contact-1.jsp">고객의 소리</a></div></li>
+                                                <li><div><a href="contact.jsp">고객의 소리</a></div></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -408,9 +408,9 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><div><a href="deluxe-1.html">객실 - 디럭스</a></div></li>
-                                    			<li><div><a href="suite-1.html">객실 - 스위트</a></div></li>
-                                    			<li><div><a href="dining-1.html">다이닝</a></div></li>
+                                    			<li><div><a href="deluxe-double.html">객실 - 디럭스</a></div></li>
+                                    			<li><div><a href="family-suite.html">객실 - 스위트</a></div></li>
+                                    			<li><div><a href="dining.html">다이닝</a></div></li>
                                     			<li><div><a href="Reseravtion.do">예약하기</a></div></li>
                                                 <li><div><a href="ReservationConfirm.do">예약조회 및 취소</a></div></li>
                                 			</ul>
@@ -467,7 +467,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-1.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact-1.jsp">고객의 소리</a>
+                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="https://www.facebook.com/" class="social-icon si-small si-borderless nobottommargin si-facebook">
