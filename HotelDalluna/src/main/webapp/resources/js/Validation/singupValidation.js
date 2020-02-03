@@ -41,11 +41,9 @@ function idFilter() {
 			return true
 		}else{
 			customerIdCheck.value = ''
-				return false
+			return false
 		}
-	
 	}
-
 
 customerIdCheck.addEventListener('keyup',idFilter)
 
@@ -113,7 +111,6 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		}
 	}
 	
-	
 	/*	전화번호 유효성 검사
 	 * 	전화번호에 숫자 이외의 값 불가능
 	 */
@@ -138,15 +135,13 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			numberTelFocus.style.color = 'red'
 			numberTelFocus.innerText = '숫자만 입력하세요.'
 	})
-	
 	customerIdCheck.addEventListener('blur', focusBlurCheck) //포커스가 이동 했을 때
 	customerIdCheck.addEventListener('keyup',idCheckFunction) //태그 안에 값이 변경 됬을 경우
 		
 	
 	/*
-	 * 비밀번호 태그 설정
+	 * 비밀번호 태그 설정/유효성검사
 	 */
-	
 	const passwordId = document.querySelector('#password')
 	const passwordCheckDiv = document.querySelector('#password-check')
 	function passwordFocusKeyup() {
@@ -213,10 +208,6 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	
 	//유효성 검사
 	function nameFocusKeyUp(){
-//		if(customerName.value.search(/[가-힇a-zA-Z]/g) > 0){
-//			console.log(customerName.value.search(/[가-힇a-zA-Z]/g))
-//			nameCheck.innerHTML = '<div id="password-check" style="color:red">이름은 한글, 영문 대소문자만 사용해주세요.</div>'
-//				return false
 		if(/^[가-힇a-z]+$/ig.test(customerName.value)){
 			nameCheck.innerHTML = ''
 				return true
@@ -226,16 +217,12 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		}else{
 			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 한글, 영문 대소문자만 사용해주세요.</div>'
 				return false
-			
 		}
 	}
 	customerName.addEventListener('input', nameFocusKeyUp) //포커스가 이동 했을 때 이름 검사
 	
-	
 	function validate(){
 	/* id 체크  유효성 검사*/
-		
-		
         if (responseObject == false){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
@@ -269,6 +256,13 @@ customerIdCheck.addEventListener('keyup',idFilter)
         	return false
         }
         
+        /* 전화번호 검사 */
+        const telCheck = document.querySelector('#tel')
+        if(telCheck.value == null || telCheck.value ==''){
+        	alert('전화번호를 입력하세요')
+        	telCheck.select()
+        	return false
+        }
         
         
         /* 생년월일 체크*/

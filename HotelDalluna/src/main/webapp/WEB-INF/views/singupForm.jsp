@@ -506,16 +506,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</a>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 			<!-- #copyrights end -->
-
 		</footer>
 		<!-- #footer end -->
-
-
 	</div>
 	<!-- #wrapper end -->
 
@@ -527,55 +522,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
-	
-
-	<script type="text/javascript">
-		
-	</script>
-	
-	<script>
-	
-	/* 비밀번호 확인 */
-	
-		
-		
-		
-// 		document.getElementById('password2').addEventListener("keyup",function(){
-// 			var password2 = document.getElementById('password2').value
-// 				password = document.getElementById('password').value
-// 			var passwordContent = ''
-// 				console.info(password + '확인' + password2)
-// 			if(password === password2){
-// 					passwordContent +='<div class="passwordCheck2">'
-// 					passwordContent += '<small style="color:red">비밀번호가 일치 합니다.</small>'
-// 					passwordContent +='</div>'
-// 					document.getElementById("passwordCheck2").innerHTML = passwordContent
-// 					passwordContent =''
-// 			}else{
-// 					passwordContent +='<div class="passwordCheck2">'
-// 					passwordContent += '<small style="color:red">비밀번호가 일치하지 않습니다.</small>'
-// 					passwordContent +='</div>'
-// 					document.getElementById("passwordCheck2").innerHTML = passwordContent
-// 					passwordContent =''
-				
-// 			}
-// 		})
-		
-// 		/* 이름 체크 */
-// 		document.getElementById('customer_name').addEventListener("blur",function(){
-// 			var nameContent =''
-// 			var name = document.getElementById('customer_name').value
-// 			if(name==null || name ==''){
-// 				nameContent ='<div class="nameCheck">'
-// 				nameContent += '<small style="color:red">필수 입력 정보입니다.</small>'
-// 				nameContent +='</div>'
-// 				document.getElementById("nameCheck").innerHTML = nameContent
-// 				nameContent = ''
-// 				return false
-// 			}
-// 		})
-	</script>
-	
 	
 	<script type="text/javascript">
 		/* jQuery ajax 통신 */
