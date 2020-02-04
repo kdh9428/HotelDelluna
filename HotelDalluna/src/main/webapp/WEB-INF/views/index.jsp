@@ -591,13 +591,10 @@
     <!-- Footer Scripts
     ============================================= -->
     <script type="text/javascript" src="resources/js/functions.js"></script>
-    	<!-- 달력 쿼리 시작 -->
-			 <script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
 			 
 			 <script type="text/javascript">
                 var tpj=jQuery;
                 tpj.noConflict();
-
                 tpj(document).ready(function() {
 
                     var apiRevoSlider = tpj('.tp-banner').show().revolution(
@@ -678,59 +675,8 @@
                         startWithSlide:0,
                         fullScreenOffsetContainer: ".header"
                     });
-
                 }); //ready
-
             </script>
-            
-		    <script>
-		      var datepickerOptions = {}
-		      Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
-				
-		      var app = new Vue({
-		        el: '#app',
-		        data: {
-		          dateFormat: 'YYYY년 MM월 D일',
-		          inputDateOne: '',
-		          inputDateTwo: '',
-		          buttonDateOne: '',
-		          buttonDateTwo: '',
-		          inlineDateOne: '',
-		          sundayDateOne: '',
-		          sundayFirst: false,
-		          alignRight: false,
-		          trigger: false,
-		          
-		        },
-		        methods: {
-		          formatDates: function(dateOne, dateTwo) {
-		            var formattedDates = ''
-		            if (dateOne) {
-		              formattedDates =  dateFns.format(dateOne, this.dateFormat)
-		            }
-		            if (dateTwo) {
-		              formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
-		            }
-		            return formattedDates
-		          },
-		          onClosed: function() {
-		            var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
-		            console.log('Dates Selected: ' + datesStr)
-		            alert('날짜 선택이 완료되었습니다.')
-		            this.trigger = false
-		          },
-		          toggleAlign: function() {
-		            this.alignRight = !this.alignRight
-		          },
-		          triggerDatepicker: function() {
-		            this.trigger = !this.trigger
-		          },
-		          onMonthChange: function(dates) {
-		            console.log('months changed', dates)
-		          },
-		        },
-		      })
-		    </script><!-- 달력 쿼리 끝 -->
 
 </body>
 </html>
