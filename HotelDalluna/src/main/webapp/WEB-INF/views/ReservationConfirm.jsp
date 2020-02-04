@@ -8,6 +8,12 @@
 <html dir="ltr" lang="UTF-8">
 <head>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
+	<!-- NAVER 통계  -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script src="resources/js/googleAnalytics/analytics.js"></script>
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
@@ -178,11 +184,11 @@
                     		location.href="Reservation.do";
                     	</script>
                     </c:if>
-					<input type="hidden" name="Reservation_number" id="Reservation_number" value="${dto.Reservation_number}">
+					<input type="hidden" name="Reservation_number" id="Reservation_number" value="${dto.reservation_number}">
 					<div class="row">
 						<div class="col-md-6">
 							<label for="template-contactform-name">예약번호</label><br>
-							<div class="well well-sm">${dto.Reservation_number}</div>
+							<div class="well well-sm">${dto.reservation_number}</div>
 						</div>
 
 						<div class="col-md-6">
@@ -206,7 +212,7 @@
 
 						<div class="col-md-6">
 							<label for="template-contactform-name">예약날짜</label><br>
-							<div class="well well-sm">${dto.Reservation_date_in} ~ ${dto.Reservation_date_out}</div>
+							<div class="well well-sm">${dto.reservation_date_in} ~ ${dto.reservation_date_out}</div>
 						</div>
 					</div>
 					
@@ -233,9 +239,9 @@
 					</div>
 	
                         <div class="clearfix" style=" text-align:center;" >
-                                <button type="button" onclick="popup();" value="${dto.Reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
+                                <button type="button" onclick="popup();" value="${dto.reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
                                 <span >결제하기</span> <i class="icon-angle-right"></i></button>
-                                <button type="button" onClick="check()" value="${dto.Reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
+                                <button type="button" onClick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                                 
                                 
@@ -292,7 +298,7 @@
 				        
 				        function check(){
 				        	if(confirm("예약을 취소 하시겠습니까?")==true){
-				        		document.location.href="ReservationCancell.do?Reservation_number=${dto.Reservation_number}"
+				        		document.location.href="ReservationCancell.do?Reservation_number=${dto.reservation_number}"
 				        		document.form.submit();
 				        	}else{
 				        		return false;

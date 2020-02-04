@@ -6,25 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'UA-156464840-1');
-	</script>
-	
 	<!-- NAVER 통계  -->
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-	<script type="text/javascript">
-		if (!wcs_add)
-			var wcs_add = {};
-		wcs_add["wa"] = "8d13c212f2058";
-		wcs_do();
-	</script>
+	<script src="resources/js/googleAnalytics/analytics.js"></script>
+		
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />

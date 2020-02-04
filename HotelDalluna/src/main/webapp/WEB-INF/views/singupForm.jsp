@@ -8,6 +8,13 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="utf-8">
 <head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
+	<!-- NAVER 통계  -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script src="resources/js/googleAnalytics/analytics.js"></script>
+	
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="initial-scale=1.0">

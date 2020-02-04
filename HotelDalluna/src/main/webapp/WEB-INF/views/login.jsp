@@ -6,6 +6,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
+	<!-- NAVER 통계  -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+	<script src="resources/js/googleAnalytics/analytics.js"></script>
+	
 <title>HotelDalluna</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
