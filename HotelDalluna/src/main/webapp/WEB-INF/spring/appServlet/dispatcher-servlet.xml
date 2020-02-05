@@ -52,5 +52,15 @@
 
 	<!-- 예외처리 -->
 	<bean class="com.java.error.controller.CommonException"/>
+	
+	<!-- json XSS 방어 처리 -->
+	<bean id="htmlEscapingObjectMapper" class="com.java.error.controller.HtmlEscapingObjectMapperFactory" />
+	<mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
+	        	<property name="objectMapper" ref="htmlEscapingObjectMapper"></property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
 
 </beans>

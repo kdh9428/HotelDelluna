@@ -199,7 +199,7 @@
 								</sec:authorize>
 										<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-									<li><div><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> 로그아웃</a></div></li>
+									<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"><div>로그아웃</div></a></li>
 								<form id="logout-form" action="logout.do" method="post"> 
 								    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								</form>

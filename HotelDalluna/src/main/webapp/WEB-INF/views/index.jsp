@@ -12,7 +12,13 @@
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 	<script src="resources/js/googleAnalytics/analytics.js"></script>
 		
-
+	<!-- Open Graph protocol -->
+	<meta property="og:title" content="Hotel Dalluna" />
+	<meta property="og:description" content="스프링MVC 프로젝트 공부 중입니다." />
+	<meta property="og:site_name" content="Hotel Dalluna" />
+	<meta property="og:url" content="http://www.dahunkim.coo.kr" />
+	<meta property="og:image" content="resources/images/hotelDalluna.jpg" />
+	
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />

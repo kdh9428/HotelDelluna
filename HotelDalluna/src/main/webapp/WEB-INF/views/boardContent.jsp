@@ -530,13 +530,13 @@
 															+ ')" >삭제</a>';
 													htmls += '</span>';
 													htmls += '</span>';
-													htmls += '<br>'+this.context;
+													htmls += '<br>'+'<p>'+this.context+'</p>';
 													htmls += '</p>';
 													htmls += '</div>';
 													}else{
 													htmls += '</span>';
 													htmls += '</span>';
-													htmls += '<br>'+this.context;
+													htmls += '<br>'+'<p>'+this.context+'</p>';
 													htmls += '</p>';
 													htmls += '</div>';
 													}
