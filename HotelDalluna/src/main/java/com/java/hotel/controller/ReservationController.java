@@ -1,6 +1,7 @@
 package com.java.hotel.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -12,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
@@ -37,6 +40,15 @@ public class ReservationController  {
 		logger.info("Reservation 페이지 실행"); 
 		return "Reservation";
 	}
+	
+		//예약 체크 확인
+		@GetMapping("check.do")
+		@ResponseBody
+		public int ReservationCheck(@RequestParam String Reservation_date_in) throws Exception{
+			logger.info("ReservationCheck 컨트롤러 확인");
+			 System.out.println(Reservation_date_in);
+			 return 1;//reservationService.ReservationCheck(reservationDto);
+		}
 	
 	//예약 체크 확인
 	@PostMapping("ReservationCheck.do")

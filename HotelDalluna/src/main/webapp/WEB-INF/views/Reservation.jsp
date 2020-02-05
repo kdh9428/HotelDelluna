@@ -14,6 +14,10 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
+	
+	<!-- csrf 설정 -->
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
     <!-- Stylesheets
     ============================================= -->
@@ -343,86 +347,19 @@
 								</div>
 							</div>
 						</div>
-
+						<section>
+							<div id ="reservation-check" style="text-align: center;">
+								확인중
+							</div>
+						</section>
 					</div>
 					<!-- .sidebar end -->
 				</div>
 			</div>
+			
 		</section>
 		</form>
 		
-		
-		<!-- #content end -->
-	<script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
-    <script>
-      var datepickerOptions = {}
-      Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
-
-      var app = new Vue({
-        el: '#app',
-        data: {
-          dateFormat: 'YYYY년 MM월 D일',
-          inputDateOne: '',
-          inputDateTwo: '',
-          buttonDateOne: '',
-          buttonDateTwo: '',
-          inlineDateOne: '',
-          sundayDateOne: '',
-          sundayFirst: false,
-          alignRight: false,
-          trigger: false,
-        },
-        methods: {
-          formatDates: function(dateOne, dateTwo) {
-            var formattedDates = ''
-            if (dateOne) {
-              formattedDates =  dateFns.format(dateOne, this.dateFormat)
-            }
-            if (dateTwo) {
-              formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
-            }
-            return formattedDates
-          },
-          onClosed: function() {
-            var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
-            console.log('Dates Selected: ' + datesStr)
-            this.trigger = false
-            $('#dateOne').val(this.buttonDateOne);
-            $('#dateTwo').val(this.buttonDateTwo);
-            if(this.buttonDateOne=="" || this.buttonDateTwo ==""){
-              	alert("날짜를 선택해 주세요.");
-            }else{
-            alert("선택하신 날짜는 "+this.buttonDateOne+"~"+this.buttonDateTwo+"입니다.");
-            }
-          },
-          toggleAlign: function() {
-            this.alignRight = !this.alignRight
-          },
-          triggerDatepicker: function() {
-            this.trigger = !this.trigger
-          },
-          onMonthChange: function(dates) {
-            console.log('months changed', dates)
-          },
-          login: function(dateOne, dateTwo){
-        	  console.log(this.dateOne, this.dateTwo)
-          },
-        },
-      })
-      
-      function printTime() {
-
-          var clock = document.getElementById("clock");// 출력할 장소 선택
-          var now = new Date();// 현재시간
-          var nowTime = "'" + now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate() + "'";
-          clock.innerHTML = nowTime;// 현재시간을 출력
-		}
-      
-		window.onload = function() {// 페이지가 로딩되면 실행
-		printTime();
-			}
-    </script>
-
 		<!-- Footer
         ============================================= -->
 		<footer id="footer" class="footer">
@@ -598,6 +535,120 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+		<!-- #content end -->
+	<script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
+    <script>
+      var datepickerOptions = {}
+      Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
 
+      var app = new Vue({
+        el: '#app',
+        data: {
+          dateFormat: 'YYYY년 MM월 D일',
+          inputDateOne: '',
+          inputDateTwo: '',
+          buttonDateOne: '',
+          buttonDateTwo: '',
+          inlineDateOne: '',
+          sundayDateOne: '',
+          sundayFirst: false,
+          alignRight: false,
+          trigger: false,
+        },
+        methods: {
+          formatDates: function(dateOne, dateTwo) {
+            var formattedDates = ''
+            if (dateOne) {
+              formattedDates =  dateFns.format(dateOne, this.dateFormat)
+            }
+            if (dateTwo) {
+              formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
+            }
+            return formattedDates
+          },
+          onClosed: function onclosed() {
+            var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
+            console.log('Dates Selected: ' + datesStr)
+            this.trigger = false
+            $('#dateOne').val(this.buttonDateOne);
+            $('#dateTwo').val(this.buttonDateTwo);
+            if(this.buttonDateOne=="" || this.buttonDateTwo ==""){
+              	alert("날짜를 선택해 주세요.");
+            }else{
+            alert("선택하신 날짜는 "+this.buttonDateOne+"~"+this.buttonDateTwo+"입니다.");
+            }
+          },
+          toggleAlign: function() {
+            this.alignRight = !this.alignRight
+          },
+          triggerDatepicker: function() {
+            this.trigger = !this.trigger
+          },
+          onMonthChange: function(dates) {
+            console.log('months changed', dates)
+          },
+          login: function(dateOne, dateTwo){
+        	  console.log(this.dateOne, this.dateTwo)
+          },
+        },
+      })
+      
+      function printTime() {
+
+          var clock = document.getElementById("clock");// 출력할 장소 선택
+          var now = new Date();// 현재시간
+          var nowTime = "'" + now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate() + "'";
+          clock.innerHTML = nowTime;// 현재시간을 출력
+		}
+      
+		window.onload = function() {// 페이지가 로딩되면 실행
+		printTime();
+			}
+	</script>
+	
+	<script type="text/javascript">
+	const token = document.querySelector("meta[name=_csrf]").content;
+	const header = document.querySelector("meta[name='_csrf_header']").content;
+	 
+	function getReservation(){
+	    return new Promise((resolve, reject) =>{
+
+	        var xhr = new XMLHttpRequest();
+	        var json = {
+	            "Reservation_date_in": document.querySelector('#dateOne').value,
+	            "Reservation_date_out": document.querySelector('#dateTwo').value
+	        }
+	        xhr.open('get',"check.do?Reservation_date_in=" + document.querySelector('#dateOne').value)
+	        xhr.setRequestHeader('${_csrf.token}','${_csrf.headerName}')
+	        xhr.onload = function(){
+	            var reservationConfirm = xhr.responseText
+	            if(xhr.status == 200){
+	                if(reservationConfirm == true){
+	                	console.log(reservationConfirm)
+	                    resolve(reservationConfirm)
+	                }
+	                else{
+	                    resolve(reservationConfirm)
+	                	console.log(reservationConfirm)
+	                }
+	            }else{
+	                console.log("ajax 에러!")
+	            }
+	        }
+	        xhr.send()
+	    })
+	}
+
+// 	const foucsOut = document.querySelector('#')
+	async function getItem(){
+		 var resultItems = await getReservation()
+		 if(resultItems == 1){
+			  console.log('예약안됨')
+		 }else{
+			  console.log('예약됨')
+		 }
+	}
+	</script>
+	
 </body>
 </html>

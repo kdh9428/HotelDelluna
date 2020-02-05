@@ -77,7 +77,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		        
 	            xhr.onload = () =>{
                 if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
-                	if( xhr.responseText == '1'){
+                	if(xhr.responseText == '1'){
                 		responseObject = false
                 		console.log(responseObject)
                   	 	resolve(false);
