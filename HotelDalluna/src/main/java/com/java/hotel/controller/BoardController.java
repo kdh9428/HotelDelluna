@@ -58,7 +58,7 @@ public class BoardController {
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		search.setListSize(10);
-		search.setRangeSize(10);
+		search.setRangeSize(5);
 		search.pageInfo(page, range, boardService.boardListCnt(search));
 		
 		List<BoardVO> list = boardService.boardList(search);

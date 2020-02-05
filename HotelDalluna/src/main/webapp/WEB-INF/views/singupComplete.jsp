@@ -90,7 +90,7 @@
 								<ul>
 									<li><div><a href="hotel-About-Us.do">호텔소개</a></div></li>
 									<li><div><a href="Location.do">호텔위치</a></div></li>
-									<li><div><a href="list.do">공지사항</a></div></li>
+									<li><div><a href="list.do">호텔리뷰</a></div></li>
 								</ul></li>
 							<li><div><a href="#" onclick="return false;">객실</a></div>
 								<ul>
@@ -238,7 +238,7 @@
                             			<div class="widget_links clearfix">
                                 			<ul>
                                     			<li><div><a href="index.do">메인</a></div></li>
-                                    			<li><div><a href="list.do">공지사항</a></div></li>
+                                    			<li><div><a href="list.do">호텔리뷰</a></div></li>
                                     			<li><div><a href="hotel-About-Us.html">호텔소개</a></div></li>
                                     			<li><div><a href="Location.html">호텔위치</a></div></li>
                                                 <li><div><a href="contact.jsp">고객의 소리</a></div></li>
@@ -309,7 +309,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                           <a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
+                           <a href="#">호텔리뷰</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="https://www.facebook.com/" class="social-icon si-small si-borderless nobottommargin si-facebook">

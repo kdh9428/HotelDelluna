@@ -41,21 +41,6 @@
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="resources/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 	
-	<!-- 달력 스크립트  -->
-	 <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
-	<!-- 달력 스크립트 종료 -->  
-	
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="resources/include/rs-plugin/css/settings.css" media="screen" />
 
@@ -110,7 +95,7 @@
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
-									<li><a href="list.do"><div>공지사항</div></a></li>
+									<li><a href="list.do"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
@@ -171,10 +156,10 @@
 			data-stellar-background-ratio="0.3">
 
 			<div class="container clearfix">
-				<h1>게시판</h1>
+				<h1>호텔리뷰</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.do">홈</a></li>
-					<li class="active">게시판</li>
+					<li class="active">호텔리뷰</li>
 				</ol>
 			</div>
 
@@ -194,21 +179,16 @@
 					<div>
 						<!-- Posts
                         ============================================= -->
-                      <%--   <c:if test="${check eq 1 }">
-										<script>
-											alert("삭제되었습니다.")
-										</script>
-									</c:if> --%>
 							<article>
 								<div class="container">
 									<div class="table-responsive">
-										<table class="table table-striped table-sm">
+										<table class="table table-striped">
 											<colgroup>
 												<col style="width: 5%;" />
 												<col style="width: auto;" />
-												<col style="width: 15%;" />
 												<col style="width: 10%;" />
-												<col style="width: 10%;" />
+												<col style="width: 7%;" />
+												<col style="width: 9%;" />
 											</colgroup>
 
 											<thead>
@@ -247,16 +227,14 @@
 									</div>
 									
 								<!-- pagination{s} -->
-								<div id="paginationBox" style="float: none; margin: 0 auto;">
+								<div id="paginationBox" style="text-align: center; float: none; margin: 0 auto;">
 									<ul class="pagination">
 									
 										<c:if test="${pagination.prev}">
-											<li class="page-item"><a class="page-link" href="#"
-												onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+											<li class="page-item"><a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
 										</c:if>
 
-										<c:forEach begin="${pagination.startPage}"
-											end="${pagination.endPage}" var="idx">
+										<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
 
 											<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
 											<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${pagination.searchType }', '${pagination.keyword }')">
@@ -332,7 +310,7 @@
 										<div class="widget_links clearfix">
                                 			<ul>
                                     			<li><a href="index.do"><div>메인</div></a></li>
-                                    			<li><a href="list.do"><div>공지사항</div></a></li>
+                                    			<li><a href="list.do"><div>호텔리뷰</div></a></li>
                                     			<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
                                     			<li><a href="Location.html"><div>호텔위치</div></a></li>
                                                 <li><a href="contact.jsp"><div>고객의 소리</div></a></li>
@@ -401,7 +379,7 @@
 
 					<div class="col_half col_last tright">
 						<div class="copyrights-menu copyright-links fright clearfix">
-							<a href="#">공지사항</a> <a href="hotel-About-Us.html">호텔소개</a> <a
+							<a href="#">호텔리뷰</a> <a href="hotel-About-Us.html">호텔소개</a> <a
 								href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및
 								취소</a> <a href="contact.jsp">고객의 소리</a>
 						</div>
