@@ -308,7 +308,7 @@
 														</c:if>
 	
 												<div class="col-md-3">
-												<select class="form-control" name="room_type" >
+												<select class="form-control" id ="room_type" name="room_type" >
 												  <option value="1">디럭스 더블</option>
 												  <option value="2">디럭스 트윈</option>
 												  <option value="3">패밀리 스위트</option>
@@ -612,14 +612,17 @@
 	 
 	function getReservation(){
 	    return new Promise((resolve, reject) =>{
-
 	        var xhr = new XMLHttpRequest();
-	        var json = {
-	            "Reservation_date_in": document.querySelector('#dateOne').value,
-	            "Reservation_date_out": document.querySelector('#dateTwo').value
+	        var json = { 
+	            "reservation_date_in" : document.querySelector('#dateOne').value,
+	            "reservation_date_out" : document.querySelector('#dateTwo').value,
+	            "room_type":document.querySelector('#room_type').value
 	        }
-	        xhr.open('get',"check.do?Reservation_date_in=" + document.querySelector('#dateOne').value)
-	        xhr.setRequestHeader('${_csrf.token}','${_csrf.headerName}')
+	        var parsejson = JSON.stringify(json)
+	        console.log(parsejson)
+	        xhr.open('POST',"Reservation/check.do",true)
+	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
+	        xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
 	        xhr.onload = function(){
 	            var reservationConfirm = xhr.responseText
 	            if(xhr.status == 200){
@@ -632,10 +635,10 @@
 	                	console.log(reservationConfirm)
 	                }
 	            }else{
-	                console.log("ajax 에러!")
+	            	console.error(reservationConfirm);
 	            }
 	        }
-	        xhr.send()
+	        xhr.send(parsejson)
 	    })
 	}
 
@@ -647,6 +650,30 @@
 		 }else{
 			  console.log('예약됨')
 		 }
+	}
+	
+	//////////////////////////////////////////////
+	
+	function ccc(){
+		var url = "Reservation/check.do";
+		
+		var data = {};
+		data.Reservation_date_in = "John";
+		data.Reservation_date_out  = "Snow";
+		var json = JSON.stringify(data);
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader('Content-type','application/x-json; charset=utf-8','${_csrf.token}','${_csrf.headerName}');
+		xhr.onload = function () {
+			var users = xhr.responseText;
+			if (xhr.readyState == 4 && xhr.status == "201") {
+				console.table(users);
+			} else {
+				console.error(users);
+			}
+		}
+		xhr.send(json);
 	}
 	</script>
 	

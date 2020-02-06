@@ -94,7 +94,6 @@ customerIdCheck.addEventListener('keyup',idFilter)
 		}
 	            xhr.send();
 	})
-	
 }
 	var customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 할 경우 체크한다.
 	function focusBlurCheck(){
