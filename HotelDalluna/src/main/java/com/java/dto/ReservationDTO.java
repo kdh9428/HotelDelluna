@@ -6,9 +6,9 @@ public class ReservationDTO {
 	
 	private String Reservation_number;//룸예약번호 
 	private String customer_id;//아이디
-	@JsonProperty("Reservation_date_in")
+	@JsonProperty("reservation_date_in")
 	private String Reservation_date_in;//체크인
-	@JsonProperty("Reservation_date_out")
+	@JsonProperty("reservation_date_out")
 	private String Reservation_date_out;//체크아웃
 	@JsonProperty("room_type")
 	private int room_type;//룸 종류
@@ -34,14 +34,12 @@ public class ReservationDTO {
 		return Reservation_date_in;
 	}
 	public void setReservation_date_in(String reservation_date_in) {
-		System.out.println("확인");
 		Reservation_date_in = reservation_date_in;
 	}
 	public String getReservation_date_out() {
 		return Reservation_date_out;
 	}
 	public void setReservation_date_out(String reservation_date_out) {
-		System.out.println("확인");
 		Reservation_date_out = reservation_date_out;
 	}
 	public int getRoom_type() {

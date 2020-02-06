@@ -44,8 +44,7 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		
 		// 체크인, 체크아웃, 룸타입을 비교해서 테이블이 있으면 예약 되어 있다.
-		int check;
-		check = ReservationDao.ReservationCheck(ReservationDto);
+		int check = ReservationDao.ReservationCheck(ReservationDto);
 		logger.info("Service에서 check 확인" + check);
 		
 		// 비교 예약 0이면 예약 가능
@@ -108,6 +107,14 @@ public class ReservationServiceImpl implements ReservationService {
 		logger.info("예약 취소");
 		ReservationDao.ReservationCancell(Reservation_number);
 	}
+	
+	//예약 체크
+	@Override
+	public int reservationCheckAjax(ReservationDTO reservationDto) {
+		logger.info("ajax확인");
+		return ReservationDao.ReservationCheck(reservationDto);
+	}
+	
 	
 	//예약 완료 확인
 	@Override

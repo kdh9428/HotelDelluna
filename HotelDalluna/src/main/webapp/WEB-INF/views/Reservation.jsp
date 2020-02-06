@@ -234,7 +234,7 @@
 
 		<!-- Content
         ============================================= -->
-        <form action="ReservationCheck.do" method="post">
+        <form action="ReservationCheck.do" method="post" id="reservation-form">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input id="dateOne" name="Reservation_date_in" type="hidden">
         <input id="dateTwo" name="Reservation_date_out" type="hidden">
@@ -343,7 +343,7 @@
 									
 								</div><!-- 아코디언 끝 -->
 								<div style="float:right">
-								<input class="btn btn-primary btn-lg" type="submit" value="예약하기" >
+								<input class="btn btn-primary btn-lg" id="reservation-submit" type="button" value="예약하기" >
 								</div>
 							</div>
 						</div>
@@ -537,6 +537,66 @@
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 		<!-- #content end -->
 	<script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
+	
+	<script type="text/javascript">
+	const token = document.querySelector("meta[name=_csrf]").content;
+	const header = document.querySelector("meta[name='_csrf_header']").content;
+	 
+	function getReservation(){
+	    return new Promise((resolve, reject) =>{
+	        var xhr = new XMLHttpRequest();
+	        var json = JSON.stringify({ 
+	            "reservation_date_in" : document.querySelector('#dateOne').value,
+	            "reservation_date_out" : document.querySelector('#dateTwo').value,
+	            "room_type":document.querySelector('#room_type').value
+	        })
+	        console.log(json)
+	        xhr.open('POST',"Reservation/check.do",true)
+	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
+	        xhr.setRequestHeader(header ,token)
+	        xhr.onload = function(){
+	            var reservationConfirm = xhr.responseText
+	            if(xhr.status == 200){
+	                if(reservationConfirm == true){
+	                	console.log('확인 체크!!!'+reservationConfirm)
+	                    resolve(reservationConfirm)
+	                }
+	                else{
+	                    resolve(reservationConfirm)
+	                	console.log('확인 체크!!!'+reservationConfirm)
+	                }
+	            }else{
+	            	console.error(reservationConfirm);
+	            }
+	        }
+	        xhr.send(json)
+	    })
+	}
+	
+	const foucsOut = document.querySelector('#reservation-check')
+	async function getItem(){
+		 var resultItems = await getReservation()
+		 if(resultItems == 1){
+			 foucsOut.innerHTML = '<div style="color:red; font-size: 20px;">이미 예약 되어 있습니다.<div>'
+		 }else{
+			 foucsOut.innerHTML = '<div style="color:red">예약 가능합니다.<div>'
+		 }
+	}
+	
+	var validate = document.querySelector('#reservation-submit')
+	validate.addEventListener('click', async() =>{
+		 var resultItems = await getReservation()
+		console.log('확인'+resultItems)
+		if(resultItems==1){
+		alert('예약되어있음')
+		
+// 		event.preventDefault();
+		}else{
+			document.querySelector('#reservation-form').submit()
+		}
+	})
+	</script>
+	
     <script>
       var datepickerOptions = {}
       Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
@@ -576,7 +636,9 @@
               	alert("날짜를 선택해 주세요.");
             }else{
             alert("선택하신 날짜는 "+this.buttonDateOne+"~"+this.buttonDateTwo+"입니다.");
+            getItem()
             }
+            
           },
           toggleAlign: function() {
             this.alignRight = !this.alignRight
@@ -606,76 +668,6 @@
 			}
 	</script>
 	
-	<script type="text/javascript">
-	const token = document.querySelector("meta[name=_csrf]").content;
-	const header = document.querySelector("meta[name='_csrf_header']").content;
-	 
-	function getReservation(){
-	    return new Promise((resolve, reject) =>{
-	        var xhr = new XMLHttpRequest();
-	        var json = { 
-	            "reservation_date_in" : document.querySelector('#dateOne').value,
-	            "reservation_date_out" : document.querySelector('#dateTwo').value,
-	            "room_type":document.querySelector('#room_type').value
-	        }
-	        var parsejson = JSON.stringify(json)
-	        console.log(parsejson)
-	        xhr.open('POST',"Reservation/check.do",true)
-	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
-	        xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
-	        xhr.onload = function(){
-	            var reservationConfirm = xhr.responseText
-	            if(xhr.status == 200){
-	                if(reservationConfirm == true){
-	                	console.log(reservationConfirm)
-	                    resolve(reservationConfirm)
-	                }
-	                else{
-	                    resolve(reservationConfirm)
-	                	console.log(reservationConfirm)
-	                }
-	            }else{
-	            	console.error(reservationConfirm);
-	            }
-	        }
-	        xhr.send(parsejson)
-	    })
-	}
-
-// 	const foucsOut = document.querySelector('#')
-	async function getItem(){
-		 var resultItems = await getReservation()
-		 if(resultItems == 1){
-			  console.log('예약안됨')
-		 }else{
-			  console.log('예약됨')
-		 }
-	}
-	
-	//////////////////////////////////////////////
-	
-	function ccc(){
-		var url = "Reservation/check.do";
-		
-		var data = {};
-		data.Reservation_date_in = "John";
-		data.Reservation_date_out  = "Snow";
-		var json = JSON.stringify(data);
-		
-		var xhr = new XMLHttpRequest();
-		xhr.open("POST", url, true);
-		xhr.setRequestHeader('Content-type','application/x-json; charset=utf-8','${_csrf.token}','${_csrf.headerName}');
-		xhr.onload = function () {
-			var users = xhr.responseText;
-			if (xhr.readyState == 4 && xhr.status == "201") {
-				console.table(users);
-			} else {
-				console.error(users);
-			}
-		}
-		xhr.send(json);
-	}
-	</script>
 	
 </body>
 </html>

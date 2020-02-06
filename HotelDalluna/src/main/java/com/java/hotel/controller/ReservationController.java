@@ -42,13 +42,15 @@ public class ReservationController  {
 		return "Reservation";
 	}
 	
-		//예약 체크 확인
-		@RequestMapping(value = "Reservation/check.do", method = RequestMethod.POST, headers = "Accept=application/json")
-		@ResponseBody
-		public int ReservationCheck(@RequestBody ReservationDTO reservationDto) throws Exception{
-			logger.info("ReservationCheck 컨트롤러 확인");
-			 return reservationService.ReservationCheck(reservationDto);
-		}
+	//예약 체크 확인
+	@PostMapping("Reservation/check.do")
+	@ResponseBody
+	public int ReservationCheck(@RequestBody ReservationDTO reservationDto) throws Exception{
+		logger.info("ReservationCheck 컨트롤러 확인");
+		int ddd = reservationService.reservationCheckAjax(reservationDto);
+		System.out.println(":ㅇㅇㅇㅇ"+ddd);
+		return ddd;
+	}
 	
 	//예약 체크 확인
 	@PostMapping("ReservationCheck.do")
@@ -88,7 +90,7 @@ public class ReservationController  {
 //		
 //		한 페이지에 보여질 리스트 수
 //		아이디 
-//		pages.setCustomer_id(auth.getName());]
+//		pages.setCustomer_id(auth.getName());
 		 List<ReservationDTO> reservationConfirm = reservationService.ReservationConfirm(page, range);
 		 
 		 //ReservationConfirm에 값이 없는지 확인, 없으면 1을 view로 보내서 예약하지 않았다고 체크 
@@ -105,7 +107,6 @@ public class ReservationController  {
 	@GetMapping("ReservationCancell.do")
 	public String ReservationConcell(@RequestParam("Reservation_number") String Reservation_number) throws Exception{
 		reservationService.ReservationCancell(Reservation_number);
-		
 		return"redirect:ReservationConfirm.do";
 	}
 	
