@@ -20,7 +20,7 @@
 	            "Reservation_date_out" :checkOut,
 	            "Room_type":roomType
 	        })
-	        if(checkOut != null){
+	        if(checkIn != null||checkOut != null){
 	        xhr.open('POST',"Reservation/check.do",true)
 	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
 	        xhr.setRequestHeader(header ,token)
@@ -43,18 +43,38 @@
 	   })
 	}
 	
-	const foucsOut = document.querySelector('#reservation-check')
+	const reservationDateTag = document.querySelector('#reservation-date')
+	const reservationCheckTag = document.querySelector('#reservation-check')
+	const reservationRoomTag = document.querySelector('#reservation-room')
 	async function getItem(){
 		 var resultItems = await getReservation()
+		 var checkIn = document.querySelector('#dateOne').value //체크인
+	    var checkOut = document.querySelector('#dateTwo').value//체크아웃
+	    var roomType = document.querySelector('#room_type')//방 종류
+			roomType = roomType.options[roomType.selectedIndex].text
 		 console.log(resultItems)
 		 if(resultItems == true){
-			 foucsOut.innerHTML = '<div style="color:red; font-size: 20px;">이미 예약 되어 있습니다.<div>'
+			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
+			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 : 이미 예약 되어 있습니다.</p>'
+				 return false 
 				 console.log('if안에서 확인하는중'+resultItems)
+		 }else if(checkIn =='' || checkOut =='' ){
+			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
+			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 :날짜를 선택하세요.</p>'
+				 return false
 		 }else{
-			 foucsOut.innerHTML = '<div style="color:red">예약 가능합니다.<div>'
+			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px;">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px;">객 실 : '+roomType+'</p>'
+			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px;">예약 가능 여부 : 예약 가능합니다.</p>'
+				 return true
 		 }
 	}
 	
+	//방 종류 선택 시 가능한지 체크
+	var roomType = document.querySelector('#room_type')//방 종류
+	roomType.addEventListener('change',getItem)
 	
 	//예약 버튼 클릭 시 예약 가능한지 유효성 검사 
 	var validate = document.querySelector('#reservation-submit')

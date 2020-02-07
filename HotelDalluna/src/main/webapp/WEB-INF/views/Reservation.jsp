@@ -334,19 +334,19 @@
 											</div>
 										</div>
 									</div>
-									
 								</div><!-- 아코디언 끝 -->
+							<section>
+							<blockquote >
+								<p id="reservation-date" style="font-size: 15px">예약 날짜 :</p>
+								<p id="reservation-room" style="font-size: 15px">객 실 :</p>
+								<p id="reservation-check" style="font-size: 15px">예약 가능 여부 :</p>
+							</section>
+							</blockquote>
 								<div style="float:right">
-								<input class="btn btn-primary btn-lg" id="reservation-submit" type="button" value="예약하기" >
+									<input class="btn btn-primary btn-lg" id="reservation-submit" type="button" value="예약하기" >
 								</div>
 							</div>
 						</div>
-						<section>
-							<div id ="reservation-check" style="text-align: left; font-size: 15px;">
-							<p class="text-left">예약 날짜 :</p>
-							<p class="text-left">예약 가능 여부 :</p>
-							</div>
-						</section>
 					</div>
 					<!-- .sidebar end -->
 				</div>
