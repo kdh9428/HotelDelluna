@@ -42,17 +42,18 @@ public class ReservationController  {
 		return "Reservation";
 	}
 	
-	//예약 체크 확인
+	//예약 체크 확인 ajax
 	@PostMapping("Reservation/check.do")
 	@ResponseBody
-	public int ReservationCheck(@RequestBody ReservationDTO reservationDto) throws Exception{
+	public boolean ReservationCheck(@RequestBody ReservationDTO reservationDto) throws Exception{
 		logger.info("ReservationCheck 컨트롤러 확인");
-		int ddd = reservationService.reservationCheckAjax(reservationDto);
+		System.out.println(reservationDto.getReservation_date_in()+"확인합니다"+ reservationDto.getReservation_date_out());
+		boolean ddd = reservationService.reservationCheckAjax(reservationDto);
 		System.out.println(":ㅇㅇㅇㅇ"+ddd);
 		return ddd;
 	}
 	
-	//예약 체크 확인
+	//예약 체크 확인 후 없으면 예약 까지
 	@PostMapping("ReservationCheck.do")
 	public String ReservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		logger.info("ReservationCheck 컨트롤러 확인");

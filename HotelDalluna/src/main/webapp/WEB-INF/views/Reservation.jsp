@@ -72,10 +72,8 @@
 	 -->
 <style>
 @import
-	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean')
-	;
-</style>
-<style>
+	url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap&subset=korean');
+	
       html,
       body {
         min-height: 100vh;
@@ -332,11 +330,7 @@
 												  <option value="3">어린이 3</option>
 												</select>
 												</div>
-												<!-- <input type="text" name="customer_id" value="임시 id"> --> 
 												</div>
-												<!-- <input type="text" name="Reservation_number" value="Reservation_number"> -->
-												<%-- <input type="hidden" name="customer_id" value="${customer_id}"> --%>
-												
 											</div>
 										</div>
 									</div>
@@ -348,8 +342,9 @@
 							</div>
 						</div>
 						<section>
-							<div id ="reservation-check" style="text-align: center;">
-								확인중
+							<div id ="reservation-check" style="text-align: left; font-size: 15px;">
+							<p class="text-left">예약 날짜 :</p>
+							<p class="text-left">예약 가능 여부 :</p>
 							</div>
 						</section>
 					</div>
@@ -384,22 +379,6 @@
 							<div class="col_half">
 								<div class="widget subscribe-widget clearfix">
 									<h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
-										<script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script>
 								</div>
 							</div>
 
@@ -535,139 +514,8 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-		<!-- #content end -->
+		<!-- #content end vue.js-->
 	<script src="https://unpkg.com/vue-airbnb-style-datepicker@latest/dist/vue-airbnb-style-datepicker.min.js"></script>
-	
-	<script type="text/javascript">
-	const token = document.querySelector("meta[name=_csrf]").content;
-	const header = document.querySelector("meta[name='_csrf_header']").content;
-	 
-	function getReservation(){
-	    return new Promise((resolve, reject) =>{
-	        var xhr = new XMLHttpRequest();
-	        var json = JSON.stringify({ 
-	            "reservation_date_in" : document.querySelector('#dateOne').value,
-	            "reservation_date_out" : document.querySelector('#dateTwo').value,
-	            "room_type":document.querySelector('#room_type').value
-	        })
-	        console.log(json)
-	        xhr.open('POST',"Reservation/check.do",true)
-	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
-	        xhr.setRequestHeader(header ,token)
-	        xhr.onload = function(){
-	            var reservationConfirm = xhr.responseText
-	            if(xhr.status == 200){
-	                if(reservationConfirm == true){
-	                	console.log('확인 체크!!!'+reservationConfirm)
-	                    resolve(reservationConfirm)
-	                }
-	                else{
-	                    resolve(reservationConfirm)
-	                	console.log('확인 체크!!!'+reservationConfirm)
-	                }
-	            }else{
-	            	console.error(reservationConfirm);
-	            }
-	        }
-	        xhr.send(json)
-	    })
-	}
-	
-	const foucsOut = document.querySelector('#reservation-check')
-	async function getItem(){
-		 var resultItems = await getReservation()
-		 if(resultItems == 1){
-			 foucsOut.innerHTML = '<div style="color:red; font-size: 20px;">이미 예약 되어 있습니다.<div>'
-		 }else{
-			 foucsOut.innerHTML = '<div style="color:red">예약 가능합니다.<div>'
-		 }
-	}
-	
-	var validate = document.querySelector('#reservation-submit')
-	validate.addEventListener('click', async() =>{
-		 var resultItems = await getReservation()
-		console.log('확인'+resultItems)
-		if(resultItems==1){
-		alert('예약되어있음')
-		
-// 		event.preventDefault();
-		}else{
-			document.querySelector('#reservation-form').submit()
-		}
-	})
-	</script>
-	
-    <script>
-      var datepickerOptions = {}
-      Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
-
-      var app = new Vue({
-        el: '#app',
-        data: {
-          dateFormat: 'YYYY년 MM월 D일',
-          inputDateOne: '',
-          inputDateTwo: '',
-          buttonDateOne: '',
-          buttonDateTwo: '',
-          inlineDateOne: '',
-          sundayDateOne: '',
-          sundayFirst: false,
-          alignRight: false,
-          trigger: false,
-        },
-        methods: {
-          formatDates: function(dateOne, dateTwo) {
-            var formattedDates = ''
-            if (dateOne) {
-              formattedDates =  dateFns.format(dateOne, this.dateFormat)
-            }
-            if (dateTwo) {
-              formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
-            }
-            return formattedDates
-          },
-          onClosed: function onclosed() {
-            var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
-            console.log('Dates Selected: ' + datesStr)
-            this.trigger = false
-            $('#dateOne').val(this.buttonDateOne);
-            $('#dateTwo').val(this.buttonDateTwo);
-            if(this.buttonDateOne=="" || this.buttonDateTwo ==""){
-              	alert("날짜를 선택해 주세요.");
-            }else{
-            alert("선택하신 날짜는 "+this.buttonDateOne+"~"+this.buttonDateTwo+"입니다.");
-            getItem()
-            }
-            
-          },
-          toggleAlign: function() {
-            this.alignRight = !this.alignRight
-          },
-          triggerDatepicker: function() {
-            this.trigger = !this.trigger
-          },
-          onMonthChange: function(dates) {
-            console.log('months changed', dates)
-          },
-          login: function(dateOne, dateTwo){
-        	  console.log(this.dateOne, this.dateTwo)
-          },
-        },
-      })
-      
-      function printTime() {
-
-          var clock = document.getElementById("clock");// 출력할 장소 선택
-          var now = new Date();// 현재시간
-          var nowTime = "'" + now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate() + "'";
-          clock.innerHTML = nowTime;// 현재시간을 출력
-		}
-      
-		window.onload = function() {// 페이지가 로딩되면 실행
-		printTime();
-			}
-	</script>
-	
-	
+	<script type="text/javascript" src="resources/js/reservation/reservation.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	
 	//예약 가능 확인 체크
 	@Override
-	public int ReservationCheck(ReservationDTO ReservationDto) {
+	public boolean ReservationCheck(ReservationDTO ReservationDto) {
 		logger.info("ReservationCheck 확인");
 		//System.out.println("check 확인 값 0이면 없음 1이면 있음");
 		return sqlSession.selectOne("ReservationCheck", ReservationDto);

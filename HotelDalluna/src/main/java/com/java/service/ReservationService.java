@@ -14,7 +14,7 @@ public interface ReservationService {
 	
 	
 	//ajax 예약체크
-	public int reservationCheckAjax(ReservationDTO reservationDto);
+	public boolean reservationCheckAjax(ReservationDTO reservationDto);
 	
 	//예약 완료 확인
 	public List<ReservationDTO> ReservationConfirm(int page, int range);

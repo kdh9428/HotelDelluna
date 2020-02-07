@@ -12,7 +12,7 @@ public interface ReservationDao {
 	/*public List Reservation() throws Exception;*/
 	
 	//예약 가능 확인(체크인, 체크아웃, 룸 타입을 비교해서 테이블 확인
-	public int ReservationCheck(ReservationDTO ReservationDto);
+	public boolean ReservationCheck(ReservationDTO ReservationDto);
 	
 	//룸 정보
 	public String roomprices(ReservationDTO ReservationDto);

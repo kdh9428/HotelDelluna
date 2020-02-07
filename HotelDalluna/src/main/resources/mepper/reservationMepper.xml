@@ -6,7 +6,7 @@
 <mapper namespace="com.java.dao.ReservationDao">
 	
 	<!-- 예약이 되어있나 체크 -->
-	<select id="ReservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="int">
+	<select id="ReservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="boolean">
 			select count(*) from Reservation r join Reservation_number_people p 
 		on 
 			r.Reservation_number = p.Reservation_number where room_type in(#{room_type}) 
