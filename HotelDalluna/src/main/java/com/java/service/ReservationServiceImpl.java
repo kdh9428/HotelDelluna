@@ -119,8 +119,7 @@ public class ReservationServiceImpl implements ReservationService {
 	//예약 완료 확인
 	@Override
 	public List<ReservationDTO> ReservationConfirm(int page, int range) {
-		
-		logger.info("페이지 테스트"+page+"dd"+range);
+		logger.info("페이징 처리"+page+"/////"+range);
 		return ReservationDao.ReservationConfirm(pagination(page, range));
 	}
 	

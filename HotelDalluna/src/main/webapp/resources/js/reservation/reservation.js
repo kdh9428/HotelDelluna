@@ -14,13 +14,15 @@
 	    	var roomType = document.querySelector('#room_type').value//방 종류
 	        var xhr = new XMLHttpRequest();
 	        
-	        console.log(checkIn+checkOut+'~~'+roomType)
 	        var json = JSON.stringify({ 
 	            "Reservation_date_in" :checkIn,
 	            "Reservation_date_out" :checkOut,
 	            "Room_type":roomType
 	        })
-	        if(checkIn != null||checkOut != null){
+	        if(checkIn != '' ||checkOut != '' ){
+					//방 가격 
+					reservationPay(checkIn,checkOut)
+					
 	        xhr.open('POST',"Reservation/check.do",true)
 	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
 	        xhr.setRequestHeader(header ,token)
@@ -39,6 +41,7 @@
 	            }
 	        }
 	        xhr.send(json)
+	       
 	     }
 	   })
 	}
@@ -55,18 +58,16 @@
 		 console.log(resultItems)
 		 if(resultItems == true){
 			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
-			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-room" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
 			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 : 이미 예약 되어 있습니다.</p>'
 				 return false 
-				 console.log('if안에서 확인하는중'+resultItems)
 		 }else if(checkIn =='' || checkOut =='' ){
-			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
-			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-room" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
 			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 :날짜를 선택하세요.</p>'
 				 return false
 		 }else{
 			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px;">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
-			 reservationRoomTag.innerHTML = '<p id="reservation-date" style="font-size: 15px;">객 실 : '+roomType+'</p>'
+			 reservationRoomTag.innerHTML = '<p id="reservation-room" style="font-size: 15px;">객 실 : '+roomType+'</p>'
 			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px;">예약 가능 여부 : 예약 가능합니다.</p>'
 				 return true
 		 }
@@ -81,8 +82,8 @@
 	validate.addEventListener('click', async() =>{
 		var resultItems = await getReservation()
 		var checkIn = document.querySelector('#dateOne').value //체크인
-    	var checkOut = document.querySelector('#dateTwo').value//체크아웃
-    	var roomType = document.querySelector('#room_type')//방 종류
+    var checkOut = document.querySelector('#dateTwo').value//체크아웃
+    var roomType = document.querySelector('#room_type')//방 종류
     		roomType = roomType.options[roomType.selectedIndex].text
 		console.log('확인'+resultItems)
 		if(resultItems == true){
@@ -91,10 +92,41 @@
 			document.querySelector('#reservation-form').submit()
 		}
 	})
+
+
+	//날짜를 비교, 룸 가격 계
+	function reservationPay(checkIn, checkOut){
+		var checkIn = new Date(checkIn)
+		var checkOut = new Date(checkOut)
+		var dateSubtract = checkOut.getTime() - checkIn.getTime() ;
+		var btDay = dateSubtract / (1000*60*60*24) ;
+		var roomType = document.querySelector('#room_type')//방 종류
+			roomType = roomType.options[roomType.selectedIndex].value
+		
+
+		//룸 가격 비교
+		switch (roomType) {
+			case '1':
+			btDay *= 100000 
+				break;
+			case '2':
+			btDay *= 200000 
+				break;
+			case '3':
+			btDay *= 300000 
+				break;
+			case '4':
+			btDay *= 400000 
+				break;
+		
+			default:
+				break;
+		}
+		document.querySelector('#reservation-pay').innerText = '가 격 :  '+new Intl.NumberFormat().format(btDay)+'원'
+	}
 	
 	
 	/*vue.js */
-	
 	var datepickerOptions = {}
       Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
 
@@ -123,13 +155,11 @@
             }
             return formattedDates
           },
-          onClosed: function onclosed() {
-            var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
-            console.log('Dates Selected: ' + datesStr)
-            this.trigger = false
-            $('#dateOne').val(this.buttonDateOne);
-            $('#dateTwo').val(this.buttonDateTwo);
-            if(this.buttonDateOne=="" || this.buttonDateTwo ==""){
+          onClosed: function() {
+						this.trigger = false
+						document.querySelector('#dateOne').value = this.buttonDateOne
+						document.querySelector('#dateTwo').value = this.buttonDateTwo
+            if(this.buttonDateOne=='' || this.buttonDateTwo ==''){
               	alert("날짜를 선택해 주세요.");
             }else{
             getItem()
@@ -151,16 +181,5 @@
         },
       })
       
-      function printTime() {
-
-          var clock = document.getElementById("clock");// 출력할 장소 선택
-          var now = new Date();// 현재시간
-          var nowTime = "'" + now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate() + "'";
-          clock.innerHTML = nowTime;// 현재시간을 출력
-		}
-      
-		window.onload = function() {// 페이지가 로딩되면 실행
-		printTime();
-			}
 	
 	

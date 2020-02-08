@@ -280,7 +280,7 @@
 											            :mode="'range'"
 											            :date-one="buttonDateOne"
 											            :date-two="buttonDateTwo"
-											            :min-date="'2019-10-20'"
+											            :min-date="new Date()"
 											            :fullscreen-mobile="true"
 											            :months-to-show="2"
 											            :offset-y="10"
@@ -336,12 +336,14 @@
 									</div>
 								</div><!-- 아코디언 끝 -->
 							<section>
-							<blockquote >
+							<blockquote>
+								<p style="font-size: 20px;font-weight:bold ">호텔 정보</p>
 								<p id="reservation-date" style="font-size: 15px">예약 날짜 :</p>
 								<p id="reservation-room" style="font-size: 15px">객 실 :</p>
-								<p id="reservation-check" style="font-size: 15px">예약 가능 여부 :</p>
-							</section>
+								<p id="reservation-check" style="font-size: 15px">예약 가능 여부 :
+								<p id="reservation-pay" style="font-size: 15px">가 격 : 
 							</blockquote>
+							</section>
 								<div style="float:right">
 									<input class="btn btn-primary btn-lg" id="reservation-submit" type="button" value="예약하기" >
 								</div>
