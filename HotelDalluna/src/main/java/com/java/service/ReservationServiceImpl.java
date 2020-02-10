@@ -25,7 +25,7 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	@Autowired
 	protected ReservationDao ReservationDao;
-	
+
 	// 예약하기
 	@Transactional
 	@Override

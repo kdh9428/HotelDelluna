@@ -12,7 +12,6 @@ public interface ReservationService {
 	
 	public void ReservationCancell(String Reservation_number);
 	
-	
 	//ajax 예약체크
 	public boolean reservationCheckAjax(ReservationDTO reservationDto);
 	

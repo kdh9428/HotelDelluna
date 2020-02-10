@@ -42,10 +42,7 @@ public class RestBoardController {
 	//댓글 입력
 	@PostMapping("insertReply")
 	public Map<String, Object> insertReply(@RequestBody ReplyVO replyVO) throws Exception{
-		
 		Map<String, Object> result = new HashMap<>();
-		
-		
 		try {
 			boardService.insertReply(replyVO);
 			result.put("status", "OK");

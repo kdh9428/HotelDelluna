@@ -120,9 +120,10 @@
 				break;
 		
 			default:
+			console.info('룸 가격 에러')
 				break;
 		}
-		document.querySelector('#reservation-pay').innerText = '가 격 :  '+new Intl.NumberFormat().format(btDay)+'원'
+		document.querySelector('#reservation-pay').innerText = '가 격 : '+new Intl.NumberFormat().format(btDay)+'원'
 	}
 	
 	
