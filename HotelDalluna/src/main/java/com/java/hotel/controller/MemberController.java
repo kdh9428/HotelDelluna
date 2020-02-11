@@ -1,18 +1,21 @@
 package com.java.hotel.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.java.dto.memberDetails;
 import com.java.service.memberDetailsSevice;
@@ -40,7 +43,15 @@ public class MemberController {
 	}
 	
 	@PostMapping("singup.do")
-	public String singUp(@ModelAttribute("memberDetails") memberDetails details ,Model model) throws Exception{
+	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details,BindingResult bindingResult ,Model model) throws Exception{
+		
+		if( bindingResult.hasErrors() ) {
+			List<ObjectError> list = bindingResult.getAllErrors();
+			for( ObjectError error : list ) {
+				System.out.println(error);
+			}
+			return "singupForm";
+			}
 		int check = memberDetail.singup(details);
 		logger.info("회원가입 완료"+check);
 		

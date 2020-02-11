@@ -3,6 +3,11 @@ package com.java.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,12 +15,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 @SuppressWarnings("serial")
 public class memberDetails implements UserDetails{
 	
+	@NotEmpty
+	@Length(min=4, max=20)
+	@Pattern(regexp="/[a-z0-9]/ig", message = "아이디를 다시 입력해 주세요")
 	private String customer_id; // 고객 id
 	private String zip; // 우편번호
+	@NotEmpty
 	private String customer_name; // 성함
+	@NotEmpty
+	@Pattern(regexp="/^[0-9]*$/g")
 	private String tel; // 전화번호
+	@NotEmpty
+	@Email
 	private String userEmail; // 이메일
+	
+	@NotEmpty
+	@Pattern(regexp="/.*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-]).*/ig")
+	@Length(min=8,max=20)
 	private String password; // 비밀번호
+	@NotEmpty
 	private String password2;
 	private String userEmailHash;
 	private boolean userEmailChecked;
