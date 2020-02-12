@@ -176,7 +176,6 @@
 									<a href="index.do">
 									<button type="button" class="btn btn-primary btn-lg active">호텔 델루나 메인으로 이동</button></a>
 							</div>
-
                     </div><!-- Twitter End -->
 
                 </div><!-- Contact Form Overlay End -->

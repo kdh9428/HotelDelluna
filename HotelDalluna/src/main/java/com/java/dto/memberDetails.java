@@ -15,31 +15,36 @@ import org.springframework.security.core.userdetails.UserDetails;
 @SuppressWarnings("serial")
 public class memberDetails implements UserDetails{
 	
-//	@NotEmpty
-//	@Length(min=4, max=20)
-//	@Pattern(regexp="^[a-z0-9]*$", message = "아이디를 다시 입력해 주세요")
+	@NotEmpty
+	@Length(min=4, max=20)
+	@Pattern(regexp="^[a-z0-9]*$", message = "아이디를 다시 입력해 주세요")
 	private String customer_id; // 고객 id
 	private String zip; // 우편번호
-//	@NotEmpty
+	@NotEmpty
+	@Pattern(regexp = "^[가-힇a-zA-Z]*$")
 	private String customer_name; // 성함
-//	@NotEmpty
-//	@Pattern(regexp="^[0-9]*$")
+	@NotEmpty
+	@Pattern(regexp="^[0-9]*$")
 	private String tel; // 전화번호
-//	@NotEmpty
-//	@Email
+	@NotEmpty
+	@Email
+	@Pattern(regexp="^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", message = "이메일 형식이 맞지 않습니다.")
 	private String userEmail; // 이메일
 	
-//	@NotEmpty
-//	@Length(min=8,max=20)
-//	@Pattern(regexp=".*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-]).*")
+	@NotEmpty
+	@Length(min=8,max=20)
+	@Pattern(regexp=".*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-]).*")
 	private String password; // 비밀번호
-//	@NotEmpty
+	@NotEmpty(message = "비밀번호확인 null")
 	private String password2;
 	private String userEmailHash;
 	private boolean userEmailChecked;
 	private String authority;
+	@NotEmpty(message = "년 null")
 	private String year;
+	@NotEmpty(message = "달 null")
 	private String month;
+	@NotEmpty(message = "일 null")
 	private String day;
 	private String birthday;
 	

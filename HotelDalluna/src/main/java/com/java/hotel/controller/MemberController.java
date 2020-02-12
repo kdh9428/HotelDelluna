@@ -62,6 +62,7 @@ public class MemberController {
 			for( ObjectError error : list ) {
 				System.out.println(error);
 			}
+			return "singupForm";
 		}
 		
 		int check = memberDetail.singup(details);

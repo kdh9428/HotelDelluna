@@ -199,29 +199,10 @@ public class HotelTest {
 //	}	
 	@Test 
 	public void test1(){
-			int ddd = 1;
-			
-			try {
-				ddd = memDao.doubleCheck("asdf");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("확인 테스트 "+ddd);
-			System.out.println(ddd);
-			
-			try {
-				System.out.println(impl.doubleCheck("dkdkdk"));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Pattern pattern;
-			
 			System.out.println("정규식 테스트 =======================");
 			String ttt;
-			String eques = ".*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-]).*";
-			ttt= "ekgns1@2";
+			String eques = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+			ttt= "ekgns1@2123.com";
 			
 			if(ttt.matches(eques)) {
 				System.out.println("정규표현식 맞는 문자열");
