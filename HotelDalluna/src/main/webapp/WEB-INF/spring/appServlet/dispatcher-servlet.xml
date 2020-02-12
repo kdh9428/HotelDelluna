@@ -50,7 +50,7 @@
 	</bean>
 
 	<!-- 예외처리 -->
-<!-- 	<bean class="com.java.error.controller.CommonException"/> -->
+	<bean class="com.java.error.controller.CommonException"/>
 	
 	<!-- json XSS 방어 처리 -->
 	<bean id="htmlEscapingObjectMapper" class="com.java.error.controller.HtmlEscapingObjectMapperFactory" />
