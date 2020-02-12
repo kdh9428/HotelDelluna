@@ -11,5 +11,4 @@ public interface MemberAuthDao {
 	
 	//ajax id check
 	public int doubleCheck(String customer_id) throws Exception;
-	
 }

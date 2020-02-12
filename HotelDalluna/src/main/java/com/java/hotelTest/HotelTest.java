@@ -1,6 +1,6 @@
 package com.java.hotelTest;
 
-import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -13,18 +13,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.java.BoardCommon.Pagination;
-import com.java.BoardCommon.SearchPagination;
 import com.java.BoardDao.BoardDao;
-import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
+import com.java.dao.MemberAuthDao;
 import com.java.dao.ReservationDaoImpl;
-import com.java.dto.ReservationDTO;
-import com.java.dto.memberDetails;
 import com.java.service.ReservationService;
 import com.java.service.memberDetailsSevice;
-
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -53,68 +47,71 @@ public class HotelTest {
 	
 	@Inject
 	memberDetailsSevice impl;
-	
-	@Test @Ignore
-	public void testGetBoardList() throws Exception {
+	@Inject
+	MemberAuthDao memDao;
+//	
+//	@Test
+//	@Ignore
+//	public void testGetBoardList() throws Exception {
 
 //		Pagination pagination = new Pagination();
-		SearchPagination pagination = new SearchPagination();
-		
-		pagination.setListSize(10);
-		pagination.setRangeSize(10);
-		
-		pagination.setSearchType("notice_title");
-		pagination.setKeyword("7");
-		
-		int listCnt = boardService.boardListCnt(pagination);
-		System.out.println("listCnt확인"+listCnt);
-		pagination.pageInfo(1, 1, listCnt);
-		List<BoardVO> boardList = boardDao.boardList(pagination);
+//		SearchPagination pagination = new SearchPagination();
+//		
+//		pagination.setListSize(10);
+//		pagination.setRangeSize(10);
+//		
+//		pagination.setSearchType("notice_title");
+//		pagination.setKeyword("7");
+//		
+//		int listCnt = boardService.boardListCnt(pagination);
+//		System.out.println("listCnt확인"+listCnt);
+//		pagination.pageInfo(1, 1, listCnt);
+//		List<BoardVO> boardList = boardDao.boardList(pagination);
+//
+//		logger.info("startList"+pagination.getListSize());
+//		logger.info("\n Board List \n ");
+//
+//		if(boardList.size() > 0) {
+//
+//			for(BoardVO list : boardList) {
+//
+//				logger.info(list.getNotice_title());
+//				logger.info(list.getNotice_contents());
+//				
+//			}
+//
+//		} else {
+//
+//			logger.info("데이터가 없습니다.");
+//
+//		}
+//
+//	}
 
-		logger.info("startList"+pagination.getListSize());
-		logger.info("\n Board List \n ");
-
-		if(boardList.size() > 0) {
-
-			for(BoardVO list : boardList) {
-
-				logger.info(list.getNotice_title());
-				logger.info(list.getNotice_contents());
-				
-			}
-
-		} else {
-
-			logger.info("데이터가 없습니다.");
-
-		}
-
-	}
-
-	@Test  @Ignore 
-	public void testInsertBoard() throws Exception {
-		
-
-
-		BoardVO boardVO = new BoardVO();
-
-	//	boardVO.setTitle("첫번째 게시물 입니다.");
-
-	//	boardVO.setContent("첫번째 게시물입니다.");
-
-		
-
-
-		for (int i = 1; i < 100; i++) {
-			boardVO.setNotice_title(i + " 번째 게시물 입니다.");
-
-			boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
-			boardVO.setCustomer_id("aaa");
-			boardVO.setRef(0);
-			/* boardDao.boardUpdate(boardVO); */
-			boardService.boardInsert(boardVO);
-
-			logger.info("\n Insert Board Result ");
+//	@Test  @Ignore 
+//	public void testInsertBoard() throws Exception {
+//		
+//
+//
+//		BoardVO boardVO = new BoardVO();
+//
+//	//	boardVO.setTitle("첫번째 게시물 입니다.");
+//
+//	//	boardVO.setContent("첫번째 게시물입니다.");
+//
+//		
+//
+//
+//		for (int i = 1; i < 100; i++) {
+//			boardVO.setNotice_title(i + " 번째 게시물 입니다.");
+//
+//			boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
+//			boardVO.setCustomer_id("aaa");
+//			boardVO.setRef(0);
+//			/* boardDao.boardUpdate(boardVO); */
+//			boardService.boardInsert(boardVO);
+//
+//			logger.info("\n Insert Board Result ");
 
 //		if(result == 1) {
 //
@@ -125,16 +122,17 @@ public class HotelTest {
 //			logger.info("\n 게시물 등록 실패");
 //
 //		}
-		}
-	}
+//		}
+//	}
 
 	
 	
 	//예약 완료 테스트
-	@Test @Ignore
-	public void ReservationTest() {
-		
-		ReservationDTO Reservation =  new ReservationDTO();
+//	@Test
+//	@Ignore
+//	public void ReservationTest() {
+//		
+//		ReservationDTO Reservation =  new ReservationDTO();
 		
 //		List<ReservationDTO> Reservation1 = ReservationDao.ReservationConfirm("aaa");
 //		
@@ -147,14 +145,14 @@ public class HotelTest {
 //			}
 //			
 //		}
-		int listCnt = ReservationDao.ReservationCount("aaa");
-		System.out.println(listCnt);
+//		int listCnt = ReservationDao.ReservationCount("aaa");
+//		System.out.println(listCnt);
 //		logger.info(ReservationDao.ReservationCount("aaa"));
 		
-		Pagination page = new Pagination();
-		page.pageInfo(1, 1, listCnt);
-		page.setCustomer_id("aaa");
-		page.setListSize(1);
+//		Pagination page = new Pagination();
+//		page.pageInfo(1, 1, listCnt);
+//		page.setCustomer_id("aaa");
+//		page.setListSize(1);
 //		List<ReservationDTO> reserva =  ReservationService.ReservationConfirm(page);
 //		System.out.println("확인"+reserva.get(0).getCustomer_id());
 //		for(ReservationDTO pages : reserva) {
@@ -167,8 +165,8 @@ public class HotelTest {
 //			
 
 //		}
-	}
-	
+//	}
+//	
 //	class A{
 //		public void a() {
 //			System.out.println("오버라이딩");
@@ -199,13 +197,37 @@ public class HotelTest {
 //			
 //		}
 //	}	
-		@Test
-		public void test1() throws Exception{
-			memberDetails mem = new memberDetails();
-			mem.setPassword("password");
-			mem.setPassword2("password");
-			impl.singup(mem);
+	@Test 
+	public void test1(){
+			int ddd = 1;
 			
+			try {
+				ddd = memDao.doubleCheck("asdf");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("확인 테스트 "+ddd);
+			System.out.println(ddd);
+			
+			try {
+				System.out.println(impl.doubleCheck("dkdkdk"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Pattern pattern;
+			
+			System.out.println("정규식 테스트 =======================");
+			String ttt;
+			String eques = ".*(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-]).*";
+			ttt= "ekgns1@2";
+			
+			if(ttt.matches(eques)) {
+				System.out.println("정규표현식 맞는 문자열");
+			}else {
+				System.out.println("아닌 문자열 확인");
+			}
 			
 		}
 }

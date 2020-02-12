@@ -34,5 +34,9 @@
    			where 
    					customer_id = #{customer_id}
    		</select>
+   		
+   		<delete id="deleteee" parameterType="string">
+   			delete from customer where customer_id = #{customer_id}
+   		</delete>
     
     </mapper>

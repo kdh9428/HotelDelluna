@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.java.Validation.validation;
 import com.java.dto.memberDetails;
 import com.java.service.memberDetailsSevice;
 
@@ -26,7 +28,6 @@ public class MemberController {
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
 	@Autowired
 	memberDetailsSevice memberDetail;
 	
@@ -43,7 +44,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("singup.do")
-	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details,BindingResult bindingResult ,Model model) throws Exception{
+	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details,BindingResult bindingResult,Errors errors, Model model) throws Exception{
+		new validation().validate(details, bindingResult);
 		
 		if( bindingResult.hasErrors() ) {
 			List<ObjectError> list = bindingResult.getAllErrors();
@@ -52,6 +54,16 @@ public class MemberController {
 			}
 			return "singupForm";
 			}
+		
+		int dd = memberDetail.doubleCheck(details.getCustomer_id());
+		if(dd>=1) {
+			errors.rejectValue("customer_id", "중복된 아이디가 있습니다.");
+			List<ObjectError> list = bindingResult.getAllErrors();
+			for( ObjectError error : list ) {
+				System.out.println(error);
+			}
+		}
+		
 		int check = memberDetail.singup(details);
 		logger.info("회원가입 완료"+check);
 		

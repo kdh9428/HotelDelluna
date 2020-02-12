@@ -30,8 +30,10 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		
 	}
 	
+	//회원가입 시 아이디 확인
 	@Override
 	public int doubleCheck(String customer_id) throws Exception {
+		System.out.println("체크확인"+customer_id);
 		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.doubleCheck",customer_id);
 	}
 	
