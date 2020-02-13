@@ -37,8 +37,9 @@ const header = document.querySelector("meta[name='_csrf_header']").content;
 		
 //유효성 검사, id에 숫자 문자 이외의 값은 입력 불가
 function idFilter() {
-	customerAgainCheck = 'againCheck'
+	customerAgainCheck = 'againCheck' //아이디를 지우고
 	if(/^[a-z0-9]+$/ig.test(customerIdCheck.value)){
+		responseObject= 'ss'
 		idTagChange = null
 		}else{
 			customerIdCheck.value = ''
@@ -61,8 +62,12 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 20자 이하이어야 합니다.</div>'
 	        return false
 	    }else{
-	    	if(!idTagChange){
-	    		idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">중복확인이 필요합니다.</div>'
+	    	if(responseObject===true){
+	    		idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">사용 가능한 아이디 입니다.</div>'
+			}else if(responseObject===false){
+				idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">이미 사용중인 아이디 입니다.</div>'
+			}else if(!idTagChange){
+				idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">중복확인이 필요합니다.</div>'
 			}
 	    	return true
 	        }
@@ -99,8 +104,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		var customerIdCheckValue = customerIdCheck.value
 		if(customerIdCheckValue != customerAgainCheck  && customerIdCheckValue.length >= 4 && customerIdCheckValue.length <= 20 && customerIdCheckValue != null ){
 			getDateId().then(function(state){
-				console.log('확인중'+state)
-				if(state == true){
+				if(state){
 					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">사용 가능한 아이디 입니다.</div>'
 				}else{
 					idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">이미 사용중인 아이디 입니다.</div>'
@@ -118,14 +122,12 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 	 */
 	const telValue = document.querySelector('#tel')
 	function numberFilter(){
-		if(/[^0-9]{4,12}$/gi.test(telValue.value) == true){
-			
-			console.log('확인')
+		if(/[^0-9]{4,12}$/gi.test(telValue.value)){
+		
 			telValue.value = ''
 			return false
 		}
 		if(telValue.value == null){
-			console.log('확인')
 			return false
 		}
 	}
@@ -150,7 +152,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		}else if(/(\w)\1\1\1/.test(passwordId.value)){
 			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">같은 문자를 4번 이상 사용하실 수 없습니다.</div>'
 			return false
-		}else if(passwordId.value == null || passwordId.value == ''){
+		}else if(!passwordId.value){
 			passwordCheckDiv.innerHTML = '<div id="password-check" style="color:red">비밀번호는 필수 입력 정보입니다.</div>'
 			return false
 		}else if(passwordId.value.search(/[0-9]/g) < 0 || passwordId.value.search(/[a-z]/ig) < 0 || passwordId.value.search(/[!@#$%^*+=-]/ig) < 0 ){
@@ -181,7 +183,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		if(passwordId.value != passwordId2.value){
 			passwordCheckDiv2.innerHTML = '<div id="password-check" style="color:red">비밀번호가 일치하지 않습니다.</div>'
 			return false
-		}else if(passwordId2.value == null || passwordId2.value == ''){
+		}else if(!passwordId2.value){
 			passwordCheckDiv2.innerHTML = '<div id="password-check" style="color:red">비밀번호를 재입력하세요</div>'
 			return false
 		}else{
@@ -199,7 +201,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 	const customerName = document.querySelector('#customer_name')
 	const nameCheck = document.querySelector('#name-check')
 	customerName.addEventListener('blur',()=>{ 
-		if(customerName.value == null || customerName.value == ''){
+		if(!customerName.value){
 			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 필수 입력 정보입니다.</div>'
 			return false
 		}
@@ -210,7 +212,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		if(/^[가-힇a-z]+$/ig.test(customerName.value)){
 			nameCheck.innerHTML = ''
 				return true
-		}else if(customerName.value == null || customerName.value == ''){
+		}else if(!customerName.value){
 			nameCheck.innerHTML = '<div id="name-check" style="color:red">이름은 필수 입력 정보입니다.</div>'
 				return false
 		}else{
@@ -226,10 +228,10 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 	const userEmailCheck = document.querySelector('#userEmail')
 	const emailCheckTag =  document.querySelector('#email-check')
 	function emailCheck(){
-		if(userEmailCheck.value == null || userEmailCheck.value =='' ){
+		if(!userEmailCheck.value){
 			emailCheckTag.innerHTML = '<div id="email-check" style="color:red">이메일 입력 해주세요.</div>'
 			return false
-		}else if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(userEmailCheck.value) != true){
+		}else if(!/^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(userEmailCheck.value)){
 			emailCheckTag.innerHTML = '<div id="email-check" style="color:red">적합하지 않은 이메일 형식입니다.</div>'
 			return false
 		}else{
@@ -242,33 +244,33 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 	// 회원가입 버튼을 누를 경우 모든 유효성 검사 체크
 	function validate(){
 	/* id 체크  유효성 검사*/
-        if (responseObject == false || responseObject==null ){
+        if (!responseObject){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
 			return false
         }
         
-        if(idCheckFunction() == false){
+        if(!idCheckFunction()){
         	alert(idCheckNewContent.innerText)
 			customerIdCheck.select()
 			return false
         }
         
         /* 비밀번호 체크 */
-        if(passwordFocusKeyup() == false){
+        if(!passwordFocusKeyup()){
         	alert(passwordCheckDiv.innerText)
         	passwordId.select()
         	return false
         }
         
-        if(passwordFocusKeyup2() == false){
+        if(!passwordFocusKeyup2()){
         	alert(passwordCheckDiv2.innerText)
         	passwordId2.select()
         	return false
         }
         
         /* 이름 체크*/
-        if(nameFocusKeyUp() == false){
+        if(!nameFocusKeyUp()){
         	alert(nameCheck.innerText)
         	customerName.select()
         	return false
@@ -276,14 +278,14 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
         
         /* 전화번호 검사 */
         const telCheck = document.querySelector('#tel')
-        if(telCheck.value == null || telCheck.value ==''){
+        if(!telCheck.value){
         	alert('전화번호를 입력하세요')
         	telCheck.select()
         	return false
         }
         
         /* 이메일 체크 */
-        if(emailCheck() == false){
+        if(!emailCheck()){
         	alert(emailCheckTag.innerText)
         	userEmailCheck.select()
         	return false

@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.java.dao.MemberAuthDaoImpl;
+import com.java.dao.MemberAuthDao;
 import com.java.dto.memberDetails;
 
 public class memberDetailsSeviceImpl implements UserDetailsService, memberDetailsSevice{
@@ -22,7 +22,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-	private MemberAuthDaoImpl memberAuthDao;
+	private MemberAuthDao memberAuthDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String customer_id) throws UsernameNotFoundException {
@@ -59,7 +59,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	//회원 아이디 체크
 	@Override
 	public int doubleCheck(String customer_id) throws Exception {
-		System.out.println("서비스 체크,, "+ customer_id);
 		return memberAuthDao.doubleCheck(customer_id);
 	}
 }

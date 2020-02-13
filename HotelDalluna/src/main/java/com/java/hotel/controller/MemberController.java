@@ -46,28 +46,20 @@ public class MemberController {
 	@PostMapping("singup.do")
 	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details,BindingResult bindingResult,Errors errors, Model model) throws Exception{
 		new validation().validate(details, bindingResult);
+		//회원 아이디 중복 확인
+		int idCheck = memberDetail.doubleCheck(details.getCustomer_id());
 		
-		if( bindingResult.hasErrors() ) {
-			List<ObjectError> list = bindingResult.getAllErrors();
-			for( ObjectError error : list ) {
-				System.out.println(error);
-			}
-			return "singupForm";
-			}
-		
-		int dd = memberDetail.doubleCheck(details.getCustomer_id());
-		if(dd>=1) {
+		if( bindingResult.hasErrors() || idCheck>=1) {
 			errors.rejectValue("customer_id", "중복된 아이디가 있습니다.");
 			List<ObjectError> list = bindingResult.getAllErrors();
 			for( ObjectError error : list ) {
 				System.out.println(error);
 			}
 			return "singupForm";
-		}
-		
+			}
+		//회원가입 완료 체크
 		int check = memberDetail.singup(details);
 		logger.info("회원가입 완료"+check);
-		
 		if(check==1) {
 			model.addAttribute("loginCheck", check);
 			model.addAttribute("customer_name",details.getCustomer_name());
@@ -75,16 +67,13 @@ public class MemberController {
 		}else {
 			model.addAttribute("loginCheck", check);
 		}
-		
 		return "singupForm";
 	}
 	
 	@GetMapping("doubleCheck.do")
 	public @ResponseBody int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
 		logger.info("아이디 확인 "+customer_id);
-		int a = memberDetail.doubleCheck(customer_id);
-		logger.info("확인용"+a);
-		return a;
+		return memberDetail.doubleCheck(customer_id);
 	}
 	
 	
