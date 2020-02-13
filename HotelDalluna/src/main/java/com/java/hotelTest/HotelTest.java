@@ -201,10 +201,18 @@ public class HotelTest {
 	public void test1(){
 			System.out.println("정규식 테스트 =======================");
 			String ttt;
-			String eques = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+			String eques = "^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
 			ttt= "ekgns1@2123.com";
 			
 			if(ttt.matches(eques)) {
+				System.out.println("정규표현식 맞는 문자열");
+			}else {
+				System.out.println("아닌 문자열 확인");
+			}
+			String sss = "^(01[016789])(\\d{3,4})(\\d{4})$";
+			String dss= "010292928";
+			
+			if(dss.matches(sss)) {
 				System.out.println("정규표현식 맞는 문자열");
 			}else {
 				System.out.println("아닌 문자열 확인");

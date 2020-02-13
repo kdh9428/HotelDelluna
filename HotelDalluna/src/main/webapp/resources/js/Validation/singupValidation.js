@@ -30,16 +30,16 @@ window.addEventListener('load',function(){
 const customerIdCheck = document.querySelector('#customer_id') //아이디 input
 const idCheckNewContent = document.querySelector('#id-check') //아이디 체크 변경 <div>
 let responseObject //false 확인
-
+let idTagChange	//id input 태그 안에 내용이 변경 시  null , 다시 중복확인 메세지 변경 
 //spring csrf를 보내기 위해 meta 태그에 contect로 등록, 불러와 사용한다.
 const token = document.querySelector("meta[name=_csrf]").content;
 const header = document.querySelector("meta[name='_csrf_header']").content;
 		
 //유효성 검사, id에 숫자 문자 이외의 값은 입력 불가
 function idFilter() {
+	customerAgainCheck = 'againCheck'
 	if(/^[a-z0-9]+$/ig.test(customerIdCheck.value)){
-		responseObject = null //id input 태그 안에 내용이 변경 시  null , 다시 중복확인 메세지 변경 
-			return true
+		idTagChange = null
 		}else{
 			customerIdCheck.value = ''
 			return false
@@ -54,16 +54,16 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	    if(customerIdCheckValue.length > 0 && customerIdCheckValue.length < 4){
 	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 4글자 이상이어야 합니다.</div>'
 	        return false
-	    }else if(customerIdCheckValue == null || customerIdCheckValue == '' || customerIdCheckValue.length == 0){
+	    }else if(!customerIdCheckValue){
 	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디를 입력해 주세요.</div>'
 	        return false
 	    }else if(customerIdCheckValue.length >= 20){
 	    	idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">아이디는 20자 이하이어야 합니다.</div>'
 	        return false
 	    }else{
-	    	if(responseObject == null){
+	    	if(!idTagChange){
 	    		idCheckNewContent.innerHTML = '<div id="id-check" style="color:red">중복확인이 필요합니다.</div>'
-	    	}
+			}
 	    	return true
 	        }
 	}
@@ -79,14 +79,13 @@ customerIdCheck.addEventListener('keyup',idFilter)
                 if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
                 	if(xhr.responseText == '1'){
                 		responseObject = false
-                		console.log(responseObject)
-                  	 	resolve(false);
+                		resolve(false);
                 		
                 	}else{
                 		responseObject = true
-                		console.log(responseObject)
-						resolve(true);
+                		resolve(true);
                 	}
+					
 				}else{
 					alert('ajax 에러!')
 				}
@@ -95,10 +94,10 @@ customerIdCheck.addEventListener('keyup',idFilter)
 	            xhr.send();
 	})
 }
-	var customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 할 경우 체크한다.
+let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 할 경우 체크한다.
 	function focusBlurCheck(){
 		var customerIdCheckValue = customerIdCheck.value
-		if(customerIdCheckValue != customerAgainCheck && customerIdCheckValue.length >= 4 && customerIdCheckValue.length <= 20 && customerIdCheckValue != null ){
+		if(customerIdCheckValue != customerAgainCheck  && customerIdCheckValue.length >= 4 && customerIdCheckValue.length <= 20 && customerIdCheckValue != null ){
 			getDateId().then(function(state){
 				console.log('확인중'+state)
 				if(state == true){
