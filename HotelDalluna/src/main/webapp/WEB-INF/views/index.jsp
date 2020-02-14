@@ -27,6 +27,13 @@
     ============================================= -->
     <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
+    <link rel="apple-touch-icon" sizes="57x57" href="resources/images/favicon/hotelDalluna57x57.jpg">        
+    <link rel="apple-touch-icon" sizes="72x72" href="resources/images/favicon/hotelDalluna72x72.jpg">        
+    <link rel="apple-touch-icon" sizes="96x96" href="resources/images/favicon/hotelDalluna96x96.jpg">        
+    <link rel="apple-touch-icon" sizes="128x128" href="resources/images/favicon/hotelDalluna128x128.jpg">        
+    <link rel="apple-touch-icon" sizes="144x144" href="resources/images/favicon/hotelDalluna144x144.jpg">        
+    <link rel="apple-touch-icon" sizes="192x192" href="resources/images/favicon/hotelDalluna192x192.jpg">        
+    <link rel="apple-touch-icon" sizes="384x384" href="resources/images/favicon/hotelDalluna384x384.jpg">        
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
@@ -392,7 +399,7 @@
                             
                             <p>국내 최초 270˚파노라마 뷰를 조망할 수 있는<br> 자연 속 레스토랑 올 데이 다이닝 ‘파노라마 (Panorama)’에서는
 							<p>엄선된 재료로 정성스럽게 만들어진 조식 뷔페 부터 다채로운 디너까지 다양한 메뉴의 올 데이 다이닝을 사랑하는 사람들과 함께 즐기실 수 있습니다.</p>
-                            <a href="dining.html" class="btn btn-primary" role="button">자세히 보기</a>
+                            <a href="dining.do" class="btn btn-primary" role="button">자세히 보기</a>
                     </div>
            	  </div>
            	  
@@ -408,7 +415,7 @@
                             </div>
                             <p>오감만족 힐링, 사계절 따뜻한 롯데호텔제주 럭셔리 스파, 가든 해온(海溫).
                             <p>바다 해(海)와 따뜻할 온(溫)을 품은 이름처럼,<br>제주의 자연을 그대로 닮은 사계절 온수풀입니다.</p>
-                            <a href="menu-item.jsp" class="btn btn-primary" role="button">자세히 보기</a>
+                            <a href="menu-item.do" class="btn btn-primary" role="button">자세히 보기</a>
                         </div>
                     </div>
            		  </div> 

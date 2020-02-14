@@ -155,8 +155,8 @@
 							 	포근한 우드 인테리어가 공간에 포근함을 더하는 근사한 식사를 즐기고 싶은 이들에게 잊지 못할 경험이 될 것 입니다.<br><br>
 								</span>
                               <p>
-                               <a href="resources/images/logo/test.jpeg" class="btn btn-primary" role="button">메뉴보기</a>
-                               <a href="contact-2.do" class="btn btn-primary" role="button">문의하기</a>
+                               <a href="resources/images/hotel-about/test.jpeg" class="btn btn-primary" role="button">메뉴보기</a>
+                               <a href="contact.do" class="btn btn-primary" role="button">문의하기</a>
                               </p>
                                                             
                               <div id="portfolio" class="portfolio-1 clearfix">

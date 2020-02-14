@@ -36,10 +36,9 @@
 <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/magnific-popup.css"
 	type="text/css" />
-<link rel="stylesheet" href="resources/css/bootstrap.css"
-	type="text/css" />
-
 <link rel="stylesheet" href="resources/css/responsive.css"
+	type="text/css" />
+<link rel="stylesheet" href="resources/css/bootstrap.css"
 	type="text/css" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -206,7 +205,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						</div>
 						<div class="col-md-6">
 							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
-								placeholder="아이디를 입력해 주세요"></form:input>
+								placeholder="아이디를 입력해 주세요" aria-describedby="inputSuccess2Status" ></form:input>
 								<div id="id-check">영문/숫자4자 이상을 입력해 주세요</div>
 						</div>
 						<div class="check"> </div>
@@ -220,9 +219,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</label>
 						</div>
 						<div class="col-md-6">
-							<form:input type="password" path="password" id="password"
+						<form:input type="password" path="password" id="password"
 								class="form-control required" placeholder="비밀번호(8~32자리)" />
-								<div id = "password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하세요.</div>
+							<div id ="password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하세요.</div>
 						</div>
 					</div>
 				</div>
