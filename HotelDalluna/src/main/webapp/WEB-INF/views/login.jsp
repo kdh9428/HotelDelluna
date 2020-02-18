@@ -12,6 +12,8 @@
 	<!-- NAVER 통계  -->
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 	<script src="resources/js/googleAnalytics/analytics.js"></script>
+	<!-- 네이버 로그인 -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	
 <title>HotelDalluna</title>
 <meta charset="UTF-8">
@@ -52,22 +54,12 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title"
 					style="background-image: url(resources/images/bg-01.jpg);">
-					<span class="login100-form-title-1">Hotel Delluna</span>
+					<a href="index.do"><span class="login100-form-title-1">Hotel Delluna</span></a>
 				</div>
 					<sec:authorize access="isAnonymous()">
 						<form class="login100-form validate-form" action="loginSuccess" method="post">
-						
-						<c:if test="${param.error == 'true'}">
-							<script type="text/javascript">
-								alert("아이디 또는 비밀번호를 확인해 주세요")
-								window.onload = function(){
-									document.getElementById("customer_id").focus()
-								}
-							</script>
-						</c:if>
-
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<div class="wrap-input100 validate-input m-b-26" data-validate="ID를 입력해주세요">
-
 								<span class="label-input100">아이디</span> <input class="input100" type="text" id="customer_id" name="customer_id" placeholder="Enter username">
 								<span class="focus-input100"></span>
 							</div>
@@ -90,9 +82,6 @@
 								<button class="login100-form-btn" value="로그인" style="margin:0 5px">로그인</button>
 								<button class="login100-form-btn" type="button" style="margin:0 5px" value="회원가입" onclick="location.href='singupForm.do'">회원가입</button>
 							</div>
-							
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-							
 						</form>
 						<c:if test="${pwnot ne null}"> 
 							<script>alert('${pwnot}')</script>
@@ -124,6 +113,17 @@
 	<script src="resources/vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="resources/js/main.js"></script>
-
+	
+	<script type="text/javascript">
+	
+	window.addEventListener('load',()=>{
+		if('${param.error}'=='true'){
+			alert("아이디 또는 비밀번호를 확인해 주세요")
+			document.querySelector("#customer_id").focus()
+		}
+		
+	})
+	</script>
+	
 </body>
 </html>

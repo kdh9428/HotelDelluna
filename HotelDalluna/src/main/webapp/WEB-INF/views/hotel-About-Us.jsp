@@ -180,7 +180,7 @@
                                 </div>
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <a href="deluxe-double.html">
+                                    <a href="deluxe-double.do">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
                                     	<B>객실</B><br>
                                      	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
@@ -190,7 +190,7 @@
                               	  </div>
                               
                                 <div class="col-md-6">
-                                	<a href="dining.html">
+                                	<a href="dining.do">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
                                     <B>다이닝</B><br>
                                      	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
@@ -201,7 +201,7 @@
                                  <p>
                                 <div class="row">
                                   <div class="col-md-6">
-                                	<a href="menu-item.jsp">
+                                	<a href="menu-item2.do">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/meetings&banquets.jpg" alt="Standard Post with Image"></a>
                                     <B>미팅&웨딩</B><br>
                                      	<strong>호텔 델루나는 대규모 국제 행사와 세미나, 컨퍼런스, 가족연회, 음악회, 각종 공연 등이 가능한 실내 외 연회장을 갖추고 있습니다.</strong><br>
@@ -211,7 +211,7 @@
                                 </div>
                                 
                                 <div class="col-md-6">
-                                	<a href="menu-item.jsp">
+                                	<a href="menu-item.do">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/facilities.jpg" alt="Standard Post with Image"></a>
                                     <B>부대시설</B><br>
                                      	<strong>호텔 델루나는 제주의 자연과 더불어 최상의 휴식을 즐길 수 있는 다양한 공간과 아이들을 위한 특별한 즐거움이 마련되어 있습니다.</strong><br>

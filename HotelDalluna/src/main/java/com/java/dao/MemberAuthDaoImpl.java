@@ -27,7 +27,6 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 	public int singup(memberDetails details){
 		logger.info("회원가입 확인 DAO");
 		return sqlSesstion.insert("com.java.dao.MemberAuthDao.singup", details);
-		
 	}
 	
 	//회원가입 시 아이디 확인
