@@ -40,7 +40,7 @@ public class BoardServiceImpl implements BoardService {
 		logger.info("게시판 작성완료 BoardService");
 		//title 글자수 제한
 		int titleLength = boardVO.getNotice_title().length();
-		if(titleLength >= 100) {
+		if(titleLength > 100) {
 			String titleCut = boardVO.getNotice_title().substring(0,100);
 			boardVO.setNotice_title(titleCut);
 		}
@@ -83,6 +83,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
 		logger.info("업데이트 확인");
+		//title 글자수 제한
+		int titleLength = boardVO.getNotice_title().length();
+		if(titleLength > 100) {
+			String titleCut = boardVO.getNotice_title().substring(0,100);
+			boardVO.setNotice_title(titleCut);
+		}
 		return boardDao.boardUpdate(boardVO);
 	}
 	
