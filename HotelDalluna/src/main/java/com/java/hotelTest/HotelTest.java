@@ -218,5 +218,19 @@ public class HotelTest {
 				System.out.println("아닌 문자열 확인");
 			}
 			
+			
+			//문자열 테스트 해보기
+			String test11 ="<script>window.onload = function(){alert('시큐어코딩 테스트')}</script>시큐어코딩 테스트1,시큐어코딩 테스트2,시큐어코딩 테스트3,시큐어코딩 테스트444";
+			
+			int title = test11.length();
+			System.out.println("title"+title);
+			
+			if(title >= 100) {
+				String ss = test11.substring(0,100);
+				System.out.println(ss);
+			}else {
+				System.out.println("그냥 저장하기");
+			}
+			
 		}
 }

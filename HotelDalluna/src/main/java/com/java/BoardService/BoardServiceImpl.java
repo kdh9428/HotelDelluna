@@ -38,13 +38,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void boardInsert(BoardVO boardVO) throws Exception {
 		logger.info("게시판 작성완료 BoardService");
-		/*
-		 * String pw = boardVO.getBoardpw(); String encoder =
-		 * passwordEncoder.encode(pw);
-		 */
-		/* boardVO.setBoardpw(encoder); */
-		boardDao.boardWrite(boardVO);
+		//title 글자수 제한
+		int titleLength = boardVO.getNotice_title().length();
+		if(titleLength >= 100) {
+			String titleCut = boardVO.getNotice_title().substring(0,100);
+			boardVO.setNotice_title(titleCut);
+		}
 		
+		boardDao.boardWrite(boardVO);
 	}
 	
 	//게시판 상세보기
