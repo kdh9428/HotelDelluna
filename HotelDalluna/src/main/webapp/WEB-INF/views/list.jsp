@@ -430,22 +430,14 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	<script type="text/javascript" src="resources/js/boardList/boardList.js"></script>
+	<script type="text/javascript" src="resources/js/board/boardList.js"></script>
 	<script>
-/* 	 	검색 페이지 다음 버튼 누를 경우 keyword, searchType넘어갈 수 있도록 
-  		if('${pagination.keyword}' != null || '${pagination.keyword}' != ''){
-			document.getElementById('keyword').value='${pagination.keyword}';
-			console.log('${pagination.keyword}')
-			document.getElementById('searchType').value='${pagination.searchType}';
-		} */
 	window.onload= function(){
-			
 		if('${check}' != '' && '${check}' == 1 ){
 			alert('정상적으로 삭제 되었습니다.')
 			location.replace("${pageContext.request.contextPath}/list.do")
 		}else if('${check}' == 0 && '${check}' != ''){
 			alert('삭제 되지 않았습니다.')
-		}else {
 		}
 	}
 	</script>

@@ -406,31 +406,11 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	<script type="text/javascript" src="resources/js/board/ckeditor.js"></script>
+	<script type="text/javascript" src="resources/js/Ckeditor/ckeditor.js"></script>
 	<script type="text/javascript">
-		/*  	required설정, javascript로 submit이동시 required는 작동하지 않는다.
-		document.getElementById('btnSave').onclick = function(){
-				document.getElementById('form').submit()
-				return false
-			}			 */
-		
 			document.getElementById("btnList").onclick =function(){
 				location.href="list.do"
 			}
 	</script>
-	<%-- <% pageContext.setAttribute("newLineChar", "\r\n"); 
-	%> --%>
-<%-- 		var contents = ${fn:replace(boardContent.notice_contentss, newLineChar, '&#10')}; --%>
-<!-- 	<script type="text/javascript">
-
-		 
-		if('${mode}'=='edit'){
-			document.getElementById('notice_title').value = '${boardContent.notice_title}';
-			/* document.getElementById('notice_contents').value= ; */
-			document.getElementById('customer_id').value = '${boardContent.customer_id}';
-		}
-		
-	</script> -->
-
 </body>
 </html>

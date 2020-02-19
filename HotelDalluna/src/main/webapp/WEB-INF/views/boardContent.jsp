@@ -682,7 +682,7 @@
 
 	<script type="text/javascript">
 	
-		const focus = document.getElementById('context');
+		const focus = document.querySelector('#context');
 			focus.addEventListener("focusin", ()=> {
 				document.querySelector('#context').setAttribute('placeholder', '${login_id}님 댓글을 입력하세요')
 			});

@@ -75,4 +75,7 @@ public class MemberController {
 		logger.info("아이디 확인 "+customer_id);
 		return memberDetail.doubleCheck(customer_id);
 	}
+	
+	//회원 정보 수정
+	
 }
