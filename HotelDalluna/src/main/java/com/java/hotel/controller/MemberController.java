@@ -81,7 +81,7 @@ public class MemberController {
 	@PostMapping("userPassword.do")
 	@ResponseBody
 	public boolean userPassword(@RequestParam String password) throws Exception{
-		logger.info("테스트 중 ajax"+ password);
-		return true;
+		logger.info("ajax 비밀번호 확인");
+		return memberDetail.userPassword(password);
 	}
 }

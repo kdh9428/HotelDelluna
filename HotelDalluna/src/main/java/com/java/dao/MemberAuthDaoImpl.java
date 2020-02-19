@@ -35,5 +35,10 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.doubleCheck",customer_id);
 	}
 	
+	//ajax 비밀번호 체크
+	@Override
+	public String userPassword(String customer_id) throws Exception {
+		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.userPassword",customer_id);
+	}
 	
 }

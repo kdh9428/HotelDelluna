@@ -6,10 +6,13 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.java.dao.MemberAuthDao;
 import com.java.dto.memberDetails;
@@ -19,7 +22,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	private static final Logger logger = LoggerFactory.getLogger(memberDetailsSeviceImpl.class); 
 	
 	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private MemberAuthDao memberAuthDao;
@@ -46,7 +49,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 			logger.info("비밀번호 생성"+pass);
 		}
 		
-		
 		String date=details.getYear()+"-"+details.getMonth()+"-"+details.getDay();
 		SimpleDateFormat datformat = new SimpleDateFormat("yyyy-M-d");
 		Date d = datformat.parse(date);
@@ -55,10 +57,17 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		return memberAuthDao.singup(details);
 	}
 	
-	
 	//회원 아이디 체크
 	@Override
 	public int doubleCheck(String customer_id) throws Exception {
 		return memberAuthDao.doubleCheck(customer_id);
+	}
+	
+	//회원 정보 수정 비밀번호 체크
+	@Override
+	public boolean userPassword(String password) throws Exception {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//assertThat(passwordEncoder.matches(rawPassword, encodedPassword), is(true));
+		return passwordEncoder.matches(password, memberAuthDao.userPassword(auth.getName()));
 	}
 }
