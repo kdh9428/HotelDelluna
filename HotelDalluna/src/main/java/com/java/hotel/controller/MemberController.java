@@ -71,11 +71,17 @@ public class MemberController {
 	}
 	
 	@GetMapping("doubleCheck.do")
-	public @ResponseBody int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
+	@ResponseBody
+	public int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
 		logger.info("아이디 확인 "+customer_id);
 		return memberDetail.doubleCheck(customer_id);
 	}
 	
 	//회원 정보 수정
-	
+	@PostMapping("userPassword.do")
+	@ResponseBody
+	public boolean userPassword(@RequestParam String password) throws Exception{
+		logger.info("테스트 중 ajax"+ password);
+		return true;
+	}
 }

@@ -190,6 +190,8 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		</section>
 		<!-- #page-title end -->
 		<br>
+		
+	<form action="" method="post" onsubmit="return validate()">
 		<div class="container clearfix">
 			<div class="jumbotron panel-heading" style="height: 400px">
 				<h2>회원정보 확인</h2>
@@ -198,7 +200,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
                     <div id="user_id"><strong style="color: skyblue">${user_id}</strong>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</div>
                 </sec:authorize>
                <hr>
-               
+              
                <table>
 	               <tbody>
 	               	<tr>
@@ -207,18 +209,19 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	               	</tr>
 	               	<tr>
 	               		<th scope="row">비밀번호 : </th>
-	               		<td><input type="password"  class="form-control required" id="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;"></td>
-	               		<td id="password-check"></td>
+	               		<td><input type="password" class="form-control required" id="password" name="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;"></td>
+	               		<td id="password-check-tag"></td>
 	               		
 	               	</tr>
 	               	</tbody>
                	</table>
 				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;" >확 인</button>
 					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">취 소</button>
 				</div>
 			</div>
 		</div>
+	</form>
 		<!-- Footer
         ============================================= -->
 		<footer id="footer" class="footer">
@@ -381,9 +384,39 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
-		document.querySelector('submit',()=>{
+		function validate(){
+			var passwordCheckValue = document.querySelector('#password').value
+			var passwordCheckTag = document.querySelector('#password-check-tag')
 			
-		})
+			if(!passwordCheckValue){
+				passwordCheckTag.style.color = 'red'
+				passwordCheckTag.innerText = '패스워드를 입력하세요'
+				return false
+			}
+		}
+		
+		function getPassword(){
+			return new Promise(function(resolve, reject){
+				 var passwordCheckValue = document.querySelector('#password').value
+				 var xhr = new XMLHttpRequest();
+				 xhr.open('POST','userPassword.do')
+				 xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
+				 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+				 xhr.onload =()=>{
+					 if(xhr.status === 200){
+						 if(xhr.responseText == 'true'){
+							 resolve(true)
+						 }else{
+							 resolve(false)
+						 }
+					 }else{
+					 alert('ajax 에러')
+				 	}
+				 reject(new Error('request Error'))
+				 }
+				xhr.send('password='+passwordCheckValue)
+			})
+		}
 	</script>
 </body>
 </html>
