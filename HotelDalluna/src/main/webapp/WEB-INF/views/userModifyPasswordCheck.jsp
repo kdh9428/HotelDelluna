@@ -189,23 +189,35 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 		</section>
 		<!-- #page-title end -->
-		
+		<br>
 		<div class="container clearfix">
-			<div class="jumbotron panel-heading">
+			<div class="jumbotron panel-heading" style="height: 400px">
 				<h2>회원정보 확인</h2>
 				<sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal.username" var="user_id" />
                     <div id="user_id"><strong style="color: skyblue">${user_id}</strong>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</div>
                 </sec:authorize>
-			</div>
-			
-			<section>
-				<div>
-					
+               <hr>
+               
+               <table>
+	               <tbody>
+	               	<tr>
+	               		<th scope="row">아이디 : </th>
+	               		<td><Strong style="font-size: 17px">${user_id}</Strong><br></td>
+	               	</tr>
+	               	<tr>
+	               		<th scope="row">비밀번호 : </th>
+	               		<td><input type="password"  class="form-control required" id="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;"></td>
+	               		<td id="password-check"></td>
+	               		
+	               	</tr>
+	               	</tbody>
+               	</table>
+				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
+					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">취 소</button>
 				</div>
-				
-			</section>
-			
+			</div>
 		</div>
 		<!-- Footer
         ============================================= -->
@@ -367,5 +379,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+	
+	<script type="text/javascript">
+		document.querySelector('submit',()=>{
+			
+		})
+	</script>
 </body>
 </html>
