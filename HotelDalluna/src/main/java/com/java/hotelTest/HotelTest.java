@@ -1,9 +1,9 @@
 package com.java.hotelTest;
 
-import java.util.regex.Pattern;
-
 import javax.inject.Inject;
 
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -218,6 +218,12 @@ public class HotelTest {
 				System.out.println("아닌 문자열 확인");
 			}
 			
+			//assertThat매소드 테스트
+			int result =9;
+			System.out.println();
+		    Assert.assertThat(result, CoreMatchers.is(10));
+//			boolean ss = Assert.assertThat("assa", CoreMatchers.is("assa"));
+			System.out.println( );
 			
 			//문자열 테스트 해보기
 			String test11 ="<script>window.onload = function(){alert('시큐어코딩 테스트')}</script>시큐어코딩 테스트1,시큐어코딩 테스트2,시큐어코딩 테스트3,시큐어코딩 테스트444";

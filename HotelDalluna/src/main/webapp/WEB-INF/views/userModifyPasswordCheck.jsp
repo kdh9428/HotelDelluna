@@ -176,7 +176,7 @@
 		<!-- #page-title end -->
 		<br>
 		
-	<form action="" id="" method="post" onsubmit="return test()">
+	<form action="" id="passwordForm" method="post">
 		<div class="container clearfix">
 			<div class="jumbotron panel-heading" style="height: 400px">
 				<h2>회원정보 확인</h2>
@@ -201,7 +201,7 @@
 	               	</tbody>
                	</table>
 				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+					<button type="button" id="passwordCheck" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">취 소</button>
 				</div>
 			</div>
@@ -369,68 +369,35 @@
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
-		
-	document.querySelector('#submitButton').addEventListener('submit',check)
+	 	document.querySelector('#passwordCheck').addEventListener('click',getPassword)
 	
-	 function check(e){
-			var passwordCheckValue = document.querySelector('#password').value
-			var passwordCheckTag = document.querySelector('#password-check-tag')
-// 			const passwordAjax = await getPassword();
-			if(!passwordCheckValue){
-// 			console.log(passwordAjax);
-				
-				e.preventDefault()
+		function getPassword(){
+				 var passwordCheckValue = document.querySelector('#password').value
+				 var passwordCheckTag = document.querySelector('#password-check-tag')
+				 
+				 if(passwordCheckValue!=''){
+					 var xhr = new XMLHttpRequest();
+					 xhr.open('POST','userPassword.do')
+					 xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
+					 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+					 xhr.onload =()=>{
+						 if(xhr.status === 200){
+							 if(xhr.responseText == 'true'){
+								 document.querySelector('#passwordForm').submit()
+							 }else{
+								passwordCheckTag.style.color = 'red'
+							 	passwordCheckTag.innerText = '비밀번호가 다릅니다'
+							 }
+						 }else{
+						 alert('ajax 에러')
+					 	}
+					 }
+					xhr.send('password='+passwordCheckValue)
+			}else{
 				passwordCheckTag.style.color = 'red'
 				passwordCheckTag.innerText = '패스워드를 입력하세요'
 			}
-			
-				e.preventDefault()
-// 			console.log(passwordAjax);
-// 			if(passwordAjax == 'false'){
-// 				e.preventDefault()
-// 				console.log('확인')
-// 			}
-// 			if(passwordAjax =='false'){
-// 				e.preventDefault()
-// 				passwordCheckTag.style.color = 'red'
-// 				passwordCheckTag.innerText = '비밀번호가 다릅니다'
-// 				}
-			console.log('여기 실행')
-			
-			
-		}
-		
-	async function test(){
-		console.log('testttstasdfasdfasdf')
-			const passwordAjax = await getPassword();
-			if(passwordAjax =='false'){
-				return false
-			}
-		}
-	
-		function getPassword(){
-			return new Promise(function(resolve, reject){
-				 var passwordCheckValue = document.querySelector('#password').value
-				 var xhr = new XMLHttpRequest();
-				 xhr.open('POST','userPassword.do')
-				 xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
-				 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-				 xhr.onload =()=>{
-					 if(xhr.status === 200){
-						 if(xhr.responseText == 'true'){
-							 resolve(true)
-							 
-						 }else{
-							 resolve(false)
-						 }
-					 }else{
-					 alert('ajax 에러')
-				 	}
-				 reject(new Error('request Error'))
-				 }
-				xhr.send('password='+passwordCheckValue)
-			})
-		}
+	 	}
 	</script>
 </body>
 </html>
