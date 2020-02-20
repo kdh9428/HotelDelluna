@@ -55,21 +55,6 @@
     ============================================= -->
 <title>회원가입</title>
 
-<style>
-/* input 태그 number 타입 위아래 화살표 삭제 */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
-	
-}
-	.mtd{
-		margin:0 0 15px 0;
-	}
-	label{
-		margin:10px;
-	}
-</style>
 </head>
 
 <body class="stretched">
@@ -191,7 +176,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<!-- #page-title end -->
 		<br>
 		
-	<form action="" method="post" onsubmit="return validate()">
+	<form action="" id="" method="post" onsubmit="return test()">
 		<div class="container clearfix">
 			<div class="jumbotron panel-heading" style="height: 400px">
 				<h2>회원정보 확인</h2>
@@ -205,7 +190,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	               <tbody>
 	               	<tr>
 	               		<th scope="row">아이디 : </th>
-	               		<td><Strong style="font-size: 17px">${user_id}</Strong><br></td>
+	               		<td><Strong style="font-size: 15px">${user_id}</Strong><br></td>
 	               	</tr>
 	               	<tr>
 	               		<th scope="row">비밀번호 : </th>
@@ -216,7 +201,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	               	</tbody>
                	</table>
 				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;" >확 인</button>
+					<button type="submit" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">취 소</button>
 				</div>
 			</div>
@@ -384,17 +369,45 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
-		function validate(){
+		
+	document.querySelector('#submitButton').addEventListener('submit',check)
+	
+	 function check(e){
 			var passwordCheckValue = document.querySelector('#password').value
 			var passwordCheckTag = document.querySelector('#password-check-tag')
-			
+// 			const passwordAjax = await getPassword();
 			if(!passwordCheckValue){
+// 			console.log(passwordAjax);
+				
+				e.preventDefault()
 				passwordCheckTag.style.color = 'red'
 				passwordCheckTag.innerText = '패스워드를 입력하세요'
+			}
+			
+				e.preventDefault()
+// 			console.log(passwordAjax);
+// 			if(passwordAjax == 'false'){
+// 				e.preventDefault()
+// 				console.log('확인')
+// 			}
+// 			if(passwordAjax =='false'){
+// 				e.preventDefault()
+// 				passwordCheckTag.style.color = 'red'
+// 				passwordCheckTag.innerText = '비밀번호가 다릅니다'
+// 				}
+			console.log('여기 실행')
+			
+			
+		}
+		
+	async function test(){
+		console.log('testttstasdfasdfasdf')
+			const passwordAjax = await getPassword();
+			if(passwordAjax =='false'){
 				return false
 			}
 		}
-		
+	
 		function getPassword(){
 			return new Promise(function(resolve, reject){
 				 var passwordCheckValue = document.querySelector('#password').value
@@ -406,6 +419,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					 if(xhr.status === 200){
 						 if(xhr.responseText == 'true'){
 							 resolve(true)
+							 
 						 }else{
 							 resolve(false)
 						 }
