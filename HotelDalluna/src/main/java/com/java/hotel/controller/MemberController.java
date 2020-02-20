@@ -70,6 +70,7 @@ public class MemberController {
 		return "singupForm";
 	}
 	
+	//ajax 아이디 확인
 	@GetMapping("doubleCheck.do")
 	@ResponseBody
 	public int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
@@ -77,11 +78,19 @@ public class MemberController {
 		return memberDetail.doubleCheck(customer_id);
 	}
 	
-	//회원 정보 수정
+	//회원 정보 수정 ajax 비밀번호 확인
 	@PostMapping("userPassword.do")
 	@ResponseBody
 	public boolean userPassword(@RequestParam String password) throws Exception{
 		logger.info("ajax 비밀번호 확인");
 		return memberDetail.userPassword(password);
+	}
+	
+	//회원정보 폼
+	@PostMapping("userModifyForm.do")
+	public String userModify(@ModelAttribute memberDetails details,Model model) throws Exception {
+		logger.info("회원정보 변경");
+		
+		return "userModifyForm";
 	}
 }

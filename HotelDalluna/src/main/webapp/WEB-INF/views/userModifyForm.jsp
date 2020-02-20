@@ -55,6 +55,21 @@
     ============================================= -->
 <title>회원가입</title>
 
+<style>
+/* input 태그 number 타입 위아래 화살표 삭제 */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+	
+}
+	.mtd{
+		margin:0 0 15px 0;
+	}
+	label{
+		margin:10px;
+	}
+</style>
 </head>
 
 <body class="stretched">
@@ -136,17 +151,16 @@
 										<li><a href="singupForm.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
-								<!-- 로그인 했을 경우 보여준다.  -->
-							 <sec:authorize access="isAuthenticated()">
-							  <li><a href="#" onclick="return false;"><div>로그아웃</div></a>
-								<ul>
-									<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
-									<li><a href="userModifyPasswordCheck.do"><div>회원정보 수정</div></a></li>
-								</ul>
-							</li>
-									<form id="logout-form" action="logout.do" method="post"> 
-								    	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-									</form>
+							<!-- 로그인 했을 경우 보여준다.  -->
+							<sec:authorize access="isAuthenticated()">
+								<div><a href="logout.do"
+									onclick="document.getElementById('logout-form').submit();">
+										로그아웃
+								</a></div>
+								<form id="logout-form" action="logout.do" method="post">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
+								</form>
 							</sec:authorize>
 						</ul>
 					</nav>
@@ -164,50 +178,144 @@
 			data-stellar-background-ratio="0.3">
 
 			<div class="container clearfix" style="border-width: 3px;">
-				<h1>회원정보 수정</h1>
+				<h1>회원 가입</h1>
 
 				<ol class="breadcrumb">
 					<li><a href="index.html">홈</a></li>
-					<li><a href="hotel-About-Us.html">회원정보 수정</a></li>
+					<li><a href="hotel-About-Us.html">회원 가입</a></li>
 				</ol>
 			</div>
 
 		</section>
 		<!-- #page-title end -->
-		<br>
 		
-	<form action="userModifyForm.do" id="passwordForm" method="post">
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<div class="container clearfix">
-			<div class="jumbotron panel-heading" style="height: 400px">
-				<h2>회원정보 확인</h2>
-				<sec:authorize access="isAuthenticated()">
-                    <sec:authentication property="principal.username" var="user_id" />
-                    <div id="user_id"><strong style="color: skyblue">${user_id}</strong>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</div>
-                </sec:authorize>
-               <hr>
-              
-               <table>
-	               <tbody>
-	               	<tr>
-	               		<th scope="row">아이디 : </th>
-	               		<td><Strong style="font-size: 15px">${user_id}</Strong><br></td>
-	               	</tr>
-	               	<tr>
-	               		<th scope="row">비밀번호 : </th>
-	               		<td><input type="password" class="form-control required" id="password" name="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;"></td>
-	               		<td id="password-check-tag"></td>
-	               		
-	               	</tr>
-	               	</tbody>
-               	</table>
-				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-					<button type="button" id="passwordCheck" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
-					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;" onclick="history.back();">취 소</button>
+		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="singup.do" onsubmit="return validate()">
+			<p></p>
+			<div class="jumbotron panel-heading text-center lead">
+				<h2>Hotel Delluna</h2>
+				<p>호텔 델루나 계정 정보를 입력해주세요</p>
+			</div>
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="customer_id"
+								class="col-md-2 col-md-offset-2 col-form-label text-md-right">아이디
+							</label>
+						</div>
+						<div class="col-md-6">
+							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
+								placeholder="아이디를 입력해 주세요" aria-describedby="inputSuccess2Status" readonly="true"></form:input>
+								<div id="id-check">영문/숫자4자 이상을 입력해 주세요</div>
+						</div>
+						<div class="check"> </div>
+					</div>
+				</div>
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="password"
+								class="col-md-2 col-md-offset-2 col-form-label text-md-right">비밀번호
+							</label>
+						</div>
+						<div class="col-md-6">
+						<form:input type="password" path="password" id="password"
+								class="form-control required" placeholder="비밀번호(8~32자리)" />
+							<div id ="password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하세요.</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group has-success mt-5">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="password2"
+								class="col-md-2 col-md-offset-2 col-form-label text-md-right">비밀번호
+								재입력 </label>
+						</div>
+						<div class="col-md-6 mt-5">
+							<form:input type="password" path="password2" id="password2"
+								class="form-control required" placeholder="비밀번호 재입력" />
+							<div id ="password-check2"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="customer_name"
+								class="col-md-2 col-md-offset-2 col-form-label text-md-right">이름</label>
+						</div>
+						<div class="col-md-6">
+							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
+								placeholder="이름을 입력해 주세요"/>
+							<div id = "name-check"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="tel"
+								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">전화번호</label>
+						</div>
+						<div class="col-md-6 mt-5">
+							<form:input type="number" style="ime-mode: disabled" path="tel"
+								id="tel" class="form-control required" placeholder="전화번호" min="0" />
+								<div id="number-tel">숫자만 입력하세요.</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group has-success">
+					<div class="row">
+						<div class="col-md-offset-1">
+							<label for="userEmail"
+								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">이메일</label>
+						</div>
+						<div class="col-md-6 mt-5">
+							<form:input type="email" style="ime-mode: disabled" path="userEmail"
+								id="userEmail" class="form-control required" placeholder="이메일 주소 입력"
+								min="0" />
+								<div id="email-check">이메일을 입력해주세요.</div>
+								
+						</div>
+					</div>
+				</div>
+				
+			<div class="form-group has-success">
+				<div class="row">
+					<div class="col-md-offset-1">
+						<label for="year"
+									class="col-md-2 col-md-offset-2 col-form-label text-md-right">생년월일</label>
+					</div>
+						<div class="mtd col-md-2">
+							<form:select path="year" class="form-control" id="year" >
+								<option>연도</option>
+							</form:select>
+						</div>
+								
+						<div class="mtd col-md-2">
+							<form:select path="month" class="form-control" id="month">
+								<option>월</option>
+							</form:select>
+						</div>
+								
+						<div class="mtd col-md-2">
+							<form:select path="day" class="form-control" id="day">
+								<option>일</option>
+							</form:select>
+						</div>
 				</div>
 			</div>
-		</div>
-	</form>
+						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
+							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">가입</form:button>
+						</div>
+				</form:form>
+			</div>
+		
+		
 		<!-- Footer
         ============================================= -->
 		<footer id="footer" class="footer">
@@ -368,37 +476,6 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	
-	<script type="text/javascript">
-	 	document.querySelector('#passwordCheck').addEventListener('click',()=>{
-			 var passwordCheckValue = document.querySelector('#password').value
-			 var passwordCheckTag = document.querySelector('#password-check-tag')
-			 
-			 if(passwordCheckValue){
-				 var xhr = new XMLHttpRequest();
-				 xhr.open('POST','userPassword.do')
-				 xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
-				 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-				 xhr.onload =()=>{
-					 if(xhr.status === 200){
-						 if(xhr.responseText == 'true'){
-							 passwordCheckValue=''
-							 
-							 document.querySelector('#passwordForm').submit()
-						 }else{
-							passwordCheckTag.style.color = 'red'
-						 	passwordCheckTag.innerText = '비밀번호가 다릅니다'
-						 }
-					 }else{
-					 alert('ajax 에러')
-				 	}
-				 }
-				xhr.send('password='+passwordCheckValue)
-		}else{
-			passwordCheckTag.style.color = 'red'
-			passwordCheckTag.innerText = '패스워드를 입력하세요'
-		}
- 	})
-	</script>
+	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
 </body>
 </html>
