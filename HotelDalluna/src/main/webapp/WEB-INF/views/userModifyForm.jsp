@@ -178,11 +178,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			data-stellar-background-ratio="0.3">
 
 			<div class="container clearfix" style="border-width: 3px;">
-				<h1>회원 가입</h1>
+				<h1>회원정보 수정</h1>
 
 				<ol class="breadcrumb">
 					<li><a href="index.html">홈</a></li>
-					<li><a href="hotel-About-Us.html">회원 가입</a></li>
+					<li><a href="hotel-About-Us.html">회원정보 수정</a></li>
 				</ol>
 			</div>
 
@@ -194,7 +194,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			<p></p>
 			<div class="jumbotron panel-heading text-center lead">
 				<h2>Hotel Delluna</h2>
-				<p>호텔 델루나 계정 정보를 입력해주세요</p>
+				<p>회원정보 수정</p>
 			</div>
 				<div class="form-group has-success">
 					<div class="row">
@@ -248,7 +248,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						</div>
 						<div class="col-md-6">
 							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
-								placeholder="이름을 입력해 주세요"/>
+								placeholder="이름을 입력해 주세요" readonly="true"/>
 							<div id = "name-check"></div>
 						</div>
 					</div>
@@ -310,10 +310,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				</div>
 			</div>
 						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
-							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">가입</form:button>
+							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">수정</form:button>
 						</div>
 				</form:form>
 			</div>
+			
 		
 		
 		<!-- Footer

@@ -88,8 +88,20 @@ public class MemberController {
 	
 	//회원정보 폼
 	@PostMapping("userModifyForm.do")
-	public String userModify(@ModelAttribute memberDetails details,Model model) throws Exception {
+	public String userInformation(@ModelAttribute memberDetails details,Model model) throws Exception {
 		logger.info("회원정보 변경");
+		List<memberDetails> infomation = memberDetail.userInformation();
+		
+		for(memberDetails ss : infomation ) {
+			System.out.println("확인중입니다. "+ ss);
+		}
+		
+		System.out.println("이름, 전화번호 확인"+infomation.get(0).getCustomer_name() +"   "+infomation.get(0).getTel()  );
+		details.setCustomer_id(infomation.get(0).getCustomer_id());
+		details.setCustomer_name(infomation.get(0).getCustomer_name());
+		details.setTel(infomation.get(0).getTel());
+		details.setUserEmail(infomation.get(0).getUserEmail());
+		
 		
 		return "userModifyForm";
 	}

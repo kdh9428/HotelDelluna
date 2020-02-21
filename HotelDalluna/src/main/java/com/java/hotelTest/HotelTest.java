@@ -1,5 +1,9 @@
 package com.java.hotelTest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import org.hamcrest.CoreMatchers;
@@ -199,6 +203,20 @@ public class HotelTest {
 //	}	
 	@Test 
 	public void test1(){
+		
+			String date="1990/1/1";
+			SimpleDateFormat datformat = new SimpleDateFormat("yyyy/mm/dd");
+			try {
+				Date d = datformat.parse(date);
+				
+				System.out.println("날짜확인=============="+datformat.format(d));
+				
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			System.out.println("정규식 테스트 =======================");
 			String ttt;
 			String eques = "^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";

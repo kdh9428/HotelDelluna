@@ -2,6 +2,7 @@ package com.java.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.constraints.Pattern;
 
@@ -24,11 +25,11 @@ public class memberDetails implements UserDetails{
 	@Pattern(regexp = "^[가-힇a-zA-Z]*$")
 	private String customer_name; // 성함
 	@NotEmpty
-	@Pattern(regexp="^(01[016789])(\\\\d{3,4})(\\\\d{4})$")
+//	@Pattern(regexp="^(01[016789])(\\\\d{3,4})(\\\\d{4})$")
 	private String tel; // 전화번호
 	@NotEmpty
 	@Email
-	@Pattern(regexp="^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\\\[[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.)|(([\\\\w-]+\\\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\\\]?)$", message = "이메일 형식이 맞지 않습니다.")
+//	@Pattern(regexp="^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\\\[[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.)|(([\\\\w-]+\\\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\\\]?)$", message = "이메일 형식이 맞지 않습니다.")
 	private String userEmail; // 이메일
 	
 	@NotEmpty
@@ -46,21 +47,19 @@ public class memberDetails implements UserDetails{
 	private String month;
 	@NotEmpty(message = "일 null")
 	private String day;
-	private String birthday;
+	private Date birthday;
 	
-	
-	
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 	public String getCustomer_name() {
 		return customer_name;
 	}
 	public void setCustomer_name(String customer_name) {
 		this.customer_name = customer_name;
-	}
-	public String getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
 	}
 	public String getYear() {
 		return year;

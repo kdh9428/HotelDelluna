@@ -16,7 +16,7 @@
         ]]>
     	</select>
     
-    <!-- 회원가입  -->
+    	<!-- 회원가입  -->
    		<insert id="singup"  parameterType="com.java.dto.memberDetails">
 	   		<![CDATA[
 	   			insert into customer (CUSTOMER_ID, CUSTOMER_NAME, TEL, PASSWORD, userEmail, authority, birthday, userEmailChecked )
@@ -25,7 +25,6 @@
    		</insert>
    		
    		<!-- id확인 -->
-   		
    		<select id="doubleCheck" resultType="int" parameterType="string">
    			select 
    					count(*)
@@ -35,18 +34,27 @@
    					customer_id = #{customer_id}
    		</select>
    		
-   		<delete id="deleteee" parameterType="string">
+   		<delete id="deleteee" parameterType="String">
    			delete from customer where customer_id = #{customer_id}
    		</delete>
    		
    		<!--회원정보 수정 ajax 비밀번호 체크 -->
-   		
    		<select id="userPassword" resultType="String" parameterType="String">
    			select
    				password
    			from
    				customer
    			where 
+   				customer_id = #{customer_id}
+   		</select>
+   		
+   		<!-- 회원 정보 불러온다. -->
+   		<select id="userInformation" parameterType="String" resultType="com.java.dto.memberDetails">
+   			select
+   					*
+   			from
+   				customer
+   			where
    				customer_id = #{customer_id}
    		</select>
     

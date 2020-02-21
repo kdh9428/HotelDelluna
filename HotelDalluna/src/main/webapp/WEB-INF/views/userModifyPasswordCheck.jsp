@@ -53,7 +53,7 @@
 
 <!-- Document Title
     ============================================= -->
-<title>회원가입</title>
+<title>회원정보 수정</title>
 
 </head>
 
@@ -382,8 +382,7 @@
 				 xhr.onload =()=>{
 					 if(xhr.status === 200){
 						 if(xhr.responseText == 'true'){
-							 passwordCheckValue=''
-							 
+							 document.querySelector('#password').value = ''
 							 document.querySelector('#passwordForm').submit()
 						 }else{
 							passwordCheckTag.style.color = 'red'

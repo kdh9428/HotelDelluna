@@ -1,5 +1,7 @@
 package com.java.dao;
 
+import java.util.List;
+
 import com.java.dto.memberDetails;
 
 public interface MemberAuthDao {
@@ -14,4 +16,7 @@ public interface MemberAuthDao {
 	
 	//ajax 비밀번호 체크
 	public String userPassword(String customer_id) throws Exception;
+	
+	//회원 정보
+	public List<memberDetails> userInformation(String customer_id) throws Exception;
 }

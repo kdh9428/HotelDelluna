@@ -2,6 +2,7 @@ package com.java.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,11 +49,10 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 			logger.info("비밀번호 생성"+pass);
 		}
 		
-		String date=details.getYear()+"-"+details.getMonth()+"-"+details.getDay();
-		SimpleDateFormat datformat = new SimpleDateFormat("yyyy-M-d");
-		Date d = datformat.parse(date);
-		details.setBirthday(datformat.format(d));
-		logger.info("날짜"+details.getBirthday());
+		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
+		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+		details.setBirthday(datformat);
+		logger.info("날짜"+datformat);
 		return memberAuthDao.singup(details);
 	}
 	
@@ -68,5 +68,12 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		//assertThat(passwordEncoder.matches(rawPassword, encodedPassword), is(true));
 		return passwordEncoder.matches(password, memberAuthDao.userPassword(auth.getName()));
+	}
+	
+	@Override
+	public List<memberDetails> userInformation() throws Exception{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		return memberAuthDao.userInformation(auth.getName());
 	}
 }

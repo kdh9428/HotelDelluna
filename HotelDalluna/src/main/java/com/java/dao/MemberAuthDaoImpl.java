@@ -1,5 +1,7 @@
 package com.java.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +41,13 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 	@Override
 	public String userPassword(String customer_id) throws Exception {
 		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.userPassword",customer_id);
+	}
+	
+	//회원정보
+	@Override
+	public List<memberDetails> userInformation(String customer_id) throws Exception {
+		System.out.println("확인회원정보 확인 회원정보");
+		return sqlSesstion.selectList("com.java.dao.MemberAuthDao.userInformation",customer_id);
 	}
 	
 }
