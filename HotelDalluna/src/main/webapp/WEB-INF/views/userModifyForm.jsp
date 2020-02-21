@@ -50,7 +50,6 @@
     ============================================= -->
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/plugins.js"></script>
-
 <!-- Document Title
     ============================================= -->
 <title>회원가입</title>
@@ -478,5 +477,30 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
+	<script type="text/javascript">
+		window.addEventListener('load',function(){
+			var selectedYear = document.querySelector('#year')
+			for(i=0;i< selectedYear.options.length; i++){
+				if(selectedYear.options[i].value == '${details.year}'){
+					selectedYear.options[i].selected = true
+					break
+				}
+			}
+			var selectedMonth = document.querySelector('#month')
+			for(i=0;i< selectedMonth.options.length; i++){
+				if(selectedMonth.options[i].value == '${details.month}'){
+					selectedMonth.options[i].selected = true
+					break
+				}
+			}
+			var selecteDday = document.querySelector('#day')
+			for(i=0;i< selecteDday.options.length; i++){
+				if(selecteDday.options[i].value == '${details.day}'){
+					selecteDday.options[i].selected = true
+					break
+				}
+			}
+		})
+	</script>
 </body>
 </html>

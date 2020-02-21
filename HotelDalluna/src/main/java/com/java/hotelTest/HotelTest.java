@@ -204,13 +204,18 @@ public class HotelTest {
 	@Test 
 	public void test1(){
 		
-			String date="1990/1/1";
-			SimpleDateFormat datformat = new SimpleDateFormat("yyyy/mm/dd");
+			String date="1990/11/21";
 			try {
-				Date d = datformat.parse(date);
+				Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
 				
-				System.out.println("날짜확인=============="+datformat.format(d));
+				System.out.println("날짜확인=============="+datformat);
 				
+				SimpleDateFormat aa = new SimpleDateFormat("yyyy");
+				
+				System.out.println(aa.format(datformat));
+				System.out.println(new SimpleDateFormat("MM").format(datformat));
+				System.out.println(new SimpleDateFormat("dd").format(datformat));
+						
 				
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

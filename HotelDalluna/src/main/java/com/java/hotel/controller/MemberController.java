@@ -1,5 +1,7 @@
 package com.java.hotel.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -92,17 +94,16 @@ public class MemberController {
 		logger.info("회원정보 변경");
 		List<memberDetails> infomation = memberDetail.userInformation();
 		
-		for(memberDetails ss : infomation ) {
-			System.out.println("확인중입니다. "+ ss);
-		}
-		
-		System.out.println("이름, 전화번호 확인"+infomation.get(0).getCustomer_name() +"   "+infomation.get(0).getTel()  );
 		details.setCustomer_id(infomation.get(0).getCustomer_id());
 		details.setCustomer_name(infomation.get(0).getCustomer_name());
 		details.setTel(infomation.get(0).getTel());
 		details.setUserEmail(infomation.get(0).getUserEmail());
 		
-		
+		Date birthday = infomation.get(0).getBirthday();
+		details.setYear(new SimpleDateFormat("yyyy").format(birthday));
+		details.setMonth(new SimpleDateFormat("MM").format(birthday));
+		details.setDay(new SimpleDateFormat("d").format(birthday));
+		model.addAttribute("details", details);
 		return "userModifyForm";
 	}
 }
