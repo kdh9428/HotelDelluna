@@ -306,8 +306,63 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
         if (selected.options[selected.selectedIndex].text == '일'){
         	alert('일을 선택하세요')
         	return false
+		}
+	  }  
+
+	  	/* 회원정보 수정  */
+		function modifyValidate(){
+        /* 비밀번호 체크 */
+        if(!passwordFocusKeyup()){
+        	alert(passwordCheckDiv.innerText)
+        	passwordId.select()
+        	return false
         }
         
+        if(!passwordFocusKeyup2()){
+        	alert(passwordCheckDiv2.innerText)
+        	passwordId2.select()
+        	return false
+        }
         
-  }  
+        /* 이름 체크*/
+        if(!nameFocusKeyUp()){
+        	alert(nameCheck.innerText)
+        	customerName.select()
+        	return false
+        }
+        
+        /* 전화번호 검사 */
+        const telCheck = document.querySelector('#tel')
+        if(!telCheck.value){
+        	alert('전화번호를 입력하세요')
+        	telCheck.select()
+        	return false
+        }
+        
+        /* 이메일 체크 */
+        if(!emailCheck()){
+        	alert(emailCheckTag.innerText)
+        	userEmailCheck.select()
+        	return false
+        }
+        
+        /* 생년월일 체크 */
+        var selected = document.querySelector('#year')
+        if (selected.options[selected.selectedIndex].text == '연도'){
+        	alert('연도를 선택하세요')
+        	return false
+        	}
+        var selected = document.querySelector('#month')
+        if (selected.options[selected.selectedIndex].text == '월'){
+        	alert('월을 선택하세요')
+        	return false
+        }
+        var selected = document.querySelector('#day')
+        if (selected.options[selected.selectedIndex].text == '일'){
+        	alert('일을 선택하세요')
+        	return false
+        }
+	}
+        
+
 	

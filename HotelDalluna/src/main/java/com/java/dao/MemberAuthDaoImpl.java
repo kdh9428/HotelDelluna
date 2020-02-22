@@ -43,11 +43,17 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.userPassword",customer_id);
 	}
 	
-	//회원정보
+	//회원정보 불러오기
 	@Override
 	public List<memberDetails> userInformation(String customer_id) throws Exception {
 		System.out.println("확인회원정보 확인 회원정보");
 		return sqlSesstion.selectList("com.java.dao.MemberAuthDao.userInformation",customer_id);
+	}
+	
+	//회원정보 수정
+	@Override
+	public int userModify(memberDetails details) throws Exception {
+		return sqlSesstion.update("com.java.dao.MemberAuthDao.userModify",details);
 	}
 	
 }

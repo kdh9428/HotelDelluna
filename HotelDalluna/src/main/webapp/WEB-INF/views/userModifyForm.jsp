@@ -150,16 +150,12 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 										<li><a href="singupForm.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
-							<!-- 로그인 했을 경우 보여준다.  -->
-							<sec:authorize access="isAuthenticated()">
-								<div><a href="logout.do"
-									onclick="document.getElementById('logout-form').submit();">
-										로그아웃
-								</a></div>
-								<form id="logout-form" action="logout.do" method="post">
-									<input type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" />
-								</form>
+								<!-- 로그인 했을 경우 보여준다.  -->
+							 <sec:authorize access="isAuthenticated()">
+									<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
+									<form id="logout-form" action="logout.do" method="post"> 
+									    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+									</form>
 							</sec:authorize>
 						</ul>
 					</nav>
@@ -189,7 +185,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
-		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="singup.do" onsubmit="return validate()">
+		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()">
 			<p></p>
 			<div class="jumbotron panel-heading text-center lead">
 				<h2>Hotel Delluna</h2>
@@ -205,9 +201,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 						<div class="col-md-6">
 							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
 								placeholder="아이디를 입력해 주세요" aria-describedby="inputSuccess2Status" readonly="true"></form:input>
-								<div id="id-check">영문/숫자4자 이상을 입력해 주세요</div>
 						</div>
-						<div class="check"> </div>
 					</div>
 				</div>
 				<div class="form-group has-success">
@@ -307,9 +301,15 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							</form:select>
 						</div>
 				</div>
-			</div>
-						<div class="col-md-2" align="center" style="float:none; margin:0 auto">
-							<form:button type="submit" class="center btn btn-primary btn-lg btn-block">수정</form:button>
+			</div>		
+						<div class="row">
+							<div class="col-md-2" style="float:none; margin:0 auto">
+								<form:button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">개인정보수정</form:button>
+							</div>
+							
+							<div class="col-md-2" style="float:right;">
+								<a href="#"><button type="button" class="btn btn-default btn-sm">회원탈퇴</button></a>
+							</div>
 						</div>
 				</form:form>
 			</div>
@@ -500,6 +500,10 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					break
 				}
 			}
+		})
+		
+		document.querySelector('submit-button').addEventListener('click',()=>{
+			alert('개인정보 수정이 완료되었습니다.')
 		})
 	</script>
 </body>

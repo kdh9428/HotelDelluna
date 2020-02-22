@@ -70,10 +70,24 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		return passwordEncoder.matches(password, memberAuthDao.userPassword(auth.getName()));
 	}
 	
+	//ajax 회원정보 수정폼 
 	@Override
 	public List<memberDetails> userInformation() throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
 		return memberAuthDao.userInformation(auth.getName());
+	}
+	//회원정보 수정
+	@Override
+	public boolean userModify(memberDetails details) throws Exception {
+		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
+		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+		details.setBirthday(datformat);
+		logger.info("날짜"+datformat);
+		
+		int check = memberAuthDao.userModify(details);
+		System.out.println("회원정보 수정 확인"+check);
+		if(check >=1) return true;
+		else return false;
 	}
 }
