@@ -66,6 +66,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	@Override
 	public boolean userPassword(String password) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//비밀번호가 맞는지 체크
 		//assertThat(passwordEncoder.matches(rawPassword, encodedPassword), is(true));
 		return passwordEncoder.matches(password, memberAuthDao.userPassword(auth.getName()));
 	}
@@ -85,8 +86,14 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		details.setBirthday(datformat);
 		logger.info("날짜"+datformat);
 		
+		//1차 비밀번호와 2차 비밀번호가 맞는지 확인 후 부호화
+		if(details.getPassword().equals(details.getPassword2())) {
+			String pass = passwordEncoder.encode(details.getPassword());
+			details.setPassword(pass);
+			logger.info("비밀번호 생성");
+		}
+		
 		int check = memberAuthDao.userModify(details);
-		System.out.println("회원정보 수정 확인"+check);
 		if(check >=1) return true;
 		else return false;
 	}

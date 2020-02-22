@@ -195,7 +195,7 @@
 	               	</tr>
 	               	<tr>
 	               		<th scope="row">비밀번호 : </th>
-	               		<td><input type="password" class="form-control required" id="password" name="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;"></td>
+	               		<td><input type="password" class="form-control required" id="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;" ></td>
 	               		<td id="password-check-tag"></td>
 	               		
 	               	</tr>
@@ -370,6 +370,16 @@
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
+	
+		window.addEventListener('load',()=>{
+			console.log('확인중' + '${updateSuccess}')
+			//회원 정보 업데이트 성공
+			if('${updateSuccess}' == 'true')
+				alert('개인정보를 수정 하였습니다.')
+			if('${updateSuccess}' == 'false')
+				alert('개인정보 수정 실패! 다시 시도해 주세요.')
+		})
+	
 	 	document.querySelector('#passwordCheck').addEventListener('click',()=>{
 			 var passwordCheckValue = document.querySelector('#password').value
 			 var passwordCheckTag = document.querySelector('#password-check-tag')
@@ -382,7 +392,7 @@
 				 xhr.onload =()=>{
 					 if(xhr.status === 200){
 						 if(xhr.responseText == 'true'){
-							 document.querySelector('#password').value = ''
+							 document.querySelector('#password').value = '';
 							 document.querySelector('#passwordForm').submit()
 						 }else{
 							passwordCheckTag.style.color = 'red'
@@ -398,6 +408,8 @@
 			passwordCheckTag.innerText = '패스워드를 입력하세요'
 		}
  	})
+ 	
+ 	
 	</script>
 </body>
 </html>

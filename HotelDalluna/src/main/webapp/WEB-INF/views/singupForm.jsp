@@ -529,34 +529,5 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
-	
-	<script type="text/javascript">
-		/* jQuery ajax 통신 */
-// 		$(document).on('blur', '#customer_id', function(){
-			
-// 			var replyReg_id = $('#customer_id').val()
-// 			console.log('확인'+replyReg_id)
-// 			var headers = {"Content-Type" : "application/json", "X-HTTP-Method-Override" : "GET"}
-// 			$.ajax({
-// 				url: "${pageContext.request.contextPath}/doubleCheck.do?custmoer_id="+replyReg_id
-// 				, headers : headers
-// 				, contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-// 				, type : 'GET'
-// 				, dataType : 'text'
-// 				, beforeSend : function(xhr)
-// 	               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-// 	                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-// 	                },
-// 	                success: function(result){
-// 	                	console.log("연결 성공")
-	                	
-// 	                },
-// 	                error: function(error){
-// 	    			console.log("에러 : " + error);
-// 	                }
-// 			})
-// 		});
-	</script>
-
 </body>
 </html>

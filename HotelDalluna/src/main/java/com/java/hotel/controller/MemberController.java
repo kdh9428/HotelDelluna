@@ -108,16 +108,11 @@ public class MemberController {
 	}
 	
 	@PostMapping("userModify.do")
-	public String userModify(@ModelAttribute memberDetails details,Model model) throws Exception {
+	public String userModify(@ModelAttribute @Valid memberDetails details, Model model) throws Exception {
 		logger.info("회원정보 수정 완료");
-		Boolean update = memberDetail.userModify(details);
-		if(update =true) {
-			model.addAttribute("updateCheck",update);
-			model.addAttribute("details", details);
-		}else {
-			model.addAttribute("updateCheck",update);
-			model.addAttribute("details", details);
-		}
-		return "userModifyForm";
+		Boolean updateSuccess = memberDetail.userModify(details);
+		model.addAttribute("updateSuccess",updateSuccess);
+		model.addAttribute("details", details);
+		return "userModifyPasswordCheck";
 	}
 }

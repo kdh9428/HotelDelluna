@@ -478,7 +478,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
 	<script type="text/javascript">
-		window.addEventListener('load',function(){
+		window.addEventListener('load',()=>{
 			var selectedYear = document.querySelector('#year')
 			for(i=0;i< selectedYear.options.length; i++){
 				if(selectedYear.options[i].value == '${details.year}'){
@@ -500,10 +500,6 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 					break
 				}
 			}
-		})
-		
-		document.querySelector('submit-button').addEventListener('click',()=>{
-			alert('개인정보 수정이 완료되었습니다.')
 		})
 	</script>
 </body>

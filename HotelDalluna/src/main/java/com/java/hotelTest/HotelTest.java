@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -53,6 +54,9 @@ public class HotelTest {
 	memberDetailsSevice impl;
 	@Inject
 	MemberAuthDao memDao;
+	
+	@Inject
+	PasswordEncoder passwordEncoder;
 //	
 //	@Test
 //	@Ignore
@@ -203,6 +207,8 @@ public class HotelTest {
 //	}	
 	@Test 
 	public void test1(){
+		
+		System.out.println(passwordEncoder.encode("123"));
 		
 			String date="1990/11/21";
 			try {
