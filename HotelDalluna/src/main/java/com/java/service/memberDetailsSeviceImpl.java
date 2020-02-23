@@ -92,7 +92,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 			details.setPassword(pass);
 			logger.info("비밀번호 생성");
 		}
-		
 		int check = memberAuthDao.userModify(details);
 		if(check >=1) return true;
 		else return false;

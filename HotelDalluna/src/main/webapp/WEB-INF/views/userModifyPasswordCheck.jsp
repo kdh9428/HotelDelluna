@@ -176,31 +176,38 @@
 		<!-- #page-title end -->
 		<br>
 		
-	<form action="userModifyForm.do" id="passwordForm" method="post">
+	<form action="userModifyForm.do" id="passwordForm" method="post" onsubmit="return false">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<div class="container clearfix">
 			<div class="jumbotron panel-heading" style="height: 400px">
 				<h2>회원정보 확인</h2>
 				<sec:authorize access="isAuthenticated()">
                     <sec:authentication property="principal.username" var="user_id" />
-                    <div id="user_id"><strong style="color: skyblue">${user_id}</strong>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</div>
                 </sec:authorize>
-               <hr>
+                    <div id="user_id"><strong style="color: skyblue">${user_id}</strong>님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</div><br>
               
-               <table>
+              <div class="table-responsive">
+               <table class="table">
+            	   <colgroup>
+						<col style="width: 8%;" />
+						<col style="width: auto%;" />
+					</colgroup>
 	               <tbody>
 	               	<tr>
 	               		<th scope="row">아이디 : </th>
 	               		<td><Strong style="font-size: 15px">${user_id}</Strong><br></td>
 	               	</tr>
 	               	<tr>
-	               		<th scope="row">비밀번호 : </th>
-	               		<td><input type="password" class="form-control required" id="password" style="height: 30px; width:200px; padding: 2px 5px; line-height: 22px;" ></td>
-	               		<td id="password-check-tag"></td>
-	               		
+	               		<th scope="row" style="border-top:0">비밀번호 : </th>
+	               		<td style="border-top:0"><input type="password" class="form-control required" id="password" style="height: 30px; width:150px; padding: 2px 5px; line-height: 22px;" ></td>
+	               	</tr>
+	               	<tr>
+	               		<th style="border-top:0"></th>
+	              	 	<td id="password-check-tag" style="border-top:0"></td>
 	               	</tr>
 	               	</tbody>
                	</table>
+               </div>
 				<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
 					<button type="button" id="passwordCheck" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					<button type="button" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;" onclick="history.back();">취 소</button>
@@ -380,7 +387,9 @@
 				alert('개인정보 수정 실패! 다시 시도해 주세요.')
 		})
 	
-	 	document.querySelector('#passwordCheck').addEventListener('click',()=>{
+	 	document.querySelector('#passwordCheck').addEventListener('click',click)
+	 			
+	 		function click(){
 			 var passwordCheckValue = document.querySelector('#password').value
 			 var passwordCheckTag = document.querySelector('#password-check-tag')
 			 
@@ -407,7 +416,7 @@
 			passwordCheckTag.style.color = 'red'
 			passwordCheckTag.innerText = '패스워드를 입력하세요'
 		}
- 	})
+ 	}
  	
  	
 	</script>

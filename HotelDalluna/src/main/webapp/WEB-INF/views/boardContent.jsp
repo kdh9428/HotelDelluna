@@ -682,11 +682,9 @@
 			function fn_btnDelete(notice_number) {
 				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+notice_number)
 			}
-			
 	</script>
 
 	<script type="text/javascript">
-	
 		const focus = document.querySelector('#context');
 			focus.addEventListener("focusin", ()=> {
 				document.querySelector('#context').setAttribute('placeholder', '${login_id}님 댓글을 입력하세요')
@@ -694,7 +692,6 @@
 			focus.addEventListener("focusout", ()=> {
 				document.querySelector('#customer_id').value = '${login_id}';
 			});
-	
 	</script>
 </body>
 </html>

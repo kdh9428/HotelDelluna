@@ -9,6 +9,9 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +20,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -92,27 +96,32 @@ public class MemberController {
 	@PostMapping("userModifyForm.do")
 	public String userInformation(@ModelAttribute memberDetails details,Model model) throws Exception {
 		logger.info("회원정보 변경");
-		List<memberDetails> infomation = memberDetail.userInformation();
-		
-		details.setCustomer_id(infomation.get(0).getCustomer_id());
-		details.setCustomer_name(infomation.get(0).getCustomer_name());
-		details.setTel(infomation.get(0).getTel());
-		details.setUserEmail(infomation.get(0).getUserEmail());
-		
-		Date birthday = infomation.get(0).getBirthday();
-		details.setYear(new SimpleDateFormat("yyyy").format(birthday));
-		details.setMonth(new SimpleDateFormat("MM").format(birthday));
-		details.setDay(new SimpleDateFormat("d").format(birthday));
-		model.addAttribute("details", details);
-		return "userModifyForm";
+			List<memberDetails> infomation = memberDetail.userInformation();
+			details.setCustomer_id(infomation.get(0).getCustomer_id());
+			details.setCustomer_name(infomation.get(0).getCustomer_name());
+			details.setTel(infomation.get(0).getTel());
+			details.setUserEmail(infomation.get(0).getUserEmail());
+			
+			Date birthday = infomation.get(0).getBirthday();
+			details.setYear(new SimpleDateFormat("yyyy").format(birthday));
+			details.setMonth(new SimpleDateFormat("MM").format(birthday));
+			details.setDay(new SimpleDateFormat("d").format(birthday));
+			model.addAttribute("details", details);
+			return "userModifyForm";
 	}
 	
 	@PostMapping("userModify.do")
 	public String userModify(@ModelAttribute @Valid memberDetails details, Model model) throws Exception {
 		logger.info("회원정보 수정 완료");
-		Boolean updateSuccess = memberDetail.userModify(details);
-		model.addAttribute("updateSuccess",updateSuccess);
-		model.addAttribute("details", details);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		//Sesstion 아이디와 클라이언트 아이디 확인 후 맞으면 변경
+		if(details.getCustomer_id().equals(auth.getName())) {
+			Boolean updateSuccess = memberDetail.userModify(details);
+			model.addAttribute("updateSuccess",updateSuccess);
+		}else {
+			model.addAttribute("updateSuccess", false);
+		}
 		return "userModifyPasswordCheck";
 	}
 }
