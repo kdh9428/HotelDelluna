@@ -484,6 +484,9 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
 	<script type="text/javascript">
 		window.addEventListener('load',()=>{
+			
+			document.querySelector('#password').value = null
+			
 			var selectedYear = document.querySelector('#year')
 			for(i=0;i< selectedYear.options.length; i++){
 				if(selectedYear.options[i].value == '${details.year}'){

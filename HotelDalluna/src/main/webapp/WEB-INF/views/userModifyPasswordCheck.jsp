@@ -199,7 +199,7 @@
 	               	</tr>
 	               	<tr>
 	               		<th scope="row" style="border-top:0">비밀번호 : </th>
-	               		<td style="border-top:0"><input type="password" class="form-control required" id="password" style="height: 30px; width:150px; padding: 2px 5px; line-height: 22px;" ></td>
+	               		<td style="border-top:0"><input type="password" class="form-control required" name="password" id="password" style="height: 30px; width:150px; padding: 2px 5px; line-height: 22px;" ></td>
 	               	</tr>
 	               	<tr>
 	               		<th style="border-top:0"></th>
@@ -401,7 +401,6 @@
 				 xhr.onload =()=>{
 					 if(xhr.status === 200){
 						 if(xhr.responseText == 'true'){
-							 document.querySelector('#password').value = '';
 							 document.querySelector('#passwordForm').submit()
 						 }else{
 							passwordCheckTag.style.color = 'red'
