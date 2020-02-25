@@ -495,6 +495,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 				}
 			}
 			var selectedMonth = document.querySelector('#month')
+			console.log('${details.month}')
 			for(i=0;i< selectedMonth.options.length; i++){
 				if(selectedMonth.options[i].value == '${details.month}'){
 					selectedMonth.options[i].selected = true

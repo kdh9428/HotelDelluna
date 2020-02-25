@@ -29,6 +29,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- 컨트롤러 없이 이동  -->
+	<mvc:view-controller path="/" view-name="index"/>
 	<mvc:view-controller path="/hotel-About-Us.do" view-name="hotel-About-Us"/>
 	<mvc:view-controller path="/Location.do" view-name="Location"/>
 	<mvc:view-controller path="/dining.do" view-name="dining"/>

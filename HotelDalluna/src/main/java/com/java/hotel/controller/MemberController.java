@@ -93,7 +93,6 @@ public class MemberController {
 	@PostMapping("userModifyForm.do")
 	public String userInformation(@RequestParam String password, @ModelAttribute memberDetails details,Model model) throws Exception {
 		logger.info("회원정보 변경");
-		System.out.println("password"+password);
 			if(userPassword(password)){
 				List<memberDetails> infomation = memberDetail.userInformation();
 				details.setCustomer_id(infomation.get(0).getCustomer_id());
@@ -103,7 +102,7 @@ public class MemberController {
 				
 				Date birthday = infomation.get(0).getBirthday();
 				details.setYear(new SimpleDateFormat("yyyy").format(birthday));
-				details.setMonth(new SimpleDateFormat("MM").format(birthday));
+				details.setMonth(new SimpleDateFormat("M").format(birthday));
 				details.setDay(new SimpleDateFormat("d").format(birthday));
 				model.addAttribute("details", details);
 				return "userModifyForm";

@@ -29,7 +29,7 @@ public class memberDetails implements UserDetails{
 	private String tel; // 전화번호
 	@NotEmpty
 	@Email
-//	@Pattern(regexp="^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\\\[[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.[0-9]{1,3}\\\\.)|(([\\\\w-]+\\\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\\\]?)$", message = "이메일 형식이 맞지 않습니다.")
+	@Pattern(regexp="^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([\\w-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", message = "이메일 형식이 맞지 않습니다.")
 	private String userEmail; // 이메일
 	
 	@NotEmpty
