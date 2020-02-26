@@ -126,4 +126,10 @@ public class MemberController {
 		}
 		return "userModifyPasswordCheck";
 	}
+	
+	@GetMapping("userDelete.do")
+	public String userDelete(Model model) {
+		logger.info("삭제 확인");
+		return "userDelete";
+	}
 }
