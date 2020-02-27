@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+    <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
@@ -9,23 +10,23 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
 	<!-- NAVER 통계  -->
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-	<script src="resources/js/googleAnalytics/analytics.js"></script>
+	<script src="/hotel/resources/js/googleAnalytics/analytics.js"></script>
 	
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
     <!-- Stylesheets
     ============================================= -->
-	   <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
+	   <link rel="icon" type="image/png" sizes="16x16" href="/hotel/resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/hotel/resources/images/favicon/favicon-32x32.png">        
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="/hotel/resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -33,8 +34,8 @@
 <!--  -->
     <!-- External JavaScripts
     ============================================= -->
-	<script type="text/javascript" src="resources/js/jquery.js"></script>
-	<script type="text/javascript" src="resources/js/plugins.js"></script>
+	<script type="text/javascript" src="/hotel/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="/hotel/resources/js/plugins.js"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -70,10 +71,10 @@
 					<div id="logo">
 						<a href="index.do" class="standard-logo"
 							data-dark-logo="images/logo/logo-dark.png"><img
-							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="/hotel/resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 						<a href="index.do" class="retina-logo"
 							data-dark-logo="images/logo/logo-dark-large.png"><img
-							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="/hotel/resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
 
@@ -150,7 +151,7 @@
         
         <!-- Page Title
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
+        <section id="page-title" class="page-title-parallax" style="background-image: url('/hotel/resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
 
             <div class="container clearfix">
                 <h1>호텔 델루나</h1>
@@ -187,7 +188,7 @@
 								</div>
 								<!-- entry clearfix -->
 								<div style="text-align: center">
-									<a href="index.do"><button type="button"
+									<a href="/hotel/index.do"><button type="button"
 											class="btn btn-primary btn-lg active">호텔 델루나 메인으로
 											이동</button></a>
 							</div>
@@ -314,8 +315,8 @@
                 <div class="container clearfix">
 
                     <div class="col_half">
-                        <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
-                        <img src="resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
+                        <img src="/hotel/resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
+                        <img src="/hotel/resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
                         Copyright &copy; 2019 Hotel Delluna. All Rights Reserved.
                     </div>
 
@@ -380,7 +381,7 @@
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="resources/js/functions.js"></script>
+    <script type="text/javascript" src="/hotel/resources/js/functions.js"></script>
 
 </body>
 </html>

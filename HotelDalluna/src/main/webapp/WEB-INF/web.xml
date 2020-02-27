@@ -83,9 +83,32 @@
 	</servlet-mapping>
 	
 	<!-- http://사이트도메인/ 쳤을때 가장 처음 인식하는 페이지명입니다.-->
-	 <welcome-file-list>
-	  <welcome-file>index.jsp</welcome-file>
-	 </welcome-file-list>
+<!-- 	 <welcome-file-list> -->
+<!-- 	  <welcome-file>index.jsp</welcome-file> -->
+<!-- 	 </welcome-file-list> -->
+	 
+	<!-- WEB-INF/web.xml에 리다이렉트 설정 추가하기 -->
+	<!-- <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>SSL Forward</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint> -->
+	
+	<!-- 특정 리소스는 http와 https 양쪽 모두 처리되도록 설정하기 -->
+	<!-- <security-constraint>
+		<web-resource-collection>
+			<web-resource-name>HTTPS or HTTP</web-resource-name>
+			<url-pattern>/images/*</url-pattern>
+			<url-pattern>/css/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint> -->
 	
 	<!-- Exception 처리 -->
 	<error-page>
