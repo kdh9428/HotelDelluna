@@ -34,10 +34,6 @@
    					customer_id = #{customer_id}
    		</select>
    		
-   		<delete id="deleteee" parameterType="String">
-   			delete from customer where customer_id = #{customer_id}
-   		</delete>
-   		
    		<!--회원정보 수정 ajax 비밀번호 체크 -->
    		<select id="userPassword" resultType="String" parameterType="String">
    			select

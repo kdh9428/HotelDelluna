@@ -43,6 +43,7 @@
 	<mvc:view-controller path="/contact.do" view-name="contact"/>
 	<mvc:view-controller path="/index.do" view-name="index"/>
 	<mvc:view-controller path="/userModifyPasswordCheck.do" view-name="userModifyPasswordCheck"/>
+	<mvc:view-controller path="/userDeleteCheck.do" view-name="userDeleteCheck"/>
 	<!-- <mvc:view-controller path="/singupForm.do" view-name="singup"/> -->
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

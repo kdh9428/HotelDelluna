@@ -19,9 +19,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="initial-scale=1.0">
 
-<!-- csrf 설정 -->
-<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
-<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 <!-- Stylesheets
     ============================================= -->
 <link rel="icon" type="image/png" sizes="16x16"
@@ -190,134 +187,20 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
-		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()">
+<%-- 		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()"> --%>
 			<p></p>
 			<div class="jumbotron panel-heading text-center lead">
 				<h2>Hotel Delluna</h2>
-				<p>회원정보 수정</p>
+				<p>회원탈퇴안내</p>
 			</div>
-				<div class="form-group has-success">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="customer_id"
-								class="col-md-2 col-md-offset-2 col-form-label text-md-right">아이디
-							</label>
-						</div>
-						<div class="col-md-6">
-							<form:input type="text" path="customer_id" id="customer_id" class="form-control required"
-								placeholder="아이디를 입력해 주세요" aria-describedby="inputSuccess2Status" readonly="true"></form:input>
-						</div>
-					</div>
-				</div>
-				<div class="form-group has-success">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="password"
-								class="col-md-2 col-md-offset-2 col-form-label text-md-right">비밀번호
-							</label>
-						</div>
-						<div class="col-md-6">
-						<form:input type="password" path="password" id="password"
-								class="form-control required" placeholder="비밀번호(8~32자리)" />
-							<div id ="password-check">8 ~ 20자의 영문 대/소문자, 숫자, 특수문자(!@#$%^*+=-)를 사용하세요.</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-group has-success mt-5">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="password2"
-								class="col-md-2 col-md-offset-2 col-form-label text-md-right">비밀번호
-								재입력 </label>
-						</div>
-						<div class="col-md-6 mt-5">
-							<form:input type="password" path="password2" id="password2"
-								class="form-control required" placeholder="비밀번호 재입력" />
-							<div id ="password-check2"></div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group has-success">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="customer_name"
-								class="col-md-2 col-md-offset-2 col-form-label text-md-right">이름</label>
-						</div>
-						<div class="col-md-6">
-							<form:input type="text" style="ime-mode: disabled" path="customer_name" id="customer_name" class="form-control required"
-								placeholder="이름을 입력해 주세요" readonly="true"/>
-							<div id = "name-check"></div>
-						</div>
-					</div>
-				</div>
 
-				<div class="form-group has-success">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="tel"
-								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">전화번호</label>
-						</div>
-						<div class="col-md-6 mt-5">
-							<form:input type="number" style="ime-mode: disabled" path="tel"
-								id="tel" class="form-control required" placeholder="전화번호" min="0" />
-								<div id="number-tel">숫자만 입력하세요.</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group has-success">
-					<div class="row">
-						<div class="col-md-offset-1">
-							<label for="userEmail"
-								class=" mt-5 col-md-2 col-md-offset-2 col-form-label text-md-right">이메일</label>
-						</div>
-						<div class="col-md-6 mt-5">
-							<form:input type="email" style="ime-mode: disabled" path="userEmail"
-								id="userEmail" class="form-control required" placeholder="이메일 주소 입력"
-								min="0" />
-								<div id="email-check">이메일을 입력해주세요.</div>
-								
-						</div>
-					</div>
-				</div>
-				
-			<div class="form-group has-success">
-				<div class="row">
-					<div class="col-md-offset-1">
-						<label for="year"
-									class="col-md-2 col-md-offset-2 col-form-label text-md-right">생년월일</label>
-					</div>
-						<div class="mtd col-md-2">
-							<form:select path="year" class="form-control" id="year" >
-								<option>연도</option>
-							</form:select>
-						</div>
-								
-						<div class="mtd col-md-2">
-							<form:select path="month" class="form-control" id="month">
-								<option>월</option>
-							</form:select>
-						</div>
-								
-						<div class="mtd col-md-2">
-							<form:select path="day" class="form-control" id="day">
-								<option>일</option>
-							</form:select>
-						</div>
-				</div>
-			</div>		
 						<div class="row">
 							<div class="col-md-2" style="float:none; margin:0 auto">
-								<form:button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">개인정보수정</form:button>
-							</div>
-							
-							<div class="col-md-2" style="float:right;">
-								<a href="userDeleteCheck.do"><button type="button" class="btn btn-default btn-sm">회원탈퇴</button></a>
+								<button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">개인정보수정</button>
 							</div>
 						</div>
-				</form:form>
-			</div>
+<%-- 				</form:form> --%>
+		</div>
 			
 		
 		
@@ -481,35 +364,5 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	<script type="text/javascript" src="resources/js/Validation/singupValidation.js"></script>
-	<script type="text/javascript">
-		window.addEventListener('load',()=>{
-			
-			document.querySelector('#password').value = null
-			
-			var selectedYear = document.querySelector('#year')
-			for(i=0;i< selectedYear.options.length; i++){
-				if(selectedYear.options[i].value == '${details.year}'){
-					selectedYear.options[i].selected = true
-					break
-				}
-			}
-			var selectedMonth = document.querySelector('#month')
-			console.log('${details.month}')
-			for(i=0;i< selectedMonth.options.length; i++){
-				if(selectedMonth.options[i].value == '${details.month}'){
-					selectedMonth.options[i].selected = true
-					break
-				}
-			}
-			var selecteDday = document.querySelector('#day')
-			for(i=0;i< selecteDday.options.length; i++){
-				if(selecteDday.options[i].value == '${details.day}'){
-					selecteDday.options[i].selected = true
-					break
-				}
-			}
-		})
-	</script>
 </body>
 </html>
