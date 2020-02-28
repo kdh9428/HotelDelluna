@@ -44,7 +44,6 @@ public class BoardServiceImpl implements BoardService {
 			String titleCut = boardVO.getNotice_title().substring(0,100);
 			boardVO.setNotice_title(titleCut);
 		}
-		
 		boardDao.boardWrite(boardVO);
 	}
 	
@@ -70,7 +69,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		//아이디 확인
 		String customer_id = boardDao.boardDeleteId(notice_number);
-		
 		if(customer_id.equals(sessionId)) {
 			boardDao.boardDelete(notice_number);
 			check = 1;
@@ -79,6 +77,7 @@ public class BoardServiceImpl implements BoardService {
 			return check=0;
 		}
 	}
+	
 	//업데이트
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
@@ -95,7 +94,6 @@ public class BoardServiceImpl implements BoardService {
 	//게시판 총 개수 확인
 	@Override
 	public int boardListCnt(SearchPagination pagination) throws Exception {
-		
 		return boardDao.boardListCnt(pagination);
 	}
 	

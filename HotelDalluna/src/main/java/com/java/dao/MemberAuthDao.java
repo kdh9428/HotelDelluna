@@ -22,4 +22,7 @@ public interface MemberAuthDao {
 	
 	//회원 정보 수정
 	public int userModify(memberDetails details) throws Exception;
+	
+	//회원 삭제
+	public int userDelete(String customer_id) throws Exception;
 }

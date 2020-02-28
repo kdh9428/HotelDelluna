@@ -52,18 +52,16 @@ public class ReservationController  {
 	@PostMapping("ReservationCheck.do")
 	public String ReservationCheck(@ModelAttribute("dto") ReservationDTO reservationDto, Model model) throws Exception{
 		logger.info("ReservationCheck 컨트롤러 확인");
-		String url;
 		 int check = reservationService.ReservationCheck(reservationDto);
 		 
 		 //check가 1이면 예약 되어있음 
 		 if(check==1) {
 			 model.addAttribute("page",check);
-			 url="redirect:ReservationConfirm.do";
+			 return "redirect:ReservationConfirm.do";
 		 }else{
 			 model.addAttribute("page",check);
-			 url="Reservation";
+			 return "Reservation";
 		 }
-		 return url;
 	}
 	
 	//예약 완료 확인

@@ -67,5 +67,13 @@
    			where
    				customer_id = #{customer_id}
    		</update>
+   		
+   		<!-- 회원 삭제 -->
+   		<delete id="userDelete" parameterType="string">
+   			delete form
+   						customer
+  					where
+   						customer_id = #{customer_id}
+   		</delete>
     
     </mapper>

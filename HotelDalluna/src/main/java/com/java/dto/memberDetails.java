@@ -25,7 +25,6 @@ public class memberDetails implements UserDetails{
 	@Pattern(regexp = "^[가-힇a-zA-Z]*$")
 	private String customer_name; // 성함
 	@NotEmpty
-//	@Pattern(regexp="^(01[016789])(\\\\d{3,4})(\\\\d{4})$")
 	private String tel; // 전화번호
 	@NotEmpty
 	@Email

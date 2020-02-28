@@ -19,7 +19,7 @@
 	            "Reservation_date_out" :checkOut,
 	            "Room_type":roomType
 	        })
-	        if(checkIn != '' ||checkOut != '' ){
+	        if(checkIn  || checkOut ){
 					//방 가격 
 					reservationPay(checkIn,checkOut)
 					
@@ -41,7 +41,6 @@
 	            }
 	        }
 	        xhr.send(json)
-	       
 	     }
 	   })
 	}

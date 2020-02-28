@@ -86,48 +86,49 @@
                                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
+
                         <ul class="">
-							<li><div><a href="#" onclick="return false;">호텔소개</a></div>
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
-									<li><div><a href="hotel-About-Us.do">호텔소개</a></div></li>
-									<li><div><a href="Location.do">호텔위치</a></div></li>
-									<li><div><a href="list.do">호텔리뷰</a></div></li>
+									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
+									<li><a href="list.do"><div>호텔리뷰</div></a></li>
 								</ul></li>
-							<li><div><a href="#" onclick="return false;">객실</a></div>
+							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><div><a href="deluxe-double.do">디럭스</a></div>
+									<li><a href="deluxe-double.do"><div>디럭스</div></a>
 										<ul>
-											<li><div><a href="deluxe-double.do">디럭스 더블</a></div></li>
-											<li><div><a href="deluxe-twin.do">디럭스 트윈</a></div></li>
+											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><div><a href="family-suite.do">스위트</a></div>
+									<li><a href="family-suite.do"><div>스위트</div></a>
 										<ul>
-											<li><div><a href="family-suite.do">패밀리 스위트</a></div></li>
-											<li><div><a href="grand-suite.do">그랜드 스위트</a></div></li>
+											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><div><a href="dining.do">다이닝</a></div>
+							<li><a href="dining.do"><div>다이닝</div></a>
 								<ul>
-									<li><div><a href="dining.do">파노라마 (올 데이 다이닝)</a></div></li>
+									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
-							<li><div><a href="#" onclick="return false;">부대시설</a></div>
+							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
-									<li><div><a href="menu-item.do">사계절 온수풀 해온</a></div></li>
-									<li><div><a href="menu-item2.do">해온 루프탑 테라스</a></div></li>
-									<li><div><a href="menu-item3.do">프라이빗 카바나</a></div></li>
+									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><div><a href="contact.do">고객의 소리</a></div></li>
-							<li><div><a href="Reservation.do">예약하기</a></div></li>
-							<li class="current"><div><a href="ReservationConfirm.do">예약조회 및 취소</a></div></li>
+							<li><a href="contact.do"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 							
 							<!-- 로그인 하지 않았을 경우 보여준다.  -->
 							<sec:authorize access="isAnonymous()">
-								 <li><div><a href="login.do">로그인</a></div>
+								 <li><a href="login.do"><div>로그인</div></a>
 									<ul>
-	                                	<li><div><a href="login.do">로그인</a></div></li>
-	                                	<li><div><a href="#">아이디/비밀번호 찾기</a></div></li>
-	                                	<li><div><a href="singupForm.do">회원가입</a></div></li>
+	                                	<li><a href="login.do"><div>로그인</div></a></li>
+	                                	<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="singupForm.do"><div>회원가입</div></a></li>
                               	 	 </ul>   
                               	 </li>
 								</sec:authorize>

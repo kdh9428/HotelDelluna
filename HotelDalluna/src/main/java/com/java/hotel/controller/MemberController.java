@@ -128,8 +128,11 @@ public class MemberController {
 	}
 	
 	@GetMapping("userDelete.do")
-	public String userDelete(Model model) {
+	public String userDelete(Model model) throws Exception{
 		logger.info("삭제 확인");
+		
+		boolean deleteCheck =  memberDetail.userDelete();
+		model.addAttribute("deleteCheck", deleteCheck);
 		return "userDelete";
 	}
 }

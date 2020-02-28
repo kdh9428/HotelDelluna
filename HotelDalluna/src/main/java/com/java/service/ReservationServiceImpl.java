@@ -47,7 +47,7 @@ public class ReservationServiceImpl implements ReservationService {
 		boolean check = ReservationDao.ReservationCheck(ReservationDto);
 		logger.info("Service에서 check 확인" + check);
 		
-		// 비교 예약 0이면 예약 가능
+		// 비교 예약  false이면 예약 가능
 		if (check != true) {
 			// 룸 정보 테이블에서 룸 가격을 가져온다.
 			String roomprices = ReservationDao.roomprices(ReservationDto);
@@ -125,7 +125,6 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	@Override
 	public int ReservationCount(String customer_id) {
-	
 		return ReservationDao.ReservationCount(customer_id);
 	}
 	
@@ -139,7 +138,7 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		//한 페이지에 보여질 리스트 수
 		paging.setListSize(1);
-		paging.setRangeSize(10);
+		paging.setRangeSize(5);
 		
 		//아이디 
 		paging.setCustomer_id(auth.getName());

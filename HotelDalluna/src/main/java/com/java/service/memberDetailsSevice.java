@@ -20,4 +20,7 @@ public interface memberDetailsSevice {
 	
 	//회원 정보 수정
 	public boolean userModify(memberDetails details) throws Exception;
+	
+	//회원 삭제
+	public boolean userDelete() throws Exception;
 }

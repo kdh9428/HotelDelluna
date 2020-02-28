@@ -130,11 +130,8 @@
 		<!-- Header
         ============================================= -->
 		<header id="header" class="full-header">
-
 			<div id="header-wrap">
-
 				<div class="container clearfix">
-
 					<div id="primary-menu-trigger">
 						<i class="icon-reorder"></i>
 					</div>
@@ -155,7 +152,7 @@
                     <nav id="primary-menu">
 
                         <ul class="">
-							<li><a href="#" onclick="return false;"><div>호텔소개</div></a>
+							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
 									<li><a href="Location.do"><div>호텔위치</div></a></li>
@@ -186,7 +183,7 @@
 									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
 							<li><a href="contact.do"><div>고객의 소리</div></a></li>
-							<li class="current"><a href="Reservation.do"><div>예약하기</div></a></li>
+							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 							
 							<!-- 로그인 하지 않았을 경우 보여준다.  -->

@@ -75,7 +75,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	@Override
 	public List<memberDetails> userInformation() throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
 		return memberAuthDao.userInformation(auth.getName());
 	}
 	//회원정보 수정
@@ -94,6 +93,15 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 		}
 		int check = memberAuthDao.userModify(details);
 		if(check >=1) return true;
+		else return false;
+	}
+	
+	@Override
+	//회원정보 삭제
+	public boolean userDelete() throws Exception{
+	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		int deleteCheck = memberAuthDao.userDelete(auth.getName());
+		if(deleteCheck >= 1) return true;
 		else return false;
 	}
 }

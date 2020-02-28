@@ -207,7 +207,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		}
 	})
 	
-	//유효성 검사
+	//이름 유효성 검사
 	function nameFocusKeyUp(){
 		if(/^[가-힇a-z]+$/ig.test(customerName.value)){
 			nameCheck.innerHTML = ''
@@ -309,7 +309,7 @@ let customerAgainCheck // input #customer_id가 변경없이 포커스 아웃 �
 		}
 	  }  
 
-	  	/* 회원정보 수정  */
+	  	/* 회원정보 수정 시 유효성 검사   */
 		function modifyValidate(){
         /* 비밀번호 체크 */
         if(!passwordFocusKeyup()){
