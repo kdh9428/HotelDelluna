@@ -25,7 +25,7 @@
 	href="resources/images/favicon/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32"
 	href="resources/images/favicon/favicon-32x32.png">
-
+	
 <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
 <link rel="stylesheet" href="resources/css/font-icons.css"
@@ -45,27 +45,12 @@
 
 <!-- External JavaScripts
     ============================================= -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/plugins.js"></script>
 <!-- Document Title
     ============================================= -->
 <title>회원가입</title>
-
-<style>
-/* input 태그 number 타입 위아래 화살표 삭제 */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
-	
-}
-	.mtd{
-		margin:0 0 15px 0;
-	}
-	label{
-		margin:10px;
-	}
-</style>
 </head>
 
 <body class="stretched">
@@ -189,14 +174,30 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 		<div class="container clearfix">
 <%-- 		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()"> --%>
 			<p></p>
-			<div class="jumbotron panel-heading text-center lead">
+			<div class="jumbotron panel-heading">
 				<h2>Hotel Delluna</h2>
 				<p>회원탈퇴안내</p>
+				<hr style="background-color: red;height: 1px" >
+				회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.
+				<hr>
+				사용하고 계신 ${customer_id} 은 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br>
+				<span class="fas fa-exclamation-circle"></span>
+				탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가 하오니 신중하게 선택하시기 바랍니다.
+				<i class="fas fa-exclamation-circle"></i>
+			</div>
+
+			<div class="jumbotron panel-heading text-center lead">
+				<h4>비밀번호확인</h4>
+				<hr>
+				<h5>본인 확인을 위해 비밀번호를 입력해 주세요.</h5>
+					<div style=" float:none; margin:30px auto; height: 30px; width:150px;">
+						<input type="password" class="form-control" name="password" id="password">
+					</div>
 			</div>
 
 						<div class="row">
-							<div class="col-md-2" style="float:none; margin:0 auto">
-								<button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">개인정보수정</button>
+							<div class="col-md-2" style="float:none; margin:30px auto">
+								<button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">회원 탈퇴</button>
 							</div>
 						</div>
 <%-- 				</form:form> --%>
