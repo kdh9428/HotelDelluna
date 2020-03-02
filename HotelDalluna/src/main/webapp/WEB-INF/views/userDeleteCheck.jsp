@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="utf-8">
 <head>
@@ -51,6 +50,17 @@
 <!-- Document Title
     ============================================= -->
 <title>회원가입</title>
+
+<style type="text/css">
+.strong-id{
+	color: black;
+	background-color:white;
+}
+.ul-style{
+	padding-left: 5px;
+	font-size: 11px;
+}
+</style>
 </head>
 
 <body class="stretched">
@@ -172,27 +182,51 @@
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
+		<sec:authorize access="isAuthenticated()">
+        	<sec:authentication property="principal.username" var="login_id" />
+		</sec:authorize>
 <%-- 		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()"> --%>
+		<form action="userDelete.do" method="post" onsubmit="">
 			<p></p>
 			<div class="jumbotron panel-heading">
 				<h2>Hotel Delluna</h2>
 				<p>회원탈퇴안내</p>
 				<hr style="background-color: red;height: 1px" >
-				회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.
+				<i class="fas fa-exclamation-circle" style="color: red"></i>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.
 				<hr>
-				사용하고 계신 ${customer_id} 은 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br>
-				<span class="fas fa-exclamation-circle"></span>
-				탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가 하오니 신중하게 선택하시기 바랍니다.
-				<i class="fas fa-exclamation-circle"></i>
+				<i class="fas fa-exclamation-circle"></i>사용하고 계신 <strong class="strong-id">${customer_id} </strong>은 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+				<ul class="ul-style">
+					<li>탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가 하오니 신중하게 선택하시기 바랍니다.</li>
+				</ul>
+				<hr>
+				<i class="fas fa-exclamation-circle"></i>탈퇴 후 회원정보 및 서비스 이용 기록은 모두 삭제 됩니다.
+				<ul class="ul-style">
+					<li>회원정보는 개인정보처리방침에 따라 탈퇴 후 30일동안 보관되며, 30일이 지나면 보존필요정보 외의 모든 개인정보가 자동 삭제됩니다.</li>
+					<li>삭제되는 내용을 확인하시고 필요한 데이터는 미리 백업해 주세요.</li>
+				</ul>
+				<hr>
+				<i class="fas fa-exclamation-circle"></i>탈퇴 후에도 등록한 게시물은 그대로 남아 있습니다.
+				<ul class="ul-style">
+					<li>회원님이 올린 게시글 및 댓글은 탈퇴 시 자동 삭제 되지 않고 그대로 남아 있습니다.</li>
+					<li>삭제를 원하는 게시글이 있다면 반드시 탈퇴 전에 삭제하시기 바랍니다.</li>
+					<li>탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 관리자가 임의로 삭제해 드릴 수 없습니다.</li>
+				</ul>
+				<hr>
+				<i class="fas fa-exclamation-circle"></i> 게시판에 남아 있는 게시글은 탈퇴 후 삭제할 수 없습니다.<br>
+				<i class="fas fa-exclamation-circle"></i> 탈퇴 후에는 <strong class="strong-id">${customer_id}</strong>로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다.
 			</div>
 
-			<div class="jumbotron panel-heading text-center lead">
+			<div class="jumbotron panel-heading text-center" style="padding-bottom: 50px">
 				<h4>비밀번호확인</h4>
 				<hr>
-				<h5>본인 확인을 위해 비밀번호를 입력해 주세요.</h5>
+					
+				<i class="fas fa-exclamation-circle"></i>본인 확인을 위해 비밀번호를 입력해 주세요.
 					<div style=" float:none; margin:30px auto; height: 30px; width:150px;">
 						<input type="password" class="form-control" name="password" id="password">
 					</div>
+						<div style="float: right;">
+							<input type="checkbox" id="instructions-check" placeholder="비밀번호"><strong style="color: blue">안내 사항을 모두 확인하였으며 이에 동의합니다.</strong>
+						</div>
 			</div>
 
 						<div class="row">
@@ -201,8 +235,8 @@
 							</div>
 						</div>
 <%-- 				</form:form> --%>
+			</form>
 		</div>
-			
 		
 		
 		<!-- Footer
@@ -365,5 +399,8 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

@@ -252,7 +252,7 @@ public class HotelTest {
 			//assertThat매소드 테스트
 			int result =9;
 			System.out.println();
-		    Assert.assertThat(result, CoreMatchers.is(10));
+		    Assert.assertThat(result, CoreMatchers.is(9));
 //			boolean ss = Assert.assertThat("assa", CoreMatchers.is("assa"));
 			System.out.println( );
 			
