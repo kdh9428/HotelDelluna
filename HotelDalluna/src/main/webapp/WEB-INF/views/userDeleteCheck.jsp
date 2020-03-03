@@ -44,7 +44,7 @@
 
 <!-- External JavaScripts
     ============================================= -->
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<!-- <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> -->
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/plugins.js"></script>
 <!-- Document Title
@@ -57,7 +57,7 @@
 	background-color:white;
 }
 .ul-style{
-	padding-left: 5px;
+	padding-left: 15px;
 	font-size: 11px;
 }
 </style>
@@ -182,19 +182,17 @@
 		<!-- #page-title end -->
 		
 		<div class="container clearfix">
-		<sec:authorize access="isAuthenticated()">
-        	<sec:authentication property="principal.username" var="login_id" />
-		</sec:authorize>
-<%-- 		<form:form id="memberDetails" class="form-signup" role="form" modelAttribute="memberDetails" method="post" action="userModify.do" onsubmit="return modifyValidate()"> --%>
-		<form action="userDelete.do" method="post" onsubmit="">
+        	<sec:authentication property="principal.username" var="customer_id" />
+		<form action="userDelete.do" id="form-submit" method="post" onsubmit="return false">
+		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<p></p>
 			<div class="jumbotron panel-heading">
 				<h2>Hotel Delluna</h2>
 				<p>회원탈퇴안내</p>
 				<hr style="background-color: red;height: 1px" >
-				<i class="fas fa-exclamation-circle" style="color: red"></i>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.
+				<i class="fas fa-exclamation-circle" style="color: red"></i><h5 style="color: red">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.</h5> 
 				<hr>
-				<i class="fas fa-exclamation-circle"></i>사용하고 계신 <strong class="strong-id">${customer_id} </strong>은 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+				<i class="fas fa-exclamation-circle"></i>사용하고 계신 <strong class="strong-id">${customer_id} </strong>은/는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
 				<ul class="ul-style">
 					<li>탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가 하오니 신중하게 선택하시기 바랍니다.</li>
 				</ul>
@@ -231,10 +229,9 @@
 
 						<div class="row">
 							<div class="col-md-2" style="float:none; margin:30px auto">
-								<button type="submit" id="submit-button" class="btn btn-primary btn-lg btn-block">회원 탈퇴</button>
+								<button type="button" id="submit-button" class="btn btn-primary btn-lg btn-block">회원 탈퇴</button>
 							</div>
 						</div>
-<%-- 				</form:form> --%>
 			</form>
 		</div>
 		
@@ -400,6 +397,35 @@
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	<script type="text/javascript">
+		const submitButton = document.querySelector('#submit-button')
+		submitButton.addEventListener('click',()=>{
+		var checkBox = document.querySelector('#instructions-check').checked
+		var passwordDelete = document.querySelector('#password')
+			console.log('확인')
+			if(!checkBox){
+				alert('안내 사항에 동의를 해주세요')
+			}else{
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST','userPassword.do')
+				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+				xhr.onload = () =>{
+					if(xhr.status === 200){
+						if(xhr.responseText == 'true'){
+							document.querySelector('#form-submit').submit()
+						}else{
+							passwordDelete.focus()
+							alert('비밀번호를 확인해 주세요.')
+						}
+					}else{
+						alert('ajax 에러! 다시 시도해주세요.')
+					}
+				}
+				xhr.send('password='+passwordDelete.value)
+				
+			}
+			
+		})
 		
 	</script>
 </body>
