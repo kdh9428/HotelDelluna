@@ -84,10 +84,6 @@
 								<button class="login100-form-btn" type="button" style="margin:0 5px" value="회원가입" onclick="location.href='singupForm.do'">회원가입</button>
 							</div>
 						</form>
-						<c:if test="${pwnot ne null}"> 
-							<script>alert('${pwnot}')</script>
-							<c:remove var="pwnot"/>
-						</c:if>
 						</sec:authorize>
 					 <sec:authorize access="isAuthenticated()">
 						<p>${pageContext.request.userPrincipal.name}님 환영합니다!</p>
@@ -121,6 +117,12 @@
 		if('${param.error}'=='true'){
 			alert("아이디 또는 비밀번호를 확인해 주세요")
 			document.querySelector("#customer_id").focus()
+		}
+		
+		if('${deleteCheck}'=='false'){
+			alert('회원 탈퇴를 완료하지 못했습니다. 다시 시도해 주세요')
+		}else if('${deleteCheck}' =='true'){
+			alert('회원 탈퇴가 완료되었습니다.')
 		}
 		
 	})

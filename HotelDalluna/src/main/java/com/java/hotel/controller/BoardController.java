@@ -1,8 +1,12 @@
 package com.java.hotel.controller;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +49,7 @@ public class BoardController {
 	public String boardList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
 											@RequestParam(required = false, defaultValue = "1") int range,
 											 @RequestParam(required = false, defaultValue = "notice_title") String searchType,
-											 @RequestParam(required = false) String keyword) throws Exception{
+											 @RequestParam(required = false) String keyword, HttpSession session) throws Exception{
 		logger.info("list 시작" +searchType+"확인"+keyword);
 		
 //		Pagination pagination = new Pagination();
@@ -64,6 +68,7 @@ public class BoardController {
 		List<BoardVO> list = boardService.boardList(search);
 		model.addAttribute("pagination",search);
 		model.addAttribute("boardList",list);
+		
 		return "list";
 	}
 	

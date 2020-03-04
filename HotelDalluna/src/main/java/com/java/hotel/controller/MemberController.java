@@ -36,8 +36,10 @@ public class MemberController {
 	memberDetailsSevice memberDetail;
 	
 	@GetMapping("login.do")
-	public String logincheck(Model model) {
+	public String logincheck(Model model,@RequestParam(required = false) String deleteCheck) {
 			logger.info("로그인 페이지 이동");
+			//회원 탈퇴 시 탈퇴 완료 확인 ,userDelete()에서 redirect로 전달 받기 때문에 파라미터로 설정, 더 좋은 방법 있나 생각
+			model.addAttribute("deleteCheck", deleteCheck);
 		return"login";
 	}
 	
@@ -132,12 +134,14 @@ public class MemberController {
 //		return "userDeleteCheck";
 //	}
 	
-	@GetMapping("userDelete.do")
-	public String userDelete(Model model) throws Exception{
+	@PostMapping("userDelete.do")
+	public String userDelete(@RequestParam String password ,Model model) throws Exception{
 		logger.info("삭제 확인");
-		
-		boolean deleteCheck =  memberDetail.userDelete();
+//		if(memberDetail.userPassword(password))
+		boolean deleteCheck = memberDetail.userDelete();
+		SecurityContextHolder.clearContext();
 		model.addAttribute("deleteCheck", deleteCheck);
-		return "userDelete";
+		
+		return "redirect:login.do";
 	}
 }

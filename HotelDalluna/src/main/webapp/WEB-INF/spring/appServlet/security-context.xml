@@ -26,6 +26,16 @@
 			<!-- authentication-success-handler-ref="customAuthenticationSuccessHandler" -->
 	
 			<!-- login-processing-url="/login" -->
+			
+			
+			<!-- invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지
+			 max-sessions="1" : 최대 허용 가능 중복 세션 수 
+			 expired-url="/login" :  중복 로그인이 일어났을 경우 이동 할 페이지 
+			  error-if-maximum-exceeded : 중복 로그인 체크
+		 -->
+		 <session-management invalid-session-url="/index.do">
+     	   <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" expired-url="/login.do" />
+   		 </session-management>
 
 		<!-- 로그인 세션을 가진 사용자만 접근 가능한 요청주소 지정 -->
 		<intercept-url pattern="/ReservationConfirm.do" access="isAuthenticated()" />
@@ -34,14 +44,6 @@
 		<intercept-url pattern="/boardDelete.do" access="isAuthenticated()" />
 		<intercept-url pattern="/userModifyPasswordCheck.do" access="isAuthenticated()" />
 		
-		<!-- invalid-session-url="/login" : 세션이 끊겼을때 이동 할 페이지
-			 max-sessions="1" : 최대 허용 가능 중복 세션 수 
-			 expired-url="/login" :  중복 로그인이 일어났을 경우 이동 할 페이지 
-		 -->
-		 <session-management invalid-session-url="/index.do">
-     	   <concurrency-control max-sessions="1" expired-url="/login.do"/>
-   		 </session-management>
-   		 
    		 <!-- 로그아웃 요청주소 지정 -->
 		<logout logout-url="/logout.do" logout-success-url="/index.do" invalidate-session="true" />
 	</http>

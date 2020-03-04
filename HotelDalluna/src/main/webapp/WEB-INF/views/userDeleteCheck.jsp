@@ -404,6 +404,9 @@
 			console.log('확인')
 			if(!checkBox){
 				alert('안내 사항에 동의를 해주세요')
+			}else if(passwordDelete.value == ''){
+							passwordDelete.focus()
+							alert('비밀번호를 확인해 주세요.')
 			}else{
 				var xhr = new XMLHttpRequest();
 				xhr.open('POST','userPassword.do')
@@ -422,11 +425,8 @@
 					}
 				}
 				xhr.send('password='+passwordDelete.value)
-				
 			}
-			
 		})
-		
 	</script>
 </body>
 </html>

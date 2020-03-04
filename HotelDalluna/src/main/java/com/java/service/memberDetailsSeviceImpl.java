@@ -100,6 +100,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	//회원정보 삭제
 	public boolean userDelete() throws Exception{
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	System.out.println("아이디 확인"+auth.getName());
 		int deleteCheck = memberAuthDao.userDelete(auth.getName());
 		if(deleteCheck >= 1) return true;
 		else return false;

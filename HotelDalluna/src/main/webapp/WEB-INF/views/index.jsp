@@ -224,7 +224,7 @@
 								</sec:authorize>
 								<!-- 로그인 했을 경우 보여준다.  -->
 							 <sec:authorize access="isAuthenticated()">
-								  <li><a href="#" onclick="return false;"><div>로그아웃</div></a>
+								  <li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a>
 										<ul>
 											<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
 											<li><a href="userModifyPasswordCheck.do"><div>회원정보 수정</div></a></li>
