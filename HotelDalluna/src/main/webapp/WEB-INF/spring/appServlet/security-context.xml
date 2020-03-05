@@ -22,7 +22,8 @@
 					login-processing-url="/loginSuccess"
 					username-parameter="customer_id"
 					password-parameter="password"
-			authentication-failure-url="/login.do?error=true"/>
+			authentication-failure-url="/login.do?error=true"
+			authentication-success-handler-ref="LoginSuccessHandler"/>
 			<!-- authentication-success-handler-ref="customAuthenticationSuccessHandler" -->
 	
 			<!-- login-processing-url="/login" -->
@@ -58,7 +59,7 @@
 		</authentication-provider>
 	</authentication-manager>
 	<beans:bean id="userService" class="com.java.service.memberDetailsSeviceImpl"/>
-	
+	<beans:bean id="LoginSuccessHandler" class="com.java.hotel.controller.LoginSuccessHandler"/>
 	
 
 </beans:beans>

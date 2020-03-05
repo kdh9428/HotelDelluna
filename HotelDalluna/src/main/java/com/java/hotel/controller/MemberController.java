@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -135,13 +136,13 @@ public class MemberController {
 //	}
 	
 	@PostMapping("userDelete.do")
-	public String userDelete(@RequestParam String password ,Model model) throws Exception{
+	public String userDelete(@RequestParam String password ,Model model,HttpSession session) throws Exception{
 		logger.info("삭제 확인");
 //		if(memberDetail.userPassword(password))
 		boolean deleteCheck = memberDetail.userDelete();
+		session.invalidate();
 		SecurityContextHolder.clearContext();
 		model.addAttribute("deleteCheck", deleteCheck);
-		
 		return "redirect:login.do";
 	}
 }

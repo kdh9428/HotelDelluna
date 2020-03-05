@@ -48,6 +48,9 @@
 <link rel="stylesheet" type="text/css" href="resources/css/util.css">
 <link rel="stylesheet" type="text/css" href="resources/css/main.css">
 <!--===============================================================================================-->
+<link rel="stylesheet" href="resources/css/bootstrap.css"
+	type="text/css" />
+
 </head>
 <body>
 	<div class="limiter">
@@ -71,9 +74,10 @@
 							</div>
 							<div class="flex-sb-m w-full p-b-30">
 								<div class="contact100-form-checkbox">
-									<input class="input-checkbox100" id="ckb1" type="checkbox"
-										name="remember-me"> <label class="label-checkbox100"
-										for="ckb1"> Remember me </label>
+									<input class="input-checkbox100" id="cookie" type="checkbox"
+										name="cookie" value="off"> <label class="label-checkbox100"
+										for="cookie"> Remember me </label>
+									 <input type="hidden" id="cookie" name="cookie" value="off">
 								</div>
 								<div>
 									<a href="searchIdpass.jsp" class="txt1"> Forgot Password? </a>
@@ -86,10 +90,13 @@
 						</form>
 						</sec:authorize>
 					 <sec:authorize access="isAuthenticated()">
-						<p>${pageContext.request.userPrincipal.name}님 환영합니다!</p>
-						<p>
-							<a href="/logout">로그아웃</a>
-							</p>
+					 <div style="text-align:center;">
+						<h3>${pageContext.request.userPrincipal.name}님 환영합니다!</h3>
+							<button type="button" class ="btn btn-primary" onclick="document.getElementById('logout-form').submit();">로그아웃</button>
+							<form id="logout-form" action="logout.do" method="post"> 
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							</form>
+					</div>
 						</sec:authorize>
 			</div>
 		</div>
@@ -125,6 +132,14 @@
 			alert('회원 탈퇴가 완료되었습니다.')
 		}
 		
+	})
+	
+	var cookieToggle = document.querySelector('#cookie')
+	cookieToggle.addEventListener('click',()=>{
+		if (cookieToggle.value == 'off')
+			cookieToggle.value = 'on'
+		else
+			cookieToggle.value = 'off'
 	})
 	</script>
 	
