@@ -42,19 +42,24 @@ public class MemberController {
 			logger.info("로그인 페이지 이동");
 			//회원 탈퇴 시 탈퇴 완료 확인 ,userDelete()에서 redirect로 전달 받기 때문에 파라미터로 설정, 더 좋은 방법 있나 생각
 			
-//			String getCookieId;
-//			Cookie [] getCookie = request.getCookies();
-//			if(getCookie != = null) {
-//				for(Cookie Cook : getCookie) {
-//					
-//				}
-//			}
+			String getCookieId = "";
+			Cookie [] getCookie = request.getCookies();
+			if(getCookie != null) {
+				for(Cookie Cook : getCookie) {
+					if("id".equals(Cook.getName())) {
+						getCookieId = Cook.getValue();
+					}
+				}
+			}
 			
+			System.out.println("쿠키확인"+getCookieId);
 			//이전 페이지 저장
 			String referer = request.getHeader("referer");
 			//로그인 페이지를 직접 클릭하지 않았을 경우 세션에 이전 페이지 주소 저장
 			request.getSession().setAttribute("prevPage", referer);
+			
 			model.addAttribute("deleteCheck", deleteCheck);
+			model.addAttribute("getCookieId",getCookieId);
 		return"login";
 	}
 	

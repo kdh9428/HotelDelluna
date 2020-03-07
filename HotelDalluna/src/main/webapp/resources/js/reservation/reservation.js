@@ -97,7 +97,7 @@
 	function reservationPay(checkIn, checkOut){
 		var checkIn = new Date(checkIn)
 		var checkOut = new Date(checkOut)
-		var dateSubtract = checkOut.getTime() - checkIn.getTime() ;
+		var dateSubtract = checkOut.getTime() - checkIn.getTime();
 		var btDay = dateSubtract / (1000*60*60*24) ;
 		var roomType = document.querySelector('#room_type')//방 종류
 			roomType = roomType.options[roomType.selectedIndex].value

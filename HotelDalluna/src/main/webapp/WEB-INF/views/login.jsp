@@ -75,9 +75,8 @@
 							<div class="flex-sb-m w-full p-b-30">
 								<div class="contact100-form-checkbox">
 									<input class="input-checkbox100" id="cookie" type="checkbox"
-										name="cookie" value="off"> <label class="label-checkbox100"
+										name="cookie" value="off" > <label class="label-checkbox100"
 										for="cookie"> Remember me </label>
-									 <input type="hidden" id="cookie" name="cookie" value="off">
 								</div>
 								<div>
 									<a href="searchIdpass.jsp" class="txt1"> Forgot Password? </a>
@@ -132,6 +131,11 @@
 			alert('회원 탈퇴가 완료되었습니다.')
 		}
 		
+		if('${getCookieId}'!=''){
+			document.querySelector('#customer_id').value = '${getCookieId}'
+			document.querySelector('#cookie').checked = true
+		}
+		
 	})
 	
 	var cookieToggle = document.querySelector('#cookie')
@@ -141,6 +145,7 @@
 		else
 			cookieToggle.value = 'off'
 	})
+	
 	</script>
 	
 </body>
