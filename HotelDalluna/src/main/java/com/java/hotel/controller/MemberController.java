@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,7 +29,6 @@ import com.java.Validation.validation;
 import com.java.dto.memberDetails;
 import com.java.service.memberDetailsSevice;
 
-
 @Controller
 public class MemberController {
 
@@ -39,9 +38,17 @@ public class MemberController {
 	memberDetailsSevice memberDetail;
 	
 	@GetMapping("login.do")
-	public String logincheck(Model model,@RequestParam(required = false) String deleteCheck,HttpServletRequest request) {
+	public String logincheck(Model model,@RequestParam(required = false) String deleteCheck, HttpServletRequest request) {
 			logger.info("로그인 페이지 이동");
 			//회원 탈퇴 시 탈퇴 완료 확인 ,userDelete()에서 redirect로 전달 받기 때문에 파라미터로 설정, 더 좋은 방법 있나 생각
+			
+//			String getCookieId;
+//			Cookie [] getCookie = request.getCookies();
+//			if(getCookie != = null) {
+//				for(Cookie Cook : getCookie) {
+//					
+//				}
+//			}
 			
 			//이전 페이지 저장
 			String referer = request.getHeader("referer");
