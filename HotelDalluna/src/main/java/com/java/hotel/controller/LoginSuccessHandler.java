@@ -24,19 +24,18 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-//		System.out.println("쿠키 체크 확인한다."+ request.getParameter("cookie"));
 		
 		if(request.getParameter("cookie")!=null) {
-			System.out.println("잘된다"+request.getParameter("customer_id"));
+			//쿠키 생성
 			Cookie idCookie = new Cookie("id", request.getParameter("customer_id"));
 			idCookie.setMaxAge(60*60*24*7);
 			idCookie.setPath(request.getContextPath()+"/login.do");
 			response.addCookie(idCookie);
-		}else {
+		}else{
+			//쿠키 삭제
 			Cookie deleteIdCookie = new Cookie("id", null);
 			deleteIdCookie.setMaxAge(0);
 			response.addCookie(deleteIdCookie);
-			System.out.println("off다"+request.getContextPath()+"/login.do");
 		}
 		resultRedirectStrateg(request, response, authentication);
 	}
