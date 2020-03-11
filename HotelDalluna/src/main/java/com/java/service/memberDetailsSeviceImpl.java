@@ -59,6 +59,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	//회원 아이디 체크
 	@Override
 	public int doubleCheck(String customer_id) throws Exception {
+		System.out.println("확인");
 		return memberAuthDao.doubleCheck(customer_id);
 	}
 	

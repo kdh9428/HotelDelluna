@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -56,6 +55,7 @@ public class MemberController {
 //					}
 //				}
 //			}
+			
 			System.out.println("ref"+ref);
 			//이전 페이지 저장
 			String referer = request.getHeader("referer");

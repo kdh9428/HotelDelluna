@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.java.BoardDao.BoardDao;
+import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
 import com.java.dao.MemberAuthDao;
 import com.java.dao.ReservationDaoImpl;
@@ -57,11 +59,11 @@ public class HotelTest {
 	
 	@Inject
 	PasswordEncoder passwordEncoder;
-//	
+	
 //	@Test
 //	@Ignore
 //	public void testGetBoardList() throws Exception {
-
+//
 //		Pagination pagination = new Pagination();
 //		SearchPagination pagination = new SearchPagination();
 //		
@@ -96,42 +98,42 @@ public class HotelTest {
 //
 //	}
 
-//	@Test  @Ignore 
-//	public void testInsertBoard() throws Exception {
-//		
-//
-//
-//		BoardVO boardVO = new BoardVO();
-//
-//	//	boardVO.setTitle("첫번째 게시물 입니다.");
-//
-//	//	boardVO.setContent("첫번째 게시물입니다.");
-//
-//		
-//
-//
-//		for (int i = 1; i < 100; i++) {
-//			boardVO.setNotice_title(i + " 번째 게시물 입니다.");
-//
-//			boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
-//			boardVO.setCustomer_id("aaa");
-//			boardVO.setRef(0);
-//			/* boardDao.boardUpdate(boardVO); */
-//			boardService.boardInsert(boardVO);
-//
-//			logger.info("\n Insert Board Result ");
+	@Test  @Ignore 
+	public void testInsertBoard() throws Exception {
+		
 
-//		if(result == 1) {
-//
-//			logger.info("\n 게시물 등록 성공 ");
-//
-//		} else {
-//
-//			logger.info("\n 게시물 등록 실패");
-//
-//		}
-//		}
-//	}
+
+		BoardVO boardVO = new BoardVO();
+
+	//	boardVO.setTitle("첫번째 게시물 입니다.");
+
+	//	boardVO.setContent("첫번째 게시물입니다.");
+
+		
+
+
+		for (int i = 1; i < 100; i++) {
+			boardVO.setNotice_title(i + " 번째 게시물 입니다.");
+
+			boardVO.setNotice_contents(i + " 번째 게시물 입니다.");
+			boardVO.setCustomer_id("aaa");
+			boardVO.setRef(0);
+			/* boardDao.boardUpdate(boardVO); */
+			boardService.boardInsert(boardVO);
+
+			logger.info("\n Insert Board Result ");
+		int result=1;
+		if(result == 1) {
+
+			logger.info("\n 게시물 등록 성공 ");
+
+		} else {
+
+			logger.info("\n 게시물 등록 실패");
+
+		}
+		}
+	}
 
 	
 	
@@ -141,7 +143,7 @@ public class HotelTest {
 //	public void ReservationTest() {
 //		
 //		ReservationDTO Reservation =  new ReservationDTO();
-		
+//		
 //		List<ReservationDTO> Reservation1 = ReservationDao.ReservationConfirm("aaa");
 //		
 //		if(Reservation1.size() > 0 ) {
@@ -156,7 +158,7 @@ public class HotelTest {
 //		int listCnt = ReservationDao.ReservationCount("aaa");
 //		System.out.println(listCnt);
 //		logger.info(ReservationDao.ReservationCount("aaa"));
-		
+//		
 //		Pagination page = new Pagination();
 //		page.pageInfo(1, 1, listCnt);
 //		page.setCustomer_id("aaa");
@@ -171,40 +173,40 @@ public class HotelTest {
 //			System.out.println(pages.getReservation_date_in());
 //			System.out.println(pages.getReservation_date_out());
 //			
-
+//
 //		}
 //	}
-//	
-//	class A{
-//		public void a() {
-//			System.out.println("오버라이딩");
-//		}
-//	}
-//	
-//	class B extends A{
-//		
-//		public B() {
-//			// TODO Auto-generated constructor stub
-//		}
-//		
-//		public B(int a) {
-//			// TODO Auto-generated constructor stub
-//		}
-//		
-//		public B(int a, int b) {
-//			// TODO Auto-generated constructor stub
-//		}
-//		
-//		@Override
-//		public void a() {
-//			// TODO Auto-generated method stub
-//			super.a();
-//		}
-//		
-//		public void a(int a) {
-//			
-//		}
-//	}	
+	
+	class A{
+		public void a() {
+			System.out.println("오버라이딩");
+		}
+	}
+	
+	class B extends A{
+		
+		public B() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public B(int a) {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public B(int a, int b) {
+			// TODO Auto-generated constructor stub
+		}
+		
+		@Override
+		public void a() {
+			// TODO Auto-generated method stub
+			super.a();
+		}
+		
+		public void a(int a) {
+			
+		}
+	}	
 	@Test 
 	public void test1(){
 		

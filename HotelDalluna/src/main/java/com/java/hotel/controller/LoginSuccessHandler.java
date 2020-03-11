@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.Test;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -64,6 +65,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			redirectStrategy.sendRedirect(request, response, "/index.do");
 			
 		}
+	}
+	@Test
+	public void test1() {
+		System.out.println("테스트 확인중입니다.");
 	}
 	
 }
