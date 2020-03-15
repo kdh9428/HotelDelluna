@@ -16,7 +16,7 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 	private static final Logger logger = LoggerFactory.getLogger(MemberAuthDaoImpl.class);
 	
 	@Autowired
-	private SqlSessionTemplate sqlSesstion;
+	SqlSessionTemplate sqlSesstion;
 	
 	@Override
 	public memberDetails getUserById(String customer_id) {
@@ -61,5 +61,4 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
-	
 }
