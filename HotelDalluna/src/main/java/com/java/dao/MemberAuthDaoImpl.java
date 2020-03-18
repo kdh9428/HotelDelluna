@@ -58,9 +58,6 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 	//회원 삭제
 	@Override
 	public int userDelete(String customer_id) throws Exception {
-		
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
-	
-	
 }
