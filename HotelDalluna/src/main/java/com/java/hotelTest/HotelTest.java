@@ -271,5 +271,17 @@ public class HotelTest {
 				System.out.println("그냥 저장하기");
 			}
 			
+			TeeestOk aa = ()->{
+				System.out.println("람다식 테스트!");
+			};
+			
+			aa.exec();
+			
+			int N = 10;
+			if(N%2 == 0) {
+				System.out.println("여기실행");
+			}
+			
+			
 		}
 }

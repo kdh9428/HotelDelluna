@@ -62,4 +62,5 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
 	
+	
 }
