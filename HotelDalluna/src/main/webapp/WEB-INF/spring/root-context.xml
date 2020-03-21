@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<context:annotation-config/>
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -27,6 +29,25 @@
 	 <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 	 	<constructor-arg index="0" ref="sqlSessionFactory"/>
 	 </bean>
+	 
+	 <!-- 이메일 아이디 -->
+	 <util:properties id="emailConfig" location="classpath:/properties/EmailConfig.xml"/>
+	
+	<!-- Mail 인증 관련 -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="#{emailConfig['mail.host']}" />
+        <property name="port" value="#{emailConfig['mail.port']}" />
+        <property name="username" value="#{emailConfig['mail.manager']}" />
+        <property name="password" value="#{emailConfig['mail.password']} " />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
 	 
 	 	<!--한글처리 @ResponseBody 사용시-->
 <!-- 	<bean class="org.springframework.http.converter.StringHttpMessageConverter" >

@@ -18,6 +18,7 @@
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	<context:annotation-config/>
+	<!-- 스트레오 애노테이션을 제외하고 @Controller로 표현된 클래스만 빈으로 생성하겠다는 설정  -->
 	<context:component-scan base-package="com.java" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
@@ -68,22 +69,4 @@
 	        </bean>
 	    </mvc:message-converters>
 	</mvc:annotation-driven>
-	
-	<util:properties id="emailConfig" location="classpath:/properties/EmailConfig.xml"/>
-	
-	<!-- Mail 인증 관련 -->
-    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value="#{emailConfig['mail.host']}" />
-        <property name="port" value="#{emailConfig['mail.port']}" />
-        <property name="username" value="#{emailConfig['mail.manager']}" />
-        <property name="password" value="#{emailConfig['mail.password']} " />
-        <property name="javaMailProperties">
-            <props>
-                <prop key="mail.transport.protocol">smtp</prop>
-                <prop key="mail.smtp.auth">true</prop>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.debug">true</prop>
-            </props>
-        </property>
-    </bean>
 </beans>
