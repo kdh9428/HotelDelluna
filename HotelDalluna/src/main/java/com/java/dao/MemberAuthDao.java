@@ -11,7 +11,7 @@ public interface MemberAuthDao {
 	//회원가입
 	public int singup(memberDetails details);
 	
-	//ajax id check
+	//ajax id check 
 	public int doubleCheck(String customer_id) throws Exception;
 	
 	//ajax 비밀번호 체크
@@ -25,4 +25,7 @@ public interface MemberAuthDao {
 	
 	//회원 삭제
 	public int userDelete(String customer_id) throws Exception;
+	
+	//아이디 찾기
+	public String findId(String userId, String userEmail) throws Exception;
 }

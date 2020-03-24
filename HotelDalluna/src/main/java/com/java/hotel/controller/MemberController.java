@@ -168,4 +168,17 @@ public class MemberController {
 		model.addAttribute("deleteCheck", deleteCheck);
 		return "redirect:login.do";
 	}
+	
+	@PostMapping("")
+	public String findId(@RequestParam String userName, @RequestParam String email,@RequestParam String id,Model model) {
+		
+		if(id.equals("id")) {
+			
+		}else {
+			
+		}
+		
+		return "";
+	}
+	
 }

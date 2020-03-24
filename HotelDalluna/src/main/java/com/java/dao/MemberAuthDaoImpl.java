@@ -60,4 +60,9 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 	public int userDelete(String customer_id) throws Exception {
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
+	
+	@Override
+	public String findId(String userId, String userEmail) throws Exception {
+		return null;
+	}
 }
