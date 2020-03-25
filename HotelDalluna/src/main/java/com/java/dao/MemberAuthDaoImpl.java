@@ -1,5 +1,6 @@
 package com.java.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -61,8 +62,12 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
 	
+	//회원정보 찾기
 	@Override
-	public String findId(String userId, String userEmail) throws Exception {
-		return null;
+	public String findId(String customerName, String userEmail) throws Exception {
+		HashMap<String, Object> hash = new HashMap<>();
+		hash.put("customerName", customerName);
+		hash.put("userEmail", userEmail);
+		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.findId",hash);
 	}
 }
