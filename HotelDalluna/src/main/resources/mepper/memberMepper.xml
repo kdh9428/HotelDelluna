@@ -77,5 +77,15 @@
    			where
    					CUSTOMER_NAME = #{customerName} AND userEmail = #{userEmail}
    		</select>
+   		
+   		<!-- 비밀번호 찾기  -->
+   		<select id="findPassword" parameterType="hashMap" resultType="boolean">
+   			select 
+   					count(*)
+   			from
+   					customer
+   			where
+   					customer_id = #{customer_id} AND userEmail = #{userEmail}
+   		</select>
     
     </mapper>
