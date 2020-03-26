@@ -27,5 +27,8 @@ public interface MemberAuthDao {
 	public int userDelete(String customer_id) throws Exception;
 	
 	//아이디 찾기
-	public String findId(String userId, String userEmail) throws Exception;
+	public String findUserId(String userId, String userEmail) throws Exception;
+	
+	//비밀번호 찾기
+	public boolean findUserPassword(String customer_id, String userEmail) throws Exception;
 }

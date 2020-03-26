@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.java.Validation.validation;
 import com.java.dto.memberDetails;
+import com.java.service.MailService;
 import com.java.service.memberDetailsSevice;
 
 @Controller
@@ -35,6 +36,10 @@ public class MemberController {
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
+	@Autowired
+	MailService mailService;
+	
 	@Autowired
 	memberDetailsSevice memberDetail;
 	
@@ -169,16 +174,28 @@ public class MemberController {
 		return "redirect:login.do";
 	}
 	
-	@PostMapping("")
-	public String findId(@RequestParam String userName, @RequestParam String email,@RequestParam String id,Model model) {
+	//회원 정보 찾기
+	@PostMapping("findUserId.do")
+	public String findUserId(@RequestParam String customerName, @RequestParam String userEmail, @RequestParam String user, Model model) throws Exception {
+		System.out.println(customerName+userEmail+user);
+		boolean id = mailService.sendEmailId(customerName, userEmail);
 		
-		if(id.equals("id")) {
-			
-		}else {
-			
+		if(!id) {
+			model.addAttribute("false",id);
+			return "accountInfoFind";
+		}
+		return "";
+	}
+	
+	@PostMapping("findUserPassword.do")
+	public String findUserPassword(@RequestParam String customer_id, @RequestParam String userEmail, Model model) throws Exception {
+		boolean password = mailService.sendEmailPassword(customer_id, userEmail);
+		
+		if(!password) {
+			model.addAttribute("false",password);
+			return "accountInfoFind";
 		}
 		
 		return "";
 	}
-	
 }

@@ -62,12 +62,21 @@ public class MemberAuthDaoImpl implements MemberAuthDao {
 		return sqlSesstion.delete("com.java.dao.MemberAuthDao.userDelete",customer_id);
 	}
 	
-	//회원정보 찾기
+	//아이디 찾기
 	@Override
-	public String findId(String customerName, String userEmail) throws Exception {
+	public String findUserId(String customerInformation, String userEmail) throws Exception {
 		HashMap<String, Object> hash = new HashMap<>();
-		hash.put("customerName", customerName);
+		hash.put("customerName", customerInformation);
 		hash.put("userEmail", userEmail);
 		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.findId",hash);
+	}
+	
+	//비밀번호 찾기
+	@Override
+	public boolean findUserPassword(String customer_id, String userEmail) throws Exception {
+		HashMap<String, Object> hash = new HashMap<>();
+		hash.put("customer_id", customer_id);
+		hash.put("userEmail", userEmail);
+		return sqlSesstion.selectOne("com.java.dao.MemberAuthDao.findPassword",hash);
 	}
 }

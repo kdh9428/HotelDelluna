@@ -1,5 +1,8 @@
 package com.java.hotelTest;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +27,7 @@ import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
 import com.java.dao.MemberAuthDao;
 import com.java.dao.ReservationDaoImpl;
+import com.java.service.MailService;
 import com.java.service.ReservationService;
 import com.java.service.memberDetailsSevice;
 
@@ -40,6 +44,9 @@ public class HotelTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(HotelTest.class);
 
+	@Autowired
+	MailService mailService;
+	
 	@Autowired
 	BoardDao boardDao;
 	
@@ -281,7 +288,38 @@ public class HotelTest {
 			if(N%2 == 0) {
 				System.out.println("여기실행");
 			}
+			  File f = new File(".");
+			  try {
+				System.out.println(f.getCanonicalPath());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				
+				new java.io.File(this.getClass().getResource("/").toURI());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
+			try {
+//				mailService.sendEmail("asdf");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String aadfasdf = this.getClass().getResource("").getPath();
+			System.out.println("확인 "+aadfasdf);
+			
+			try {
+				System.out.println("아이디 확인"+mailService.sendEmailId("김다", "kim23222@naver.com"));
+
+				System.out.println("비밀번호 확인"+mailService.sendEmailPassword("asdfff", "ad@asd.com"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 }
