@@ -174,35 +174,38 @@
 		<div class="container">
 		<br>
 		<div class="row">
-			<form action="">
-				<div class="jumbotron col-md-5 col-md-offset-1" >
+		<div class="jumbotron col-md-5 col-md-offset-1" >
+			<form action="findUserId.do" method="post" id="find-user">
 					<h2>아이디 찾기</h2>
 					가입 당시 입력한 이메일 주소를 통해 아이디를 찾을 수 있습니다.
 					<hr>
 						<div>
-							이름 : <input type="text" class="form-control required" style="padding:2px 5px"><br>
-							이메일 : <input type="text" class="form-control required" style="padding:2px 5px">
+							이름 : <input type="text" id="customerName"name="customerName" class="form-control required" style="padding:2px 5px"><br>
+							이메일 : <input type="text" name="userEmail"class="form-control required" style="padding:2px 5px">
 						</div>
 					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-						<button type="button" id="passwordCheck" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+						<button type="submit" id="passwordCheck" value="id" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					</div>
-				</div>
-		
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			</form>
+		</div>
 			
-			
-				<div class="jumbotron col-md-5 col-md-offset-1">
+		<div class="jumbotron col-md-5 col-md-offset-1">
+			<form action="findUserPassword.do" method="post">
 					<h2>비밀번호 찾기</h2>
 					가입 당시 입력한 이메일 주소를 통해 비밀번호를 재설정해주세요.
 					<hr>
-					<div>
-						이름 : <input type="text" class="form-control required" style="padding:2px 5px"><br>
-						이메일 : <input type="text" class="form-control required" style="padding:2px 5px">
+					<div> 
+						아이디 : <input type="text" id="customer_id" name="customer_id" class="form-control required" style="padding:2px 5px"><br>
+						이메일 : <input type="text" name="userEmail" class="form-control required" style="padding:2px 5px">
 					</div>
 					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-						<button type="button" id="passwordCheck" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+						<button type="submit" id="passwordCheck" value="password"class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					</div>
-				</div>
+				<input type="hidden"name="user" id="user" value="password">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
+		</div>
 		</div>
 	</div>		
 	
@@ -368,47 +371,16 @@
 	<script type="text/javascript" src="resources/js/functions.js"></script>
 	
 	<script type="text/javascript">
-	
-		window.addEventListener('load',()=>{
-			console.log('확인중' + '${updateSuccess}')
-			//회원 정보 업데이트 성공
-			if('${updateSuccess}' == 'true')
-				alert('개인정보를 수정 하였습니다.')
-			if('${updateSuccess}' == 'false')
-				alert('개인정보 수정 실패! 다시 시도해 주세요.')
-		})
-	
-	 	document.querySelector('#passwordCheck').addEventListener('click',click)
-	 			
-	 		function click(){
-			 var passwordCheckValue = document.querySelector('#password').value
-			 var passwordCheckTag = document.querySelector('#password-check-tag')
-			 
-			 if(passwordCheckValue){
-				 var xhr = new XMLHttpRequest();
-				 xhr.open('POST','userPassword.do')
-				 xhr.setRequestHeader('${_csrf.headerName}','${_csrf.token}')
-				 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-				 xhr.onload =()=>{
-					 if(xhr.status === 200){
-						 if(xhr.responseText == 'true'){
-							 document.querySelector('#passwordForm').submit()
-						 }else{
-							passwordCheckTag.style.color = 'red'
-						 	passwordCheckTag.innerText = '비밀번호가 다릅니다'
-						 }
-					 }else{
-					 alert('ajax 에러')
-				 	}
-				 }
-				xhr.send('password='+passwordCheckValue)
-		}else{
-			passwordCheckTag.style.color = 'red'
-			passwordCheckTag.innerText = '패스워드를 입력하세요'
+	window.addEventListener('load',()=>{
+		if('${noId}'=='false'){
+			alert('입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.')
+			document.querySelector('#customerName').focus();
 		}
- 	}
- 	
- 	
+		if('${noPassword}'=='false'){
+			alert('입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.')
+			document.querySelector('#customer_id').focus();
+		}
+	})
 	</script>
 </body>
 </html>
