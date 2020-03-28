@@ -175,13 +175,13 @@
 		<br>
 		<div class="row">
 		<div class="jumbotron col-md-5 col-md-offset-1" >
-			<form action="findUserId.do" method="post" id="find-user">
+			<form action="findUserId.do" method="post" id="find-user" onsubmit="return validate()">
 					<h2>아이디 찾기</h2>
 					가입 당시 입력한 이메일 주소를 통해 아이디를 찾을 수 있습니다.
 					<hr>
 						<div>
 							이름 : <input type="text" id="customerName"name="customerName" class="form-control required" style="padding:2px 5px"><br>
-							이메일 : <input type="text" name="userEmail"class="form-control required" style="padding:2px 5px">
+							이메일 : <input type="text" id="userEmail" name="userEmail"class="form-control required" style="padding:2px 5px">
 						</div>
 					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
 						<button type="submit" id="passwordCheck" value="id" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
@@ -191,18 +191,17 @@
 		</div>
 			
 		<div class="jumbotron col-md-5 col-md-offset-1">
-			<form action="findUserPassword.do" method="post">
-					<h2>비밀번호 찾기</h2>
+			<form action="findUserPassword.do" id="find-user" method="post" onsubmit="return passwordValidate()">
+					<h2>비밀번호 재설정</h2>
 					가입 당시 입력한 이메일 주소를 통해 비밀번호를 재설정해주세요.
 					<hr>
 					<div> 
 						아이디 : <input type="text" id="customer_id" name="customer_id" class="form-control required" style="padding:2px 5px"><br>
-						이메일 : <input type="text" name="userEmail" class="form-control required" style="padding:2px 5px">
+						이메일 : <input type="text" id="userPasswordEmailCheck" name="userEmail" class="form-control required" style="padding:2px 5px">
 					</div>
 					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
 						<button type="submit" id="passwordCheck" value="password"class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
 					</div>
-				<input type="hidden"name="user" id="user" value="password">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</div>
@@ -381,6 +380,62 @@
 			document.querySelector('#customer_id').focus();
 		}
 	})
+	
+	function validate(){
+		var userEmailCheck = document.querySelector('#userEmail').value
+		var customerNameCheck = document.querySelector('#customerName').value
+		
+		//이름 입력확인
+		if(!customerNameCheck){
+			alert('이름을 입력 해주세요')
+			document.querySelector('#customerName').focus()
+			return false
+		}else if(!/^[a-z0-9]+$/ig.test(customerNameCheck)){
+			alert('이름은 한글, 영문 대소문자만 입력 가능합니다.')
+			document.querySelector('#customerName').focus()
+			return false
+		}
+		
+		//이메일 입력확인
+		if(!userEmailCheck){
+			alert('이메일을 입력 해주세요')
+			document.querySelector('#userEmail').focus()
+			return false
+		}else if(!/^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(userEmailCheck)){
+			alert('적합하지 않은 이메일 형식입니다.')
+			document.querySelector('#userEmail').focus()
+			return false
+		}
+		
+	}
+	
+	function passwordValidate(){
+		var userPasswordEmailCheck = document.querySelector('#userPasswordEmailCheck').value
+		var userIdCheck = document.querySelector('#customer_id').value
+		
+		//이름 입력확인
+		if(!userIdCheck){
+			alert('아이디를 입력 해주세요')
+			document.querySelector('#customer_id').focus()
+			return false
+		}else if(!/^[a-z0-9]+$/ig.test(userIdCheck)){
+			alert('아이디는 숫자, 문자 이외의 값은 입력 불가능합니다.')
+			document.querySelector('#customer_id').focus()
+			return false
+		}
+		
+		//이메일 입력확인
+		if(!userPasswordEmailCheck){
+			alert('이메일을 입력 해주세요')
+			document.querySelector('#userPasswordEmailCheck').focus()
+			return false
+		}else if(!/^([_A-Za-z0-9-_]+[._A-Za-z0-9-_]*)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(userPasswordEmailCheck)){
+			alert('적합하지 않은 이메일 형식입니다.')
+			document.querySelector('#userPasswordEmailCheck').focus()
+			return false
+		}
+	}
+		
 	</script>
 </body>
 </html>
