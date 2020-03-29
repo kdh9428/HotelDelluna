@@ -174,25 +174,26 @@ public class MemberController {
 		return "redirect:login.do";
 	}
 	
-	//회원 정보 찾기
+	//아이디 찾기
 	@PostMapping("findUserId.do")
-	public String findUserId(@RequestParam String customerName, @RequestParam String userEmail, @RequestParam String user, Model model) throws Exception {
-		System.out.println(customerName+userEmail+user);
+	public String findUserId(@RequestParam String customerName, @RequestParam String userEmail, Model model) throws Exception {
+		System.out.println(customerName+userEmail);
 		boolean id = mailService.sendEmailId(customerName, userEmail);
 		
 		if(!id) {
-			model.addAttribute("false",id);
+			model.addAttribute("noId",id);
 			return "accountInfoFind";
 		}
 		return "";
 	}
 	
+	//비밀번호 찾기
 	@PostMapping("findUserPassword.do")
 	public String findUserPassword(@RequestParam String customer_id, @RequestParam String userEmail, Model model) throws Exception {
 		boolean password = mailService.sendEmailPassword(customer_id, userEmail);
 		
 		if(!password) {
-			model.addAttribute("false",password);
+			model.addAttribute("noPassword",password);
 			return "accountInfoFind";
 		}
 		
