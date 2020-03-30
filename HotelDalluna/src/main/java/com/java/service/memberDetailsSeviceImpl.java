@@ -103,7 +103,9 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	System.out.println("아이디 확인"+auth.getName());
 		int deleteCheck = memberAuthDao.userDelete(auth.getName());
+		
 		if(deleteCheck >= 1) return true;
+		
 		else return false;
 	}
 }

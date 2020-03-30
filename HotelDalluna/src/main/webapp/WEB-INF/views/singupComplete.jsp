@@ -125,7 +125,7 @@
 								 <li><div><a href="login.do">로그인</a></div>
 									<ul>
 	                                	<li><div><a href="login.do">로그인</a></div></li>
-	                                	<li><div><a href="#">아이디/비밀번호 찾기</a></div></li>
+	                                	<li><div><a href="accountInfoFind.do">아이디/비밀번호 찾기</a></div></li>
 	                                	<li><div><a href="singupForm.do">회원가입</a></div></li>
                               	 	 </ul>   
                               	 </li>

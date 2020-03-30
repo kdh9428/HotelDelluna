@@ -138,7 +138,7 @@
 								<li><a href="login.do"><div>로그인</div></a>
 									<ul>
 										<li><a href="login.do"><div>로그인</div></a></li>
-										<li><a href="#"><div>아이디/비밀번호 찾기</div></a></li>
+										<li><a href="accountInfoFind.do"><div>아이디/비밀번호 찾기</div></a></li>
 										<li><a href="singupForm.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>

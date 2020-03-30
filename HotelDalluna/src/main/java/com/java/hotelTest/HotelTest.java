@@ -3,6 +3,7 @@ package com.java.hotelTest;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -309,17 +310,18 @@ public class HotelTest {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String aadfasdf = this.getClass().getResource("").getPath();
+			String sqlFileName = "com/java.test.xml";
+			URL aadfasdf = ClassLoader.getSystemResource(sqlFileName);
 			System.out.println("확인 "+aadfasdf);
 			
-			try {
-				System.out.println("아이디 확인"+mailService.sendEmailId("김다", "kim23222@naver.com"));
-
-				System.out.println("비밀번호 확인"+mailService.sendEmailPassword("asdfff", "ad@asd.com"));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+//			try {
+//				System.out.println("아이디 확인"+mailService.sendEmailId("김다훈", "kim23222@naver.com"));
+//
+//				System.out.println("비밀번호 확인"+mailService.sendEmailPassword("asdfff", "ad@asd.com"));
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			
 		}
 }

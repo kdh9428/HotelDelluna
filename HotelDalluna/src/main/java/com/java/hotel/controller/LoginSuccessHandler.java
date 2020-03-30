@@ -66,9 +66,4 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			
 		}
 	}
-	@Test
-	public void test1() {
-		System.out.println("테스트 확인중입니다.");
-	}
-	
 }

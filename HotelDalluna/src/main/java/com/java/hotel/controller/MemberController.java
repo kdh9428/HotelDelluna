@@ -177,7 +177,6 @@ public class MemberController {
 	//아이디 찾기
 	@PostMapping("findUserId.do")
 	public String findUserId(@RequestParam String customerName, @RequestParam String userEmail, Model model) throws Exception {
-		System.out.println(customerName+userEmail);
 		boolean id = mailService.sendEmailId(customerName, userEmail);
 		
 		if(!id) {
