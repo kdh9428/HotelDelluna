@@ -11,9 +11,11 @@ import javax.mail.internet.MimeBodyPart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.java.dao.MemberAuthDao;
+import com.java.dto.memberDetails;
 import com.java.mail.MailUtils;
 
 @Service
@@ -24,6 +26,9 @@ public class MailServiceImplment implements MailService{
 	
 	@Autowired
 	JavaMailSender mailSender;
+	
+	@Autowired
+	PasswordEncoder passwordencoder;
 	
 	//id찾기
 	@Override
@@ -42,7 +47,11 @@ public class MailServiceImplment implements MailService{
 		boolean findPassword = memberAuthDao.findUserPassword(customer_id, userEmail);
 		String password = randemPassword();
 		if(findPassword) {
-//			memberAuthDao.
+			memberDetails member = new memberDetails(); //DTO 인스턴스 생성
+			member.setCustomer_id(customer_id); //아이디
+			member.setPassword(passwordencoder.encode(password)); //비밀번호 주입
+			memberAuthDao.userModify(member); //회원정보 수정
+			
 			sendPassword(userEmail,password);
 		}
 		return findPassword;
@@ -127,7 +136,6 @@ public class MailServiceImplment implements MailService{
 		
 	}
 	
-	
 	//랜덤 비밀번호 생성
 	public String randemPassword() {
 		char[] charSet = new char[] {
@@ -140,11 +148,9 @@ public class MailServiceImplment implements MailService{
 		
 		Random random = new Random(System.currentTimeMillis());
 		StringBuffer buf = new StringBuffer();
-		
 		for(int i = 0; i<8;i++) {
 			buf.append(charSet[random.nextInt(charSet.length)]);
 		}
-		
 		return buf.toString();
 	}
 }
