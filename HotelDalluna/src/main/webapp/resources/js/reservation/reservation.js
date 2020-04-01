@@ -54,13 +54,12 @@
 	    var checkOut = document.querySelector('#dateTwo').value//체크아웃
 	    var roomType = document.querySelector('#room_type')//방 종류
 			roomType = roomType.options[roomType.selectedIndex].text
-		 console.log(resultItems)
 		 if(resultItems == true){
 			 reservationDateTag.innerHTML = '<p id="reservation-date" style="font-size: 15px; color:red">예약 날짜 : '+checkIn+' ~ '+checkOut+'</p>'
 			 reservationRoomTag.innerHTML = '<p id="reservation-room" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
 			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 : 이미 예약 되어 있습니다.</p>'
 				 return false 
-		 }else if(checkIn =='' || checkOut =='' ){
+		 }else if(checkIn ==''){
 			 reservationRoomTag.innerHTML = '<p id="reservation-room" style="font-size: 15px; color:red">객 실 : '+roomType+'</p>'
 			 reservationCheckTag.innerHTML = '<p id="reservation-check" style="font-size:15px; color:red">예약 가능 여부 :날짜를 선택하세요.</p>'
 				 return false
@@ -95,9 +94,22 @@
 
 	//날짜를 비교, 룸 가격 계
 	function reservationPay(checkIn, checkOut){
-		var checkIn = new Date(checkIn)
-		var checkOut = new Date(checkOut)
+		var checkIn;
+		var checkOut;
+		
+		//체크인만 선택하거나 체크인과 체크아웃이 같을 경우 비교한다.
+		if(!checkOut || checkIn == checkOut){
+			checkIn = new Date(checkIn);
+			checkOut = new Date(checkIn)
+			checkOut.setDate(checkOut.getDate()+1) //날짜 하루 더한다.
+		}else{
+			checkIn = new Date(checkIn);
+			checkOut = new Date(checkOut);
+		}
+		
+		//체크아웃과 체크인 날짜를 뺀다.
 		var dateSubtract = checkOut.getTime() - checkIn.getTime();
+		//위에 날짜를 하루로 변경한다
 		var btDay = dateSubtract / (1000*60*60*24) ;
 		var roomType = document.querySelector('#room_type')//방 종류
 			roomType = roomType.options[roomType.selectedIndex].value
@@ -159,7 +171,7 @@
 						this.trigger = false
 						document.querySelector('#dateOne').value = this.buttonDateOne
 						document.querySelector('#dateTwo').value = this.buttonDateTwo
-            if(this.buttonDateOne=='' || this.buttonDateTwo ==''){
+            if(this.buttonDateOne==''){
               	alert("날짜를 선택해 주세요.");
             }else{
             getItem()
