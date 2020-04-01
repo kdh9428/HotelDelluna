@@ -51,11 +51,17 @@
    		</select>
    		
    		<!-- 회원정보 수정 -->
-   		<update id="userModify" parameterType="com.java.dto.memberDetails" >
+   		<update id="userModify" parameterType="com.java.dto.memberDetails">
    			update
-   				customer 
-   			set 
-   				customer_name=#{customer_name}, tel = #{tel}, password = #{password}, userEmail=#{userEmail}, birthday = #{birthday}
+   				customer
+   			set
+   				<if test="customer_name != null">
+   					customer_name=#{customer_name}, tel = #{tel}, password = #{password}, userEmail=#{userEmail}, birthday = #{birthday}
+   				</if>
+   				<!-- 임시 비밀번호만 변경할 경우 -->
+   				<if test='customer_name == null or customer_name==""'>
+   					 password = #{password}
+   				</if>
    			where
    				customer_id = #{customer_id}
    		</update>
@@ -87,5 +93,6 @@
    			where
    					customer_id = #{customer_id} AND userEmail = #{userEmail}
    		</select>
+   		
     
     </mapper>
