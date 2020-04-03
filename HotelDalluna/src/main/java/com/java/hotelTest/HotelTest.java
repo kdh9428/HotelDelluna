@@ -216,6 +216,7 @@ public class HotelTest {
 		}
 	}	
 	@Test 
+	@Ignore
 	public void test1(){
 		
 		System.out.println(passwordEncoder.encode("123"));
@@ -324,4 +325,11 @@ public class HotelTest {
 //			}
 //			
 		}
+	
+	@Test
+	public void hh() throws Exception{
+		boolean aa = mailService.sendEmailPassword("2asdf", "asdf");
+		
+		System.out.println(aa);
+	}
 }
