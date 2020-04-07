@@ -3,6 +3,7 @@ package com.java.hotel.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -175,15 +177,18 @@ public class MemberController {
 	}
 	
 	//아이디 찾기
+	@ResponseBody
 	@PostMapping("findUserId.do")
-	public String findUserId(@RequestParam String customerName, @RequestParam String userEmail, Model model) throws Exception {
-		boolean id = mailService.sendEmailId(customerName, userEmail);
+	public boolean findUserId(@RequestBody Map<String, String> map, Model model) throws Exception {
+		String customerName = map.get("customerName");
+		String userEmail = map.get("userEmail");
 		
+		boolean id = mailService.sendEmailId(customerName, userEmail);
 		if(!id) {
 			model.addAttribute("noId",id);
-			return "accountInfoFind";
+			return id;
 		}
-		return "";
+		return id;
 	}
 	
 	//비밀번호 찾기

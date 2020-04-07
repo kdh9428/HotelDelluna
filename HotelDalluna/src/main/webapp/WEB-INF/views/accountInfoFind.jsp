@@ -52,6 +52,11 @@
     ============================================= -->
 <title>회원정보 수정</title>
 
+
+<style>
+.modal-backdrop{height:100%; }
+</style>
+
 </head>
 
 <body class="stretched">
@@ -184,8 +189,11 @@
 							이메일 : <input type="text" id="userEmail" name="userEmail"class="form-control required" style="padding:2px 5px">
 						</div>
 					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-						<button type="submit" id="passwordCheck" value="id" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+						<!-- Button trigger modal -->
+						<button type="button" id="test1"class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+<!-- 						<button type="submit" id="passwordCheck" value="id" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button> -->
 					</div>
+					
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</div>
@@ -207,6 +215,27 @@
 		</div>
 		</div>
 	</div>		
+	
+	
+	<!-- Modal -->
+<div class="modal modal-center fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
 	
 		<!-- Footer
         ============================================= -->
@@ -390,7 +419,7 @@
 			alert('이름을 입력 해주세요')
 			document.querySelector('#customerName').focus()
 			return false
-		}else if(!/^[a-z0-9]+$/ig.test(customerNameCheck)){
+		}else if(!/^[가-힣a-z]+$/ig.test(customerNameCheck)){
 			alert('이름은 한글, 영문 대소문자만 입력 가능합니다.')
 			document.querySelector('#customerName').focus()
 			return false
@@ -435,6 +464,71 @@
 			return false
 		}
 	}
+	
+	var cc = document.querySelector('#test1')
+	var check = document.querySelector('#myModal')
+	cc.addEventListener('click',()=>{
+		
+		var userEmailCheck = document.querySelector('#userEmail').value
+		var customerNameCheck = document.querySelector('#customerName').value
+		var xhr = new XMLHttpRequest();
+		var json = JSON.stringify({ 
+            "customerName" :customerNameCheck,
+            "userEmail" :userEmailCheck,
+        })
+		console.log('확인합니다~~'+userEmailCheck+" : "+customerNameCheck)
+        xhr.open('POST',"findUserId.do",true)
+        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
+	    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+	    xhr.onload = ()=>{
+	    	var idCheck = xhr.responseText
+	    	if(xhr.status == 200){
+	    		if(idCheck == 'true'){
+	    			console.log('확인'+ idCheck)
+				document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
+	    		}else{
+	    			alert('서버 오류!')
+	    		}
+	    	}else{
+	    		alert('ajax오류..')
+	    	}
+	    	xhr.send(json)
+	    }
+// 		document.querySelector('#myInput').focus()
+		
+	})
+// 	$('#myModal').on('shown.bs.modal', function () {
+// 		  $('body').addClass("modal-open")
+// 		  $('#myInput').focus()
+//  data-toggle="modal" data-target="#myModal"
+	</script>
+	
+	<script type="text/javascript">
+	var aa = document.querySelector('#test1');
+		aa.addEventListener('click',()=>{
+			var userEmailCheck = document.querySelector('#userEmail').value
+			var customerNameCheck = document.querySelector('#customerName').value 
+			var xhr = new XMLHttpRequest();
+			 xhr.open('POST',"findUserId.do",true);
+			 var json = JSON.stringify({ 
+		            "customerName" :customerNameCheck,
+		            "userEmail" :userEmailCheck,
+		        })
+			 xhr.setRequestHeader('Content-type','application/json; charset=UTF-8');
+			 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+            xhr.onload = () =>{
+            if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
+            	if(xhr.responseText == 'true'){
+            		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
+            	}else{
+            	}
+				
+			}else{
+				alert('ajax 에러!')
+			}
+		}
+            xhr.send(json);
+		})
 		
 	</script>
 </body>
