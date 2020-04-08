@@ -10,11 +10,12 @@
 <head>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
+<script async
+	src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
 <!-- NAVER 통계  -->
 <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 <script src="resources/js/googleAnalytics/analytics.js"></script>
-	
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="initial-scale=1.0">
@@ -54,7 +55,9 @@
 
 
 <style>
-.modal-backdrop{height:100%; }
+.modal-backdrop {
+	height: 100%;
+}
 </style>
 
 </head>
@@ -134,20 +137,25 @@
 								<li><a href="login.do"><div>로그인</div></a>
 									<ul>
 										<li><a href="login.do"><div>로그인</div></a></li>
-										<li><a href="accountInfoFind.do"><div>아이디/비밀번호 찾기</div></a></li>
+										<li><a href="accountInfoFind.do"><div>아이디/비밀번호
+													찾기</div></a></li>
 										<li><a href="singupForm.do"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
 							<!-- 로그인 했을 경우 보여준다.  -->
-							 <sec:authorize access="isAuthenticated()">
-								  <li><a href="#" onclick="return false;"><div>로그아웃</div></a>
-										<ul>
-											<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
-											<li><a href="userModifyPasswordCheck.do"><div>회원정보 수정</div></a></li>
-										</ul>
-								 </li>
-								<form id="logout-form" action="logout.do" method="post"> 
-									   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							<sec:authorize access="isAuthenticated()">
+								<li><a href="#" onclick="return false;"><div>로그아웃</div></a>
+									<ul>
+										<li><a href="logout.do"
+											onclick="document.getElementById('logout-form').submit();">
+												<div>로그아웃</div>
+										</a></li>
+										<li><a href="userModifyPasswordCheck.do"><div>회원정보
+													수정</div></a></li>
+									</ul></li>
+								<form id="logout-form" action="logout.do" method="post">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
 								</form>
 							</sec:authorize>
 						</ul>
@@ -175,68 +183,80 @@
 			</div>
 		</section>
 		<!-- #page-title end -->
-		
+
 		<div class="container">
-		<br>
-		<div class="row">
-		<div class="jumbotron col-md-5 col-md-offset-1" >
-			<form action="findUserId.do" method="post" id="find-user" onsubmit="return validate()">
-					<h2>아이디 찾기</h2>
-					가입 당시 입력한 이메일 주소를 통해 아이디를 찾을 수 있습니다.
-					<hr>
+			<br>
+			<div class="row">
+				<div class="jumbotron col-md-5 col-md-offset-1">
+						<h2>아이디 찾기</h2>
+						가입 당시 입력한 이메일 주소를 통해 아이디를 찾을 수 있습니다.
+						<hr>
 						<div>
-							이름 : <input type="text" id="customerName"name="customerName" class="form-control required" style="padding:2px 5px"><br>
-							이메일 : <input type="text" id="userEmail" name="userEmail"class="form-control required" style="padding:2px 5px">
+							이름 : <input type="text" id="customerName" name="customerName"
+								class="form-control required" style="padding: 2px 5px"><br>
+							이메일 : <input type="text" id="userEmail" name="userEmail"
+								class="form-control required" style="padding: 2px 5px">
 						</div>
-					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-						<!-- Button trigger modal -->
-						<button type="button" id="test1"class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
-<!-- 						<button type="submit" id="passwordCheck" value="id" class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button> -->
-					</div>
-					
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			</form>
+						<div class="text-center"
+							style="position: relative; text-align: center; margin-top: 30px;">
+							<!-- Button trigger modal -->
+							<button type="button" id="find-id" class="btn btn-primary btn-default"
+								style="margin: 0 2px; padding: 5px 10px; width: 46pt; height: 26pt;">
+								확인
+							</button>
+						</div>
+				</div>
+
+				<div class="jumbotron col-md-5 col-md-offset-1">
+					<form action="findUserPassword.do" id="find-user" method="post"
+						onsubmit="return passwordValidate()">
+						<h2>비밀번호 재설정</h2>
+						가입 당시 입력한 이메일 주소를 통해 비밀번호를 재설정해주세요.
+						<hr>
+						<div>
+							아이디 : <input type="text" id="customer_id" name="customer_id"
+								class="form-control required" style="padding: 2px 5px"><br>
+							이메일 : <input type="text" id="userPasswordEmailCheck"
+								name="userEmail" class="form-control required"
+								style="padding: 2px 5px">
+						</div>
+						<div class="text-center"
+							style="position: relative; text-align: center; margin-top: 30px;">
+							<button type="button" id="find-password" value="password"
+								class="btn btn-primary btn-default"
+								style="margin: 0 2px; padding: 5px 10px; width: 46pt; height: 26pt;">확
+								인</button>
+						</div>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</form>
+				</div>
+			</div>
 		</div>
-			
-		<div class="jumbotron col-md-5 col-md-offset-1">
-			<form action="findUserPassword.do" id="find-user" method="post" onsubmit="return passwordValidate()">
-					<h2>비밀번호 재설정</h2>
-					가입 당시 입력한 이메일 주소를 통해 비밀번호를 재설정해주세요.
-					<hr>
-					<div> 
-						아이디 : <input type="text" id="customer_id" name="customer_id" class="form-control required" style="padding:2px 5px"><br>
-						이메일 : <input type="text" id="userPasswordEmailCheck" name="userEmail" class="form-control required" style="padding:2px 5px">
+
+
+		<!-- Modal -->
+		<div class="modal modal-center fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">아이디 찾기</h4>
 					</div>
-					<div class="text-center" style="position: relative;text-align:center; margin-top:30px;">
-						<button type="submit" id="passwordCheck" value="password"class="btn btn-primary btn-default" style="margin:0 2px; padding:5px 10px; width:46pt; height:26pt;">확 인</button>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+						<a href="index.do"><button type="button" class="btn btn-primary">메인 화면</button></a>
 					</div>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			</form>
+				</div>
+			</div>
 		</div>
-		</div>
-	</div>		
-	
-	
-	<!-- Modal -->
-<div class="modal modal-center fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-	
-	
+
+
 		<!-- Footer
         ============================================= -->
 		<footer id="footer" class="footer">
@@ -351,8 +371,8 @@
 					<div class="col_half col_last tright">
 						<div class="copyrights-menu copyright-links fright clearfix">
 							<a href="#">호텔리뷰</a> <a href="hotel-About-Us.do">호텔소개</a> <a
-								href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a
-								href="contact.jsp">고객의 소리</a>
+								href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및
+								취소</a> <a href="contact.jsp">고객의 소리</a>
 						</div>
 						<div class="fright clearfix">
 							<a href="#"
@@ -397,19 +417,8 @@
 	<!-- Footer Scripts
     ============================================= -->
 	<script type="text/javascript" src="resources/js/functions.js"></script>
-	
+
 	<script type="text/javascript">
-	window.addEventListener('load',()=>{
-		if('${noId}'=='false'){
-			alert('입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.')
-			document.querySelector('#customerName').focus();
-		}
-		if('${noPassword}'=='false'){
-			alert('입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.')
-			document.querySelector('#customer_id').focus();
-		}
-	})
-	
 	function validate(){
 		var userEmailCheck = document.querySelector('#userEmail').value
 		var customerNameCheck = document.querySelector('#customerName').value
@@ -434,6 +443,8 @@
 			alert('적합하지 않은 이메일 형식입니다.')
 			document.querySelector('#userEmail').focus()
 			return false
+		}else{
+			id()
 		}
 		
 	}
@@ -442,7 +453,7 @@
 		var userPasswordEmailCheck = document.querySelector('#userPasswordEmailCheck').value
 		var userIdCheck = document.querySelector('#customer_id').value
 		
-		//이름 입력확인
+		//아이디 입력확인
 		if(!userIdCheck){
 			alert('아이디를 입력 해주세요')
 			document.querySelector('#customer_id').focus()
@@ -462,73 +473,45 @@
 			alert('적합하지 않은 이메일 형식입니다.')
 			document.querySelector('#userPasswordEmailCheck').focus()
 			return false
+		}else{
+			password()
 		}
 	}
-	
-	var cc = document.querySelector('#test1')
-	var check = document.querySelector('#myModal')
-	cc.addEventListener('click',()=>{
-		
-		var userEmailCheck = document.querySelector('#userEmail').value
-		var customerNameCheck = document.querySelector('#customerName').value
-		var xhr = new XMLHttpRequest();
-		var json = JSON.stringify({ 
-            "customerName" :customerNameCheck,
-            "userEmail" :userEmailCheck,
-        })
-		console.log('확인합니다~~'+userEmailCheck+" : "+customerNameCheck)
-        xhr.open('POST',"findUserId.do",true)
-        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
-	    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-	    xhr.onload = ()=>{
-	    	var idCheck = xhr.responseText
-	    	if(xhr.status == 200){
-	    		if(idCheck == 'true'){
-	    			console.log('확인'+ idCheck)
-				document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
-	    		}else{
-	    			alert('서버 오류!')
-	    		}
-	    	}else{
-	    		alert('ajax오류..')
-	    	}
-	    	xhr.send(json)
-	    }
-// 		document.querySelector('#myInput').focus()
-		
-	})
-// 	$('#myModal').on('shown.bs.modal', function () {
-// 		  $('body').addClass("modal-open")
-// 		  $('#myInput').focus()
-//  data-toggle="modal" data-target="#myModal"
 	</script>
-	
+
 	<script type="text/javascript">
-	var aa = document.querySelector('#test1');
-		aa.addEventListener('click',()=>{
-			var userEmailCheck = document.querySelector('#userEmail').value
+	//id찾기 버튼 클릭시 이벤트 발생
+	 document.querySelector('#find-id').addEventListener('click',validate)
+	//비밀번호 재설정 클릭시		
+	 document.querySelector('#find-password').addEventListener('click',passwordValidate)
+	 //ajax 
+		function id(){
+		 	var userEmailCheck = document.querySelector('#userEmail').value
 			var customerNameCheck = document.querySelector('#customerName').value 
 			var xhr = new XMLHttpRequest();
-			 xhr.open('POST',"findUserId.do",true);
-			 var json = JSON.stringify({ 
+		    var json = JSON.stringify({ 
 		            "customerName" :customerNameCheck,
 		            "userEmail" :userEmailCheck,
 		        })
+		     xhr.open('POST',"findUserId.do",true);
 			 xhr.setRequestHeader('Content-type','application/json; charset=UTF-8');
 			 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-            xhr.onload = () =>{
-            if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
-            	if(xhr.responseText == 'true'){
-            		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
-            	}else{
-            	}
-				
-			}else{
-				alert('ajax 에러!')
+	         xhr.onload = () =>{
+	         if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
+	         	if(xhr.responseText == 'true'){
+	         		$('#myModal').modal('show')
+	         		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
+	         	}else{
+	         		$('#myModal').modal('show')
+	         		document.querySelector('.modal-body').innerHTML = '입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.'
+	         	}
+				}else{
+					alert('ajax 에러!')
+				}
 			}
-		}
-            xhr.send(json);
-		})
+	         xhr.send(json);
+		 }
+	
 		
 	</script>
 </body>
