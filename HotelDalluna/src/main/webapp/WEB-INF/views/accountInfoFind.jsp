@@ -208,8 +208,6 @@
 				</div>
 
 				<div class="jumbotron col-md-5 col-md-offset-1">
-					<form action="findUserPassword.do" id="find-user" method="post"
-						onsubmit="return passwordValidate()">
 						<h2>비밀번호 재설정</h2>
 						가입 당시 입력한 이메일 주소를 통해 비밀번호를 재설정해주세요.
 						<hr>
@@ -227,15 +225,12 @@
 								style="margin: 0 2px; padding: 5px 10px; width: 46pt; height: 26pt;">확
 								인</button>
 						</div>
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-					</form>
 				</div>
 			</div>
 		</div>
 
 
-		<!-- Modal -->
+		<!-- Modal폼 div -->
 		<div class="modal modal-center fade" id="myModal" tabindex="-1"
 			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -444,6 +439,7 @@
 			document.querySelector('#userEmail').focus()
 			return false
 		}else{
+			//유효성 검사 맞으면 id()함수 호출 ajax 통신
 			id()
 		}
 		
@@ -474,6 +470,7 @@
 			document.querySelector('#userPasswordEmailCheck').focus()
 			return false
 		}else{
+			//유효성 검사 맞으면 password()함수 호출 ajax 통신
 			password()
 		}
 	}
@@ -484,15 +481,16 @@
 	 document.querySelector('#find-id').addEventListener('click',validate)
 	//비밀번호 재설정 클릭시		
 	 document.querySelector('#find-password').addEventListener('click',passwordValidate)
-	 //ajax 
+	 
+	 	//아이디 찾기
 		function id(){
 		 	var userEmailCheck = document.querySelector('#userEmail').value
 			var customerNameCheck = document.querySelector('#customerName').value 
-			var xhr = new XMLHttpRequest();
 		    var json = JSON.stringify({ 
 		            "customerName" :customerNameCheck,
 		            "userEmail" :userEmailCheck,
 		        })
+			 var xhr = new XMLHttpRequest();
 		     xhr.open('POST',"findUserId.do",true);
 			 xhr.setRequestHeader('Content-type','application/json; charset=UTF-8');
 			 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
@@ -512,7 +510,35 @@
 	         xhr.send(json);
 		 }
 	
+	//비밀번호 재설정
+	function password(){
+		var userPasswordEmailCheck = document.querySelector('#userPasswordEmailCheck').value
+		var userIdCheck = document.querySelector('#customer_id').value
 		
+		 var json = JSON.stringify({ 
+	            "customer_id" :userIdCheck,
+	            "userEmail" :userPasswordEmailCheck,
+	        })
+	     var xhr = new XMLHttpRequest();
+	     xhr.open('POST',"findUserPassword.do",true);
+		 xhr.setRequestHeader('Content-type','application/json; charset=UTF-8');
+		 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+         xhr.onload = () =>{
+	        if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
+	        	if(xhr.responseText == 'true'){
+	        		$('#myModal').modal('show')
+	        		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 임시 비밀번호를 발송해드렸습니다.'
+	        	}else{
+	        		$('#myModal').modal('show')
+	        		document.querySelector('.modal-body').innerHTML = '입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.'
+	        	}
+				}else{
+					alert('ajax 에러!')
+				}
+			}
+	        xhr.send(json);
+		 }
+	
 	</script>
 </body>
 </html>

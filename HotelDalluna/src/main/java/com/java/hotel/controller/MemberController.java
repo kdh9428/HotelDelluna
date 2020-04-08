@@ -180,27 +180,21 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("findUserId.do")
 	public boolean findUserId(@RequestBody Map<String, String> map, Model model) throws Exception {
+		logger.info("아이디 확인 이메일 전송 controller");
 		String customerName = map.get("customerName");
 		String userEmail = map.get("userEmail");
-		
 		boolean id = mailService.sendEmailId(customerName, userEmail);
-		if(!id) {
-			model.addAttribute("noId",id);
-			return id;
-		}
 		return id;
 	}
 	
 	//비밀번호 찾기
+	@ResponseBody
 	@PostMapping("findUserPassword.do")
-	public String findUserPassword(@RequestParam String customer_id, @RequestParam String userEmail, Model model) throws Exception {
+	public boolean findUserPassword(@RequestBody Map<String, String> map, Model model) throws Exception {
+		logger.info("비밀번호 재설정 이메일 전송 controller");
+		String customer_id = map.get("customer_id");
+		String userEmail = map.get("userEmail");
 		boolean password = mailService.sendEmailPassword(customer_id, userEmail);
-		
-		if(!password) {
-			model.addAttribute("noPassword",password);
-			return "accountInfoFind";
-		}
-		
-		return "";
+		return password;
 	}
 }
