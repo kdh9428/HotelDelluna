@@ -178,7 +178,7 @@ public class MemberController {
 	
 	//아이디 찾기
 	@ResponseBody
-	@PostMapping("findUserId.do")
+	@PostMapping("findUserId")
 	public boolean findUserId(@RequestBody Map<String, String> map, Model model) throws Exception {
 		logger.info("아이디 확인 이메일 전송 controller");
 		String customerName = map.get("customerName");

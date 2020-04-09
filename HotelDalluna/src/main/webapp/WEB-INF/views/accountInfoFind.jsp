@@ -491,18 +491,18 @@
 		            "userEmail" :userEmailCheck,
 		        })
 			 var xhr = new XMLHttpRequest();
-		     xhr.open('POST',"findUserId.do",true);
+		     xhr.open('POST',"findUserId",true);
 			 xhr.setRequestHeader('Content-type','application/json; charset=UTF-8');
 			 xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 	         xhr.onload = () =>{
 	         if(xhr.status === 200){//서버 응답 체크, 200이면 정상 응답
-	         	if(xhr.responseText == 'true'){
-	         		$('#myModal').modal('show')
-	         		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
-	         	}else{
-	         		$('#myModal').modal('show')
-	         		document.querySelector('.modal-body').innerHTML = '입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.'
-	         	}
+		         	if(xhr.responseText == 'true'){
+		         		$('#myModal').modal('show')
+		         		document.querySelector('.modal-body').innerHTML = '회원님의 이메일주소로 아이디를 발송해드렸습니다.'
+		         	}else{
+		         		$('#myModal').modal('show')
+		         		document.querySelector('.modal-body').innerHTML = '입력하신 정보로 등록된 회원이 없습니다. 정보를 다시 확인하시고 시도해주세요.'
+		         	}
 				}else{
 					alert('ajax 에러!')
 				}
