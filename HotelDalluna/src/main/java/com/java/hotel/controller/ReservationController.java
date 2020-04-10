@@ -6,11 +6,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,12 +25,7 @@ import com.java.service.ReservationService;
 public class ReservationController  {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
-	
-	
-	//암호화 test
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	private ReservationService reservationService;
 	
@@ -41,10 +37,16 @@ public class ReservationController  {
 	}
 	
 	//예약 체크 확인 ajax
-	@PostMapping("Reservation/check.do")
+	@GetMapping("Reservation/{checkIn}/{checkOut}/{roomType}")
 	@ResponseBody
-	public boolean ReservationCheck(@RequestBody ReservationDTO reservationDto) throws Exception{
-		logger.info("ReservationCheck Ajax");
+	public boolean ReservationCheck(@PathVariable("checkIn") final String checkIn, 
+									@PathVariable("checkOut") final String checkOut,
+									@PathVariable("roomType") final int roomType) throws Exception{
+		logger.info("ReservationCheck Ajax"+checkIn+checkOut+" : "+ roomType);
+		ReservationDTO reservationDto = new ReservationDTO();
+		reservationDto.setReservation_date_in(checkIn);
+		reservationDto.setReservation_date_out(checkOut);
+		reservationDto.setRoom_type(roomType);
 		return reservationService.reservationCheckAjax(reservationDto);
 	}
 	
@@ -68,23 +70,6 @@ public class ReservationController  {
 	@GetMapping("ReservationConfirm.do")
 	public String reservationConfirm(@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range, Model model) {
-//		//로그인 id Security에서 받아오기
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		
-//		//페이징 처리
-//		Pagination pages = new Pagination();
-//		
-//		int count = ReservationService.ReservationCount(auth.getName());
-//		logger.info("예약 완료 컨트롤러");
-//		pages.setListSize(1);
-//		pages.setRangeSize(10);
-//		
-//		총 페이지 가져오기
-//		pages.pageInfo(page, range, count);
-//		
-//		한 페이지에 보여질 리스트 수
-//		아이디 
-//		pages.setCustomer_id(auth.getName());
 		 List<ReservationDTO> reservationConfirm = reservationService.ReservationConfirm(page, range);
 		 
 		 //ReservationConfirm에 값이 없는지 확인, 없으면 1을 view로 보내서 예약하지 않았다고 체크 
