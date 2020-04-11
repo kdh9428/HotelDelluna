@@ -6,14 +6,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,7 +29,7 @@ public class ReservationController  {
 	private ReservationService reservationService;
 	
 	//예약 페이지
-	@GetMapping("Reservation.do")
+	@GetMapping("Reservation")
 	public String Reservation() throws Exception{
 		logger.info("Reservation 페이지 실행"); 
 		return "Reservation";
@@ -83,10 +82,11 @@ public class ReservationController  {
 	}
 	
 	//예약 취소
-	@GetMapping("ReservationCancell.do")
-	public String ReservationConcell(@RequestParam("Reservation_number") String Reservation_number) throws Exception{
+	@DeleteMapping("reservation/{number}")
+	public String ReservationConcell(@PathVariable("number") String Reservation_number) throws Exception{
+		logger.info("예약 취소 확인");
 		reservationService.ReservationCancell(Reservation_number);
-		return"redirect:ReservationConfirm.do";
+		return"redirect:/ReservationConfirm.do";
 	}
 	
 }
