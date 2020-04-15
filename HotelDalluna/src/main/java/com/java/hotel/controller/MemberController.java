@@ -178,7 +178,7 @@ public class MemberController {
 	
 	//아이디 찾기
 	@ResponseBody
-	@PostMapping("findUserId")
+	@PostMapping("findUser/id")
 	public boolean findUserId(@RequestBody Map<String, String> map, Model model) throws Exception {
 		logger.info("아이디 확인 이메일 전송 controller");
 		String customerName = map.get("customerName");
@@ -187,9 +187,9 @@ public class MemberController {
 		return id;
 	}
 	
-	//비밀번호 찾기
+	//비밀번호 재설정
 	@ResponseBody
-	@PostMapping("findUserPassword.do")
+	@PostMapping("findUser/password")
 	public boolean findUserPassword(@RequestBody Map<String, String> map, Model model) throws Exception {
 		logger.info("비밀번호 재설정 이메일 전송 controller");
 		String customer_id = map.get("customer_id");
