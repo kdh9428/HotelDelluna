@@ -185,7 +185,9 @@
 
                     <!-- Contact Form
                     ============================================= -->
-                    <form>
+                    <form action="reservation/${dto.reservation_number}" method="post" >
+                    <input type="hidden" name="_method" value="delete" />
+                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <c:if test="${notReservation eq 1 }">
                     	<script>
                     		alert("예약된 방이 없습니다. 예약 해주세요!")
@@ -249,7 +251,7 @@
                         <div class="clearfix" style=" text-align:center;" >
                                 <button type="button" onclick="popup();" value="${dto.reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
                                 <span >결제하기</span> <i class="icon-angle-right"></i></button>
-                                <button type="button" onClick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
+                                <button type="submit" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                                 
                                 
@@ -306,7 +308,7 @@
 				        
 				        function check(){
 				        	if(confirm("예약을 취소 하시겠습니까?")==true){
-				        		document.location.href="ReservationCancell.do?Reservation_number=${dto.reservation_number}"
+// 				        		document.location.href="reservation/${dto.reservation_number}"
 				        		document.form.submit();
 				        	}else{
 				        		return false;

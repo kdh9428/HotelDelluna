@@ -48,7 +48,7 @@
 	<mvc:view-controller path="/index.do" view-name="index"/>
 	<mvc:view-controller path="/userModifyPasswordCheck.do" view-name="userModifyPasswordCheck"/>
 	<mvc:view-controller path="/userDeleteCheck.do" view-name="userDeleteCheck"/>
-	<mvc:view-controller path="/accountInfoFind.do" view-name="accountInfoFind"/>
+	<mvc:view-controller path="/accountInfoFind" view-name="accountInfoFind"/>
 	<!-- <mvc:view-controller path="/singupForm.do" view-name="singup"/> -->
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -62,10 +62,16 @@
 	
 	<!-- json XSS 방어 처리 -->
 	<bean id="htmlEscapingObjectMapper" class="com.java.error.controller.HtmlEscapingObjectMapperFactory" />
+	
 	<mvc:annotation-driven>
 	    <mvc:message-converters>
 	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
 	        	<property name="objectMapper" ref="htmlEscapingObjectMapper"></property>
+	        	<property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                    </list>
+                </property>
 	        </bean>
 	    </mvc:message-converters>
 	</mvc:annotation-driven>
