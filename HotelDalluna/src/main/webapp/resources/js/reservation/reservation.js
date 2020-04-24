@@ -23,7 +23,7 @@
 					//방 가격 
 					reservationPay(checkIn,checkOut)
 					
-	        xhr.open('POST',"Reservation/check.do",true)
+	        xhr.open('POST',"Reservation/check",true)
 	        xhr.setRequestHeader('Content-type','application/json; charset=UTF-8')
 	        xhr.setRequestHeader(header ,token)
 	        xhr.onload = ()=>{

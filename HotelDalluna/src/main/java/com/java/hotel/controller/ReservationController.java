@@ -1,6 +1,7 @@
 package com.java.hotel.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.java.aop.PerLogging;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
@@ -29,6 +32,7 @@ public class ReservationController  {
 	private ReservationService reservationService;
 	
 	//예약 페이지
+	@PerLogging
 	@GetMapping("Reservation")
 	public String Reservation() throws Exception{
 		logger.info("Reservation 페이지 실행"); 
@@ -36,16 +40,14 @@ public class ReservationController  {
 	}
 	
 	//예약 체크 확인 ajax
-	@GetMapping("Reservation/{checkIn}/{checkOut}/{roomType}")
+	@PostMapping("Reservation/check")
 	@ResponseBody
-	public boolean ReservationCheck(@PathVariable("checkIn") final String checkIn, 
-									@PathVariable("checkOut") final String checkOut,
-									@PathVariable("roomType") final int roomType) throws Exception{
-		logger.info("ReservationCheck Ajax"+checkIn+checkOut+" : "+ roomType);
+	public boolean ReservationCheck(@RequestBody ReservationDTO reservationDTO) throws Exception{
+		logger.info("ReservationCheck Ajax"+reservationDTO.getReservation_date_in()+reservationDTO.getReservation_date_out()+" : "+ reservationDTO.getRoom_type());
 		ReservationDTO reservationDto = new ReservationDTO();
-		reservationDto.setReservation_date_in(checkIn);
-		reservationDto.setReservation_date_out(checkOut);
-		reservationDto.setRoom_type(roomType);
+		reservationDto.setReservation_date_in(reservationDTO.getReservation_date_in());
+		reservationDto.setReservation_date_out(reservationDTO.getReservation_date_out());
+		reservationDto.setRoom_type(reservationDTO.getRoom_type());
 		return reservationService.reservationCheckAjax(reservationDto);
 	}
 	
