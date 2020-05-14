@@ -12,6 +12,10 @@
 	<context:component-scan base-package="com.java" >
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+
+		
+	<!-- 데이터베이스 properties -->
+	<util:properties id="datasource" location="classpath:/properties/database-properties.xml"/>
 	
 		<!-- mybatis설정  -->
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -23,6 +27,7 @@
 	 
 	  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"/>
 		<property name="mapperLocations" value="classpath:/mepper/*.xml"/>
 	</bean>
 	
