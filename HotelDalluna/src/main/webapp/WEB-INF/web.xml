@@ -10,7 +10,6 @@
 			/WEB-INF/spring/root-context.xml
 			/WEB-INF/spring/appServlet/security-context.xml
 			/WEB-INF/spring/appServlet/transaction-context.xml
-			classPath:/springSetting/common-context.xml
 			</param-value>
 	</context-param>
 	
