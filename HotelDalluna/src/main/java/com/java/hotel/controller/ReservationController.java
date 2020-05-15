@@ -1,7 +1,6 @@
 package com.java.hotel.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.java.aop.PerLogging;
 import com.java.dto.ReservationDTO;
 import com.java.service.ReservationService;
 
@@ -32,7 +30,6 @@ public class ReservationController  {
 	private ReservationService reservationService;
 	
 	//예약 페이지
-	@PerLogging
 	@GetMapping("Reservation")
 	public String Reservation() throws Exception{
 		logger.info("Reservation 페이지 실행"); 

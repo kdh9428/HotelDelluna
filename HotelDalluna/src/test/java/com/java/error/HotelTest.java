@@ -26,7 +26,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.java.BoardDao.BoardDao;
 import com.java.BoardDto.BoardVO;
 import com.java.BoardService.BoardService;
-import com.java.aop.EventService;
 import com.java.dao.MemberAuthDao;
 import com.java.dao.ReservationDaoImpl;
 import com.java.service.MailService;
@@ -39,7 +38,7 @@ import com.java.service.memberDetailsSevice;
 		"file:src/main/webapp/WEB-INF/spring/appServlet/dispatcher-servlet.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/security-context.xml",
 		"file:src/main/webapp/WEB-INF/spring/appServlet/transaction-context.xml",
-		"classpath:/springSetting/common-context.xml"
+//		"classpath:/springSetting/common-context.xml"
 		})
 @WebAppConfiguration
 public class HotelTest {
@@ -69,8 +68,6 @@ public class HotelTest {
 	@Inject
 	PasswordEncoder passwordEncoder;
 	
-	@Autowired
-	EventService eventService;
 //	@Test
 //	@Ignore
 //	public void testGetBoardList() throws Exception {
@@ -328,13 +325,4 @@ public class HotelTest {
 //			}
 //			
 		}
-	
-	@Test
-	public void hh() throws Exception{
-		
-		eventService.createEvent();
-		eventService.deleteEvent();
-		eventService.publishEvent();
-		
-	}
 }
