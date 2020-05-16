@@ -487,26 +487,25 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			
 			document.querySelector('#password').value = null
 			
-			var selectedYear = document.querySelector('#year')
+			const selectedYear = document.querySelector('#year')
 			for(i=0;i< selectedYear.options.length; i++){
 				if(selectedYear.options[i].value == '${details.year}'){
 					selectedYear.options[i].selected = true
-					break
+					break;
 				}
 			}
-			var selectedMonth = document.querySelector('#month')
-			console.log('${details.month}')
+			const selectedMonth = document.querySelector('#month');
 			for(i=0;i< selectedMonth.options.length; i++){
 				if(selectedMonth.options[i].value == '${details.month}'){
 					selectedMonth.options[i].selected = true
-					break
+					break;
 				}
 			}
-			var selecteDday = document.querySelector('#day')
+			const selecteDday = document.querySelector('#day')
 			for(i=0;i< selecteDday.options.length; i++){
 				if(selecteDday.options[i].value == '${details.day}'){
 					selecteDday.options[i].selected = true
-					break
+					break;
 				}
 			}
 		})
