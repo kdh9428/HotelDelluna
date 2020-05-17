@@ -1,6 +1,7 @@
 package com.java.hotel.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +82,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("singup.do")
-	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details,BindingResult bindingResult,Errors errors, Model model) throws Exception{
+	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details, BindingResult bindingResult, Errors errors, Model model) throws Exception{
 		new validation().validate(details, bindingResult);
 		//회원 아이디 중복 확인
 		int idCheck = memberDetail.doubleCheck(details.getCustomer_id());
@@ -124,19 +125,19 @@ public class MemberController {
 	
 	//회원정보 폼
 	@PostMapping("userModifyForm.do")
-	public String userInformation(@RequestParam String password, @ModelAttribute memberDetails details,Model model) throws Exception {
+	public String userInformation(String password, memberDetails details ,Model model) throws Exception {
 		logger.info("회원정보 변경");
 			if(userPassword(password)){
-				List<memberDetails> infomation = memberDetail.userInformation();
-				details.setCustomer_id(infomation.get(0).getCustomer_id());
-				details.setCustomer_name(infomation.get(0).getCustomer_name());
-				details.setTel(infomation.get(0).getTel());
-				details.setUserEmail(infomation.get(0).getUserEmail());
 				
-				Date birthday = infomation.get(0).getBirthday();
-				details.setYear(new SimpleDateFormat("yyyy").format(birthday));
-				details.setMonth(new SimpleDateFormat("M").format(birthday));
-				details.setDay(new SimpleDateFormat("d").format(birthday));
+				List<memberDetails> userInfo= memberDetail.userInformation();
+				
+				details.setCustomer_id(userInfo.get(0).getCustomer_id());
+				details.setCustomer_name(userInfo.get(0).getCustomer_name());
+				details.setTel(userInfo.get(0).getTel());
+				details.setUserEmail(userInfo.get(0).getUserEmail());
+				details.setYear(userInfo.get(0).getBirthday().getYear());
+				details.setMonth(userInfo.get(0).getBirthday().getMonthValue());
+				details.setDay(userInfo.get(0).getBirthday().getDayOfMonth());
 				model.addAttribute("details", details);
 				return "userModifyForm";
 			}else {
@@ -147,8 +148,8 @@ public class MemberController {
 
 	@PostMapping("userModify.do")
 	public String userModify(@ModelAttribute @Valid memberDetails details, Model model) throws Exception {
-		logger.info("회원정보 수정 완료");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		logger.info("회원정보 수정 완료 id : "+auth);
 		
 		//Sesstion 아이디와 클라이언트 아이디 확인 후 맞으면 변경
 		if(details.getCustomer_id().equals(auth.getName())) {

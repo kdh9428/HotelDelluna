@@ -1,7 +1,6 @@
 package com.java.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -49,10 +48,13 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 			logger.info("비밀번호 생성"+pass);
 		}
 		
-		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
-		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
-		details.setBirthday(datformat);
-		logger.info("날짜"+datformat);
+		details.setBirthday(LocalDate.of(details.getYear(), details.getMonth(), details.getDay()));
+		
+		
+//		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
+//		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+//		details.setBirthday(datformat);
+//		logger.info("날짜"+datformat);
 		return memberAuthDao.singup(details);
 	}
 	
@@ -76,15 +78,19 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	@Override
 	public List<memberDetails> userInformation() throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return memberAuthDao.userInformation(auth.getName());
+		logger.info("확인=========================================");
+		List<memberDetails> userInfo = memberAuthDao.userInformation(auth.getName());
+		
+		return userInfo;
 	}
 	//회원정보 수정
 	@Override
 	public boolean userModify(memberDetails details) throws Exception {
-		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
-		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
-		details.setBirthday(datformat);
-		logger.info("날짜"+datformat);
+		
+//		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
+//		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+		details.setBirthday(LocalDate.of(details.getYear(), details.getMonth(), details.getDay()));
+		logger.info("날짜");
 		
 		//1차 비밀번호와 2차 비밀번호가 맞는지 확인 후 부호화
 		if(details.getPassword().equals(details.getPassword2())) {
