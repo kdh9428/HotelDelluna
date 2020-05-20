@@ -8,6 +8,7 @@ public class ReplyVO {
 	private String customer_id;	//작성자 아이디
 	private String reg_dt;	//작성일
 	private String edit_dt;	//수정일
+	
 	public int getReplyid() {
 		return replyid;
 	}

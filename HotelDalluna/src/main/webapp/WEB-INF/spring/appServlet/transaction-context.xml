@@ -17,6 +17,9 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="publicMethod" />
 	</aop:config>
 	
+	
+	<aop:aspectj-autoproxy/>
+	
 	<!-- 선언적 Transaction 설정  -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

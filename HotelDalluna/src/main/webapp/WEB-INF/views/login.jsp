@@ -79,7 +79,7 @@
 										for="cookie"> Remember me </label>
 								</div>
 								<div>
-									<a href="searchIdpass.jsp" class="txt1"> Forgot Password? </a>
+									<a href="accountInfoFind" class="txt1"> Forgot Password? </a>
 								</div>
 							</div>
 							<div class="container-login100-form-btn">
