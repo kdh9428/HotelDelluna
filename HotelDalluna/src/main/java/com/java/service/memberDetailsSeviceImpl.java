@@ -28,10 +28,10 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	
 	@Override
 	public UserDetails loadUserByUsername(String customer_id) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		
 		memberDetails user = memberAuthDao.getUserById(customer_id);
-		logger.info("로그인 아이디 체크" + user);
+		logger.info("로그인 아이디 체크"+user.getCustomer_id());
+		
 		if(user==null) {
 			throw new UsernameNotFoundException(customer_id);
 		}
@@ -47,21 +47,13 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 			details.setPassword(pass);
 			logger.info("비밀번호 생성"+pass);
 		}
-		
 		details.setBirthday(LocalDate.of(details.getYear(), details.getMonth(), details.getDay()));
-		
-		
-//		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
-//		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
-//		details.setBirthday(datformat);
-//		logger.info("날짜"+datformat);
 		return memberAuthDao.singup(details);
 	}
 	
 	//회원 아이디 체크
 	@Override
 	public int doubleCheck(String customer_id) throws Exception {
-		System.out.println("확인");
 		return memberAuthDao.doubleCheck(customer_id);
 	}
 	
@@ -78,7 +70,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	@Override
 	public List<memberDetails> userInformation() throws Exception{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		logger.info("확인=========================================");
 		List<memberDetails> userInfo = memberAuthDao.userInformation(auth.getName());
 		
 		return userInfo;
@@ -87,8 +78,6 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	@Override
 	public boolean userModify(memberDetails details) throws Exception {
 		
-//		String date=details.getYear()+"/"+details.getMonth()+"/"+details.getDay();
-//		Date datformat = new SimpleDateFormat("yyyy/MM/dd").parse(date);
 		details.setBirthday(LocalDate.of(details.getYear(), details.getMonth(), details.getDay()));
 		logger.info("날짜");
 		
@@ -109,9 +98,7 @@ public class memberDetailsSeviceImpl implements UserDetailsService, memberDetail
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	System.out.println("아이디 확인"+auth.getName());
 		int deleteCheck = memberAuthDao.userDelete(auth.getName());
-		
 		if(deleteCheck >= 1) return true;
-		
 		else return false;
 	}
 }
