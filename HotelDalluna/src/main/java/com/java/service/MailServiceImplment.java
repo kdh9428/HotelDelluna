@@ -1,6 +1,5 @@
 package com.java.service;
 
-import java.io.File;
 import java.util.Random;
 
 import javax.activation.DataHandler;
@@ -10,6 +9,7 @@ import javax.mail.BodyPart;
 import javax.mail.internet.MimeBodyPart;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,9 @@ public class MailServiceImplment implements MailService{
 	
 	@Autowired
 	PasswordEncoder passwordencoder;
+	
+	@Autowired
+	ResourceLoader resourceLoader;
 	
 	//id찾기
 	@Override
@@ -59,10 +62,10 @@ public class MailServiceImplment implements MailService{
 	
 	public void sendId(String id,String userEmail) throws Exception {
 		BodyPart messageBodyPart = new MimeBodyPart();
-		//현재 경로
-		File f = new File(".");
+		
+		String pathImage = resourceLoader.getResource("resources/images/favicon/hotelDalluna384x384.jpg").getURI().getPath();
 		//추가 파일 있는 경로
-		DataSource image = new FileDataSource("C:\\Users\\DaHun_Home\\git\\HotelDelluna\\HotelDalluna"+"\\src\\main\\webapp\\resources\\images\\favicon\\hotelDalluna384x384.jpg");
+		DataSource image = new FileDataSource(pathImage);
 		messageBodyPart.setDataHandler(new DataHandler(image));
 		messageBodyPart.setHeader("Content-ID","<image>");
 		MailUtils sendMail = new MailUtils(mailSender);
@@ -96,12 +99,11 @@ public class MailServiceImplment implements MailService{
 	}
 	
 	public void sendPassword(String userEmail,String password) throws Exception{
-		
+		String pathImage = resourceLoader.getResource("resources/images/favicon/hotelDalluna384x384.jpg").getURI().getPath();
 		BodyPart messageBodyPart = new MimeBodyPart();
 		//현재 경로
-		File f = new File(".");
 		//추가 파일 있는 경로
-		DataSource image = new FileDataSource("C:\\Users\\DaHun_Home\\git\\HotelDelluna\\HotelDalluna"+"\\src\\main\\webapp\\resources\\images\\favicon\\hotelDalluna384x384.jpg");
+		DataSource image = new FileDataSource(pathImage);
 		messageBodyPart.setDataHandler(new DataHandler(image));
 		messageBodyPart.setHeader("Content-ID","<image>");
 		MailUtils sendMail = new MailUtils(mailSender);
