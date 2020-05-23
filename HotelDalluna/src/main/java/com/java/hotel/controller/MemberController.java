@@ -161,11 +161,6 @@ public class MemberController {
 		return "userModifyPasswordCheck";
 	}
 	
-//	public String userDeleteCheck() {
-//		
-//		return "userDeleteCheck";
-//	}
-	
 	@PostMapping("userDelete.do")
 	public String userDelete(@RequestParam String password ,Model model,HttpSession session) throws Exception{
 		logger.info("삭제 확인");

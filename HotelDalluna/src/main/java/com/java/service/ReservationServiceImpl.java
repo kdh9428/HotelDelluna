@@ -38,7 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
 		
 		int reCheck = 1;
 		//체크 아웃을 선택했는지 확인
-		if(ReservationDto.getReservation_date_out() == "" || ReservationDto.getReservation_date_out().equals(null) ){
+		if(ReservationDto.getReservation_date_out().isEmpty()){
 			ReservationDto.setReservation_date_out(ReservationDto.getReservation_date_in());
 			logger.info("checkout null 확인" + ReservationDto.getReservation_date_out());
 		}

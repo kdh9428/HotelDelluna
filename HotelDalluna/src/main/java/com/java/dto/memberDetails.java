@@ -9,6 +9,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -51,6 +52,7 @@ public class memberDetails implements UserDetails{
 	private String userEmailHash;
 	private boolean userEmailChecked;
 	private String authority;
+	
 	@NotEmpty(message = "년 null")
 	private int year;
 	@NotEmpty(message = "달 null")

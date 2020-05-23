@@ -43,7 +43,7 @@
         <property name="host" value="#{emailConfig['mail.host']}" />
         <property name="port" value="#{emailConfig['mail.port']}" />
         <property name="username" value="#{emailConfig['mail.manager']}" />
-        <property name="password" value="#{emailConfig['mail.password']} " />
+        <property name="password" value="#{emailConfig['mail.password']}" />
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.transport.protocol">smtp</prop>
