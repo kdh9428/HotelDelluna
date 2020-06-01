@@ -4,11 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -53,11 +56,11 @@ public class memberDetails implements UserDetails{
 	private boolean userEmailChecked;
 	private String authority;
 	
-	@NotEmpty(message = "년 null")
+	@Range(min = 1500, max = 2050)
 	private int year;
-	@NotEmpty(message = "달 null")
+	@Range(min = 1, max = 12)
 	private int month;
-	@NotEmpty(message = "일 null")
+	@Range(min = 1, max = 31)
 	private int day;
 	
 	private LocalDate birthday;
