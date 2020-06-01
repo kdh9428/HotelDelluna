@@ -149,7 +149,7 @@ public class MemberController {
 	@PostMapping("userModify.do")
 	public String userModify(@ModelAttribute @Valid memberDetails details, Model model) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		logger.info("회원정보 수정 완료 id : "+auth);
+		logger.info("회원정보 수정 완료 id : "+auth.getName());
 		
 		//Sesstion 아이디와 클라이언트 아이디 확인 후 맞으면 변경
 		if(details.getCustomer_id().equals(auth.getName())) {
