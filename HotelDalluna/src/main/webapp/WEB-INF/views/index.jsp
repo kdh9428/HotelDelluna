@@ -93,57 +93,6 @@
 		}
 
     </style>
-    <!--달력 스타일  -->
-    <style>
-      html,
-      body {
-        min-height: 100vh;
-        font-size: 14px;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-          Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        line-height: 18px;
-        font-weight: 400;
-        -webkit-font-smoothing: antialiased;
-        padding: 10px;
-      }
-      .align-right {
-        text-align: right;
-      }
-      h1 {
-        font-size: 1.8em;
-        line-height: 1.5em;
-      }
-      .datepicker-container {
-        margin-bottom: 0px;
-        display: inline-block;
-  
-      }
-
-      #datepicker-button-trigger {
-        background: #428bca;
-        border: 1px solid #428bca;
-        color: white;
-        padding: 15px 20px;
-        border-radius: 3px;
-        font-size: 15px;
-        font-weight: bold;
-        text-align: center;
-        min-width: 200px;
-      }
-      input {
-        padding: 6px 10px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-      }
-      .inline-with-input {
-        width: 300px;
-      }
-      .inline-with-input input {
-        width: 100%;
-      }
-    </style>  
-    
-    <!-- 달력 끝 -->
-
 </head>
 
 <body class="stretched">
@@ -181,7 +130,7 @@
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
 									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-									<li><a href="Location.do"><div>호텔위치</div></a></li>
+									<li><a href="resources/html/Location.html"><div>호텔위치</div></a></li>
 									<li><a href="list.do"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
