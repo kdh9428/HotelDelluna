@@ -5,7 +5,7 @@
 
 <mapper namespace="com.java.board.reply">
 	
-	<select id="replyList" parameterType="String" resultType="com.java.BoardDto.ReplyVO">
+	<select id="replyList" parameterType="int" resultType="com.java.BoardDto.ReplyVO">
 		select 
 				*
 		from

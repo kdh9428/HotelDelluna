@@ -22,9 +22,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 @SuppressWarnings("serial")
-@Getter
-@Setter
 @ToString
+@Setter
+@Getter
 public class memberDetails implements UserDetails{
 	
 	@NotEmpty
