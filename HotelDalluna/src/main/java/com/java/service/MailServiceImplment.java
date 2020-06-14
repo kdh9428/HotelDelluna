@@ -88,7 +88,7 @@ public class MailServiceImplment implements MailService{
 										   .append("</td>")
 										   .append("<tr>")
 										   .append("<td>")
-										   .append("<h2><a href=https://www.dahunkim.xyz target=\"_blank\" title=\"호텔 델루나\">호텔 델루나 바로가기</a><h2>")
+										   .append("<h2><a href=https://dahunkim.xyz target=\"_blank\" title=\"호텔 델루나\">호텔 델루나 바로가기</a><h2>")
 										   .append("</tr>")
 										   .append("</td>")
 										   .append("</table>").toString());
@@ -127,7 +127,7 @@ public class MailServiceImplment implements MailService{
 										   .append("</td>")
 										   .append("<tr>")
 										   .append("<td>")
-										   .append("<h2><a href=https://www.dahunkim.xyz target=\"_blank\" title=\"호텔 델루나\">호텔 델루나 바로가기</a><h2>")
+										   .append("<h2><a href=https://dahunkim.xyz target=\"_blank\" title=\"호텔 델루나\">호텔 델루나 바로가기</a><h2>")
 										   .append("</tr>")
 										   .append("</td>")
 										   .append("</table>").toString());

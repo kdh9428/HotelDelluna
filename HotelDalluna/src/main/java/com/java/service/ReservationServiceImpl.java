@@ -136,6 +136,8 @@ public class ReservationServiceImpl implements ReservationService {
 		//로그인 id Security에서 받아오기
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		
+		System.out.println("예약 페이징 처리 ");
+		
 		//한 페이지에 보여질 리스트 수
 		paging.setListSize(1);
 		paging.setRangeSize(5);

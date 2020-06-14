@@ -65,7 +65,7 @@
 		select
 			count(*)
 		from
-			Reservation
+			reservation
 		where
 			customer_id=#{customer_id}
 	</select>
