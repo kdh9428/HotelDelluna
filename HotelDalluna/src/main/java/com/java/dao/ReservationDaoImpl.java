@@ -66,11 +66,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public int ReservationCount(String customer_id) {
 		logger.info("Dao 예약 완료 총 개수");
-		
-		System.out.println("아이디 확인 : " + customer_id);
 		int a = sqlSession.selectOne("com.java.dao.ReservationDao.ReservationCount" ,customer_id);
-		System.out.println();
-		System.out.println("테스트 예약 총 개수 확인 : "+a);
 		return a;
 	}
 }

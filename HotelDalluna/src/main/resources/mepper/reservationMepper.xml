@@ -7,7 +7,7 @@
 	
 	<!-- 예약이 되어있나 체크 -->
 	<select id="ReservationCheck" parameterType="com.java.dto.ReservationDTO" resultType="boolean">
-			select count(*) from Reservation r join Reservation_number_people p 
+			select count(*) from reservation r join reservation_number_people p 
 		on 
 			r.Reservation_number = p.Reservation_number where room_type in(#{room_type}) 
 		and 
@@ -23,7 +23,7 @@
 	
 	<!-- 룸 인원 테이블  -->
 	<insert id="ReservationPeople" parameterType="com.java.dto.ReservationDTO" >
-		insert into Reservation_number_people 
+		insert into reservation_number_people 
 			(Reservation_number,room_type, adult,child) 
 		values 
 			(#{Reservation_number}, #{room_type}, #{adult}, #{child}) 
@@ -32,7 +32,7 @@
 	<!--  예약 하기 --> 
 	<insert id="Reservation" parameterType="com.java.dto.ReservationDTO" >
 		insert into 
-			Reservation(Reservation_number,customer_id,Reservation_date_in,Reservation_date_out, price) 
+			reservation(Reservation_number,customer_id,Reservation_date_in,Reservation_date_out, price) 
 		values
 			(#{Reservation_number},#{customer_id},#{Reservation_date_in},#{Reservation_date_out},#{price})
 	</insert>
@@ -40,9 +40,9 @@
 	<!-- 예약 취소 -->
 	<delete id="ReservationCancell" >
 	 		delete from 
-	 			Reservation_number_people 
+	 			reservation_number_people 
 	 		where 
-	 			Reservation_number=#{Reservation_number}
+	 			reservation_number=#{reservation_number}
 	</delete>
 	
 	<!-- 예약 완료 후 확인 -->
@@ -50,13 +50,13 @@
 		select 
 			r.CUSTOMER_ID,r.Reservation_DATE_IN,r.Reservation_DATE_OUT,r.price,p.Reservation_NUMBER,p.ROOM_TYPE,p.ADULT,p.CHILD
 		from 
-			Reservation r join Reservation_number_people p 
+			reservation r join reservation_number_people p 
 		ON 
-			r.Reservation_number = p.Reservation_number 
+			r.reservation_number = p.reservation_number 
 		where 
 			customer_id=#{customer_id}
 		order by 
-			Reservation_date_in desc
+			reservation_date_in desc
 		limit #{startList}, #{listSize}
 	</select>
 	
