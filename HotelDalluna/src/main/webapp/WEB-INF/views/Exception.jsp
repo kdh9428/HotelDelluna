@@ -10,23 +10,23 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156464840-1"></script>
 	<!-- NAVER 통계  -->
 	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-	<script src="/hotel/resources/js/googleAnalytics/analytics.js"></script>
+	<script src="resources/js/googleAnalytics/analytics.js"></script>
 	
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Bootstrap 3 Website Template" />
 
     <!-- Stylesheets
     ============================================= -->
-	   <link rel="icon" type="image/png" sizes="16x16" href="/hotel/resources/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/hotel/resources/images/favicon/favicon-32x32.png">        
+	   <link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="resources/images/favicon/favicon-32x32.png">        
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" href="/hotel/resources/css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <!--[if lt IE 9]>
     	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -34,8 +34,8 @@
 <!--  -->
     <!-- External JavaScripts
     ============================================= -->
-	<script type="text/javascript" src="/hotel/resources/js/jquery.js"></script>
-	<script type="text/javascript" src="/hotel/resources/js/plugins.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
+	<script type="text/javascript" src="resources/js/plugins.js"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -71,49 +71,48 @@
 					<div id="logo">
 						<a href="index.do" class="standard-logo"
 							data-dark-logo="images/logo/logo-dark.png"><img
-							src="/hotel/resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 						<a href="index.do" class="retina-logo"
 							data-dark-logo="images/logo/logo-dark-large.png"><img
-							src="/hotel/resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+							src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
 
 						<!-- Primary Navigation
                     ============================================= -->
-                    <nav id="primary-menu">
+                     <nav id="primary-menu">
 						<ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
-									<li><a href="html/hotel-About-Us.html"><div>호텔소개</div></a></li>
-									<li><a href="html/Location.html"><div>호텔위치</div></a></li>
+									<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
 									<li><a href="list.do"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><a href="deluxe-double.html"><div>디럭스</div></a>
+									<li><a href="deluxe-double.do"><div>디럭스</div></a>
 										<ul>
-											<li><a href="html/deluxe-double.html"><div>디럭스 더블</div></a></li>
-											<li><a href="html/deluxe-twin.html"><div>디럭스 트윈</div></a></li>
-
+											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><a href="html/family-suite.html"><div>스위트</div></a>
+									<li><a href="family-suite.do"><div>스위트</div></a>
 										<ul>
-											<li><a href="html/family-suite.html"><div>패밀리 스위트</div></a></li>
-											<li><a href="html/grand-suite.html"><div>그랜드 스위트</div></a></li>
+											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><a href="dining.html"><div>다이닝</div></a>
+							<li><a href="dining.do"><div>다이닝</div></a>
 								<ul>
-									<li><a href="html/dining.html"><div>파노라마 (올 데이 다이닝)</div></a></li>
+									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
-									<li><a href="menu-item.jsp"><div>사계절 온수풀 해온</div></a></li>
-									<li><a href="menu-item2.jsp"><div>해온 루프탑 테라스</div></a></li>
-									<li><a href="menu-item3.jsp"><div>프라이빗 카바나</div></a></li>
+									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact.jsp"><div>고객의 소리</div></a></li>
+							<li><a href="contact.do"><div>고객의 소리</div></a></li>
 							<li><a href="Reservation.do"><div>예약하기</div></a></li>
 							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
 							
@@ -151,12 +150,12 @@
         
         <!-- Page Title
         ============================================= -->
-        <section id="page-title" class="page-title-parallax" style="background-image: url('/hotel/resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
+        <section id="page-title" class="page-title-parallax" style="background-image: url('resources/images/hotel-about/main.jpg'); padding: 120px 0;" data-stellar-background-ratio="0.3">
 
             <div class="container clearfix">
                 <h1>호텔 델루나</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">홈</a></li>
+                    <li><a href="index.do">홈</a></li>
                 </ol>
             </div>
 
@@ -188,7 +187,7 @@
 								</div>
 								<!-- entry clearfix -->
 								<div style="text-align: center">
-									<a href="/hotel/index.do"><button type="button"
+									<a href="index.do"><button type="button"
 											class="btn btn-primary btn-lg active">호텔 델루나 메인으로
 											이동</button></a>
 							</div>
@@ -225,22 +224,6 @@
                                     <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
   								
                                     </form>
-                                    <script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script>
                                 </div>                            
                             </div>
 
@@ -255,9 +238,9 @@
                                 			<ul>
                                     			<li><a href="index.do"><div>메인</div></a></li>
                                     			<li><a href="list.do"><div>호텔리뷰</div></a></li>
-                                    			<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    			<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                                <li><a href="contact.jsp"><div>고객의 소리</div></a></li>
+                                    			<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+                                    			<li><a href="Location"><div>호텔위치</div></a></li>
+                                                <li><a href="contact.do"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -315,8 +298,8 @@
                 <div class="container clearfix">
 
                     <div class="col_half">
-                        <img src="/hotel/resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
-                        <img src="/hotel/resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
+                        <img src="resources/images/logo/footer-logo.png" alt="" class="footer-logo standard-logo">
+                        <img src="resources/images/logo/footer-logo-large.png" alt="" class="footer-logo retina-logo">
                         Copyright &copy; 2019 Hotel Delluna. All Rights Reserved.
                     </div>
 
@@ -381,7 +364,7 @@
 
     <!-- Footer Scripts
     ============================================= -->
-    <script type="text/javascript" src="/hotel/resources/js/functions.js"></script>
+    <script type="text/javascript" src="resources/js/functions.js"></script>
 
 </body>
 </html>

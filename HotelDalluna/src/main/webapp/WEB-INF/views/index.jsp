@@ -129,8 +129,8 @@
 						<ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
-									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-									<li><a href="resources/html/Location.html"><div>호텔위치</div></a></li>
+									<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+									<li><a href="Location.do"><div>호텔위치</div></a></li>
 									<li><a href="list.do"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
@@ -367,7 +367,7 @@
                                 <h3 data-animate="fadeInDown">FACILITIES</h3>
                                 <span data-animate="fadeInUp">All-season Outdoor Spa Pool He:on</span>
                             </div>
-                            <p>오감만족 힐링, 사계절 따뜻한 롯데호텔제주 럭셔리 스파, 가든 해온(海溫).
+                            <p>오감만족 힐링, 사계절 따뜻한 호텔 델루나 럭셔리 스파, 가든 해온(海溫).
                             <p>바다 해(海)와 따뜻할 온(溫)을 품은 이름처럼,<br>제주의 자연을 그대로 닮은 사계절 온수풀입니다.</p>
                             <a href="menu-item.do" class="btn btn-primary" role="button">자세히 보기</a>
                         </div>
