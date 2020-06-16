@@ -34,22 +34,22 @@
 	
 	<!-- 컨트롤러 없이 정적 페이지 이동   -->
 	<mvc:view-controller path="/" view-name="index"/>
-	<mvc:view-controller path="/hotel-About-Us.do" view-name="/html/hotel-About-Us.html"/>
-	<mvc:view-controller path="/Location.do" view-name="Location"/>
-	<mvc:view-controller path="/dining.do" view-name="dining"/>
-	<mvc:view-controller path="/deluxe-double.do" view-name="deluxe-double"/>
-	<mvc:view-controller path="/deluxe-twin.do" view-name="deluxe-twin"/>
-	<mvc:view-controller path="/family-suite.do" view-name="family-suite"/>
-	<mvc:view-controller path="/grand-suite.do" view-name="grand-suite"/>
-	<mvc:view-controller path="/menu-item.do" view-name="menu-item"/>
-	<mvc:view-controller path="/menu-item2.do" view-name="menu-item2"/>
-	<mvc:view-controller path="/menu-item3.do" view-name="menu-item3"/>
-	<mvc:view-controller path="/contact.do" view-name="contact"/>
-	<mvc:view-controller path="/index.do" view-name="index"/>
-	<mvc:view-controller path="/userModifyPasswordCheck.do" view-name="userModifyPasswordCheck"/>
-	<mvc:view-controller path="/userDeleteCheck.do" view-name="userDeleteCheck"/>
+	<mvc:view-controller path="/hotel-About-Us" view-name="hotel-About-Us"/>
+	<mvc:view-controller path="/Location" view-name="Location"/>
+	<mvc:view-controller path="/dining" view-name="dining"/>
+	<mvc:view-controller path="/deluxe-double" view-name="deluxe-double"/>
+	<mvc:view-controller path="/deluxe-twin" view-name="deluxe-twin"/>
+	<mvc:view-controller path="/family-suite" view-name="family-suite"/>
+	<mvc:view-controller path="/grand-suite" view-name="grand-suite"/>
+	<mvc:view-controller path="/menu-item" view-name="menu-item"/>
+	<mvc:view-controller path="/menu-item2" view-name="menu-item2"/>
+	<mvc:view-controller path="/menu-item3" view-name="menu-item3"/>
+	<mvc:view-controller path="/contact" view-name="contact"/>
+	<mvc:view-controller path="/index" view-name="index"/>
+	<mvc:view-controller path="/userModifyPasswordCheck" view-name="userModifyPasswordCheck"/>
+	<mvc:view-controller path="/userDeleteCheck" view-name="userDeleteCheck"/>
 	<mvc:view-controller path="/accountInfoFind" view-name="accountInfoFind"/>
-	<!-- <mvc:view-controller path="/singupForm.do" view-name="singup"/> -->
+	<!-- <mvc:view-controller path="/singupForm" view-name="singup"/> -->
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

@@ -66,8 +66,8 @@
 
 					<!-- Logo============================================= -->
 					<div id="logo">
-						<a href="index.do" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
-                        <a href="index.do" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+						<a href="index" class="standard-logo" data-dark-logo="resources/images/logo/logo-dark.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
+                        <a href="index" class="retina-logo" data-dark-logo="resources/images/logo/logo-dark-large.png"><img src="resources/images/logo/footer-logo-large.png" alt="Chocolat Logo"></a>
 					</div>
 					<!-- #logo end -->
 
@@ -78,45 +78,45 @@
                         <ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
-									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-									<li><a href="Location.do"><div>호텔위치</div></a></li>
-									<li><a href="list.do"><div>호텔리뷰</div></a></li>
+									<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+									<li><a href="Location"><div>호텔위치</div></a></li>
+									<li><a href="list"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><a href="deluxe-double.do"><div>디럭스</div></a>
+									<li><a href="deluxe-double"><div>디럭스</div></a>
 										<ul>
-											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
-											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
+											<li><a href="deluxe-double"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><a href="family-suite.do"><div>스위트</div></a>
+									<li><a href="family-suite"><div>스위트</div></a>
 										<ul>
-											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
-											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
+											<li><a href="family-suite"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><a href="dining.do"><div>다이닝</div></a>
+							<li><a href="dining"><div>다이닝</div></a>
 								<ul>
-									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+									<li><a href="dining"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
-									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
-									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
-									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
+									<li><a href="menu-item"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact.do"><div>고객의 소리</div></a></li>
-							<li><a href="Reservation.do"><div>예약하기</div></a></li>
-							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							<li><a href="contact"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm"><div>예약조회 및 취소</div></a></li>
 							
 							<!-- 로그인 하지 않았을 경우 보여준다.  -->
 							<sec:authorize access="isAnonymous()">
-								 <li><a href="login.do"><div>로그인</div></a>
+								 <li><a href="login"><div>로그인</div></a>
 									<ul>
-	                                	<li><a href="login.do"><div>로그인</div></a></li>
-	                                	<li><a href="accountInfoFind.do"><div>아이디/비밀번호 찾기</div></a></li>
-	                                	<li><a href="singupForm.do"><div>회원가입</div></a></li>
+	                                	<li><a href="login"><div>로그인</div></a></li>
+	                                	<li><a href="accountInfoFind"><div>아이디/비밀번호 찾기</div></a></li>
+	                                	<li><a href="singupForm"><div>회원가입</div></a></li>
                               	 	 </ul>   
                               	 </li>
 								</sec:authorize>
@@ -124,11 +124,11 @@
 							 <sec:authorize access="isAuthenticated()">
 								  <li><a href="#" onclick="return false;"><div>로그아웃</div></a>
 										<ul>
-											<li><a href="logout.do" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
-											<li><a href="userModifyPasswordCheck.do"><div>회원정보 수정</div></a></li>
+											<li><a href="logout" onclick="document.getElementById('logout-form').submit();"> <div>로그아웃</div></a></li>
+											<li><a href="userModifyPasswordCheck"><div>회원정보 수정</div></a></li>
 										</ul>
 								 </li>
-								<form id="logout-form" action="logout.do" method="post"> 
+								<form id="logout-form" action="logout" method="post"> 
 									   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								</form>
 							</sec:authorize>
@@ -147,7 +147,7 @@
             <div class="container clearfix">
                 <h1>호텔 델루나 소개</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.do">홈</a></li>
+                    <li><a href="index">홈</a></li>
                     <li class="active">호텔 델루나 소개</li>
                 </ol>
             </div>
@@ -172,7 +172,7 @@
                             <div class="entry clearfix">
                              
                                 <div class="entry-title">
-                                    <h2><a href="blog-single.html">호텔 델루나</a></h2>
+                                    <h2><a href="blog-single">호텔 델루나</a></h2>
                                 </div>
                                 
                                 <div class="entry-content">
@@ -181,11 +181,10 @@
                                     <br>남아프리카의 리조트 호텔 ‘The Palace of the Lost City’를 모델로 설계되어 천혜의 제주 자연과 어우러진 이국적인 분위기를 느낄 수 있습니다.
                                     <br>8개의 레스토랑 및 라운지, 7개의 연회장을 구비해 대규모 국제행사와 세미나에 최적일 뿐만 아니라 4계절 온수풀, 헬로키티 캐릭터 룸 등 다양한 시설을 갖춰 가족과 연인들에게 사랑 받는 호텔입니다.</p>
                                     
-                                   <!--  <a href="blog-single.html" class="more-link">Read More</a> -->
                                 </div>
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <a href="deluxe-double.do">
+                                    <a href="deluxe-double">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/accommodation.jpg" alt="Standard Post with Image"></a>
                                     	<B>객실</B><br>
                                      	<strong>초고층 타워의 전 객실에서 서울의 환상적인 경관을 파노라믹뷰로 조망할 수 있습니다.</strong><br>
@@ -195,7 +194,7 @@
                               	  </div>
                               
                                 <div class="col-md-6">
-                                	<a href="dining.do">
+                                	<a href="dining">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/dining.jpg" alt="Standard Post with Image"></a>
                                     <B>다이닝</B><br>
                                      	<strong>호텔 델루나는 바다 위로 반짝이는 석양을 바라보며 즐기는 테라스 만찬, 한식부터 일식, 중식, 양식까지 호텔 셰프들이 직접 엄선한 최상의 식재료를 비롯하여 프리미엄 와인을 경험할 수 있는 레스토랑과 라운지를 갖추고 있습니다.</strong><br>
@@ -206,7 +205,7 @@
                                  <p>
                                 <div class="row">
                                   <div class="col-md-6">
-                                	<a href="menu-item2.do">
+                                	<a href="menu-item2">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/meetings&banquets.jpg" alt="Standard Post with Image"></a>
                                     <B>미팅&웨딩</B><br>
                                      	<strong>호텔 델루나는 대규모 국제 행사와 세미나, 컨퍼런스, 가족연회, 음악회, 각종 공연 등이 가능한 실내 외 연회장을 갖추고 있습니다.</strong><br>
@@ -216,7 +215,7 @@
                                 </div>
                                 
                                 <div class="col-md-6">
-                                	<a href="menu-item.do">
+                                	<a href="menu-item">
                                     <img class="image_fade img-rounded img-responsive" src="resources/images/hotel-about/facilities.jpg" alt="Standard Post with Image"></a>
                                     <B>부대시설</B><br>
                                      	<strong>호텔 델루나는 제주의 자연과 더불어 최상의 휴식을 즐길 수 있는 다양한 공간과 아이들을 위한 특별한 즐거움이 마련되어 있습니다.</strong><br>
@@ -253,22 +252,6 @@
                             <div class="col_half">
                                 <div class="widget subscribe-widget clearfix">
                                     <h5>Email : hoteldelluna@hoteldelluna.co.kr</h5>
-                            <!--         <script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script> -->
                                 </div>                            
                             </div>
 
@@ -281,11 +264,11 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><a href="index.do"><div>메인</div></a></li>
-                                    			<li><a href="list.do"><div>호텔리뷰</div></a></li>
-                                    			<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-                                    			<li><a href="Location.do"><div>호텔위치</div></a></li>
-                                                <li><a href="contact.do"><div>고객의 소리</div></a></li>
+                                    			<li><a href="index"><div>메인</div></a></li>
+                                    			<li><a href="list"><div>호텔리뷰</div></a></li>
+                                    			<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+                                    			<li><a href="Location"><div>호텔위치</div></a></li>
+                                                <li><a href="contact"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -294,11 +277,11 @@
 
                             			<div class="widget_links clearfix">
                                 			<ul>
-                                    			<li><a href="deluxe-double.do"><div>객실 - 디럭스</div></a></li>
-                                    			<li><a href="family-suite.do"><div>객실 - 스위트</div></a></li>
-                                    			<li><a href="dining.do"><div>다이닝</div></a></li>
-                                    			<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
-                                                <li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+                                    			<li><a href="deluxe-double"><div>객실 - 디럭스</div></a></li>
+                                    			<li><a href="family-suite"><div>객실 - 스위트</div></a></li>
+                                    			<li><a href="dining"><div>다이닝</div></a></li>
+                                    			<li><a href="Reseravtion"><div>예약하기</div></a></li>
+                                                <li><a href="ReservationConfirm"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -350,7 +333,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                             <a href="#">호텔리뷰</a> <a href="hotel-About-Us.do">호텔소개</a> <a href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
+                             <a href="#">호텔리뷰</a> <a href="hotel-About-Us">호텔소개</a> <a href="deluxe-double">객실</a> <a href="contact-2">예약조회 및 취소</a> <a href="contact">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">

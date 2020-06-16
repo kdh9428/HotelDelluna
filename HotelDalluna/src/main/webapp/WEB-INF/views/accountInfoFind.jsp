@@ -86,10 +86,10 @@
 					<!-- Logo
                     ============================================= -->
 					<div id="logo">
-						<a href="index.do" class="standard-logo"
+						<a href="index" class="standard-logo"
 							data-dark-logo="resources/images/logo/logo-dark.png"><img
 							src="resources/images/logo/footer-logo-large.png"
-							alt="Chocolat Logo"></a> <a href="index.do" class="retina-logo"
+							alt="Chocolat Logo"></a> <a href="index" class="retina-logo"
 							data-dark-logo="resources/images/logo/logo-dark-large.png"><img
 							src="resources/images/logo/footer-logo-large.png"
 							alt="Chocolat Logo"></a>
@@ -103,60 +103,60 @@
 						<ul class="">
 							<li class="current"><a href="#" onclick="return false;"><div>호텔소개</div></a>
 								<ul>
-									<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-									<li><a href="Location.do"><div>호텔위치</div></a></li>
-									<li><a href="list.do"><div>호텔리뷰</div></a></li>
+									<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+									<li><a href="Location"><div>호텔위치</div></a></li>
+									<li><a href="list"><div>호텔리뷰</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>객실</div></a>
 								<ul>
-									<li><a href="deluxe-double.do"><div>디럭스</div></a>
+									<li><a href="deluxe-double"><div>디럭스</div></a>
 										<ul>
-											<li><a href="deluxe-double.do"><div>디럭스 더블</div></a></li>
-											<li><a href="deluxe-twin.do"><div>디럭스 트윈</div></a></li>
+											<li><a href="deluxe-double"><div>디럭스 더블</div></a></li>
+											<li><a href="deluxe-twin"><div>디럭스 트윈</div></a></li>
 										</ul></li>
-									<li><a href="family-suite.do"><div>스위트</div></a>
+									<li><a href="family-suite"><div>스위트</div></a>
 										<ul>
-											<li><a href="family-suite.do"><div>패밀리 스위트</div></a></li>
-											<li><a href="grand-suite.do"><div>그랜드 스위트</div></a></li>
+											<li><a href="family-suite"><div>패밀리 스위트</div></a></li>
+											<li><a href="grand-suite"><div>그랜드 스위트</div></a></li>
 
 										</ul></li>
 								</ul></li>
-							<li><a href="dining.do"><div>다이닝</div></a>
+							<li><a href="dining"><div>다이닝</div></a>
 								<ul>
-									<li><a href="dining.do"><div>파노라마 (올 데이 다이닝)</div></a></li>
+									<li><a href="dining"><div>파노라마 (올 데이 다이닝)</div></a></li>
 								</ul></li>
 							<li><a href="#" onclick="return false;"><div>부대시설</div></a>
 								<ul>
-									<li><a href="menu-item.do"><div>사계절 온수풀 해온</div></a></li>
-									<li><a href="menu-item2.do"><div>해온 루프탑 테라스</div></a></li>
-									<li><a href="menu-item3.do"><div>프라이빗 카바나</div></a></li>
+									<li><a href="menu-item"><div>사계절 온수풀 해온</div></a></li>
+									<li><a href="menu-item2"><div>해온 루프탑 테라스</div></a></li>
+									<li><a href="menu-item3"><div>프라이빗 카바나</div></a></li>
 								</ul></li>
-							<li><a href="contact.do"><div>고객의 소리</div></a></li>
-							<li><a href="Reservation.do"><div>예약하기</div></a></li>
-							<li><a href="ReservationConfirm.do"><div>예약조회 및 취소</div></a></li>
+							<li><a href="contact"><div>고객의 소리</div></a></li>
+							<li><a href="Reservation"><div>예약하기</div></a></li>
+							<li><a href="ReservationConfirm"><div>예약조회 및 취소</div></a></li>
 
 							<!-- 로그인 하지 않았을 경우 보여준다.  -->
 							<sec:authorize access="isAnonymous()">
-								<li><a href="login.do"><div>로그인</div></a>
+								<li><a href="login"><div>로그인</div></a>
 									<ul>
-										<li><a href="login.do"><div>로그인</div></a></li>
-										<li><a href="accountInfoFind.do"><div>아이디/비밀번호
+										<li><a href="login"><div>로그인</div></a></li>
+										<li><a href="accountInfoFind"><div>아이디/비밀번호
 													찾기</div></a></li>
-										<li><a href="singupForm.do"><div>회원가입</div></a></li>
+										<li><a href="singupForm"><div>회원가입</div></a></li>
 									</ul></li>
 							</sec:authorize>
 							<!-- 로그인 했을 경우 보여준다.  -->
 							<sec:authorize access="isAuthenticated()">
 								<li><a href="#" onclick="return false;"><div>로그아웃</div></a>
 									<ul>
-										<li><a href="logout.do"
+										<li><a href="logout"
 											onclick="document.getElementById('logout-form').submit();">
 												<div>로그아웃</div>
 										</a></li>
-										<li><a href="userModifyPasswordCheck.do"><div>회원정보
+										<li><a href="userModifyPasswordCheck"><div>회원정보
 													수정</div></a></li>
 									</ul></li>
-								<form id="logout-form" action="logout.do" method="post">
+								<form id="logout-form" action="logout" method="post">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
 								</form>
@@ -180,8 +180,8 @@
 				<h1>아이디/비밀번호 찾기</h1>
 
 				<ol class="breadcrumb">
-					<li><a href="index.html">홈</a></li>
-					<li><a href="hotel-About-Us.html">아아디/비밀번호 찾기</a></li>
+					<li><a href="index">홈</a></li>
+					<li><a href="hotel-About-Us">아아디/비밀번호 찾기</a></li>
 				</ol>
 			</div>
 		</section>
@@ -248,7 +248,7 @@
 					<div class="modal-body"></div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<a href="index.do"><button type="button" class="btn btn-primary">메인 화면</button></a>
+						<a href="index"><button type="button" class="btn btn-primary">메인 화면</button></a>
 					</div>
 				</div>
 			</div>
@@ -293,11 +293,11 @@
 
 										<div class="widget_links clearfix">
 											<ul>
-												<li><a href="index.do"><div>메인</div></a></li>
-												<li><a href="list.do"><div>호텔리뷰</div></a></li>
-												<li><a href="hotel-About-Us.do"><div>호텔소개</div></a></li>
-												<li><a href="Location.do"><div>호텔위치</div></a></li>
-												<li><a href="contact.do"><div>고객의 소리</div></a></li>
+												<li><a href="index"><div>메인</div></a></li>
+												<li><a href="list"><div>호텔리뷰</div></a></li>
+												<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+												<li><a href="Location"><div>호텔위치</div></a></li>
+												<li><a href="contact"><div>고객의 소리</div></a></li>
 											</ul>
 										</div>
 									</div>
@@ -306,11 +306,11 @@
 
 										<div class="widget_links clearfix">
 											<ul>
-												<li><a href="deluxe-double.do"><div>객실 - 디럭스</div></a></li>
-												<li><a href="family-suite.do"><div>객실 - 스위트</div></a></li>
-												<li><a href="dining.do"><div>다이닝</div></a></li>
-												<li><a href="Reseravtion.do"><div>예약하기</div></a></li>
-												<li><a href="ReservationConfirm.do"><div>예약조회
+												<li><a href="deluxe-double"><div>객실 - 디럭스</div></a></li>
+												<li><a href="family-suite"><div>객실 - 스위트</div></a></li>
+												<li><a href="dining"><div>다이닝</div></a></li>
+												<li><a href="Reseravtion"><div>예약하기</div></a></li>
+												<li><a href="ReservationConfirm"><div>예약조회
 															및 취소</div></a></li>
 											</ul>
 										</div>
@@ -368,9 +368,9 @@
 
 					<div class="col_half col_last tright">
 						<div class="copyrights-menu copyright-links fright clearfix">
-							<a href="#">호텔리뷰</a> <a href="hotel-About-Us.do">호텔소개</a> <a
-								href="deluxe-double.do">객실</a> <a href="contact-2.do">예약조회 및
-								취소</a> <a href="contact.jsp">고객의 소리</a>
+							<a href="#">호텔리뷰</a> <a href="hotel-About-Us">호텔소개</a> <a
+								href="deluxe-double">객실</a> <a href="contact-2">예약조회 및
+								취소</a> <a href="contact">고객의 소리</a>
 						</div>
 						<div class="fright clearfix">
 							<a href="#"

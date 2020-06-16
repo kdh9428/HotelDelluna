@@ -58,7 +58,7 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title"
 					style="background-image: url(resources/images/bg-01.jpg);">
-					<a href="index.do"><span class="login100-form-title-1">Hotel Delluna</span></a>
+					<a href="index"><span class="login100-form-title-1">Hotel Delluna</span></a>
 				</div>
 					<sec:authorize access="isAnonymous()">
 						<form class="login100-form validate-form" action="loginSuccess" method="post">
@@ -84,7 +84,7 @@
 							</div>
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn" value="로그인" style="margin:0 5px">로그인</button>
-								<button class="login100-form-btn" type="button" style="margin:0 5px" value="회원가입" onclick="location.href='singupForm.do'">회원가입</button>
+								<button class="login100-form-btn" type="button" style="margin:0 5px" value="회원가입" onclick="location.href='singupForm'">회원가입</button>
 							</div>
 						</form>
 						</sec:authorize>
@@ -92,7 +92,7 @@
 					 <div style="text-align:center;">
 						<h3>${pageContext.request.userPrincipal.name}님 환영합니다!</h3>
 							<button type="button" class ="btn btn-primary" onclick="document.getElementById('logout-form').submit();">로그아웃</button>
-							<form id="logout-form" action="logout.do" method="post"> 
+							<form id="logout-form" action="logout" method="post"> 
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							</form>
 					</div>
