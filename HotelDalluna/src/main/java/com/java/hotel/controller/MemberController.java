@@ -46,7 +46,7 @@ public class MemberController {
 	@Autowired
 	memberDetailsSevice memberDetail;
 	
-	@GetMapping("login.do")
+	@GetMapping("login")
 	public String logincheck(@CookieValue(value ="id", required = false) String id , 
 							@RequestParam(required = false) String deleteCheck,
 							@RequestHeader("referer") String ref ,Model model , HttpServletRequest request) {
@@ -63,8 +63,6 @@ public class MemberController {
 //					}
 //				}
 //			}
-			
-			System.out.println("ref"+ref);
 			//이전 페이지 저장
 			String referer = request.getHeader("referer");
 			//로그인 페이지를 직접 클릭하지 않았을 경우 세션에 이전 페이지 주소 저장
@@ -75,13 +73,13 @@ public class MemberController {
 		return"login";
 	}
 	
-	@GetMapping("singupForm.do")
+	@GetMapping("singupForm")
 	public String singupForm(@ModelAttribute("memberDetails") memberDetails details,Model model) throws Exception {
 		logger.info("회원가입");
 		return "singupForm";
 	}
 	
-	@PostMapping("singup.do")
+	@PostMapping("singup")
 	public String singUp(@ModelAttribute("memberDetails") @Valid memberDetails details, BindingResult bindingResult, Errors errors, Model model) throws Exception{
 		new validation().validate(details, bindingResult);
 		//회원 아이디 중복 확인
@@ -109,7 +107,7 @@ public class MemberController {
 	}
 	
 	//ajax 아이디 확인
-	@GetMapping("doubleCheck.do")
+	@GetMapping("doubleCheck")
 	@ResponseBody
 	public int doubleCheck(@RequestParam(defaultValue = "1" ) String customer_id) throws Exception{
 		logger.info("아이디 확인 "+customer_id);
@@ -117,14 +115,14 @@ public class MemberController {
 	}
 	
 	//회원 정보 수정 ajax 비밀번호 확인
-	@PostMapping("userPassword.do")
+	@PostMapping("userPassword")
 	@ResponseBody
 	public boolean userPassword(@RequestParam String password) throws Exception{
 		return memberDetail.userPassword(password);
 	}
 	
 	//회원정보 폼
-	@PostMapping("userModifyForm.do")
+	@PostMapping("userModifyForm")
 	public String userInformation(String password, memberDetails details ,Model model) throws Exception {
 		logger.info("회원정보 변경");
 			if(userPassword(password)){
@@ -146,7 +144,7 @@ public class MemberController {
 			}
 	}
 
-	@PostMapping("userModify.do")
+	@PostMapping("userModify")
 	public String userModify(@ModelAttribute @Valid memberDetails details, Model model) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		logger.info("회원정보 수정 완료 id : "+auth.getName());
@@ -161,7 +159,7 @@ public class MemberController {
 		return "userModifyPasswordCheck";
 	}
 	
-	@PostMapping("userDelete.do")
+	@PostMapping("userDelete")
 	public String userDelete(@RequestParam String password ,Model model,HttpSession session) throws Exception{
 		logger.info("삭제 확인");
 //		if(memberDetail.userPassword(password))
@@ -169,7 +167,7 @@ public class MemberController {
 		session.invalidate();
 		SecurityContextHolder.clearContext();
 		model.addAttribute("deleteCheck", deleteCheck);
-		return "redirect:login.do";
+		return "redirect:login";
 	}
 	
 	//아이디 찾기

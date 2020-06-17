@@ -56,7 +56,7 @@
 		where 
 			customer_id=#{customer_id}
 		order by 
-			reservation_date_in desc
+			reservation_date_in asc
 		limit #{startList}, #{listSize}
 	</select>
 	

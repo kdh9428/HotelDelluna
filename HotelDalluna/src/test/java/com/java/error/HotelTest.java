@@ -323,6 +323,11 @@ public class HotelTest {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
-//			
 		}
+	
+	@Test
+	public void password() {
+		String a = passwordEncoder.encode("1234");
+		System.out.println(a);
+	}
 }

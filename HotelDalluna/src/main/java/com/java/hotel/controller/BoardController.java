@@ -94,7 +94,7 @@ public class BoardController {
 		//새로운 글
 		boardService.boardInsert(boardVO);
 		}
-		return "redirect:list.do";
+		return "redirect:list";
 	}
 	
 	//게시물 조회

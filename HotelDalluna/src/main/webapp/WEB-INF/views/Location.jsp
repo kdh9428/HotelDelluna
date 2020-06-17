@@ -438,7 +438,7 @@
 			var contentString	= '<div>' +
 			'<h2>호텔 델루나</h2>'+
 			'<p>환상의 섬 제주도 중문단지에 위치한 호텔 델루나는 <br>500개의 객실을 갖춘 한국 최고의 리조트 호텔입니다.<br />' +
-			'<a href="index" target="_blank">http://www.dahunkim.xyz</a>'
+			'<a href="https://dahunkim.xyz" target="_blank">https://www.dahunkim.xyz</a>'
 			'</div>';
 		
 			var myLatlng = new google.maps.LatLng(Y_point, X_point);

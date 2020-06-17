@@ -185,15 +185,16 @@
 
                     <!-- Contact Form
                     ============================================= -->
-                    <form action="reservation/${dto.reservation_number}" method="post" >
+                    <form id="cancel-reservation" action="reservation/${dto.reservation_number}" method="post"  >
                     <input type="hidden" name="_method" value="delete" />
                      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <c:if test="${notReservation eq 1 }">
+            <%--         <c:if test="${ notReservation eq noRoomReserve }">
                     	<script>
                     		alert("예약된 방이 없습니다. 예약 해주세요!")
                     		location.href="Reservation";
                     	</script>
-                    </c:if>
+                    </c:if> --%>
+                    
 					<input type="hidden" name="Reservation_number" id="Reservation_number" value="${dto.reservation_number}">
 					<div class="row">
 						<div class="col-md-6">
@@ -251,7 +252,7 @@
                         <div class="clearfix" style=" text-align:center;" >
                                 <button type="button" onclick="popup();" value="${dto.reservation_number}" class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black; ">
                                 <span >결제하기</span> <i class="icon-angle-right"></i></button>
-                                <button type="submit" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
+                                <button type="button" onclick="check()" value="${dto.reservation_number}"class="button button-medium button-reveal button-3d button-rounded tright nomargin" style="color:black;">
                                 <span>예약취소</span> <i class="icon-angle-right"></i></button></div>
                                 
                                 
@@ -308,8 +309,8 @@
 				        
 				        function check(){
 				        	if(confirm("예약을 취소 하시겠습니까?")==true){
-// 				        		document.location.href="reservation/${dto.reservation_number}"
-				        		document.form.submit();
+								document.querySelector("#cancel-reservation").submit();
+// 				        		document.form.submit();
 				        	}else{
 				        		return false;
 				        	}
@@ -325,7 +326,7 @@
                     <!-- Twitter
                     ============================================= -->
                   
-                      <!--   <script type="text/javascript">
+                        <script type="text/javascript">
 
                             jQuery(document).ready(function($){
                                 $.getJSON('include/twitter/tweets.php?username=envato&count=3', function(tweets){
@@ -333,7 +334,7 @@
                                 });
                             });
 
-                        </script> -->
+                        </script>
 
                     </div><!-- Twitter End -->
 
@@ -505,6 +506,18 @@
     <script type="text/javascript" src="resources/js/functions.js"></script>
     
     <script>
+    
+    
+//예약 되어 있나 확인한다.
+    window.onload = () => {
+		if("${notReservation}" == "noRoomReserve"){
+    		alert("예약된 방이 없습니다. 예약 해주세요!")
+    		location.href="Reservation";
+		}else if("${notReservation}" == "noNextReservation" ){
+			alert("더 이상 예약된 방이 없습니다.")
+			history.back();
+		}
+	};
 
 //이전 버튼 이벤트
 function fn_prev(page, range, rangeSize) {
@@ -517,9 +530,7 @@ function fn_prev(page, range, rangeSize) {
 
 	}
 
-
-
-  //페이지 번호 클릭
+//페이지 번호 클릭
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 		var url = "${pageContext.request.contextPath}/ReservationConfirm";
 		url = url + "?page=" + page;
@@ -527,9 +538,7 @@ function fn_prev(page, range, rangeSize) {
 		location.href = url;	
 	}
 
-
-
-	//다음 버튼 이벤트
+//다음 버튼 이벤트
 	function fn_next(page, range, rangeSize) {
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;

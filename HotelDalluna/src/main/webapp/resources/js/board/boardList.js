@@ -10,7 +10,7 @@ function getContextPath(){
 
 
 document.getElementById("write").onclick = function() {
-		location.href = "boardForm.do"
+		location.href = "boardForm"
 	};
 	
 	//게시글 검색

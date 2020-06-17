@@ -163,7 +163,7 @@
 
                         <div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
 
-                        <form class="nobottommargin" id="template-contactform" name="template-contactform" action="sendemail.jsp" method="post">
+                        <form class="nobottommargin" id="template-contactform" name="template-contactform" action="sendemail" method="post">
 
                             <div class="form-process"></div>
 
@@ -210,24 +210,6 @@
 
                         </form>
 
-                        <script type="text/javascript">
-
-                            $("#template-contactform").validate({
-                                submitHandler: function(form) {
-                                    $('.form-process').fadeIn();
-                                    $(form).ajaxSubmit({
-                                        target: '#contact-form-result',
-                                        success: function() {
-                                            $('.form-process').fadeOut();
-                                            $('#template-contactform').find('.sm-form-control').val('');
-                                            $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
-                                            IGNITE.widget.notifications($('#contact-form-result'));
-                                        }
-                                    });
-                                }
-                            });
-
-                        </script>
 
                     </div><!-- .postcontent end -->
 				
@@ -291,25 +273,6 @@
                                 <div class="widget subscribe-widget clearfix">
                                     <h5>Email : hoteldelluna@hoteldelluna.co.kr
                                     <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
-                                    <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
-  								
-                                    </form>
-                                    <script type="text/javascript">
-                                        $("#widget-subscribe-form").validate({
-                                            submitHandler: function(form) {
-                                                $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
-                                                $(form).ajaxSubmit({
-                                                    target: '#widget-subscribe-form-result',
-                                                    success: function() {
-                                                        $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
-                                                        $('#widget-subscribe-form').find('.form-control').val('');
-                                                        $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
-                                                        IGNITE.widget.notifications($('#widget-subscribe-form-result'));
-                                                    }
-                                                });
-                                            }
-                                        });
-                                    </script>
                                 </div>                            
                             </div>
                             <div class="col_half col_last">
@@ -323,9 +286,9 @@
                                 			<ul>
                                     			<li><a href="index"><div>메인</div></a></li>
                                     			<li><a href="list"><div>호텔리뷰</div></a></li>
-                                    			<li><a href="hotel-About-Us.html"><div>호텔소개</div></a></li>
-                                    			<li><a href="Location.html"><div>호텔위치</div></a></li>
-                                                <li><a href="contact.jsp"><div>고객의 소리</div></a></li>
+                                    			<li><a href="hotel-About-Us"><div>호텔소개</div></a></li>
+                                    			<li><a href="Location"><div>호텔위치</div></a></li>
+                                                <li><a href="contact"><div>고객의 소리</div></a></li>
                                 			</ul>
                             			</div>
                                     </div>
@@ -336,7 +299,7 @@
                                 			<ul>
                                     			<li><a href="deluxe-double"><div>객실 - 디럭스</div></a></li>
                                     			<li><a href="family-suite"><div>객실 - 스위트</div></a></li>
-                                    			<li><a href="dining.html"><div>다이닝</div></a></li>
+                                    			<li><a href="dining"><div>다이닝</div></a></li>
                                     			<li><a href="Reseravtion"><div>예약하기</div></a></li>
                                                 <li><a href="ReservationConfirm"><div>예약조회 및 취소</div></a></li>
                                 			</ul>
@@ -390,7 +353,7 @@
 
                     <div class="col_half col_last tright">
                         <div class="copyrights-menu copyright-links fright clearfix">
-                            <a href="#">호텔리뷰</a> <a href="hotel-About-Us.html">호텔소개</a> <a href="deluxe-double.html">객실</a> <a href="contact-2.jsp">예약조회 및 취소</a> <a href="contact.jsp">고객의 소리</a>
+                            <a href="#">호텔리뷰</a> <a href="hotel-About-Us">호텔소개</a> <a href="deluxe-double">객실</a> <a href="contact-2">예약조회 및 취소</a> <a href="contact">고객의 소리</a>
                         </div>
                         <div class="fright clearfix">
                             <a href="#" class="social-icon si-small si-borderless nobottommargin si-facebook">

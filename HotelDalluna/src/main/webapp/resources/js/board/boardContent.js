@@ -8,7 +8,7 @@ $(document).ready(function(){
 		// 이전 코드 생략
 
 		function showReplyList() {
-			var url = "${pageContext.request.contextPath}/ReplyList.do";
+			var url = "${pageContext.request.contextPath}/ReplyList";
 			var paramData = {
 				"notice_number" : "${content.notice_number}"
 			};
@@ -85,7 +85,7 @@ $(document).on('click', '#btnReplySave', function(){
 				, "X-HTTP-Method-Override" : "POST"};
 
 		$.ajax({
-			url: "${pageContext.request.contextPath}/insertReply.do"
+			url: "${pageContext.request.contextPath}/insertReply"
 			, headers : headers
 			, data : paramData
 			, type : 'POST'
@@ -140,7 +140,7 @@ function fn_updateReply(replyid, customer_id){
 		var headers = {"Content-Type" : "application/json"
 				, "X-HTTP-Method-Override" : "PUT"};
 		$.ajax({
-			url: "${pageContext.request.contextPath}/updateReply.do"
+			url: "${pageContext.request.contextPath}/updateReply"
 			, headers : headers
 			, data : paramData
 			, type : 'PUT'
@@ -162,7 +162,7 @@ function fn_updateReply(replyid, customer_id){
 function fn_deleteReply(replyid) {
 			var paramData = {"replyid" : replyid, "customer_id" :"${login_id}"};
 			$.ajax({
-				url : "deleteReply.do",
+				url : "deleteReply",
 				data : paramData,
 				type : 'POST',
 				dataType : 'text',
@@ -182,11 +182,11 @@ function fn_deleteReply(replyid) {
 
 
 function fn_List(){
-				location.href="list.do"
+				location.href="list"
 			}
 			/* 삭제 후 이동 replace()를 사용해서 다시 삭제 한 페이지로 이동X */
 			function fn_btnDelete(notice_number) {
-				location.replace('${pageContext.request.contextPath}/boardDelete.do?notice_number='+notice_number)
+				location.replace('${pageContext.request.contextPath}/boardDelete?notice_number='+notice_number)
 			}
 			
 

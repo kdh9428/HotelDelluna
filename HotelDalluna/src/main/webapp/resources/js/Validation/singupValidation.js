@@ -77,7 +77,7 @@ customerIdCheck.addEventListener('keyup',idFilter)
 			return new Promise((resolve,reject)=>{
 	 			 var customerIdCheckValue = customerIdCheck.value;
 				 var xhr = new XMLHttpRequest();
-				 xhr.open('GET',"doubleCheck.do?customer_id="+customerIdCheckValue);
+				 xhr.open('GET',"doubleCheck?customer_id="+customerIdCheckValue);
 				 xhr.setRequestHeader(header,token);
 		        
 	            xhr.onload = () =>{
