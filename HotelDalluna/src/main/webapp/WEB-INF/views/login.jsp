@@ -75,9 +75,11 @@
 							<div class="flex-sb-m w-full p-b-30">
 								<div class="contact100-form-checkbox">
 									<input class="input-checkbox100" id="cookie" type="checkbox"
-										name="cookie" value="off" > <label class="label-checkbox100"
+										name="_spring_security_remember_me" value="off" ><label class="label-checkbox100"
 										for="cookie"> Remember me </label>
 								</div>
+								<!-- <input class="input-checkbox100" id="cookie" type="checkbox"
+										name="cookie" value="off" > -->
 								<div>
 									<a href="accountInfoFind" class="txt1"> Forgot Password? </a>
 								</div>
@@ -131,20 +133,20 @@
 			alert('회원 탈퇴가 완료되었습니다.')
 		}
 		
-		if('${getCookieId}'!=''){
-			document.querySelector('#customer_id').value = '${getCookieId}'
-			document.querySelector('#cookie').checked = true
-		}
+// 		if('${getCookieId}'!=''){
+// 			document.querySelector('#customer_id').value = '${getCookieId}'
+// 			document.querySelector('#cookie').checked = true
+// 		}
 		
-	})
+// 	})
 	
-	var cookieToggle = document.querySelector('#cookie')
-	cookieToggle.addEventListener('click',()=>{
-		if (cookieToggle.value == 'off')
-			cookieToggle.value = 'on'
-		else
-			cookieToggle.value = 'off'
-	})
+// 	var cookieToggle = document.querySelector('#cookie')
+// 	cookieToggle.addEventListener('click',()=>{
+// 		if (cookieToggle.value == 'off')
+// 			cookieToggle.value = 'on'
+// 		else
+// 			cookieToggle.value = 'off'
+// 	})
 	
 	</script>
 	

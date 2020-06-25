@@ -30,7 +30,7 @@
 	            var reservationConfirm = xhr.responseText
 	            if(xhr.status == 200){
 	                if(reservationConfirm == 'true'){
-	                	console.log('에이젝스 확인 '+reservationConfirm)
+//	                	console.log('에이젝스 확인 '+reservationConfirm)
 	                    resolve(true)
 	                }
 	                else{
